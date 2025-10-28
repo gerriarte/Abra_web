@@ -1,51 +1,59 @@
 # A:BRA Website
 
-Bilingual (EN/ES) corporate website for A:BRA Strategic Digital Engineering Agency.
+Strategic Digital Engineering Agency - Bilingual Website (EN/ES)
 
-## Technology Stack
+## 🚀 Quick Start
 
-- **Framework:** Next.js 16 (App Router)
-- **Language:** TypeScript
-- **Styling:** Tailwind CSS v4
-- **Internationalization:** next-intl
-- **Forms:** React Hook Form + Zod validation
-- **Hosting:** Vercel (recommended)
+```bash
+npm install
+npm run dev
+```
 
-## Project Structure
+Visit: `http://localhost:3000`
+
+## 📋 Features
+
+- ✅ **Next.js 14+** with App Router
+- ✅ **TypeScript** for type safety
+- ✅ **Tailwind CSS v4** for styling
+- ✅ **next-intl** for bilingual support (EN/ES)
+- ✅ **Material Design** principles
+- ✅ **Security Validations** (Rate limiting, XSS protection, Zod validation)
+- ✅ **Responsive Design** with mobile-first approach
+
+## 📁 Project Structure
 
 ```
 abra-website/
 ├── app/
-│   ├── [locale]/              # Language-specific routes
-│   │   ├── layout.tsx
-│   │   └── page.tsx
-│   ├── api/                    # API routes
-│   ├── layout.tsx             # Root layout
-│   └── globals.css
-├── components/                 # React components
-│   ├── sections/              # Page sections
-│   ├── layout/                # Layout components
-│   ├── ui/                    # UI components
-│   └── forms/                 # Form components
-├── lib/                       # Utilities and configs
-│   ├── i18n/                  # i18n configuration
-│   └── routing.ts             # Routing config
-├── messages/                  # Translation files
-│   ├── en.json
-│   └── es.json
-└── public/                    # Static assets
-    ├── abra-blanco.png
-    └── abra-negro.png
+│   ├── [locale]/          # Locale-specific pages
+│   ├── api/               # API routes
+│   ├── globals.css        # Global styles
+│   └── layout.tsx         # Root layout
+├── components/
+│   ├── layout/            # Header, Footer
+│   ├── sections/          # Hero, Problem, Method, Result, Projects, Contact
+│   └── ui/                # Reusable UI components
+├── lib/
+│   ├── i18n/              # i18n configuration
+│   ├── utils/             # Utility functions (rate limiting, sanitization)
+│   └── validation/        # Zod schemas
+├── hooks/                 # Custom React hooks
+├── messages/              # Translation files (en.json, es.json)
+└── public/                # Static assets
 ```
 
-## Color System
+## 🔧 Configuration
 
-- **Primary:** `#04213B` - Main brand color
-- **Accent Cyan:** `#00FFFF` - CTAs and highlights
-- **Accent Green:** `#39FF14` - Data highlights
-- **Background:** `#FFFFFF` / `#F5F5F5`
+### Environment Variables
 
-## Getting Started
+Create a `.env.local` file:
+
+```env
+# Optional: Add any required environment variables
+```
+
+### Development
 
 ```bash
 # Install dependencies
@@ -61,21 +69,99 @@ npm run build
 npm start
 ```
 
-## Development
+## 🎨 Design System
 
-The project is organized by features and follows the App Router pattern:
+### Colors
 
-- `/app/[locale]/` - Locale-aware pages
-- `/messages/` - Translation strings (JSON)
-- `/components/` - Reusable React components
+```css
+--color-primary: #04213B
+--color-primary-light: #0a3a5f
+--color-primary-dark: #03182f
+--color-text-primary: #04213B
+--color-text-secondary: #2f4f4f
+--color-text-muted: #6b7a8a
+```
 
-## Scripts
+### Typography
 
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run start` - Start production server
-- `npm run lint` - Run ESLint
+- **Headings**: Font weight 300 (light)
+- **Body**: System font stack
+- **Font sizes**: Fluid typography with responsive scaling
 
-## License
+## 🌐 Internationalization
 
-Private - A:BRA Agency
+The website is fully bilingual (English/Spanish) using `next-intl`:
+
+- **English**: `/en/*`
+- **Spanish**: `/es/*` (default)
+
+Translation files are located in `messages/en.json` and `messages/es.json`.
+
+## 🔒 Security Features
+
+### Form Validation
+
+- ✅ **Client-side**: Honeypot field, Zod validation, HTML5 validation
+- ✅ **Server-side**: Rate limiting (5 req/15min), input sanitization, Zod schema validation
+- ✅ **XSS Protection**: Input sanitization removes HTML tags, scripts, and event handlers
+- ✅ **Rate Limiting**: In-memory rate limiting (scalable to Redis)
+- ✅ **Privacy**: Checkbox acceptance of terms and privacy policy
+
+### Implementation
+
+```typescript
+// Rate limiting
+lib/utils/rateLimit.ts
+
+// Input sanitization
+lib/utils/sanitize.ts
+
+// Validation schema
+lib/validation/contactSchema.ts
+```
+
+## 📱 Sections
+
+### Hero
+- Vimeo video background
+- Scroll-based animations
+- Large typographic headlines
+
+### Problem
+- Vertical layout with illustrative SVG icons
+- Three main pain points
+
+### Method
+- Four pillars approach
+- Card-based layout
+
+### Projects
+- Draggable carousel
+- Navigation dots
+- Project showcase
+
+### Contact
+- Minimalist form design
+- Security validations
+- Location and social links
+
+## 🚀 Deployment
+
+### Vercel (Recommended)
+
+1. Push code to GitHub
+2. Import project on Vercel
+3. Automatic deployments on every push
+
+### cPanel (Static Export)
+
+```bash
+# Build static export
+npm run build:static
+
+# Upload 'out' folder to cPanel public_html
+```
+
+## 📝 License
+
+© 2025 A:BRA - Strategic Digital Engineering
