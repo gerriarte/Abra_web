@@ -64,6 +64,7 @@
       "servicePlaceholder": "Select a service",
       "date": "Preferred Date",
       "time": "Preferred Time",
+      "scheduleInfo": "Select an available day and time to schedule a meeting",
       "submit": "Schedule Consultation",
       "submitting": "Submitting...",
       "success": "Thank you! We'll contact you soon.",

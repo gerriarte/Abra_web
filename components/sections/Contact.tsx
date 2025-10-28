@@ -255,6 +255,11 @@ export default function Contact() {
                 )}
               </div>
 
+              {/* Schedule Info */}
+              <p className="text-xs md:text-sm text-text-muted font-light italic">
+                {t('form.scheduleInfo')}
+              </p>
+
               {/* Date and Time */}
               <div className="flex flex-col md:flex-row gap-4 items-baseline">
                 <div className="flex-1 w-full">

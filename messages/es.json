@@ -64,6 +64,7 @@
       "servicePlaceholder": "Selecciona un servicio",
       "date": "Fecha Preferida",
       "time": "Hora Preferida",
+      "scheduleInfo": "Selecciona un día y horario disponible para agendar una reunión",
       "submit": "Agendar Consultoría",
       "submitting": "Enviando...",
       "success": "¡Gracias! Te contactaremos pronto.",
