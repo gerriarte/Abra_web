@@ -148,7 +148,7 @@ export default function Contact() {
                   className={`w-full bg-transparent border-0 border-b border-text-muted/40 focus:border-primary focus:outline-none py-2 text-sm md:text-base font-light text-primary ${
                     errors.fullName ? 'border-red-500' : ''
                   }`}
-                  placeholder="My name is *"
+                  placeholder={t('form.fullNamePlaceholder')}
                   minLength={2}
                   maxLength={100}
                   pattern="^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$"
@@ -171,7 +171,7 @@ export default function Contact() {
                   className={`w-full bg-transparent border-0 border-b border-text-muted/40 focus:border-primary focus:outline-none py-2 text-sm md:text-base font-light text-primary ${
                     errors.company ? 'border-red-500' : ''
                   }`}
-                  placeholder="My company is *"
+                  placeholder={t('form.companyPlaceholder')}
                   maxLength={100}
                 />
                 {errors.company && (
@@ -193,7 +193,7 @@ export default function Contact() {
                     className={`w-full bg-transparent border-0 border-b border-text-muted/40 focus:border-primary focus:outline-none py-2 text-base md:text-base text-sm font-light text-primary ${
                       errors.email ? 'border-red-500' : ''
                     }`}
-                    placeholder="You can reach me at *"
+                    placeholder={t('form.emailPlaceholder')}
                     maxLength={100}
                   />
                   {errors.email && (
@@ -217,7 +217,7 @@ export default function Contact() {
                       className={`flex-1 bg-transparent border-0 focus:outline-none py-2 text-base md:text-base text-sm font-light text-primary ${
                         errors.phone ? 'border-red-500' : ''
                       }`}
-                      placeholder="1234567890"
+                      placeholder={t('form.phonePlaceholder')}
                       minLength={10}
                       maxLength={15}
                     />
@@ -230,7 +230,7 @@ export default function Contact() {
 
               {/* Service Selection */}
               <div>
-                <p className="text-sm md:text-base font-light text-primary mb-3 md:mb-4">I'm interested in:</p>
+                <p className="text-sm md:text-base font-light text-primary mb-3 md:mb-4">{t('form.service')}:</p>
                 <div className="flex flex-wrap gap-2">
                   {services.map((service) => (
                     <button
@@ -293,13 +293,13 @@ export default function Contact() {
                   className="mt-1 w-5 h-5 border-2 border-text-muted/60 rounded focus:ring-2 focus:ring-primary cursor-pointer accent-primary"
                 />
                 <label htmlFor="privacy" className="text-sm text-text-secondary font-light leading-relaxed cursor-pointer">
-                  I accept the{' '}
+                  {t('form.privacyText')}{' '}
                   <a href="/privacy" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary-light underline">
-                    privacy policy
+                    {t('form.privacyPolicy')}
                   </a>
-                  {' and '}
+                  {' ' + t('form.and') + ' '}
                   <a href="/terms" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary-light underline">
-                    terms of service
+                    {t('form.terms')}
                   </a>
                 </label>
                 {errors.privacyAccepted && (
