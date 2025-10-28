@@ -1,26 +1,22 @@
 # Dependencies
 node_modules/
-abra-website/node_modules/
 package-lock.json
-abra-website/package-lock.json
 
 # Next.js
-abra-website/.next/
-abra-website/out/
+.next/
+out/
+build/
 
 # Production
-abra-website/build/
+*.log
 
 # Debug
-abra-website/npm-debug.log*
-abra-website/yarn-debug.log*
-abra-website/yarn-error.log*
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
 # Local env files
-abra-website/.env*.local
-abra-website/.vercel
-
-# Vercel
+.env*.local
 .vercel
 
 # OS
@@ -31,3 +27,5 @@ abra-website/.vercel
 .vscode/
 .idea/
 
+# Test
+coverage/
