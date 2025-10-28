@@ -1,7 +1,6 @@
 {
-  "buildCommand": "cd abra-website && npm install && npm run build",
-  "outputDirectory": "abra-website/.next",
-  "installCommand": "cd abra-website && npm install",
-  "framework": "nextjs"
+  "buildCommand": "npm run build",
+  "framework": "nextjs",
+  "rootDirectory": "abra-website"
 }
 
