@@ -9,6 +9,8 @@ interface Project {
   title: string;
   description: string;
   category: string;
+  image?: string;
+  url?: string;
   gradient?: string;
 }
 
@@ -29,7 +31,7 @@ export default function Projects() {
 
   const loadProjects = async () => {
     try {
-      const response = await fetch('/data/projects.json');
+      const response = await fetch('/data/projects.json?t=' + Date.now());
       const data = await response.json();
       
       const gradients = [
@@ -198,10 +200,18 @@ export default function Projects() {
                   className="flex-shrink-0 w-full"
                   style={{ scrollSnapAlign: 'start' }}
                 >
-                  <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
+                  <div className={`flex flex-col md:flex-row items-center gap-8 md:gap-12 ${project.url ? 'cursor-pointer' : ''}`} 
+                       onClick={() => project.url && window.open(project.url, '_blank')}>
                     {/* Image/Visual */}
-                    <div className="w-full md:w-1/2 aspect-[4/3] bg-gradient-to-br from-primary-light/30 via-primary-light/15 to-primary-lighter/8 rounded-lg overflow-hidden">
-                      <div className="w-full h-full flex items-center justify-center p-8">
+                    <div className="w-full md:w-1/2 aspect-[4/3] rounded-lg overflow-hidden relative">
+                      {project.image ? (
+                        <img 
+                          src={project.image} 
+                          alt={project.title}
+                          className="w-full h-full object-cover"
+                        />
+                      ) : (
+                        <div className="w-full h-full bg-gradient-to-br from-primary-light/30 via-primary-light/15 to-primary-lighter/8 flex items-center justify-center p-8">
                         <div className="w-full h-full relative">
                           <svg 
                             viewBox="0 0 200 200" 
@@ -221,6 +231,7 @@ export default function Projects() {
                           </svg>
                         </div>
                       </div>
+                      )}
                     </div>
 
                     {/* Content */}
@@ -235,6 +246,14 @@ export default function Projects() {
                         <p className="text-lg text-text-secondary font-light leading-relaxed">
                           {project.description}
                         </p>
+                        {project.url && (
+                          <div className="mt-4 flex items-center gap-2 text-primary hover:text-primary-light transition-colors font-light">
+                            <span>Ver proyecto</span>
+                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                            </svg>
+                          </div>
+                        )}
                       </div>
                     </div>
                   </div>

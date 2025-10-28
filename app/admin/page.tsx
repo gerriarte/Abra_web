@@ -1,17 +1,18 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
+import '../globals.css';
 
 interface Project {
   id: number;
   title: string;
   description: string;
   category: string;
+  image?: string;
+  url?: string;
 }
 
 export default function AdminPanel() {
-  const router = useRouter();
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
@@ -28,11 +29,13 @@ export default function AdminPanel() {
 
   const loadProjects = async () => {
     try {
-      const response = await fetch('/data/projects.json');
+      const response = await fetch('/data/projects.json?t=' + Date.now());
       const data = await response.json();
       setProjects(data.projects || []);
     } catch (error) {
       console.error('Error loading projects:', error);
+      // Fallback to empty array
+      setProjects([]);
     }
   };
 
@@ -43,6 +46,17 @@ export default function AdminPanel() {
       setError('');
     } else {
       setError('Password incorrecto');
+    }
+  };
+
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setEditData({ ...editData, image: reader.result as string });
+      };
+      reader.readAsDataURL(file);
     }
   };
 
@@ -108,7 +122,9 @@ export default function AdminPanel() {
       id: newId,
       title: 'Nuevo Proyecto',
       description: 'Descripción del proyecto',
-      category: 'Branding'
+      category: 'Branding',
+      image: '',
+      url: ''
     };
     setProjects([...projects, newProject]);
     setEditingId(newId);
@@ -214,6 +230,34 @@ export default function AdminPanel() {
                       <option value="Communications">Communications</option>
                     </select>
                   </div>
+                  <div>
+                    <label className="block text-sm font-light text-primary mb-2">
+                      URL del Proyecto (Opcional)
+                    </label>
+                    <input
+                      type="url"
+                      value={editData.url || ''}
+                      onChange={(e) => setEditData({ ...editData, url: e.target.value })}
+                      placeholder="https://ejemplo.com/proyecto"
+                      className="w-full px-4 py-2 border border-border rounded-lg focus:outline-none focus:border-primary"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-light text-primary mb-2">
+                      Imagen de Portada
+                    </label>
+                    <input
+                      type="file"
+                      accept="image/*"
+                      onChange={handleImageChange}
+                      className="w-full px-4 py-2 border border-border rounded-lg focus:outline-none focus:border-primary"
+                    />
+                    {editData.image && (
+                      <div className="mt-2">
+                        <img src={editData.image} alt="Preview" className="max-w-xs h-32 object-cover rounded" />
+                      </div>
+                    )}
+                  </div>
                   <div className="flex gap-2">
                     <button
                       onClick={handleSave}
@@ -233,14 +277,27 @@ export default function AdminPanel() {
                   </div>
                 </div>
               ) : (
-                <div className="flex justify-between items-start">
-                  <div className="flex-1">
-                    <h3 className="text-lg font-light text-primary mb-2">{project.title}</h3>
-                    <p className="text-sm text-text-secondary mb-2">{project.description}</p>
-                    <span className="text-xs text-primary-light bg-primary-light/10 px-2 py-1 rounded">
-                      {project.category}
-                    </span>
-                  </div>
+                <div className="flex flex-col md:flex-row gap-4">
+                  {project.image && (
+                    <div className="w-full md:w-32 h-32 flex-shrink-0">
+                      <img src={project.image} alt={project.title} className="w-full h-full object-cover rounded" />
+                    </div>
+                  )}
+                  <div className="flex-1 flex justify-between items-start">
+                    <div className="flex-1">
+                      <h3 className="text-lg font-light text-primary mb-2">{project.title}</h3>
+                      <p className="text-sm text-text-secondary mb-2">{project.description}</p>
+                      <div className="flex flex-wrap gap-2">
+                        <span className="text-xs text-primary-light bg-primary-light/10 px-2 py-1 rounded">
+                          {project.category}
+                        </span>
+                        {project.url && (
+                          <span className="text-xs text-green-600 bg-green-50 px-2 py-1 rounded">
+                            Tiene URL
+                          </span>
+                        )}
+                      </div>
+                    </div>
                   <div className="flex gap-2 ml-4">
                     <button
                       onClick={() => handleEdit(project)}
@@ -254,6 +311,7 @@ export default function AdminPanel() {
                     >
                       Eliminar
                     </button>
+                  </div>
                   </div>
                 </div>
               )}

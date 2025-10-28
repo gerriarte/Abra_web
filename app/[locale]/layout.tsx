@@ -33,17 +33,13 @@ export default async function LocaleLayout({
   const messages = await getMessages();
 
   return (
-    <html lang={locale}>
-      <body className={`${inter.variable} antialiased`}>
-        <NextIntlClientProvider messages={messages}>
-          <Header />
-          <main>
-            {children}
-          </main>
-          <Footer />
-        </NextIntlClientProvider>
-      </body>
-    </html>
+    <NextIntlClientProvider messages={messages}>
+      <Header />
+      <main>
+        {children}
+      </main>
+      <Footer />
+    </NextIntlClientProvider>
   );
 }
 
