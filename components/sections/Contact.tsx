@@ -121,10 +121,10 @@ export default function Contact() {
           </div>
 
           {/* Contact Form - Minimalist Design */}
-          <div className={`grid grid-cols-1 lg:grid-cols-5 gap-12 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
+          <div className={`grid grid-cols-1 lg:grid-cols-5 gap-8 md:gap-12 transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
             {/* Left: Form Fields */}
             <div className="lg:col-span-3">
-              <form onSubmit={handleSubmit} className="space-y-12" noValidate>
+              <form onSubmit={handleSubmit} className="space-y-8 md:space-y-12" noValidate>
                 {/* Honeypot field - hidden from users */}
                 <input
                   type="text"
@@ -145,7 +145,7 @@ export default function Contact() {
                     setFormData({ ...formData, fullName: e.target.value });
                     if (errors.fullName) setErrors({ ...errors, fullName: '' });
                   }}
-                  className={`w-full bg-transparent border-0 border-b border-text-muted/40 focus:border-primary focus:outline-none py-2 text-base font-light text-primary ${
+                  className={`w-full bg-transparent border-0 border-b border-text-muted/40 focus:border-primary focus:outline-none py-2 text-sm md:text-base font-light text-primary ${
                     errors.fullName ? 'border-red-500' : ''
                   }`}
                   placeholder="My name is *"
@@ -168,7 +168,7 @@ export default function Contact() {
                     setFormData({ ...formData, company: e.target.value });
                     if (errors.company) setErrors({ ...errors, company: '' });
                   }}
-                  className={`w-full bg-transparent border-0 border-b border-text-muted/40 focus:border-primary focus:outline-none py-2 text-base font-light text-primary ${
+                  className={`w-full bg-transparent border-0 border-b border-text-muted/40 focus:border-primary focus:outline-none py-2 text-sm md:text-base font-light text-primary ${
                     errors.company ? 'border-red-500' : ''
                   }`}
                   placeholder="My company is *"
@@ -180,7 +180,7 @@ export default function Contact() {
               </div>
 
               {/* Email and Phone - Side by Side */}
-              <div className="flex gap-4 items-baseline">
+              <div className="flex flex-col md:flex-row md:gap-4 md:items-baseline space-y-4 md:space-y-0">
                 <div className="flex-1">
                   <input
                     type="email"
@@ -190,7 +190,7 @@ export default function Contact() {
                       setFormData({ ...formData, email: e.target.value });
                       if (errors.email) setErrors({ ...errors, email: '' });
                     }}
-                    className={`w-full bg-transparent border-0 border-b border-text-muted/40 focus:border-primary focus:outline-none py-2 text-base font-light text-primary ${
+                    className={`w-full bg-transparent border-0 border-b border-text-muted/40 focus:border-primary focus:outline-none py-2 text-base md:text-base text-sm font-light text-primary ${
                       errors.email ? 'border-red-500' : ''
                     }`}
                     placeholder="You can reach me at *"
@@ -200,46 +200,37 @@ export default function Contact() {
                     <p className="text-red-500 text-xs mt-1 font-light">{errors.email}</p>
                   )}
                 </div>
-                <span className="text-text-muted/60 font-light text-sm">or</span>
-                <div className="flex gap-2 items-baseline">
-                  <select
-                    value={formData.phoneCode}
-                    onChange={(e) => setFormData({ ...formData, phoneCode: e.target.value })}
-                    className="bg-transparent border-0 border-b border-text-muted/40 pb-2 focus:outline-none transition-colors font-light text-primary text-base cursor-pointer"
-                  >
-                    {countryCodes.map((country) => (
-                      <option key={country.code} value={country.code}>
-                        {country.code}
-                      </option>
-                    ))}
-                  </select>
-                  <div className="flex-1 min-w-[140px]">
+                <span className="hidden md:inline text-text-muted/60 font-light text-sm">or</span>
+                <div className="flex-1 md:flex-none md:w-auto">
+                  <div className="flex items-center gap-2 border-b border-text-muted/40 focus-within:border-primary">
+                    <span className="text-primary font-light pb-2">+</span>
                     <input
                       type="tel"
                       required
                       value={formData.phone}
                       onChange={(e) => {
-                        setFormData({ ...formData, phone: e.target.value });
+                        // Restrict to digits only
+                        const value = e.target.value.replace(/\D/g, '');
+                        setFormData({ ...formData, phone: value });
                         if (errors.phone) setErrors({ ...errors, phone: '' });
                       }}
-                      className={`w-full bg-transparent border-0 border-b border-text-muted/40 focus:border-primary focus:outline-none py-2 text-base font-light text-primary ${
+                      className={`flex-1 bg-transparent border-0 focus:outline-none py-2 text-base md:text-base text-sm font-light text-primary ${
                         errors.phone ? 'border-red-500' : ''
                       }`}
-                      placeholder="1.202.123.4567"
+                      placeholder="1234567890"
                       minLength={10}
                       maxLength={15}
-                      pattern="^[\d\s\-\(\)]+$"
                     />
-                    {errors.phone && (
-                      <p className="text-red-500 text-xs mt-1 font-light">{errors.phone}</p>
-                    )}
                   </div>
+                  {errors.phone && (
+                    <p className="text-red-500 text-xs mt-1 font-light">{errors.phone}</p>
+                  )}
                 </div>
               </div>
 
               {/* Service Selection */}
               <div>
-                <p className="text-base font-light text-primary mb-4">I'm interested in:</p>
+                <p className="text-sm md:text-base font-light text-primary mb-3 md:mb-4">I'm interested in:</p>
                 <div className="flex flex-wrap gap-2">
                   {services.map((service) => (
                     <button
@@ -249,7 +240,7 @@ export default function Contact() {
                         setFormData({ ...formData, service });
                         if (errors.service) setErrors({ ...errors, service: '' });
                       }}
-                      className={`px-4 py-2 border border-text-muted/40 hover:border-primary hover:bg-primary/5 transition-all duration-200 font-light text-sm ${
+                      className={`px-3 py-2 border border-text-muted/40 hover:border-primary hover:bg-primary/5 transition-all duration-200 font-light text-xs md:text-sm ${
                         formData.service === service 
                           ? 'border-primary bg-primary/10' 
                           : 'bg-transparent'
@@ -265,25 +256,25 @@ export default function Contact() {
               </div>
 
               {/* Date and Time */}
-              <div className="flex gap-4 items-baseline">
-                <div className="flex-1">
+              <div className="flex flex-col md:flex-row gap-4 items-baseline">
+                <div className="flex-1 w-full">
                   <input
                     type="date"
                     required
                     value={formData.date}
                     onChange={(e) => setFormData({ ...formData, date: e.target.value })}
                     min={new Date().toISOString().split('T')[0]}
-                    className="w-full bg-transparent border-0 border-b border-text-muted/40 focus:border-primary focus:outline-none py-2 text-base font-light text-primary"
+                    className="w-full bg-transparent border-0 border-b border-text-muted/40 focus:border-primary focus:outline-none py-2 text-base md:text-base text-sm font-light text-primary"
                   />
                 </div>
-                <span className="text-text-muted/60 font-light text-sm">at</span>
-                <div className="flex-1">
+                <span className="hidden md:inline text-text-muted/60 font-light text-sm">at</span>
+                <div className="flex-1 w-full">
                   <input
                     type="time"
                     required
                     value={formData.time}
                     onChange={(e) => setFormData({ ...formData, time: e.target.value })}
-                    className="w-full bg-transparent border-0 border-b border-text-muted/40 focus:border-primary focus:outline-none py-2 text-base font-light text-primary"
+                    className="w-full bg-transparent border-0 border-b border-text-muted/40 focus:border-primary focus:outline-none py-2 text-base md:text-base text-sm font-light text-primary"
                   />
                 </div>
               </div>
@@ -317,11 +308,11 @@ export default function Contact() {
               </div>
 
               {/* Submit Button - Circular */}
-              <div className="flex justify-end pt-8">
+              <div className="flex justify-center md:justify-end pt-6 md:pt-8">
                 <button
                   type="submit"
                   disabled={submitted}
-                  className="w-40 h-40 rounded-full border-2 border-primary hover:bg-primary hover:text-white transition-all duration-300 flex items-center justify-center font-light text-lg disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-32 h-32 md:w-40 md:h-40 rounded-full border-2 border-primary hover:bg-primary hover:text-white transition-all duration-300 flex items-center justify-center font-light text-base md:text-lg disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {submitted ? 'Submitting...' : 'Submit'}
                 </button>
@@ -330,7 +321,7 @@ export default function Contact() {
           </div>
 
           {/* Right: Social & Locations */}
-          <div className="lg:col-span-2 space-y-12 pt-8">
+          <div className="lg:col-span-2 space-y-8 md:space-y-12 pt-6 md:pt-8">
             {/* Locations */}
             <div>
               <h3 className="text-xs font-light text-text-muted mb-6 tracking-wider uppercase">
