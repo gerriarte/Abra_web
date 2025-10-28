@@ -1,6 +1,6 @@
 # A:BRA Website - Strategic Digital Engineering
 
-Bilingual (EN/ES) website for A:BRA agency built with Next.js 14, TypeScript, and Tailwind CSS.
+Bilingual (EN/ES) website for A:BRA agency built with Next.js 16, TypeScript, and Tailwind CSS.
 
 ## 🚀 Quick Start
 
@@ -43,23 +43,47 @@ abra-website/          # Next.js application
 └── public/           # Static assets
 ```
 
-## 🚀 Deployment
+## 🚀 Deployment on Vercel
 
-### Vercel (Recommended)
+### Step-by-Step Setup:
 
-1. Push code to GitHub
-2. Import repository on [Vercel](https://vercel.com)
-3. Vercel will auto-detect Next.js and deploy
+1. **Go to [Vercel Dashboard](https://vercel.com)**
+2. **Click "Add New" → "Project"**
+3. **Import from GitHub:**
+   - Select repository: `gerriarte/Abra_web`
+   - Click "Import"
 
-**Configuration:**
+4. **Configure Project Settings:**
+   - **Framework Preset:** Next.js
+   - **Root Directory:** Click "Override" → Type: `abra-website`
+   - **Build Command:** Leave empty (auto)
+   - **Output Directory:** Leave empty (auto)
+   - **Install Command:** Leave empty (auto)
+
+5. **Environment Variables:**
+   - None required for this project
+   - Click "Deploy"
+
+### Alternative: Using Vercel CLI
+
+```bash
+npm i -g vercel
+cd abra-website
+vercel
+```
+
+When prompted:
+- Set root directory: `abra-website`
 - Framework: Next.js
-- Root Directory: `abra-website`
-- Build Command: `cd abra-website && npm install && npm run build`
-- Install Command: `cd abra-website && npm install`
+- Deploy
 
-### Environment Variables
+### ⚠️ Important Vercel Settings
 
-No environment variables required for basic deployment.
+Make sure these settings are configured in your Vercel project:
+
+1. Go to **Project Settings** → **General**
+2. Set **Root Directory** to: `abra-website`
+3. Framework should be auto-detected as **Next.js**
 
 ## 📝 Development
 
@@ -84,6 +108,5 @@ npm start
 
 ## 🔗 Links
 
-- [Live Site](https://your-site.vercel.app)
 - [GitHub Repository](https://github.com/gerriarte/Abra_web)
-
+- [Live Site](https://your-project.vercel.app)
