@@ -1,0 +1,53 @@
+{
+  "projects": [
+    {
+      "id": 1,
+      "title": "Renovación Corporativa",
+      "description": "Transformación completa de identidad visual y estrategia de comunicación para empresa tecnológica líder en el sector.",
+      "category": "Branding"
+    },
+    {
+      "id": 2,
+      "title": "Plataforma E-Learning",
+      "description": "Diseño y desarrollo de plataforma educativa con enfoque en UX conversión para instituciones académicas.",
+      "category": "Web Development"
+    },
+    {
+      "id": 3,
+      "title": "Campaña Digital B2B",
+      "description": "Estrategia integral de marketing digital con enfoque en generación de leads calificados para sector servicios.",
+      "category": "Digital Marketing"
+    },
+    {
+      "id": 4,
+      "title": "Sistema de Comunicación Interna",
+      "description": "Implementación de portal corporativo para mejorar comunicación y productividad interna de equipos remotos.",
+      "category": "Communications"
+    },
+    {
+      "id": 5,
+      "title": "E-commerce Luxury",
+      "description": "Creación de experiencia de compra digital premium para marca de alta gama con foco en conversión.",
+      "category": "Web Development"
+    },
+    {
+      "id": 6,
+      "title": "Rebranding Completo",
+      "description": "Renovación estratégica de marca incluyendo naming, identidad visual y posicionamiento de mercado.",
+      "category": "Branding"
+    },
+    {
+      "id": 7,
+      "title": "Automation Marketing",
+      "description": "Implementación de campañas automatizadas con enfoque en nutrición y conversión de leads.",
+      "category": "Digital Marketing"
+    },
+    {
+      "id": 8,
+      "title": "Portal Institucional",
+      "description": "Diseño y desarrollo de sitio web corporativo optimizado para SEO y conversión B2B.",
+      "category": "Web Development"
+    }
+  ]
+}
+

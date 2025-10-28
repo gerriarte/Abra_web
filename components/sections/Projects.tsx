@@ -4,6 +4,14 @@ import { useTranslations } from 'next-intl';
 import useOnScreen from '@/hooks/useOnScreen';
 import { useState, useEffect, useRef } from 'react';
 
+interface Project {
+  id: number;
+  title: string;
+  description: string;
+  category: string;
+  gradient?: string;
+}
+
 export default function Projects() {
   const t = useTranslations();
   const [ref, isVisible] = useOnScreen({ threshold: 0.1 });
@@ -12,34 +20,66 @@ export default function Projects() {
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
   const carouselRef = useRef<HTMLDivElement>(null);
+  const [projects, setProjects] = useState<Project[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  // Random heights for Pinterest effect
-  const heights = [280, 320, 240, 360, 260, 340, 300, 350];
+  useEffect(() => {
+    loadProjects();
+  }, []);
 
-  const projectsData = t.raw('projects.items') as Array<{
-    title: string;
-    description: string;
-    category: string;
-  }>;
-
-  const gradients = [
-    'from-primary-light/30 to-primary-light/10',
-    'from-primary-light/20 to-primary-light/5',
-    'from-primary-lighter/25 to-primary-lighter/10',
-    'from-primary-light/30 to-primary-light/10',
-    'from-primary-lighter/20 to-primary-lighter/5',
-    'from-primary-light/25 to-primary-light/8',
-    'from-primary-light/20 to-primary-light/5',
-    'from-primary-lighter/25 to-primary-lighter/10',
-  ];
-
-  const projects = projectsData.map((item, index) => ({
-    id: index + 1,
-    title: item.title,
-    description: item.description,
-    category: item.category,
-    gradient: gradients[index]
-  }));
+  const loadProjects = async () => {
+    try {
+      const response = await fetch('/data/projects.json');
+      const data = await response.json();
+      
+      const gradients = [
+        'from-primary-light/30 to-primary-light/10',
+        'from-primary-light/20 to-primary-light/5',
+        'from-primary-lighter/25 to-primary-lighter/10',
+        'from-primary-light/30 to-primary-light/10',
+        'from-primary-lighter/20 to-primary-lighter/5',
+        'from-primary-light/25 to-primary-light/8',
+        'from-primary-light/20 to-primary-light/5',
+        'from-primary-lighter/25 to-primary-lighter/10',
+      ];
+      
+      const projectsWithGradients = data.projects.map((item: any, index: number) => ({
+        ...item,
+        gradient: gradients[index % gradients.length]
+      }));
+      
+      setProjects(projectsWithGradients);
+    } catch (error) {
+      console.error('Error loading projects:', error);
+      // Fallback to translation data
+      const projectsData = t.raw('projects.items') as Array<{
+        title: string;
+        description: string;
+        category: string;
+      }>;
+      
+      const gradients = [
+        'from-primary-light/30 to-primary-light/10',
+        'from-primary-light/20 to-primary-light/5',
+        'from-primary-lighter/25 to-primary-lighter/10',
+        'from-primary-light/30 to-primary-light/10',
+        'from-primary-lighter/20 to-primary-lighter/5',
+        'from-primary-light/25 to-primary-light/8',
+        'from-primary-light/20 to-primary-light/5',
+        'from-primary-lighter/25 to-primary-lighter/10',
+      ];
+      
+      const projectsWithGradients = projectsData.map((item, index) => ({
+        id: index + 1,
+        ...item,
+        gradient: gradients[index]
+      }));
+      
+      setProjects(projectsWithGradients);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   // Handle mouse drag
   const handleMouseDown = (e: React.MouseEvent) => {
@@ -108,6 +148,18 @@ export default function Projects() {
     carouselRef.current.addEventListener('scroll', handleScroll);
     return () => carouselRef.current?.removeEventListener('scroll', handleScroll);
   }, []);
+
+  if (loading) {
+    return (
+      <section id="projects" className="py-32 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center text-text-secondary">Cargando proyectos...</div>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section id="projects" className="py-32 bg-white">
