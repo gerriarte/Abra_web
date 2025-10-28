@@ -1,0 +1,122 @@
+{
+  "hero": {
+    "title": "A:BRA",
+    "subtitle": "Transformamos datos complejos en sistemas de crecimiento predecibles. De la visión de marca al desarrollo web, construimos soluciones digitales que funcionan, probadas por la métrica.",
+    "cta": "Solicitar Evaluación Estratégica",
+    "welcome": "Bienvenido a",
+    "tagline": "AGENCIA DE INGENIERÍA ESTRATÉGICA",
+    "description": "Del concepto estratégico a la implementación final, ingeniamos sistemas que impulsan el crecimiento medible."
+  },
+  "problem": {
+    "title": "El Costo de la Visión Cerrada: Por qué el Esfuerzo no es Suficiente",
+    "intro": "En un mercado saturado, el problema no es la falta de datos, sino la incapacidad de conectarlos con una acción clara. El marketing sin coherencia de marca ni rigor analítico es una inversión a ciegas. Es hora de abrir el foco.",
+    "subtitle": "¿Reconoce este patrón?",
+    "points": {
+      "unstableBrand": "Marca Inestable: El mensaje institucional cambia constantemente o no refleja su verdadera experiencia.",
+      "erraticMarketing": "Marketing Errático: Campañas Paid Media que generan volumen, pero con una calidad de lead inaceptable (atribución confusa).",
+      "webBottleneck": "Web como Cuello de Botella: La plataforma digital no está optimizada (UX/Dev) para capitalizar la inversión en tráfico."
+    }
+  },
+  "method": {
+    "title": "A:BRA Method: El Sistema Integrado para Desbloquear su Escala",
+    "quote": "Nuestra metodología se basa en la apertura controlada: utilizamos la Inteligencia Artificial como catalizador para garantizar que sus cuatro pilares de crecimiento trabajen en perfecta armonía.",
+    "pillars": {
+      "pillar1": {
+        "title": "Desarrollo de Branding",
+        "focus": "Construcción de PV Institucional e identidad visual/discursiva. Es un manual de operaciones estratégico.",
+        "dataConnection": "Posicionamiento Data-Driven: Análisis de percepción con AI para un posicionamiento creíble."
+      },
+      "pillar2": {
+        "title": "Estrategias de Comunicación",
+        "focus": "Diseño de narrativa institucional y manejo de crisis. Tono experto, formal y claro que proyecta autoridad.",
+        "dataConnection": "Alineación por Data: Estrategia de Comms definida por los temas de alta conversión identificados con analítica predictiva."
+      },
+      "pillar3": {
+        "title": "Marketing Digital & Growth",
+        "focus": "Estrategias, Paid Media, Analítica Avanzada. Inversión solo donde la data garantiza el ROI.",
+        "dataConnection": "Optimización Continua: AI/ML potencia la segmentación y el bidding en Paid Media con base en la analítica avanzada."
+      },
+      "pillar4": {
+        "title": "Diseño y Desarrollo Web",
+        "focus": "Servicios de UX, UI y Development con foco en la conversión B2B. Web como sistema de conversión.",
+        "dataConnection": "Validación Técnica: Diseño sometido a A/B Testing, asegurando que la arquitectura web no sea un obstáculo para la conversión y First-Party Data."
+      }
+    }
+  },
+  "result": {
+    "title": "El Resultado Final: La Libertad Estratégica",
+    "description": "El fin de la incertidumbre. Trabajar con A:BRA significa reemplazar el caos con un sistema estructurado. Usted obtiene la amplitud de visión y la libertad de tomar decisiones clave, sabiendo que su marca, comunicación y tecnología están perfectamente calibradas para el crecimiento sostenido.",
+    "cta": "Agende su Sesión de Apertura (Análisis Estratégico)"
+  },
+  "contact": {
+    "title": "Iniciemos tu Proyecto",
+    "subtitle": "Agenda una sesión de consultoría estratégica",
+    "form": {
+      "fullName": "Nombre Completo",
+      "fullNamePlaceholder": "Juan Pérez",
+      "company": "Nombre de Empresa",
+      "companyPlaceholder": "Tu Empresa",
+      "phone": "Teléfono",
+      "phonePlaceholder": "1234567890",
+      "email": "Correo Electrónico",
+      "emailPlaceholder": "juan@empresa.com",
+      "service": "Servicio",
+      "servicePlaceholder": "Selecciona un servicio",
+      "date": "Fecha Preferida",
+      "time": "Hora Preferida",
+      "submit": "Agendar Consultoría",
+      "submitting": "Enviando...",
+      "success": "¡Gracias! Te contactaremos pronto.",
+      "error": "Error al enviar el formulario. Por favor intenta de nuevo.",
+      "rateLimitError": "Demasiadas solicitudes. Por favor espera unos minutos.",
+      "privacyText": "Acepto la",
+      "privacyPolicy": "política de privacidad",
+      "terms": "términos de servicio",
+      "note": "Respetamos tu privacidad y nunca compartiremos tu información.",
+      "locations": "Ubicaciones",
+      "connect": "Conecta"
+    }
+  },
+  "projects": {
+    "title": "Proyectos Seleccionados",
+    "subtitle": "Nuestro trabajo habla a través de resultados medibles",
+    "items": [
+      {
+        "title": "Transformación de Marca",
+        "description": "Rediseño completo de identidad para startup tecnológica",
+        "category": "Branding"
+      },
+      {
+        "title": "Plataforma E-commerce",
+        "description": "Proyecto estratégico de desarrollo web",
+        "category": "Desarrollo"
+      },
+      {
+        "title": "Campaña de Marketing",
+        "description": "Estrategia de medios pagos basada en datos",
+        "category": "Marketing"
+      },
+      {
+        "title": "Comunicaciones Corporativas",
+        "description": "Narrativa institucional y manejo de crisis",
+        "category": "Comunicaciones"
+      },
+      {
+        "title": "Estrategia Digital",
+        "description": "Hoja de ruta completa de transformación digital",
+        "category": "Estrategia"
+      },
+      {
+        "title": "Diseño de Experiencia de Usuario",
+        "description": "Optimización UX/UI para plataforma B2B",
+        "category": "Diseño"
+      }
+    ]
+  },
+  "nav": {
+    "home": "Inicio",
+    "about": "Acerca de",
+    "contact": "Contacto"
+  }
+}
+

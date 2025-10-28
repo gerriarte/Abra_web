@@ -1,0 +1,122 @@
+{
+  "hero": {
+    "title": "A:BRA",
+    "subtitle": "We transform complex data into predictable growth systems. From brand vision to web development, we build digital solutions that work, proven by metrics.",
+    "cta": "Request Strategic Evaluation",
+    "welcome": "Welcome to",
+    "tagline": "STRATEGIC ENGINEERING AGENCY",
+    "description": "From strategic concept to final implementation, we engineer systems that drive measurable growth."
+  },
+  "problem": {
+    "title": "The Cost of Closed Vision: Why Effort Is Not Enough",
+    "intro": "In a saturated market, the problem isn't a lack of data; it's the inability to connect it with a clear action. Marketing without brand coherence or analytical rigor is a blind investment. It's time to open the focus.",
+    "subtitle": "Do you recognize this pattern?",
+    "points": {
+      "unstableBrand": "Unstable Brand: The institutional message constantly shifts or fails to reflect your true expertise.",
+      "erraticMarketing": "Erratic Marketing: Paid Media campaigns generate volume but with unacceptable lead quality (confused attribution).",
+      "webBottleneck": "Web as Bottleneck: Your digital platform is not optimized (UX/Dev) to capitalize on traffic investment."
+    }
+  },
+  "method": {
+    "title": "A:BRA Method: The Integrated System to Unlock Your Scale",
+    "quote": "Our methodology is based on controlled openness: we use Artificial Intelligence as a catalyst to ensure your four growth pillars work in perfect harmony.",
+    "pillars": {
+      "pillar1": {
+        "title": "Branding Development",
+        "focus": "Institutional Value Proposition and identity (visual/discursive). A strategic operations manual.",
+        "dataConnection": "Data-Driven Positioning: AI-powered analysis of market perception to ensure unique and credible positioning."
+      },
+      "pillar2": {
+        "title": "Institutional Communications",
+        "focus": "Design of institutional narrative and crisis management. Expert, formal, and clear tone projecting authority.",
+        "dataConnection": "Data Alignment: Comms strategy defined by high-conversion topics identified through predictive analytics."
+      },
+      "pillar3": {
+        "title": "Digital Marketing & Growth",
+        "focus": "Strategies, Paid Media, Advanced Analytics. Investment with the certainty of a risk analyst: only where data guarantees ROI.",
+        "dataConnection": "Continuous Optimization: AI/ML enhances segmentation and bidding in Paid Media, moving investment based on advanced analytics validation."
+      },
+      "pillar4": {
+        "title": "Web Design & Development",
+        "focus": "UX, UI, and Development services focused on B2B conversion. Your website is your best salesperson, logically structured and powerfully executed.",
+        "dataConnection": "Technical Validation: Design tested with A/B Testing, ensuring the web architecture is not an obstacle to conversion and First-Party Data."
+      }
+    }
+  },
+  "result": {
+    "title": "The Final Result: Strategic Freedom",
+    "description": "The end of uncertainty. Working with A:BRA means replacing chaos with a structured system. You gain the amplitude of vision and the freedom to make key decisions, knowing your brand, communication, and technology are perfectly calibrated for sustained growth.",
+    "cta": "Schedule Your Aperture Session (Strategic Analysis)"
+  },
+  "contact": {
+    "title": "Let's Start Your Project",
+    "subtitle": "Schedule a strategic consultation session",
+    "form": {
+      "fullName": "Full Name",
+      "fullNamePlaceholder": "John Doe",
+      "company": "Company Name",
+      "companyPlaceholder": "Your Company",
+      "phone": "Phone Number",
+      "phonePlaceholder": "1234567890",
+      "email": "Email",
+      "emailPlaceholder": "john@company.com",
+      "service": "Service",
+      "servicePlaceholder": "Select a service",
+      "date": "Preferred Date",
+      "time": "Preferred Time",
+      "submit": "Schedule Consultation",
+      "submitting": "Submitting...",
+      "success": "Thank you! We'll contact you soon.",
+      "error": "Error sending form. Please try again.",
+      "rateLimitError": "Too many requests. Please wait a few minutes.",
+      "privacyText": "I accept the",
+      "privacyPolicy": "privacy policy",
+      "terms": "terms of service",
+      "note": "We respect your privacy and will never share your information.",
+      "locations": "Locations",
+      "connect": "Connect"
+    }
+  },
+  "projects": {
+    "title": "Selected Projects",
+    "subtitle": "Our work speaks through measurable results",
+    "items": [
+      {
+        "title": "Brand Transformation",
+        "description": "Complete identity redesign for tech startup",
+        "category": "Branding"
+      },
+      {
+        "title": "E-commerce Platform",
+        "description": "Strategic web development project",
+        "category": "Development"
+      },
+      {
+        "title": "Marketing Campaign",
+        "description": "Data-driven paid media strategy",
+        "category": "Marketing"
+      },
+      {
+        "title": "Corporate Communications",
+        "description": "Institutional narrative and crisis management",
+        "category": "Communications"
+      },
+      {
+        "title": "Digital Strategy",
+        "description": "Complete digital transformation roadmap",
+        "category": "Strategy"
+      },
+      {
+        "title": "User Experience Design",
+        "description": "UX/UI optimization for B2B platform",
+        "category": "Design"
+      }
+    ]
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "contact": "Contact"
+  }
+}
+
