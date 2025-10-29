@@ -4,7 +4,7 @@
     "subtitle": "Transformamos datos complejos en sistemas de crecimiento predecibles. De la visión de marca al desarrollo web, construimos soluciones digitales que funcionan, probadas por la métrica.",
     "cta": "Solicitar Evaluación Estratégica",
     "welcome": "Bienvenido a",
-    "tagline": "AGENCIA DE INGENIERÍA ESTRATÉGICA",
+    "tagline": "Creatividad y Marketing estratégico",
     "description": "Del concepto estratégico a la implementación final, ingeniamos sistemas que impulsan el crecimiento medible."
   },
   "problem": {
@@ -13,8 +13,8 @@
     "subtitle": "¿Reconoce este patrón?",
     "points": {
       "unstableBrand": "Marca Inestable: El mensaje institucional cambia constantemente o no refleja su verdadera experiencia.",
-      "erraticMarketing": "Marketing Errático: Campañas Paid Media que generan volumen, pero con una calidad de lead inaceptable (atribución confusa).",
-      "webBottleneck": "Web como Cuello de Botella: La plataforma digital no está optimizada (UX/Dev) para capitalizar la inversión en tráfico."
+      "erraticMarketing": "Marketing Errático: Campañas de Medios Pagos que generan volumen, pero con una calidad de lead inaceptable (atribución confusa).",
+      "webBottleneck": "Web como Cuello de Botella: La plataforma digital no está optimizada (Experiencia de Usuario/Desarrollo) para capitalizar la inversión en tráfico."
     }
   },
   "method": {
@@ -23,23 +23,23 @@
     "pillars": {
       "pillar1": {
         "title": "Desarrollo de Branding",
-        "focus": "Construcción de PV Institucional e identidad visual/discursiva. Es un manual de operaciones estratégico.",
-        "dataConnection": "Posicionamiento Data-Driven: Análisis de percepción con AI para un posicionamiento creíble."
+        "focus": "Construcción de Propuesta de Valor Institucional e identidad visual/discursiva. Es un manual de operaciones estratégico.",
+        "dataConnection": "Posicionamiento Basado en Datos: Análisis de percepción con IA para un posicionamiento creíble."
       },
       "pillar2": {
         "title": "Estrategias de Comunicación",
         "focus": "Diseño de narrativa institucional y manejo de crisis. Tono experto, formal y claro que proyecta autoridad.",
-        "dataConnection": "Alineación por Data: Estrategia de Comms definida por los temas de alta conversión identificados con analítica predictiva."
+        "dataConnection": "Alineación por Datos: Estrategia de Comunicaciones definida por los temas de alta conversión identificados con analítica predictiva."
       },
       "pillar3": {
-        "title": "Marketing Digital & Growth",
-        "focus": "Estrategias, Paid Media, Analítica Avanzada. Inversión solo donde la data garantiza el ROI.",
-        "dataConnection": "Optimización Continua: AI/ML potencia la segmentación y el bidding en Paid Media con base en la analítica avanzada."
+        "title": "Marketing Digital y Crecimiento",
+        "focus": "Estrategias, Medios Pagos, Analítica Avanzada. Inversión solo donde los datos garantizan el Retorno de Inversión.",
+        "dataConnection": "Optimización Continua: IA/Aprendizaje Automático potencia la segmentación y el bidding en Medios Pagos con base en la analítica avanzada."
       },
       "pillar4": {
         "title": "Diseño y Desarrollo Web",
-        "focus": "Servicios de UX, UI y Development con foco en la conversión B2B. Web como sistema de conversión.",
-        "dataConnection": "Validación Técnica: Diseño sometido a A/B Testing, asegurando que la arquitectura web no sea un obstáculo para la conversión y First-Party Data."
+        "focus": "Servicios de Experiencia de Usuario, Interfaz de Usuario y Desarrollo con foco en la conversión entre empresas. Web como sistema de conversión.",
+        "dataConnection": "Validación Técnica: Diseño sometido a Pruebas A/B, asegurando que la arquitectura web no sea un obstáculo para la conversión y Datos de Primera Parte."
       }
     }
   },
@@ -67,6 +67,9 @@
       "scheduleInfo": "Selecciona un día y horario disponible para agendar una reunión",
       "submit": "Agendar Consultoría",
       "submitting": "Enviando...",
+      "or": "o",
+      "at": "a las",
+      "interestedIn": "Estoy interesado en:",
       "success": "¡Gracias! Te contactaremos pronto.",
       "error": "Error al enviar el formulario. Por favor intenta de nuevo.",
       "rateLimitError": "Demasiadas solicitudes. Por favor espera unos minutos.",
@@ -86,7 +89,7 @@
       {
         "title": "Transformación de Marca",
         "description": "Rediseño completo de identidad para startup tecnológica",
-        "category": "Branding"
+        "category": "Identidad Visual"
       },
       {
         "title": "Plataforma E-commerce",
@@ -96,7 +99,7 @@
       {
         "title": "Campaña de Marketing",
         "description": "Estrategia de medios pagos basada en datos",
-        "category": "Marketing"
+        "category": "Mercadeo"
       },
       {
         "title": "Comunicaciones Corporativas",
@@ -110,7 +113,7 @@
       },
       {
         "title": "Diseño de Experiencia de Usuario",
-        "description": "Optimización UX/UI para plataforma B2B",
+        "description": "Optimización de interfaz para plataforma entre empresas",
         "category": "Diseño"
       }
     ]
@@ -118,7 +121,10 @@
   "nav": {
     "home": "Inicio",
     "about": "Acerca de",
-    "contact": "Contacto"
+    "contact": "Contacto",
+    "problem": "Problema",
+    "method": "Método",
+    "projects": "Proyectos"
   }
 }
 

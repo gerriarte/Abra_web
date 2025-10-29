@@ -67,6 +67,9 @@
       "scheduleInfo": "Select an available day and time to schedule a meeting",
       "submit": "Schedule Consultation",
       "submitting": "Submitting...",
+      "or": "or",
+      "at": "at",
+      "interestedIn": "I'm interested in:",
       "success": "Thank you! We'll contact you soon.",
       "error": "Error sending form. Please try again.",
       "rateLimitError": "Too many requests. Please wait a few minutes.",
@@ -118,7 +121,10 @@
   "nav": {
     "home": "Home",
     "about": "About",
-    "contact": "Contact"
+    "contact": "Contact",
+    "problem": "Problem",
+    "method": "Method",
+    "projects": "Projects"
   }
 }
 

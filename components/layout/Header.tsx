@@ -2,12 +2,13 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useLocale } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { usePathname, useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
 export default function Header() {
   const locale = useLocale();
+  const t = useTranslations('nav');
   const pathname = usePathname();
   const router = useRouter();
   const [mounted, setMounted] = useState(false);
@@ -67,7 +68,7 @@ export default function Header() {
                   : 'text-white hover:text-white/80'
               }`}
             >
-              Problem
+              {t('problem')}
             </a>
             <a 
               href="#method" 
@@ -77,7 +78,7 @@ export default function Header() {
                   : 'text-white hover:text-white/80'
               }`}
             >
-              Method
+              {t('method')}
             </a>
             <a 
               href="#projects" 
@@ -87,7 +88,7 @@ export default function Header() {
                   : 'text-white hover:text-white/80'
               }`}
             >
-              Projects
+              {t('projects')}
             </a>
           </div>
 
@@ -118,7 +119,7 @@ export default function Header() {
                   : 'text-white border border-white hover:bg-white hover:text-primary'
               }`}
             >
-              Contact
+              {t('contact')}
             </a>
           </div>
         </div>
