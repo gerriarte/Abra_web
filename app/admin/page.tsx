@@ -608,7 +608,7 @@ export default function AdminPanel() {
                             Video
                           </div>
                         ) : (
-                          <img src={slide.mediaUrl} alt={slide.title} className="w-full h-full object-cover rounded" />
+                          <img src={slide.mediaUrl} alt={slide.titleEs || slide.titleEn} className="w-full h-full object-cover rounded" />
                         )}
                       </div>
                     )}
