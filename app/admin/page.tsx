@@ -35,6 +35,8 @@ export default function AdminPanel() {
   const [editData, setEditData] = useState<Partial<Project>>({});
   const [editingHeroId, setEditingHeroId] = useState<number | null>(null);
   const [heroEditData, setHeroEditData] = useState<Partial<HeroSlide>>({});
+  const [saveStatus, setSaveStatus] = useState<{ type: 'success' | 'error' | null; message: string; timestamp?: Date }>({ type: null, message: '' });
+  const [isSaving, setIsSaving] = useState(false);
 
   // Password simple (en producción debería ser más segura)
   const ADMIN_PASSWORD = 'Abra2025!';
@@ -139,6 +141,9 @@ export default function AdminPanel() {
 
   const handleHeroSave = async () => {
     if (editingHeroId && heroEditData) {
+      setIsSaving(true);
+      setSaveStatus({ type: null, message: '' });
+      
       const updatedSlides = heroSlides.map((slide) =>
         slide.id === editingHeroId ? { ...slide, ...heroEditData } as HeroSlide : slide
       );
@@ -152,15 +157,34 @@ export default function AdminPanel() {
         });
 
         if (response.ok) {
-          alert('Slide guardado exitosamente');
+          setSaveStatus({ 
+            type: 'success', 
+            message: '✓ Slide guardado y publicado exitosamente',
+            timestamp: new Date()
+          });
           // Reload slides to ensure consistency
           loadHeroSlides();
+          
+          // Auto-hide success message after 5 seconds
+          setTimeout(() => {
+            setSaveStatus({ type: null, message: '' });
+          }, 5000);
         } else {
-          alert('Error al guardar el slide');
+          setSaveStatus({ 
+            type: 'error', 
+            message: '✗ Error al guardar el slide',
+            timestamp: new Date()
+          });
         }
       } catch (error) {
         console.error('Error saving hero slide:', error);
-        alert('Error al guardar el slide');
+        setSaveStatus({ 
+          type: 'error', 
+          message: '✗ Error al guardar el slide',
+          timestamp: new Date()
+        });
+      } finally {
+        setIsSaving(false);
       }
 
       setEditingHeroId(null);
@@ -170,6 +194,9 @@ export default function AdminPanel() {
 
   const handleHeroDelete = async (id: number) => {
     if (confirm('¿Seguro que quieres eliminar este slide?')) {
+      setIsSaving(true);
+      setSaveStatus({ type: null, message: '' });
+      
       const updatedSlides = heroSlides.filter((slide) => slide.id !== id);
       setHeroSlides(updatedSlides);
 
@@ -181,15 +208,33 @@ export default function AdminPanel() {
         });
 
         if (response.ok) {
-          alert('Slide eliminado exitosamente');
+          setSaveStatus({ 
+            type: 'success', 
+            message: '✓ Slide eliminado y cambios publicados',
+            timestamp: new Date()
+          });
           // Reload slides to ensure consistency
           loadHeroSlides();
+          
+          setTimeout(() => {
+            setSaveStatus({ type: null, message: '' });
+          }, 5000);
         } else {
-          alert('Error al eliminar el slide');
+          setSaveStatus({ 
+            type: 'error', 
+            message: '✗ Error al eliminar el slide',
+            timestamp: new Date()
+          });
         }
       } catch (error) {
         console.error('Error deleting hero slide:', error);
-        alert('Error al eliminar el slide');
+        setSaveStatus({ 
+          type: 'error', 
+          message: '✗ Error al eliminar el slide',
+          timestamp: new Date()
+        });
+      } finally {
+        setIsSaving(false);
       }
     }
   };
@@ -299,6 +344,57 @@ export default function AdminPanel() {
             Logout
           </button>
         </div>
+
+        {/* Status Notification */}
+        {saveStatus.type && (
+          <div
+            className={`mb-6 p-4 rounded-lg border-2 shadow-lg animate-in fade-in slide-in-from-top-4 transition-all duration-300 ${
+              saveStatus.type === 'success'
+                ? 'bg-emerald-50 border-emerald-200 text-emerald-800'
+                : 'bg-rose-50 border-rose-200 text-rose-800'
+            }`}
+          >
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                {saveStatus.type === 'success' ? (
+                  <svg className="w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                ) : (
+                  <svg className="w-6 h-6 text-rose-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                )}
+                <div>
+                  <p className="font-medium">{saveStatus.message}</p>
+                  {saveStatus.timestamp && (
+                    <p className="text-xs opacity-70 mt-1">
+                      {saveStatus.timestamp.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit', second: '2-digit' })}
+                    </p>
+                  )}
+                </div>
+              </div>
+              <button
+                onClick={() => setSaveStatus({ type: null, message: '' })}
+                className="text-current opacity-60 hover:opacity-100 transition-opacity"
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        )}
+
+        {/* Loading Indicator */}
+        {isSaving && (
+          <div className="mb-6 p-4 bg-blue-50 border-2 border-blue-200 rounded-lg">
+            <div className="flex items-center gap-3">
+              <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-blue-600"></div>
+              <p className="text-blue-800 font-medium">Guardando cambios...</p>
+            </div>
+          </div>
+        )}
 
         {/* Add New Button */}
         <button
@@ -584,9 +680,17 @@ export default function AdminPanel() {
                     <div className="flex gap-2">
                       <button
                         onClick={handleHeroSave}
-                        className="bg-primary text-white hover:bg-primary-light transition-colors px-4 py-2 rounded-lg font-light"
+                        disabled={isSaving}
+                        className="bg-primary text-white hover:bg-primary-light transition-colors px-4 py-2 rounded-lg font-light disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-2"
                       >
-                        Guardar
+                        {isSaving ? (
+                          <>
+                            <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
+                            Guardando...
+                          </>
+                        ) : (
+                          'Guardar'
+                        )}
                       </button>
                       <button
                         onClick={() => {
