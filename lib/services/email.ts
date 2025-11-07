@@ -54,15 +54,33 @@ export async function sendContactEmail(payload: ContactFormData) {
     html: createHtmlBody(payload),
   };
 
-  await transporter.sendMail(message);
-
-  logEvent({
-    level: 'info',
-    module: moduleName,
-    functionName: 'sendContactEmail',
-    message: 'Contact email sent successfully',
-    metadata: { recipient, service: payload.service },
-  });
+  try {
+    const result = await transporter.sendMail(message);
+    logEvent({
+      level: 'info',
+      module: moduleName,
+      functionName: 'sendContactEmail',
+      message: 'Contact email sent successfully',
+      metadata: { 
+        recipient, 
+        service: payload.service,
+        messageId: result.messageId 
+      },
+    });
+  } catch (sendError) {
+    logEvent({
+      level: 'error',
+      module: moduleName,
+      functionName: 'sendContactEmail',
+      message: 'Failed to send email via transporter',
+      metadata: { 
+        error: sendError instanceof Error ? sendError.message : 'Unknown error',
+        recipient,
+        from,
+      },
+    });
+    throw sendError;
+  }
 }
 
 function createPlainTextBody(payload: ContactFormData) {

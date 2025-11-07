@@ -78,9 +78,18 @@ export default function Contact() {
         setErrors({});
       } else {
         if (response.status === 429) {
-          setStatus({ type: 'error', message: t('form.rateLimitError') || 'Too many requests. Please wait a few minutes.' });
+          setStatus({ type: 'error', message: t('form.rateLimitError') || 'Demasiadas solicitudes. Por favor espera unos minutos.' });
+        } else if (response.status === 503) {
+          // Service unavailable - email not configured
+          setStatus({ 
+            type: 'error', 
+            message: data.error || 'El servicio de correo no está disponible. Por favor, contáctanos directamente por WhatsApp usando el botón flotante.' 
+          });
         } else {
-          setStatus({ type: 'error', message: data.error || t('form.error') || 'Error sending form. Please try again.' });
+          setStatus({ 
+            type: 'error', 
+            message: data.error || t('form.error') || 'Error al enviar el formulario. Por favor intenta nuevamente o contáctanos por WhatsApp.' 
+          });
         }
       }
     } catch (error) {

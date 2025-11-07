@@ -73,14 +73,16 @@ export async function POST(request: NextRequest) {
     try {
       await sendContactEmail(validatedData);
     } catch (emailError) {
-      // Log email error but don't fail the request
+      const errorMessage = emailError instanceof Error ? emailError.message : 'Unknown email error';
+      
+      // Log email error
       logEvent({
         level: 'error',
         module: 'api/contact',
         functionName: 'POST',
         message: 'Failed to send contact email',
         metadata: { 
-          error: emailError instanceof Error ? emailError.message : 'Unknown email error',
+          error: errorMessage,
           formData: {
             email: validatedData.email,
             service: validatedData.service,
@@ -88,26 +90,31 @@ export async function POST(request: NextRequest) {
         },
       });
       
-      // If it's a configuration error, return a more specific message
-      if (emailError instanceof Error && emailError.message.includes('SMTP configuration')) {
+      // Return error response - don't pretend success if email fails
+      if (errorMessage.includes('SMTP configuration') || errorMessage.includes('not configured')) {
         return NextResponse.json(
           { 
             success: false, 
-            error: 'Email service is not configured. Please contact us directly.' 
+            error: 'El servicio de correo no está configurado. Por favor, contáctanos directamente por WhatsApp o email.' 
           },
           { status: 503 }
         );
       }
       
-      // For other email errors, still return success but log the issue
-      // This way the user knows their form was received even if email fails
-      console.error('Email sending failed:', emailError);
+      // Return generic error for other email failures
+      return NextResponse.json(
+        { 
+          success: false, 
+          error: 'Error al enviar el correo. Por favor, intenta nuevamente o contáctanos directamente.' 
+        },
+        { status: 500 }
+      );
     }
 
     return NextResponse.json(
       { 
         success: true, 
-        message: 'Thank you! We will contact you soon.' 
+        message: '¡Gracias! Te contactaremos pronto.' 
       },
       { status: 200 }
     );
