@@ -70,7 +70,39 @@ export async function POST(request: NextRequest) {
       },
     });
 
-    await sendContactEmail(validatedData);
+    try {
+      await sendContactEmail(validatedData);
+    } catch (emailError) {
+      // Log email error but don't fail the request
+      logEvent({
+        level: 'error',
+        module: 'api/contact',
+        functionName: 'POST',
+        message: 'Failed to send contact email',
+        metadata: { 
+          error: emailError instanceof Error ? emailError.message : 'Unknown email error',
+          formData: {
+            email: validatedData.email,
+            service: validatedData.service,
+          }
+        },
+      });
+      
+      // If it's a configuration error, return a more specific message
+      if (emailError instanceof Error && emailError.message.includes('SMTP configuration')) {
+        return NextResponse.json(
+          { 
+            success: false, 
+            error: 'Email service is not configured. Please contact us directly.' 
+          },
+          { status: 503 }
+        );
+      }
+      
+      // For other email errors, still return success but log the issue
+      // This way the user knows their form was received even if email fails
+      console.error('Email sending failed:', emailError);
+    }
 
     return NextResponse.json(
       { 
@@ -106,10 +138,13 @@ export async function POST(request: NextRequest) {
       message: 'Unhandled contact form error',
       metadata: { error: error instanceof Error ? error.message : 'Unknown error' },
     });
+    
+    console.error('Contact form error:', error);
+    
     return NextResponse.json(
       { 
         success: false, 
-        error: 'Internal server error' 
+        error: error instanceof Error ? error.message : 'Internal server error' 
       },
       { status: 500 }
     );

@@ -82,9 +82,20 @@ Translation files are in `messages/en.json` and `messages/es.json`.
 1. **Go to [Vercel](https://vercel.com)**
 2. **Click "Add New" → "Project"**
 3. **Import from GitHub**: Select `gerriarte/Abra_web`
-4. **Click "Deploy"** (Vercel auto-detects Next.js)
+4. **Configure Environment Variables** (Required for contact form):
+   - Go to **Settings → Environment Variables**
+   - Add the following variables:
+     ```
+     SMTP_HOST=your-smtp-host
+     SMTP_PORT=587
+     SMTP_USER=your-smtp-username
+     SMTP_PASS=your-smtp-password
+     CONTACT_FROM_EMAIL=noreply@yourdomain.com
+     CONTACT_RECIPIENT_EMAIL=contact@yourdomain.com
+     ```
+5. **Click "Deploy"** (Vercel auto-detects Next.js)
 
-That's it! No configuration needed.
+**Important**: The contact form will return a 503 error if SMTP variables are not configured. Make sure to add all environment variables before testing the form.
 
 ### Using Vercel CLI:
 
