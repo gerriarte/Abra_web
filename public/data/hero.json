@@ -2,20 +2,26 @@
   "slides": [
     {
       "id": 1,
-      "title": "A:BRA",
-      "description": "Transformamos datos complejos en sistemas de crecimiento predecibles. De la visión de marca al desarrollo web, construimos soluciones digitales que funcionan, probadas por la métrica.",
+      "titleEs": "A:BRA",
+      "titleEn": "A:BRA",
+      "descriptionEs": "Transformamos datos complejos en sistemas de crecimiento predecibles. De la visión de marca al desarrollo web, construimos soluciones digitales que funcionan, probadas por la métrica.",
+      "descriptionEn": "We transform complex data into predictable growth systems. From brand vision to web development, we build digital solutions that work, proven by metrics.",
       "mediaType": "video",
       "mediaUrl": "https://player.vimeo.com/video/39610409",
-      "ctaLabel": "Solicitar Evaluación Estratégica",
+      "ctaLabelEs": "Solicitar Evaluación Estratégica",
+      "ctaLabelEn": "Request Strategic Assessment",
       "ctaHref": "#contact"
     },
     {
       "id": 2,
-      "title": "Ingeniería de Marca",
-      "description": "Diseñamos experiencias B2B con foco en crecimiento, desde branding hasta ecosistemas digitales completos.",
+      "titleEs": "Ingeniería de Marca",
+      "titleEn": "Brand Engineering",
+      "descriptionEs": "Diseñamos experiencias B2B con foco en crecimiento, desde branding hasta ecosistemas digitales completos.",
+      "descriptionEn": "We design B2B experiences focused on growth, from branding to complete digital ecosystems.",
       "mediaType": "image",
       "mediaUrl": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1600&q=80",
-      "ctaLabel": "Ver Proyectos",
+      "ctaLabelEs": "Ver Proyectos",
+      "ctaLabelEn": "View Projects",
       "ctaHref": "#projects"
     }
   ]

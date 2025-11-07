@@ -9,16 +9,57 @@ export type HeroMediaType = 'image' | 'video';
 
 export interface HeroSlide {
   id: number;
-  title: string;
-  description: string;
+  titleEs: string;
+  titleEn: string;
+  descriptionEs: string;
+  descriptionEn: string;
+  mediaType: HeroMediaType;
+  mediaUrl: string;
+  ctaLabelEs?: string;
+  ctaLabelEn?: string;
+  ctaHref?: string;
+}
+
+// Legacy slide structure for migration
+interface LegacyHeroSlide {
+  id: number;
+  title?: string;
+  titleEs?: string;
+  titleEn?: string;
+  description?: string;
+  descriptionEs?: string;
+  descriptionEn?: string;
   mediaType: HeroMediaType;
   mediaUrl: string;
   ctaLabel?: string;
+  ctaLabelEs?: string;
+  ctaLabelEn?: string;
   ctaHref?: string;
 }
 
 interface HeroFileShape {
-  slides: HeroSlide[];
+  slides: HeroSlide[] | LegacyHeroSlide[];
+}
+
+function migrateLegacySlide(slide: LegacyHeroSlide): HeroSlide {
+  // If already in new format, return as is
+  if (slide.titleEs && slide.titleEn && slide.descriptionEs && slide.descriptionEn) {
+    return slide as HeroSlide;
+  }
+
+  // Migrate from old format
+  return {
+    id: slide.id,
+    titleEs: slide.titleEs || slide.title || '',
+    titleEn: slide.titleEn || slide.title || '',
+    descriptionEs: slide.descriptionEs || slide.description || '',
+    descriptionEn: slide.descriptionEn || slide.description || '',
+    mediaType: slide.mediaType,
+    mediaUrl: slide.mediaUrl,
+    ctaLabelEs: slide.ctaLabelEs || slide.ctaLabel,
+    ctaLabelEn: slide.ctaLabelEn || slide.ctaLabel,
+    ctaHref: slide.ctaHref,
+  };
 }
 
 export async function getHeroSlides(): Promise<HeroSlide[]> {
@@ -26,7 +67,17 @@ export async function getHeroSlides(): Promise<HeroSlide[]> {
     await ensureFileExists();
     const fileContents = await fs.readFile(HERO_FILE, 'utf8');
     const parsed: HeroFileShape = JSON.parse(fileContents);
-    return parsed.slides || [];
+    const rawSlides = parsed.slides || [];
+    
+    // Migrate legacy slides if needed
+    const migratedSlides = rawSlides.map(migrateLegacySlide);
+    
+    // If migration happened, save the migrated version
+    if (rawSlides.length > 0 && (!rawSlides[0].titleEs || !rawSlides[0].titleEn)) {
+      await saveHeroSlides(migratedSlides);
+    }
+    
+    return migratedSlides;
   } catch (error) {
     logEvent({
       level: 'error',

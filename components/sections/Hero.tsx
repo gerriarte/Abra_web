@@ -1,8 +1,21 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import useOnScreen from '@/hooks/useOnScreen';
+
+interface HeroSlideRaw {
+  id: number;
+  titleEs: string;
+  titleEn: string;
+  descriptionEs: string;
+  descriptionEn: string;
+  mediaType: 'image' | 'video';
+  mediaUrl: string;
+  ctaLabelEs?: string;
+  ctaLabelEn?: string;
+  ctaHref?: string;
+}
 
 interface HeroSlide {
   id: number;
@@ -18,13 +31,27 @@ const ROTATION_INTERVAL = 9000;
 
 export default function Hero() {
   const t = useTranslations();
+  const locale = useLocale();
   const [ref, isVisible] = useOnScreen({ threshold: 0.1 });
-  const [slides, setSlides] = useState<HeroSlide[]>([]);
+  const [rawSlides, setRawSlides] = useState<HeroSlideRaw[]>([]);
   const [activeIndex, setActiveIndex] = useState(0);
   const [isLoaded, setIsLoaded] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [progress, setProgress] = useState(0);
+
+  // Transform raw slides to localized slides
+  const slides: HeroSlide[] = useMemo(() => {
+    return rawSlides.map((slide) => ({
+      id: slide.id,
+      title: locale === 'es' ? slide.titleEs : slide.titleEn,
+      description: locale === 'es' ? slide.descriptionEs : slide.descriptionEn,
+      mediaType: slide.mediaType,
+      mediaUrl: slide.mediaUrl,
+      ctaLabel: locale === 'es' ? slide.ctaLabelEs : slide.ctaLabelEn,
+      ctaHref: slide.ctaHref,
+    }));
+  }, [rawSlides, locale]);
 
   const fallbackSlide: HeroSlide = useMemo(
     () => ({
@@ -87,7 +114,7 @@ export default function Hero() {
         }
         const data = await response.json();
         if (isMounted && Array.isArray(data.slides)) {
-          setSlides(data.slides);
+          setRawSlides(data.slides);
         }
       } catch (error) {
         console.error('Error loading hero slides', error);
@@ -100,10 +127,36 @@ export default function Hero() {
 
     loadSlides();
 
+    // Reload slides every 30 seconds to pick up admin changes
+    const interval = setInterval(() => {
+      if (isMounted) {
+        loadSlides();
+      }
+    }, 30000);
+
     return () => {
       isMounted = false;
+      clearInterval(interval);
     };
   }, []);
+
+  // Reload slides when locale changes
+  useEffect(() => {
+    const loadSlides = async () => {
+      try {
+        const response = await fetch(`/api/admin/hero?ts=${Date.now()}`);
+        if (response.ok) {
+          const data = await response.json();
+          if (Array.isArray(data.slides)) {
+            setRawSlides(data.slides);
+          }
+        }
+      } catch (error) {
+        console.error('Error reloading hero slides', error);
+      }
+    };
+    loadSlides();
+  }, [locale]);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {

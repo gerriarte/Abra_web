@@ -14,11 +14,14 @@ interface Project {
 
 interface HeroSlide {
   id: number;
-  title: string;
-  description: string;
+  titleEs: string;
+  titleEn: string;
+  descriptionEs: string;
+  descriptionEn: string;
   mediaType: 'image' | 'video';
   mediaUrl: string;
-  ctaLabel?: string;
+  ctaLabelEs?: string;
+  ctaLabelEn?: string;
   ctaHref?: string;
 }
 
@@ -150,6 +153,10 @@ export default function AdminPanel() {
 
         if (response.ok) {
           alert('Slide guardado exitosamente');
+          // Reload slides to ensure consistency
+          loadHeroSlides();
+        } else {
+          alert('Error al guardar el slide');
         }
       } catch (error) {
         console.error('Error saving hero slide:', error);
@@ -175,6 +182,10 @@ export default function AdminPanel() {
 
         if (response.ok) {
           alert('Slide eliminado exitosamente');
+          // Reload slides to ensure consistency
+          loadHeroSlides();
+        } else {
+          alert('Error al eliminar el slide');
         }
       } catch (error) {
         console.error('Error deleting hero slide:', error);
@@ -187,11 +198,14 @@ export default function AdminPanel() {
     const newId = heroSlides.length > 0 ? Math.max(...heroSlides.map((slide) => slide.id)) + 1 : 1;
     const newSlide: HeroSlide = {
       id: newId,
-      title: 'Nuevo Highlight',
-      description: 'Descripción breve del proyecto o hito',
+      titleEs: 'Nuevo Highlight',
+      titleEn: 'New Highlight',
+      descriptionEs: 'Descripción breve del proyecto o hito',
+      descriptionEn: 'Brief description of the project or milestone',
       mediaType: 'image',
       mediaUrl: '',
-      ctaLabel: 'Ver Proyecto',
+      ctaLabelEs: 'Ver Proyecto',
+      ctaLabelEn: 'View Project',
       ctaHref: '#projects',
     };
 
@@ -443,27 +457,53 @@ export default function AdminPanel() {
               <div key={slide.id} className="bg-white p-6 rounded-lg shadow">
                 {editingHeroId === slide.id ? (
                   <div className="space-y-4">
-                    <div>
-                      <label className="block text-sm font-light text-primary mb-2">
-                        Título
-                      </label>
-                      <input
-                        type="text"
-                        value={heroEditData.title || ''}
-                        onChange={(e) => setHeroEditData({ ...heroEditData, title: e.target.value })}
-                        className="w-full px-4 py-2 border border-border rounded-lg focus:outline-none focus:border-primary"
-                      />
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-sm font-light text-primary mb-2">
+                          Título (Español) *
+                        </label>
+                        <input
+                          type="text"
+                          value={heroEditData.titleEs || ''}
+                          onChange={(e) => setHeroEditData({ ...heroEditData, titleEs: e.target.value })}
+                          className="w-full px-4 py-2 border border-border rounded-lg focus:outline-none focus:border-primary"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-sm font-light text-primary mb-2">
+                          Título (English) *
+                        </label>
+                        <input
+                          type="text"
+                          value={heroEditData.titleEn || ''}
+                          onChange={(e) => setHeroEditData({ ...heroEditData, titleEn: e.target.value })}
+                          className="w-full px-4 py-2 border border-border rounded-lg focus:outline-none focus:border-primary"
+                        />
+                      </div>
                     </div>
-                    <div>
-                      <label className="block text-sm font-light text-primary mb-2">
-                        Descripción
-                      </label>
-                      <textarea
-                        value={heroEditData.description || ''}
-                        onChange={(e) => setHeroEditData({ ...heroEditData, description: e.target.value })}
-                        rows={3}
-                        className="w-full px-4 py-2 border border-border rounded-lg focus:outline-none focus:border-primary"
-                      />
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-sm font-light text-primary mb-2">
+                          Descripción (Español) *
+                        </label>
+                        <textarea
+                          value={heroEditData.descriptionEs || ''}
+                          onChange={(e) => setHeroEditData({ ...heroEditData, descriptionEs: e.target.value })}
+                          rows={3}
+                          className="w-full px-4 py-2 border border-border rounded-lg focus:outline-none focus:border-primary"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-sm font-light text-primary mb-2">
+                          Descripción (English) *
+                        </label>
+                        <textarea
+                          value={heroEditData.descriptionEn || ''}
+                          onChange={(e) => setHeroEditData({ ...heroEditData, descriptionEn: e.target.value })}
+                          rows={3}
+                          className="w-full px-4 py-2 border border-border rounded-lg focus:outline-none focus:border-primary"
+                        />
+                      </div>
                     </div>
                     <div>
                       <label className="block text-sm font-light text-primary mb-2">
@@ -503,17 +543,31 @@ export default function AdminPanel() {
                         </div>
                       )}
                     </div>
-                    <div>
-                      <label className="block text-sm font-light text-primary mb-2">
-                        Texto del Botón (Opcional)
-                      </label>
-                      <input
-                        type="text"
-                        value={heroEditData.ctaLabel || ''}
-                        onChange={(e) => setHeroEditData({ ...heroEditData, ctaLabel: e.target.value })}
-                        placeholder="Ver Proyecto"
-                        className="w-full px-4 py-2 border border-border rounded-lg focus:outline-none focus:border-primary"
-                      />
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-sm font-light text-primary mb-2">
+                          Texto del Botón (Español)
+                        </label>
+                        <input
+                          type="text"
+                          value={heroEditData.ctaLabelEs || ''}
+                          onChange={(e) => setHeroEditData({ ...heroEditData, ctaLabelEs: e.target.value })}
+                          placeholder="Ver Proyecto"
+                          className="w-full px-4 py-2 border border-border rounded-lg focus:outline-none focus:border-primary"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-sm font-light text-primary mb-2">
+                          Button Text (English)
+                        </label>
+                        <input
+                          type="text"
+                          value={heroEditData.ctaLabelEn || ''}
+                          onChange={(e) => setHeroEditData({ ...heroEditData, ctaLabelEn: e.target.value })}
+                          placeholder="View Project"
+                          className="w-full px-4 py-2 border border-border rounded-lg focus:outline-none focus:border-primary"
+                        />
+                      </div>
                     </div>
                     <div>
                       <label className="block text-sm font-light text-primary mb-2">
@@ -560,15 +614,20 @@ export default function AdminPanel() {
                     )}
                     <div className="flex-1 flex justify-between items-start">
                       <div className="flex-1">
-                        <h3 className="text-lg font-light text-primary mb-2">{slide.title}</h3>
-                        <p className="text-sm text-text-secondary mb-2">{slide.description}</p>
+                        <h3 className="text-lg font-light text-primary mb-2">
+                          ES: {slide.titleEs} | EN: {slide.titleEn}
+                        </h3>
+                        <p className="text-sm text-text-secondary mb-2">
+                          <span className="block mb-1"><strong>ES:</strong> {slide.descriptionEs}</span>
+                          <span className="block"><strong>EN:</strong> {slide.descriptionEn}</span>
+                        </p>
                         <div className="flex flex-wrap gap-2">
                           <span className="text-xs text-primary-light bg-primary-light/10 px-2 py-1 rounded">
                             {slide.mediaType === 'video' ? 'Video' : 'Imagen'}
                           </span>
-                          {slide.ctaLabel && (
+                          {(slide.ctaLabelEs || slide.ctaLabelEn) && (
                             <span className="text-xs text-green-600 bg-green-50 px-2 py-1 rounded">
-                              CTA: {slide.ctaLabel}
+                              CTA: {slide.ctaLabelEs || slide.ctaLabelEn}
                             </span>
                           )}
                         </div>
