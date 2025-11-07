@@ -91,6 +91,20 @@ export async function getHeroSlides(): Promise<HeroSlide[]> {
 }
 
 export async function saveHeroSlides(slides: HeroSlide[]): Promise<void> {
+  // Check if we're in a read-only filesystem (production/Vercel)
+  const isReadOnly = process.env.VERCEL === '1' || process.env.NODE_ENV === 'production';
+  
+  if (isReadOnly) {
+    logEvent({
+      level: 'warn',
+      module: moduleName,
+      functionName: 'saveHeroSlides',
+      message: 'Attempted to save hero slides in read-only environment',
+      metadata: { environment: process.env.VERCEL ? 'vercel' : 'production' },
+    });
+    throw new Error('Cannot save hero slides in production. Changes must be made via Git commit. Please update public/data/hero.json locally and commit to GitHub.');
+  }
+
   try {
     const payload: HeroFileShape = { slides };
     await fs.writeFile(HERO_FILE, JSON.stringify(payload, null, 2), 'utf8');

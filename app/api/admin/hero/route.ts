@@ -33,14 +33,24 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({ success: true });
   } catch (error) {
+    const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+    const isReadOnlyError = errorMessage.includes('Cannot save hero slides in production');
+    
     logEvent({
-      level: 'error',
+      level: isReadOnlyError ? 'warn' : 'error',
       module: moduleName,
       functionName: 'POST',
       message: 'Failed to save hero slides',
-      metadata: { error: error instanceof Error ? error.message : 'Unknown error' },
+      metadata: { error: errorMessage },
     });
-    return NextResponse.json({ error: 'Error saving hero configuration' }, { status: 500 });
+    
+    return NextResponse.json(
+      { 
+        error: errorMessage,
+        readOnly: isReadOnlyError 
+      }, 
+      { status: isReadOnlyError ? 403 : 500 }
+    );
   }
 }
 

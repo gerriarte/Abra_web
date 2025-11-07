@@ -37,9 +37,23 @@ export default function AdminPanel() {
   const [heroEditData, setHeroEditData] = useState<Partial<HeroSlide>>({});
   const [saveStatus, setSaveStatus] = useState<{ type: 'success' | 'error' | null; message: string; timestamp?: Date }>({ type: null, message: '' });
   const [isSaving, setIsSaving] = useState(false);
+  const [isProduction, setIsProduction] = useState(false);
 
   // Password simple (en producción debería ser más segura)
   const ADMIN_PASSWORD = 'Abra2025!';
+
+  // Detect production based on hostname
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const hostname = window.location.hostname;
+      // Check if we're on Vercel or production domain (not localhost)
+      setIsProduction(
+        hostname.includes('vercel.app') || 
+        hostname.includes('abralatam.com') ||
+        (hostname !== 'localhost' && !hostname.includes('127.0.0.1'))
+      );
+    }
+  }, []);
 
   useEffect(() => {
     loadProjects();
@@ -170,17 +184,26 @@ export default function AdminPanel() {
             setSaveStatus({ type: null, message: '' });
           }, 5000);
         } else {
-          setSaveStatus({ 
-            type: 'error', 
-            message: '✗ Error al guardar el slide',
-            timestamp: new Date()
-          });
+          const errorData = await response.json().catch(() => ({}));
+          if (errorData.readOnly) {
+            setSaveStatus({ 
+              type: 'error', 
+              message: '⚠️ En producción, los cambios deben hacerse mediante Git. Edita public/data/hero.json localmente y haz commit.',
+              timestamp: new Date()
+            });
+          } else {
+            setSaveStatus({ 
+              type: 'error', 
+              message: `✗ Error al guardar: ${errorData.error || 'Error desconocido'}`,
+              timestamp: new Date()
+            });
+          }
         }
       } catch (error) {
         console.error('Error saving hero slide:', error);
         setSaveStatus({ 
           type: 'error', 
-          message: '✗ Error al guardar el slide',
+          message: '✗ Error al guardar el slide. Verifica la consola para más detalles.',
           timestamp: new Date()
         });
       } finally {
@@ -220,17 +243,26 @@ export default function AdminPanel() {
             setSaveStatus({ type: null, message: '' });
           }, 5000);
         } else {
-          setSaveStatus({ 
-            type: 'error', 
-            message: '✗ Error al eliminar el slide',
-            timestamp: new Date()
-          });
+          const errorData = await response.json().catch(() => ({}));
+          if (errorData.readOnly) {
+            setSaveStatus({ 
+              type: 'error', 
+              message: '⚠️ En producción, los cambios deben hacerse mediante Git. Edita public/data/hero.json localmente y haz commit.',
+              timestamp: new Date()
+            });
+          } else {
+            setSaveStatus({ 
+              type: 'error', 
+              message: `✗ Error al eliminar: ${errorData.error || 'Error desconocido'}`,
+              timestamp: new Date()
+            });
+          }
         }
       } catch (error) {
         console.error('Error deleting hero slide:', error);
         setSaveStatus({ 
           type: 'error', 
-          message: '✗ Error al eliminar el slide',
+          message: '✗ Error al eliminar el slide. Verifica la consola para más detalles.',
           timestamp: new Date()
         });
       } finally {
@@ -344,6 +376,24 @@ export default function AdminPanel() {
             Logout
           </button>
         </div>
+
+        {/* Production Warning Banner */}
+        {isProduction && (
+          <div className="mb-6 p-4 bg-amber-50 border-2 border-amber-200 rounded-lg">
+            <div className="flex items-start gap-3">
+              <svg className="w-6 h-6 text-amber-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+              </svg>
+              <div className="flex-1">
+                <p className="font-medium text-amber-800 mb-1">Modo Solo Lectura (Producción)</p>
+                <p className="text-sm text-amber-700">
+                  En producción, los cambios deben hacerse editando <code className="bg-amber-100 px-1 rounded">public/data/hero.json</code> localmente y haciendo commit a GitHub. 
+                  Los cambios se reflejarán automáticamente después del deploy.
+                </p>
+              </div>
+            </div>
+          </div>
+        )}
 
         {/* Status Notification */}
         {saveStatus.type && (
