@@ -12,19 +12,33 @@ interface Project {
   url?: string;
 }
 
+interface HeroSlide {
+  id: number;
+  title: string;
+  description: string;
+  mediaType: 'image' | 'video';
+  mediaUrl: string;
+  ctaLabel?: string;
+  ctaHref?: string;
+}
+
 export default function AdminPanel() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [projects, setProjects] = useState<Project[]>([]);
+  const [heroSlides, setHeroSlides] = useState<HeroSlide[]>([]);
   const [editingId, setEditingId] = useState<number | null>(null);
   const [editData, setEditData] = useState<Partial<Project>>({});
+  const [editingHeroId, setEditingHeroId] = useState<number | null>(null);
+  const [heroEditData, setHeroEditData] = useState<Partial<HeroSlide>>({});
 
   // Password simple (en producción debería ser más segura)
   const ADMIN_PASSWORD = 'Abra2025!';
 
   useEffect(() => {
     loadProjects();
+    loadHeroSlides();
   }, []);
 
   const loadProjects = async () => {
@@ -49,12 +63,34 @@ export default function AdminPanel() {
     }
   };
 
-  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const loadHeroSlides = async () => {
+    try {
+      const response = await fetch('/api/admin/hero?t=' + Date.now());
+      const data = await response.json();
+      setHeroSlides(data.slides || []);
+    } catch (error) {
+      console.error('Error loading hero slides:', error);
+      setHeroSlides([]);
+    }
+  };
+
+  const handleProjectImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
       const reader = new FileReader();
       reader.onloadend = () => {
         setEditData({ ...editData, image: reader.result as string });
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const handleHeroImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setHeroEditData({ ...heroEditData, mediaUrl: reader.result as string });
       };
       reader.readAsDataURL(file);
     }
@@ -91,6 +127,77 @@ export default function AdminPanel() {
       setEditingId(null);
       setEditData({});
     }
+  };
+
+  const handleHeroEdit = (slide: HeroSlide) => {
+    setEditingHeroId(slide.id);
+    setHeroEditData({ ...slide });
+  };
+
+  const handleHeroSave = async () => {
+    if (editingHeroId && heroEditData) {
+      const updatedSlides = heroSlides.map((slide) =>
+        slide.id === editingHeroId ? { ...slide, ...heroEditData } as HeroSlide : slide
+      );
+      setHeroSlides(updatedSlides);
+
+      try {
+        const response = await fetch('/api/admin/hero', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ slides: updatedSlides }),
+        });
+
+        if (response.ok) {
+          alert('Slide guardado exitosamente');
+        }
+      } catch (error) {
+        console.error('Error saving hero slide:', error);
+        alert('Error al guardar el slide');
+      }
+
+      setEditingHeroId(null);
+      setHeroEditData({});
+    }
+  };
+
+  const handleHeroDelete = async (id: number) => {
+    if (confirm('¿Seguro que quieres eliminar este slide?')) {
+      const updatedSlides = heroSlides.filter((slide) => slide.id !== id);
+      setHeroSlides(updatedSlides);
+
+      try {
+        const response = await fetch('/api/admin/hero', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ slides: updatedSlides }),
+        });
+
+        if (response.ok) {
+          alert('Slide eliminado exitosamente');
+        }
+      } catch (error) {
+        console.error('Error deleting hero slide:', error);
+        alert('Error al eliminar el slide');
+      }
+    }
+  };
+
+  const handleAddHeroSlide = () => {
+    const newId = heroSlides.length > 0 ? Math.max(...heroSlides.map((slide) => slide.id)) + 1 : 1;
+    const newSlide: HeroSlide = {
+      id: newId,
+      title: 'Nuevo Highlight',
+      description: 'Descripción breve del proyecto o hito',
+      mediaType: 'image',
+      mediaUrl: '',
+      ctaLabel: 'Ver Proyecto',
+      ctaHref: '#projects',
+    };
+
+    setHeroSlides([...heroSlides, newSlide]);
+    setEditingHeroId(newId);
+    setHeroEditData(newSlide);
   };
 
   const handleDelete = async (id: number) => {
@@ -249,7 +356,7 @@ export default function AdminPanel() {
                     <input
                       type="file"
                       accept="image/*"
-                      onChange={handleImageChange}
+                      onChange={handleProjectImageChange}
                       className="w-full px-4 py-2 border border-border rounded-lg focus:outline-none focus:border-primary"
                     />
                     {editData.image && (
@@ -319,11 +426,184 @@ export default function AdminPanel() {
           ))}
         </div>
 
+        {/* Hero Slides Section */}
+        <div className="mt-16">
+          <div className="flex justify-between items-center mb-6">
+            <h2 className="text-2xl font-light text-primary">Hero Slides</h2>
+            <button
+              onClick={handleAddHeroSlide}
+              className="bg-primary text-white hover:bg-primary-light transition-colors px-6 py-3 rounded-lg font-light"
+            >
+              + Agregar Slide
+            </button>
+          </div>
+
+          <div className="space-y-4">
+            {heroSlides.map((slide) => (
+              <div key={slide.id} className="bg-white p-6 rounded-lg shadow">
+                {editingHeroId === slide.id ? (
+                  <div className="space-y-4">
+                    <div>
+                      <label className="block text-sm font-light text-primary mb-2">
+                        Título
+                      </label>
+                      <input
+                        type="text"
+                        value={heroEditData.title || ''}
+                        onChange={(e) => setHeroEditData({ ...heroEditData, title: e.target.value })}
+                        className="w-full px-4 py-2 border border-border rounded-lg focus:outline-none focus:border-primary"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-light text-primary mb-2">
+                        Descripción
+                      </label>
+                      <textarea
+                        value={heroEditData.description || ''}
+                        onChange={(e) => setHeroEditData({ ...heroEditData, description: e.target.value })}
+                        rows={3}
+                        className="w-full px-4 py-2 border border-border rounded-lg focus:outline-none focus:border-primary"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-light text-primary mb-2">
+                        Tipo de Media
+                      </label>
+                      <select
+                        value={heroEditData.mediaType || 'image'}
+                        onChange={(e) => setHeroEditData({ ...heroEditData, mediaType: e.target.value as 'image' | 'video' })}
+                        className="w-full px-4 py-2 border border-border rounded-lg focus:outline-none focus:border-primary"
+                      >
+                        <option value="image">Imagen</option>
+                        <option value="video">Video</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label className="block text-sm font-light text-primary mb-2">
+                        URL del Media (Imagen o Video)
+                      </label>
+                      <input
+                        type="text"
+                        value={heroEditData.mediaUrl || ''}
+                        onChange={(e) => setHeroEditData({ ...heroEditData, mediaUrl: e.target.value })}
+                        placeholder={heroEditData.mediaType === 'video' ? 'https://player.vimeo.com/video/... o URL de video' : 'https://... o sube una imagen'}
+                        className="w-full px-4 py-2 border border-border rounded-lg focus:outline-none focus:border-primary"
+                      />
+                      {heroEditData.mediaType === 'image' && (
+                        <input
+                          type="file"
+                          accept="image/*"
+                          onChange={handleHeroImageChange}
+                          className="mt-2 w-full px-4 py-2 border border-border rounded-lg focus:outline-none focus:border-primary"
+                        />
+                      )}
+                      {heroEditData.mediaUrl && heroEditData.mediaType === 'image' && (
+                        <div className="mt-2">
+                          <img src={heroEditData.mediaUrl} alt="Preview" className="max-w-xs h-32 object-cover rounded" />
+                        </div>
+                      )}
+                    </div>
+                    <div>
+                      <label className="block text-sm font-light text-primary mb-2">
+                        Texto del Botón (Opcional)
+                      </label>
+                      <input
+                        type="text"
+                        value={heroEditData.ctaLabel || ''}
+                        onChange={(e) => setHeroEditData({ ...heroEditData, ctaLabel: e.target.value })}
+                        placeholder="Ver Proyecto"
+                        className="w-full px-4 py-2 border border-border rounded-lg focus:outline-none focus:border-primary"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-light text-primary mb-2">
+                        Enlace del Botón (Opcional)
+                      </label>
+                      <input
+                        type="text"
+                        value={heroEditData.ctaHref || ''}
+                        onChange={(e) => setHeroEditData({ ...heroEditData, ctaHref: e.target.value })}
+                        placeholder="#contact o https://..."
+                        className="w-full px-4 py-2 border border-border rounded-lg focus:outline-none focus:border-primary"
+                      />
+                    </div>
+                    <div className="flex gap-2">
+                      <button
+                        onClick={handleHeroSave}
+                        className="bg-primary text-white hover:bg-primary-light transition-colors px-4 py-2 rounded-lg font-light"
+                      >
+                        Guardar
+                      </button>
+                      <button
+                        onClick={() => {
+                          setEditingHeroId(null);
+                          setHeroEditData({});
+                        }}
+                        className="border border-border default:bg-off transition-colors px-4 py-2 rounded-lg font-light"
+                      >
+                        Cancelar
+                      </button>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="flex flex-col md:flex-row gap-4">
+                    {slide.mediaUrl && (
+                      <div className="w-full md:w-48 h-32 flex-shrink-0">
+                        {slide.mediaType === 'video' ? (
+                          <div className="w-full h-full bg-primary-darkest/10 rounded flex items-center justify-center text-xs text-text-muted">
+                            Video
+                          </div>
+                        ) : (
+                          <img src={slide.mediaUrl} alt={slide.title} className="w-full h-full object-cover rounded" />
+                        )}
+                      </div>
+                    )}
+                    <div className="flex-1 flex justify-between items-start">
+                      <div className="flex-1">
+                        <h3 className="text-lg font-light text-primary mb-2">{slide.title}</h3>
+                        <p className="text-sm text-text-secondary mb-2">{slide.description}</p>
+                        <div className="flex flex-wrap gap-2">
+                          <span className="text-xs text-primary-light bg-primary-light/10 px-2 py-1 rounded">
+                            {slide.mediaType === 'video' ? 'Video' : 'Imagen'}
+                          </span>
+                          {slide.ctaLabel && (
+                            <span className="text-xs text-green-600 bg-green-50 px-2 py-1 rounded">
+                              CTA: {slide.ctaLabel}
+                            </span>
+                          )}
+                        </div>
+                      </div>
+                      <div className="flex gap-2 ml-4">
+                        <button
+                          onClick={() => handleHeroEdit(slide)}
+                          className="text-primary hover:text-primary-light text-sm transition-colors"
+                        >
+                          Editar
+                        </button>
+                        <button
+                          onClick={() => handleHeroDelete(slide.id)}
+                          className="text-red-500 hover:text-red-600 text-sm transition-colors"
+                        >
+                          Eliminar
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+            ))}
+            {heroSlides.length === 0 && (
+              <div className="bg-white p-8 rounded-lg shadow text-center text-text-secondary">
+                <p>No hay slides configurados. Agrega uno para comenzar.</p>
+              </div>
+            )}
+          </div>
+        </div>
+
         {/* Note */}
         <div className="mt-8 p-4 bg-primary/5 rounded-lg">
           <p className="text-sm text-text-secondary">
-            ℹ️ Nota: Los cambios se guardan en memoria. Para persistir los cambios, 
-            necesitarás implementar el endpoint API que guarde en el archivo JSON.
+            ℹ️ Nota: Los cambios se guardan automáticamente en el archivo JSON.
           </p>
         </div>
       </div>

@@ -1,0 +1,22 @@
+{
+  "slides": [
+    {
+      "id": 1,
+      "title": "A:BRA",
+      "description": "Transformamos datos complejos en sistemas de crecimiento predecibles. De la visión de marca al desarrollo web, construimos soluciones digitales que funcionan, probadas por la métrica.",
+      "mediaType": "video",
+      "mediaUrl": "https://player.vimeo.com/video/39610409",
+      "ctaLabel": "Solicitar Evaluación Estratégica",
+      "ctaHref": "#contact"
+    },
+    {
+      "id": 2,
+      "title": "Ingeniería de Marca",
+      "description": "Diseñamos experiencias B2B con foco en crecimiento, desde branding hasta ecosistemas digitales completos.",
+      "mediaType": "image",
+      "mediaUrl": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1600&q=80",
+      "ctaLabel": "Ver Proyectos",
+      "ctaHref": "#projects"
+    }
+  ]
+}

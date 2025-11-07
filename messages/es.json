@@ -58,6 +58,8 @@
       "companyPlaceholder": "Tu Empresa",
       "phone": "Teléfono",
       "phonePlaceholder": "1234567890",
+      "country": "País",
+      "countryPlaceholder": "Argentina",
       "email": "Correo Electrónico",
       "emailPlaceholder": "juan@empresa.com",
       "service": "Servicio",
@@ -79,7 +81,8 @@
       "terms": "términos de servicio",
       "note": "Respetamos tu privacidad y nunca compartiremos tu información.",
       "locations": "Ubicaciones",
-      "connect": "Conecta"
+      "connect": "Conecta",
+      "whatsappMessage": "Hola, me gustaría obtener más información sobre sus servicios."
     }
   },
   "projects": {

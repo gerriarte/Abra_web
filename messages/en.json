@@ -58,6 +58,8 @@
       "companyPlaceholder": "Your Company",
       "phone": "Phone Number",
       "phonePlaceholder": "1234567890",
+      "country": "Country",
+      "countryPlaceholder": "Argentina",
       "email": "Email",
       "emailPlaceholder": "john@company.com",
       "service": "Service",
@@ -79,7 +81,8 @@
       "terms": "terms of service",
       "note": "We respect your privacy and will never share your information.",
       "locations": "Locations",
-      "connect": "Connect"
+      "connect": "Connect",
+      "whatsappMessage": "Hello, I would like to get more information about your services."
     }
   },
   "projects": {

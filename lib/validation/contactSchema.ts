@@ -1,6 +1,19 @@
 import { z } from 'zod';
 
 // Validaciones robustas para el formulario de contacto
+const allowedServices = [
+  'Branding Development',
+  'Institutional Communications',
+  'Digital Marketing & Growth',
+  'Web Design & Development',
+  'Full Service',
+  'Desarrollo de Branding',
+  'Comunicaciones Institucionales',
+  'Marketing Digital y Crecimiento',
+  'Diseño y Desarrollo Web',
+  'Servicio Completo',
+];
+
 export const contactSchema = z.object({
   fullName: z
     .string()
@@ -14,7 +27,11 @@ export const contactSchema = z.object({
     .max(100, 'Company name is too long')
     .regex(/^[a-zA-Z0-9\s.\-&]+$/, 'Company name contains invalid characters'),
   
-  phoneCode: z.string().regex(/^\+\d{1,3}$/, 'Invalid country code'),
+  country: z
+    .string()
+    .min(2, 'Country must be at least 2 characters')
+    .max(60, 'Country name is too long')
+    .regex(/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/, 'Country can only contain letters and spaces'),
   
   phone: z
     .string()
@@ -31,16 +48,7 @@ export const contactSchema = z.object({
   service: z
     .string()
     .min(1, 'Please select a service')
-    .refine(
-      (val) => [
-        'Branding Development',
-        'Institutional Communications',
-        'Digital Marketing & Growth',
-        'Web Design & Development',
-        'Full Service'
-      ].includes(val),
-      'Invalid service selected'
-    ),
+    .refine((val) => allowedServices.includes(val), 'Invalid service selected'),
   
   date: z
     .string()

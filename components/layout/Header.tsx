@@ -13,6 +13,7 @@ export default function Header() {
   const router = useRouter();
   const [mounted, setMounted] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState<string | null>(null);
 
   useEffect(() => {
     setMounted(true);
@@ -20,9 +21,37 @@ export default function Header() {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
     };
-    
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visibleSections = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+
+        if (visibleSections.length > 0) {
+          setActiveSection(visibleSections[0].target.id);
+        }
+      },
+      {
+        rootMargin: '-40% 0px -40% 0px',
+        threshold: [0, 0.25, 0.5, 0.75, 1],
+      }
+    );
+
+    const sectionIds = ['problem', 'method', 'projects'];
+    sectionIds.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) {
+        observer.observe(el);
+      }
+    });
+
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      observer.disconnect();
+    };
   }, []);
 
   const toggleLanguage = () => {
@@ -59,37 +88,44 @@ export default function Header() {
           </Link>
 
           {/* Navigation Links */}
-          <div className="hidden md:flex items-center gap-8">
-            <a 
-              href="#problem" 
-              className={`text-sm font-light transition-colors ${
-                scrolled 
-                  ? 'text-primary hover:text-primary-light' 
-                  : 'text-white hover:text-white/80'
-              }`}
-            >
-              {t('problem')}
-            </a>
-            <a 
-              href="#method" 
-              className={`text-sm font-light transition-colors ${
-                scrolled 
-                  ? 'text-primary hover:text-primary-light' 
-                  : 'text-white hover:text-white/80'
-              }`}
-            >
-              {t('method')}
-            </a>
-            <a 
-              href="#projects" 
-              className={`text-sm font-light transition-colors ${
-                scrolled 
-                  ? 'text-primary hover:text-primary-light' 
-                  : 'text-white hover:text-white/80'
-              }`}
-            >
-              {t('projects')}
-            </a>
+          <div className="hidden md:flex items-center gap-6">
+            {[
+              { id: 'problem', label: t('problem') },
+              { id: 'method', label: t('method') },
+              { id: 'projects', label: t('projects') },
+            ].map(({ id, label }) => {
+              const isActive = activeSection === id;
+              const baseColor = scrolled
+                ? 'text-primary/70 hover:text-primary'
+                : 'text-white/70 hover:text-white';
+
+              return (
+                <a
+                  key={id}
+                  href={`#${id}`}
+                  className={`group relative text-sm font-light tracking-wide transition-all duration-300 ${baseColor} ${
+                    isActive
+                      ? scrolled
+                        ? 'text-primary'
+                        : 'text-white'
+                      : ''
+                  }`}
+                  aria-current={isActive ? 'true' : undefined}
+                >
+                  <span className="relative z-[1]">{label}</span>
+                  <span
+                    className={`absolute inset-x-0 -bottom-2 h-0.5 origin-left transform rounded-full transition-transform duration-300 ease-out ${
+                      scrolled ? 'bg-primary' : 'bg-white'
+                    } ${isActive ? 'scale-x-100 opacity-100' : 'scale-x-0 opacity-0'}`}
+                  />
+                  <span
+                    className={`pointer-events-none absolute inset-0 -z-[1] scale-95 rounded-full bg-primary/5 opacity-0 transition-all duration-300 ease-out ${
+                      scrolled ? 'group-hover:opacity-100 group-hover:scale-100' : 'group-hover:bg-white/10'
+                    } ${isActive ? 'opacity-100 scale-100' : ''}`}
+                  />
+                </a>
+              );
+            })}
           </div>
 
           {/* Language Toggle & CTA */}

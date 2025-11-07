@@ -4,97 +4,91 @@ import { useTranslations } from 'next-intl';
 import Card from '../ui/Card';
 import useOnScreen from '@/hooks/useOnScreen';
 
+const pillarIcons = [
+  (
+    <svg className="w-9 h-9 text-primary" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M9 17v-6l3-2 3 2v6M9 17h6M9 9l3-2 3 2M9 9v8M15 9v8M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+    </svg>
+  ),
+  (
+    <svg className="w-9 h-9 text-primary" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 6.75h12m-12 3H12m-3.75 3h12m-12 3H12m-4.5-9l-3 3m0 0 3 3m-3-3H8.25" />
+    </svg>
+  ),
+  (
+    <svg className="w-9 h-9 text-primary" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M3 7h18M3 12h8m-8 5h18" />
+    </svg>
+  ),
+  (
+    <svg className="w-9 h-9 text-primary" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 5.25h15m-15 4.5h15m-15 4.5H12m-7.5 4.5H12" />
+    </svg>
+  ),
+];
+
+const pillarKeys = [
+  'method.pillars.pillar1',
+  'method.pillars.pillar2',
+  'method.pillars.pillar3',
+  'method.pillars.pillar4',
+];
+
 export default function Method() {
   const t = useTranslations();
   const [titleRef, isTitleVisible] = useOnScreen({ threshold: 0.2 });
-  const [p1Ref, isP1Visible] = useOnScreen({ threshold: 0.1 });
-  const [p2Ref, isP2Visible] = useOnScreen({ threshold: 0.1 });
-  const [p3Ref, isP3Visible] = useOnScreen({ threshold: 0.1 });
-  const [p4Ref, isP4Visible] = useOnScreen({ threshold: 0.1 });
+  const [quoteRef, isQuoteVisible] = useOnScreen({ threshold: 0.15 });
+  const [gridRef, isGridVisible] = useOnScreen({ threshold: 0.1 });
 
   return (
-    <section id="method" className="py-32 bg-off">
+    <section id="method" className="py-20 bg-off">
       <div className="container mx-auto px-4">
-        <div className="max-w-7xl mx-auto">
-          {/* Section Title */}
+        <div className="max-w-6xl mx-auto text-center">
           <div ref={titleRef}>
-            <h2 className={`text-4xl md:text-5xl font-light text-primary mb-8 text-center tracking-tight transition-all duration-1000 ${isTitleVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <h2
+              className={`text-4xl md:text-5xl font-light text-primary tracking-tight transition-all duration-700 ${
+                isTitleVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+              }`}
+            >
               {t('method.title')}
             </h2>
           </div>
 
-          {/* Quote */}
-          <div className="max-w-4xl mx-auto mb-20">
-            <blockquote className="text-xl md:text-2xl text-center text-text-secondary font-light leading-relaxed">
+          <div ref={quoteRef} className="mt-6 mb-12">
+            <blockquote
+              className={`text-lg md:text-xl text-text-secondary font-light leading-relaxed max-w-3xl mx-auto transition-all duration-700 delay-150 ${
+                isQuoteVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+              }`}
+            >
               &ldquo;{t('method.quote')}&rdquo;
             </blockquote>
           </div>
 
-          {/* Four Pillars Grid */}
-          <div className="grid md:grid-cols-2 gap-12">
-            {/* Pillar 1: Branding */}
-            <Card hover ref={p1Ref} className={`transition-all duration-700 ${isP1Visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-              <div className="text-sm text-primary-light mb-3 font-light">01</div>
-              <h3 className="text-2xl font-light text-primary mb-6">
-                {t('method.pillars.pillar1.title')}
-              </h3>
-              <p className="text-text-secondary mb-6 leading-relaxed font-light">
-                {t('method.pillars.pillar1.focus')}
-              </p>
-              <div className="border-t border-border pt-4">
-                <p className="text-sm text-text-muted font-light">
-                  {t('method.pillars.pillar1.dataConnection')}
+          <div
+            ref={gridRef}
+            className={`grid gap-6 md:grid-cols-2 xl:grid-cols-4 text-left transition-all duration-700 ease-out ${
+              isGridVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
+            }`}
+          >
+            {pillarKeys.map((key, index) => (
+              <Card
+                key={key}
+                hover
+                className="rounded-3xl border border-primary-light/15 shadow-sm shadow-primary-light/10 px-6 py-8 bg-white/90 flex flex-col gap-5"
+              >
+                <div className="flex items-center justify-between text-primary">
+                  <span className="text-sm font-light">{`0${index + 1}`}</span>
+                  <span className="rounded-full bg-primary/10 p-3">{pillarIcons[index]}</span>
+                </div>
+                <h3 className="text-xl font-light text-primary leading-snug">{t(`${key}.title`)}</h3>
+                <p className="text-sm md:text-base text-text-secondary/80 font-light leading-relaxed">
+                  {t(`${key}.focus`)}
                 </p>
-              </div>
-            </Card>
-
-            {/* Pillar 2: Communications */}
-            <Card hover ref={p2Ref} className={`transition-all duration-700 delay-100 ${isP2Visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-              <div className="text-sm text-primary-light mb-3 font-light">02</div>
-              <h3 className="text-2xl font-light text-primary mb-6">
-                {t('method.pillars.pillar2.title')}
-              </h3>
-              <p className="text-text-secondary mb-6 leading-relaxed font-light">
-                {t('method.pillars.pillar2.focus')}
-              </p>
-              <div className="border-t border-border pt-4">
-                <p className="text-sm text-text-muted font-light">
-                  {t('method.pillars.pillar2.dataConnection')}
+                <p className="text-xs md:text-sm text-text-muted/90 font-light border-t border-border pt-3">
+                  {t(`${key}.dataConnection`)}
                 </p>
-              </div>
-            </Card>
-
-            {/* Pillar 3: Digital Marketing */}
-            <Card hover ref={p3Ref} className={`transition-all duration-700 delay-200 ${isP3Visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-              <div className="text-sm text-primary-light mb-3 font-light">03</div>
-              <h3 className="text-2xl font-light text-primary mb-6">
-                {t('method.pillars.pillar3.title')}
-              </h3>
-              <p className="text-text-secondary mb-6 leading-relaxed font-light">
-                {t('method.pillars.pillar3.focus')}
-              </p>
-              <div className="border-t border-border pt-4">
-                <p className="text-sm text-text-muted font-light">
-                  {t('method.pillars.pillar3.dataConnection')}
-                </p>
-              </div>
-            </Card>
-
-            {/* Pillar 4: Web Development */}
-            <Card hover ref={p4Ref} className={`transition-all duration-700 delay-300 ${isP4Visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-              <div className="text-sm text-primary-light mb-3 font-light">04</div>
-              <h3 className="text-2xl font-light text-primary mb-6">
-                {t('method.pillars.pillar4.title')}
-              </h3>
-              <p className="text-text-secondary mb-6 leading-relaxed font-light">
-                {t('method.pillars.pillar4.focus')}
-              </p>
-              <div className="border-t border-border pt-4">
-                <p className="text-sm text-text-muted font-light">
-                  {t('method.pillars.pillar4.dataConnection')}
-                </p>
-              </div>
-            </Card>
+              </Card>
+            ))}
           </div>
         </div>
       </div>

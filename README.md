@@ -11,6 +11,21 @@ npm run dev
 
 Visit: `http://localhost:3000`
 
+### Environment Variables
+
+Configure the following variables in `.env.local` before submitting the contact form:
+
+```
+SMTP_HOST=
+SMTP_PORT=
+SMTP_USER=
+SMTP_PASS=
+CONTACT_FROM_EMAIL=
+CONTACT_RECIPIENT_EMAIL=
+```
+
+All secrets must be provided via environment variables—never commit credentials to the repository.
+
 ## 📋 Features
 
 - ✅ **Next.js 16** with App Router

@@ -16,6 +16,7 @@ export function generateStaticParams() {
 
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
+import WhatsAppFloating from '@/components/ui/WhatsAppFloating';
 
 export default async function LocaleLayout({
   children,
@@ -39,6 +40,7 @@ export default async function LocaleLayout({
         {children}
       </main>
       <Footer />
+      <WhatsAppFloating />
     </NextIntlClientProvider>
   );
 }

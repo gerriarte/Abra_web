@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import { contactSchema } from '@/lib/validation/contactSchema';
 import { checkRateLimit, getClientIP } from '@/lib/utils/rateLimit';
 import { sanitizeInput } from '@/lib/utils/sanitize';
+import { sendContactEmail } from '@/lib/services/email';
+import { logEvent } from '@/lib/utils/logger';
 
 /**
  * Validaciones de Seguridad Implementadas:
@@ -45,37 +47,31 @@ export async function POST(request: NextRequest) {
     const sanitizedBody = {
       fullName: sanitizeInput(body.fullName || ''),
       company: sanitizeInput(body.company || ''),
-      phoneCode: sanitizeInput(body.phoneCode || ''),
+      country: sanitizeInput(body.country || ''),
       phone: sanitizeInput(body.phone || ''),
       email: sanitizeInput(body.email || ''),
       service: sanitizeInput(body.service || ''),
       date: body.date || '',
       time: body.time || '',
+      privacyAccepted: Boolean(body.privacyAccepted),
     };
     
     // Validate data with Zod
     const validatedData = contactSchema.parse(sanitizedBody);
     
-    // Log submission (en producción enviar a servicio externo)
-    console.log('New secure contact form submission:', {
-      ...validatedData,
-      phone: `${validatedData.phoneCode} ${validatedData.phone}`,
-      timestamp: new Date().toISOString(),
-      ip: clientIP,
+    logEvent({
+      level: 'info',
+      module: 'api/contact',
+      functionName: 'POST',
+      message: 'Validated contact form submission',
+      metadata: {
+        service: validatedData.service,
+        ip: clientIP,
+      },
     });
-    
-    // Here you would typically:
-    // 1. Send email via Resend/SendGrid
-    // 2. Save to database
-    // 3. Send to CRM (HubSpot, Salesforce)
-    // 4. Send Slack/Discord notification
-    
-    // TODO: Integrar servicio de email
-    // await sendEmail(validatedData);
-    
-    // TODO: Guardar en base de datos
-    // await db.contacts.create({ data: validatedData });
-    
+
+    await sendContactEmail(validatedData);
+
     return NextResponse.json(
       { 
         success: true, 
@@ -86,6 +82,13 @@ export async function POST(request: NextRequest) {
     
   } catch (error) {
     if (error instanceof Error && error.name === 'ZodError') {
+      logEvent({
+        level: 'warn',
+        module: 'api/contact',
+        functionName: 'POST',
+        message: 'Contact form validation failed',
+        metadata: { details: error.message },
+      });
       return NextResponse.json(
         { 
           success: false, 
@@ -96,7 +99,13 @@ export async function POST(request: NextRequest) {
       );
     }
     
-    console.error('Contact form error:', error);
+    logEvent({
+      level: 'error',
+      module: 'api/contact',
+      functionName: 'POST',
+      message: 'Unhandled contact form error',
+      metadata: { error: error instanceof Error ? error.message : 'Unknown error' },
+    });
     return NextResponse.json(
       { 
         success: false, 

@@ -4,102 +4,105 @@ import { useTranslations } from 'next-intl';
 import Card from '../ui/Card';
 import useOnScreen from '@/hooks/useOnScreen';
 
+const icons = [
+  (
+    <svg className="w-10 h-10 text-primary" fill="currentColor" viewBox="0 0 20 20">
+      <path
+        fillRule="evenodd"
+        d="M10 18a8 8 0 100-16 8 8 0 000 16zm0-11a1 1 0 11-2 0 1 1 0 012 0zm-1 2a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+        clipRule="evenodd"
+      />
+    </svg>
+  ),
+  (
+    <svg className="w-10 h-10 text-primary" fill="currentColor" viewBox="0 0 20 20">
+      <path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z" />
+    </svg>
+  ),
+  (
+    <svg className="w-10 h-10 text-primary" fill="currentColor" viewBox="0 0 20 20">
+      <path
+        fillRule="evenodd"
+        d="M4 17a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zm3.293-6.707a1 1 0 011.414 0L10 11.586V4a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z"
+        clipRule="evenodd"
+      />
+    </svg>
+  ),
+];
+
+const problemKeys = [
+  'problem.points.unstableBrand',
+  'problem.points.erraticMarketing',
+  'problem.points.webBottleneck',
+];
+
 export default function Problem() {
   const t = useTranslations();
   const [titleRef, isTitleVisible] = useOnScreen({ threshold: 0.2 });
   const [introRef, isIntroVisible] = useOnScreen({ threshold: 0.2 });
-  const [cardsRef, isCardsVisible] = useOnScreen({ threshold: 0.1 });
+  const [cardsRef, areCardsVisible] = useOnScreen({ threshold: 0.1 });
+
+  const getContent = (value: string) => {
+    const [heading, ...rest] = value.split(':');
+    return {
+      heading,
+      body: rest.join(':').trim(),
+    };
+  };
 
   return (
-    <section id="problem" className="py-32 bg-white">
+    <section id="problem" className="py-20 bg-white">
       <div className="container mx-auto px-4">
-        <div className="max-w-6xl mx-auto">
-          {/* Section Title */}
+        <div className="max-w-5xl mx-auto text-center">
           <div ref={titleRef}>
-            <h2 className={`text-4xl md:text-5xl font-light text-primary mb-8 text-center tracking-tight transition-all duration-1000 ${isTitleVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <h2
+              className={`text-4xl md:text-5xl font-light text-primary tracking-tight transition-all duration-700 ${
+                isTitleVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+              }`}
+            >
               {t('problem.title')}
             </h2>
           </div>
 
-          {/* Intro Paragraph */}
           <div ref={introRef}>
-            <p className={`text-xl text-text-secondary mb-20 text-center max-w-3xl mx-auto font-light leading-relaxed transition-all duration-1000 delay-200 ${isIntroVisible ? 'opacity-100' : 'opacity-0'}`}>
+            <p
+              className={`text-lg md:text-xl text-text-secondary mt-6 mb-10 mx-auto max-w-3xl font-light leading-relaxed transition-all duration-700 delay-150 ${
+                isIntroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+              }`}
+            >
               {t('problem.intro')}
             </p>
           </div>
 
-          {/* Subtitle */}
-          <h3 className="text-2xl font-light text-primary mb-20 text-center">
+          <p className="text-base uppercase tracking-[0.3em] text-primary-light/80 mb-16">
             {t('problem.subtitle')}
-          </h3>
+          </p>
 
-          {/* Pain Points Vertical Layout */}
-          <div ref={cardsRef} className="space-y-16">
-            {/* Problem 1: Unstable Brand */}
-            <div className={`flex flex-col md:flex-row items-center gap-8 transition-all duration-1000 ${isCardsVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}`}>
-              {/* Visual - Using gradient as placeholder for image */}
-              <div className="flex-shrink-0 w-full md:w-80 h-64 bg-gradient-to-br from-primary-light/20 to-primary-light/5 rounded-lg flex items-center justify-center relative overflow-hidden">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <svg className="w-48 h-48 text-primary-light" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
-                  </svg>
-                </div>
-              </div>
-              
-              <div className="flex-1">
-                <div className="text-sm text-primary-light mb-3 font-light">01</div>
-                <h4 className="text-2xl font-light text-primary mb-4">
-                  {t('problem.points.unstableBrand').split(':')[0]}
-                </h4>
-                <p className="text-lg text-text-secondary leading-relaxed font-light">
-                  {t('problem.points.unstableBrand').split(':')[1].trim()}
-                </p>
-              </div>
-            </div>
+          <div
+            ref={cardsRef}
+            className={`grid gap-6 md:grid-cols-3 transition-all duration-700 ease-out ${
+              areCardsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
+            }`}
+          >
+            {problemKeys.map((key, index) => {
+              const { heading, body } = getContent(t(key));
 
-            {/* Problem 2: Erratic Marketing */}
-            <div className={`flex flex-col md:flex-row-reverse items-center gap-8 transition-all duration-1000 delay-200 ${isCardsVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'}`}>
-              {/* Visual */}
-              <div className="flex-shrink-0 w-full md:w-80 h-64 bg-gradient-to-bl from-primary-light/20 to-primary-light/5 rounded-lg flex items-center justify-center relative overflow-hidden">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <svg className="w-48 h-48 text-primary-light" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z" />
-                  </svg>
-                </div>
-              </div>
-              
-              <div className="flex-1 text-right md:text-left">
-                <div className="text-sm text-primary-light mb-3 font-light">02</div>
-                <h4 className="text-2xl font-light text-primary mb-4">
-                  {t('problem.points.erraticMarketing').split(':')[0]}
-                </h4>
-                <p className="text-lg text-text-secondary leading-relaxed font-light">
-                  {t('problem.points.erraticMarketing').split(':')[1].trim()}
-                </p>
-              </div>
-            </div>
-
-            {/* Problem 3: Web Bottleneck */}
-            <div className={`flex flex-col md:flex-row items-center gap-8 transition-all duration-1000 delay-400 ${isCardsVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}`}>
-              {/* Visual */}
-              <div className="flex-shrink-0 w-full md:w-80 h-64 bg-gradient-to-br from-primary-light/20 to-primary-light/5 rounded-lg flex items-center justify-center relative overflow-hidden">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <svg className="w-48 h-48 text-primary-light" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clipRule="evenodd" />
-                  </svg>
-                </div>
-              </div>
-              
-              <div className="flex-1">
-                <div className="text-sm text-primary-light mb-3 font-light">03</div>
-                <h4 className="text-2xl font-light text-primary mb-4">
-                  {t('problem.points.webBottleneck').split(':')[0]}
-                </h4>
-                <p className="text-lg text-text-secondary leading-relaxed font-light">
-                  {t('problem.points.webBottleneck').split(':')[1].trim()}
-                </p>
-              </div>
-            </div>
+              return (
+                <Card
+                  key={key}
+                  className="h-full rounded-3xl border border-primary-light/15 shadow-sm shadow-primary-light/10 flex flex-col items-start gap-4 text-left px-6 py-8 bg-white/90"
+                >
+                  <div className="flex items-center justify-between w-full text-primary">
+                    <span className="text-sm font-light">{`0${index + 1}`}</span>
+                    <span className="rounded-full bg-primary/10 p-3">{icons[index]}</span>
+                  </div>
+                  <h4 className="text-xl font-light text-primary leading-snug">{heading.trim()}</h4>
+                  <p className="text-sm md:text-base text-text-secondary/80 font-light leading-relaxed">
+                    {body}
+                  </p>
+                </Card>
+              );
+            })}
           </div>
         </div>
       </div>
