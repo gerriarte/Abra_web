@@ -3,11 +3,13 @@
 import { useState } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import useOnScreen from '@/hooks/useOnScreen';
+import { useGTM } from '@/hooks/useGTM';
 import { contactSchema } from '@/lib/validation/contactSchema';
 
 export default function Contact() {
   const t = useTranslations('contact');
   const locale = useLocale();
+  const { pushEvent } = useGTM();
   const [ref, isVisible] = useOnScreen({ threshold: 0.1 });
   const [formData, setFormData] = useState({
     fullName: '',
@@ -63,6 +65,15 @@ export default function Contact() {
       
       if (response.ok) {
         setStatus({ type: 'success', message: t('form.success') });
+        
+        // Track form submission success in GTM
+        pushEvent('form_submit', {
+          form_name: 'contact_form',
+          form_status: 'success',
+          service_selected: formData.service,
+          page_location: typeof window !== 'undefined' ? window.location.href : '',
+        });
+        
         // Reset form
         setFormData({
           fullName: '',
@@ -86,6 +97,15 @@ export default function Contact() {
             message: data.error || 'El servicio de correo no está disponible. Por favor, contáctanos directamente por WhatsApp usando el botón flotante.' 
           });
         } else {
+          // Track form submission error in GTM
+          pushEvent('form_submit', {
+            form_name: 'contact_form',
+            form_status: 'error',
+            error_type: response.status.toString(),
+            service_selected: formData.service,
+            page_location: typeof window !== 'undefined' ? window.location.href : '',
+          });
+          
           setStatus({ 
             type: 'error', 
             message: data.error || t('form.error') || 'Error al enviar el formulario. Por favor intenta nuevamente o contáctanos por WhatsApp.' 

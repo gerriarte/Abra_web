@@ -13,8 +13,9 @@ Visit: `http://localhost:3000`
 
 ### Environment Variables
 
-Configure the following variables in `.env.local` before submitting the contact form:
+Configure the following variables in `.env.local`:
 
+**Required for contact form:**
 ```
 SMTP_HOST=
 SMTP_PORT=
@@ -22,6 +23,11 @@ SMTP_USER=
 SMTP_PASS=
 CONTACT_FROM_EMAIL=
 CONTACT_RECIPIENT_EMAIL=
+```
+
+**Optional for analytics:**
+```
+NEXT_PUBLIC_GTM_ID=GTM-XXXXXXX
 ```
 
 All secrets must be provided via environment variables—never commit credentials to the repository.
@@ -48,6 +54,7 @@ All secrets must be provided via environment variables—never commit credential
 │   ├── api/               # API routes
 │   └── globals.css        # Global styles
 ├── components/
+│   ├── analytics/         # Google Tag Manager
 │   ├── layout/            # Header, Footer
 │   ├── sections/          # Hero, Problem, Method, Result, Projects, Contact
 │   └── ui/                # Reusable UI components
@@ -82,9 +89,11 @@ Translation files are in `messages/en.json` and `messages/es.json`.
 1. **Go to [Vercel](https://vercel.com)**
 2. **Click "Add New" → "Project"**
 3. **Import from GitHub**: Select `gerriarte/Abra_web`
-4. **Configure Environment Variables** (Required for contact form):
+4. **Configure Environment Variables**:
    - Go to **Settings → Environment Variables**
    - Add the following variables:
+     
+     **Required for contact form:**
      ```
      SMTP_HOST=your-smtp-host
      SMTP_PORT=587
@@ -92,6 +101,11 @@ Translation files are in `messages/en.json` and `messages/es.json`.
      SMTP_PASS=your-smtp-password
      CONTACT_FROM_EMAIL=noreply@yourdomain.com
      CONTACT_RECIPIENT_EMAIL=contact@yourdomain.com
+     ```
+     
+     **Optional for analytics:**
+     ```
+     NEXT_PUBLIC_GTM_ID=GTM-XXXXXXX
      ```
 5. **Click "Deploy"** (Vercel auto-detects Next.js)
 
