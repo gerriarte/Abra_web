@@ -14,7 +14,7 @@ export default function GoogleTagManager({ gtmId }: GoogleTagManagerProps) {
 
   return (
     <>
-      {/* Google Tag Manager */}
+      {/* Google Tag Manager - Script en el head */}
       <Script
         id="google-tag-manager"
         strategy="afterInteractive"
@@ -28,16 +28,25 @@ export default function GoogleTagManager({ gtmId }: GoogleTagManagerProps) {
           `,
         }}
       />
-      {/* Google Tag Manager (noscript) */}
-      <noscript>
-        <iframe
-          src={`https://www.googletagmanager.com/ns.html?id=${gtmId}`}
-          height="0"
-          width="0"
-          style={{ display: 'none', visibility: 'hidden' }}
-        />
-      </noscript>
     </>
+  );
+}
+
+// Componente separado para el noscript que va en el body
+export function GoogleTagManagerNoscript({ gtmId }: { gtmId?: string }) {
+  if (!gtmId) {
+    return null;
+  }
+
+  return (
+    <noscript>
+      <iframe
+        src={`https://www.googletagmanager.com/ns.html?id=${gtmId}`}
+        height="0"
+        width="0"
+        style={{ display: 'none', visibility: 'hidden' }}
+      />
+    </noscript>
   );
 }
 

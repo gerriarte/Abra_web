@@ -150,20 +150,95 @@ Las siguientes variables estarán disponibles en GTM:
 
 ## Troubleshooting
 
-### GTM no se carga
+### GTM no se detecta / "No se detecta la etiqueta"
 
-- Verifica que `NEXT_PUBLIC_GTM_ID` esté configurado correctamente
-- Verifica que el GTM ID tenga el formato correcto (`GTM-XXXXXXX`)
-- Revisa la consola del navegador para errores
+Si Google Tag Manager reporta que no se detecta la etiqueta, sigue estos pasos:
+
+#### 1. Verificar Variable de Entorno
+
+**En desarrollo local:**
+- Verifica que existe el archivo `.env.local` en la raíz del proyecto
+- Verifica que contiene: `NEXT_PUBLIC_GTM_ID=GTM-XXXXXXX`
+- Reinicia el servidor de desarrollo después de agregar la variable
+
+**En Vercel:**
+- Ve a **Settings → Environment Variables**
+- Verifica que `NEXT_PUBLIC_GTM_ID` esté configurada
+- Verifica que el valor sea correcto (formato: `GTM-XXXXXXX`)
+- **IMPORTANTE**: Después de agregar/modificar variables, debes **redesplegar** el proyecto
+
+#### 2. Verificar en el Navegador
+
+1. Abre las DevTools (F12)
+2. Ve a la pestaña **Network** (Red)
+3. Recarga la página
+4. Busca una petición a `googletagmanager.com/gtm.js?id=GTM-XXXXXXX`
+   - Si NO aparece: GTM no se está cargando
+   - Si aparece: GTM se está cargando correctamente
+
+5. En la pestaña **Console**, escribe:
+   ```javascript
+   window.dataLayer
+   ```
+   - Deberías ver un array con objetos
+   - Si es `undefined`: GTM no se inicializó correctamente
+
+6. Verifica que existan estos elementos en el DOM:
+   ```javascript
+   // Script de GTM
+   document.querySelector('script[src*="googletagmanager.com/gtm.js"]')
+   
+   // Noscript de GTM
+   document.querySelector('noscript iframe[src*="googletagmanager.com"]')
+   ```
+
+#### 3. Usar el Modo Preview de GTM
+
+1. En GTM, haz clic en **Preview**
+2. Ingresa la URL de tu sitio (incluye `http://` o `https://`)
+3. Haz clic en **Connect**
+4. Si GTM está correctamente instalado, deberías ver:
+   - Un panel de debug en la parte inferior
+   - La página debería mostrar "Connected"
+   - Si aparece "Tag Assistant couldn't find the GTM container", significa que GTM no está instalado
+
+#### 4. Verificar el Código Fuente
+
+1. Haz clic derecho en la página → **Ver código fuente**
+2. Busca `GTM-` en el código fuente
+3. Deberías encontrar el script de GTM con tu ID
+
+#### 5. Verificar en Desarrollo
+
+El proyecto incluye un componente de debug que se ejecuta automáticamente en desarrollo:
+- Abre la consola del navegador en modo desarrollo
+- Después de 2 segundos, verás información de debug sobre GTM
+- Esto te ayudará a identificar si el problema es de configuración
 
 ### Los eventos no aparecen en GTM
 
 - Verifica que el trigger esté configurado correctamente
 - Usa el modo Preview de GTM para debuggear
 - Verifica que `window.dataLayer` tenga los eventos en la consola del navegador
+- Asegúrate de que los tags estén publicados en GTM (no solo guardados)
 
 ### Eventos duplicados
 
 - Asegúrate de no tener múltiples instancias del componente `GoogleTagManager`
 - Verifica que no haya otros scripts de GTM cargándose
+- Revisa que no tengas extensiones del navegador que inyecten GTM
+
+### Problemas Comunes
+
+**Problema**: Variable de entorno no se lee
+- **Solución**: Asegúrate de que el nombre comience con `NEXT_PUBLIC_`
+- Reinicia el servidor después de agregar la variable
+
+**Problema**: GTM se carga pero no detecta tags
+- **Solución**: Verifica que los tags estén publicados en GTM (no solo en modo borrador)
+- Usa el modo Preview para verificar qué tags deberían activarse
+
+**Problema**: Bloqueadores de contenido
+- **Solución**: Desactiva temporalmente bloqueadores de anuncios (uBlock Origin, AdBlock, etc.)
+- Algunos bloqueadores pueden impedir que GTM funcione
 
