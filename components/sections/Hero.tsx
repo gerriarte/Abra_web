@@ -264,7 +264,7 @@ export default function Hero() {
             aria-label="Slide anterior"
           >
             <svg
-              className="w-6 h-6 md:w-7 md:h-7 text-white group-hover:translate-x-[-2px] transition-transform duration-300 ease-out"
+              className="w-6 h-6 md:w-7 md:h-7 text-white group-hover:text-accent group-hover:translate-x-[-2px] transition-all duration-300 ease-out"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -278,7 +278,7 @@ export default function Hero() {
             aria-label="Slide siguiente"
           >
             <svg
-              className="w-6 h-6 md:w-7 md:h-7 text-white group-hover:translate-x-[2px] transition-transform duration-300 ease-out"
+              className="w-6 h-6 md:w-7 md:h-7 text-white group-hover:text-accent group-hover:translate-x-[2px] transition-all duration-300 ease-out"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -369,7 +369,7 @@ export default function Hero() {
             >
               <a
                 href={activeSlide.ctaHref || '#contact'}
-                className="bg-white text-primary hover:bg-off active:bg-off/90 transition-all duration-300 ease-out px-8 py-4 text-lg font-light inline-flex items-center justify-center shadow-lg hover:shadow-xl hover:scale-105 active:scale-95"
+                className="bg-white text-primary hover:bg-accent hover:text-white active:bg-accent-dark transition-all duration-300 ease-out px-8 py-4 text-lg font-light inline-flex items-center justify-center shadow-lg hover:shadow-xl hover:scale-105 active:scale-95"
               >
                 {activeSlide.ctaLabel || t('hero.cta')}
               </a>
@@ -394,13 +394,13 @@ export default function Hero() {
                   <div 
                     className={`h-full rounded-full transition-all duration-500 ease-out ${
                       isActive 
-                        ? 'w-12 bg-white/20 shadow-lg shadow-white/20' 
-                        : 'w-6 bg-white/40 group-hover:bg-white/60 group-hover:w-8'
+                        ? 'w-12 bg-accent/20 shadow-lg shadow-accent/20' 
+                        : 'w-6 bg-white/40 group-hover:bg-accent/60 group-hover:w-8'
                     }`}
                   />
                   {isActive && (
                     <div
-                      className="absolute top-0 left-0 h-full bg-white rounded-full transition-all duration-75 ease-linear shadow-lg shadow-white/50"
+                      className="absolute top-0 left-0 h-full bg-accent rounded-full transition-all duration-75 ease-linear shadow-lg shadow-accent/50"
                       style={{ width: progressWidth }}
                     />
                   )}

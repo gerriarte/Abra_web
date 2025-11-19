@@ -3,6 +3,30 @@
 import { useTranslations } from 'next-intl';
 import useOnScreen from '@/hooks/useOnScreen';
 import { useState, useEffect, useRef } from 'react';
+import Link from 'next/link';
+import { ArrowRight, ArrowUpRight } from 'lucide-react';
+
+interface ProjectCaseMetric {
+  label: string;
+  value: string;
+  period?: string;
+}
+
+interface ProjectCaseResults {
+  summary?: string;
+  metrics?: ProjectCaseMetric[];
+}
+
+interface ProjectCase {
+  id?: string | number;
+  title: string;
+  relatedServices?: string[];
+  challenge?: string;
+  solution?: string;
+  resultsSummary?: string;
+  results?: ProjectCaseResults;
+  link?: string;
+}
 
 interface Project {
   id: number;
@@ -11,281 +35,228 @@ interface Project {
   category: string;
   image?: string;
   url?: string;
-  gradient?: string;
+  cases?: ProjectCase[];
 }
 
 export default function Projects() {
   const t = useTranslations();
   const [ref, isVisible] = useOnScreen({ threshold: 0.1 });
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isDragging, setIsDragging] = useState(false);
-  const [startX, setStartX] = useState(0);
-  const [scrollLeft, setScrollLeft] = useState(0);
-  const carouselRef = useRef<HTMLDivElement>(null);
   const [projects, setProjects] = useState<Project[]>([]);
   const [loading, setLoading] = useState(true);
+  const [isPaused, setIsPaused] = useState(false);
 
   useEffect(() => {
     loadProjects();
   }, []);
 
+  // Auto-rotation effect
+  useEffect(() => {
+    if (loading || isPaused || projects.length <= 1) return;
+
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % projects.length);
+    }, 6000);
+
+    return () => clearInterval(interval);
+  }, [loading, isPaused, projects.length]);
+
   const loadProjects = async () => {
     try {
       const response = await fetch('/data/projects.json?t=' + Date.now());
       const data = await response.json();
-      
-      const gradients = [
-        'from-primary-light/30 to-primary-light/10',
-        'from-primary-light/20 to-primary-light/5',
-        'from-primary-lighter/25 to-primary-lighter/10',
-        'from-primary-light/30 to-primary-light/10',
-        'from-primary-lighter/20 to-primary-lighter/5',
-        'from-primary-light/25 to-primary-light/8',
-        'from-primary-light/20 to-primary-light/5',
-        'from-primary-lighter/25 to-primary-lighter/10',
-      ];
-      
-      const projectsWithGradients = data.projects.map((item: any, index: number) => ({
-        ...item,
-        gradient: gradients[index % gradients.length]
-      }));
-      
-      setProjects(projectsWithGradients);
+      setProjects(data.projects);
     } catch (error) {
       console.error('Error loading projects:', error);
-      // Fallback to translation data
-      const projectsData = t.raw('projects.items') as Array<{
-        title: string;
-        description: string;
-        category: string;
-      }>;
-      
-      const gradients = [
-        'from-primary-light/30 to-primary-light/10',
-        'from-primary-light/20 to-primary-light/5',
-        'from-primary-lighter/25 to-primary-lighter/10',
-        'from-primary-light/30 to-primary-light/10',
-        'from-primary-lighter/20 to-primary-lighter/5',
-        'from-primary-light/25 to-primary-light/8',
-        'from-primary-light/20 to-primary-light/5',
-        'from-primary-lighter/25 to-primary-lighter/10',
-      ];
-      
-      const projectsWithGradients = projectsData.map((item, index) => ({
-        id: index + 1,
-        ...item,
-        gradient: gradients[index]
-      }));
-      
-      setProjects(projectsWithGradients);
+      // Fallback to basic data if fetch fails
+      setProjects([]);
     } finally {
       setLoading(false);
     }
   };
 
-  // Handle mouse drag
-  const handleMouseDown = (e: React.MouseEvent) => {
-    setIsDragging(true);
-    setStartX(e.pageX - (carouselRef.current?.offsetLeft || 0));
-    setScrollLeft(carouselRef.current?.scrollLeft || 0);
+  const nextSlide = () => {
+    setCurrentIndex((prev) => (prev + 1) % projects.length);
+    setIsPaused(true);
   };
 
-  const handleMouseLeave = () => {
-    setIsDragging(false);
+  const prevSlide = () => {
+    setCurrentIndex((prev) => (prev - 1 + projects.length) % projects.length);
+    setIsPaused(true);
   };
-
-  const handleMouseUp = () => {
-    setIsDragging(false);
-  };
-
-  const handleMouseMove = (e: React.MouseEvent) => {
-    if (!isDragging || !carouselRef.current) return;
-    e.preventDefault();
-    const x = e.pageX - (carouselRef.current.offsetLeft || 0);
-    const walk = (x - startX) * 2; // Scroll speed
-    carouselRef.current.scrollLeft = scrollLeft - walk;
-  };
-
-  // Touch support for mobile
-  const handleTouchStart = (e: React.TouchEvent) => {
-    setIsDragging(true);
-    setStartX(e.touches[0].pageX - (carouselRef.current?.offsetLeft || 0));
-    setScrollLeft(carouselRef.current?.scrollLeft || 0);
-  };
-
-  const handleTouchMove = (e: React.TouchEvent) => {
-    if (!isDragging || !carouselRef.current) return;
-    const x = e.touches[0].pageX - (carouselRef.current.offsetLeft || 0);
-    const walk = (x - startX) * 2;
-    carouselRef.current.scrollLeft = scrollLeft - walk;
-  };
-
-  const handleTouchEnd = () => {
-    setIsDragging(false);
-  };
-
-  // Go to specific slide
-  const goToSlide = (index: number) => {
-    setCurrentIndex(index);
-    if (carouselRef.current) {
-      carouselRef.current.scrollTo({
-        left: index * carouselRef.current.offsetWidth,
-        behavior: 'smooth'
-      });
-    }
-  };
-
-  // Auto scroll detection
-  useEffect(() => {
-    if (!carouselRef.current) return;
-
-    const handleScroll = () => {
-      if (!carouselRef.current) return;
-      const scrollPosition = carouselRef.current.scrollLeft;
-      const slideWidth = carouselRef.current.offsetWidth;
-      const newIndex = Math.round(scrollPosition / slideWidth);
-      setCurrentIndex(newIndex);
-    };
-
-    carouselRef.current.addEventListener('scroll', handleScroll);
-    return () => carouselRef.current?.removeEventListener('scroll', handleScroll);
-  }, []);
 
   if (loading) {
     return (
       <section id="projects" className="py-32 bg-white">
         <div className="container mx-auto px-4">
-          <div className="max-w-7xl mx-auto">
-            <div className="text-center text-text-secondary">Cargando proyectos...</div>
+          <div className="max-w-7xl mx-auto text-center text-text-secondary">
+            Cargando proyectos...
           </div>
         </div>
       </section>
     );
   }
 
+  if (!projects || projects.length === 0) {
+    return null;
+  }
+
   return (
-    <section id="projects" className="py-32 bg-white">
+    <section id="projects" className="py-32 bg-white overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="max-w-7xl mx-auto">
-          {/* Section Title */}
-          <div ref={ref} className="mb-16 text-center">
-            <h2 className={`text-4xl md:text-5xl font-light text-primary mb-4 tracking-tight transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-              {t('projects.title')}
-            </h2>
-            <p className={`text-lg text-text-secondary font-light transition-all duration-1000 delay-200 ${isVisible ? 'opacity-100' : 'opacity-0'}`}>
-              {t('projects.subtitle')}
-            </p>
+          {/* Header */}
+          <div ref={ref} className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
+            <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+              <h2 className="text-4xl md:text-6xl font-light text-primary mb-4 tracking-tight">
+                {t('projects.title')}
+              </h2>
+              <p className="text-lg text-text-secondary font-light max-w-xl">
+                {t('projects.subtitle')}
+              </p>
+            </div>
+            
+            {/* Controls */}
+            {projects.length > 1 && (
+              <div className="flex items-center gap-4">
+                <button 
+                  onClick={prevSlide}
+                  className="w-12 h-12 rounded-full border border-primary/10 flex items-center justify-center hover:bg-primary hover:text-white hover:border-primary transition-all duration-300 group"
+                  aria-label="Previous project"
+                >
+                  <ArrowRight className="w-5 h-5 rotate-180" />
+                </button>
+                <button 
+                  onClick={nextSlide}
+                  className="w-12 h-12 rounded-full border border-primary/10 flex items-center justify-center hover:bg-primary hover:text-white hover:border-primary transition-all duration-300 group"
+                  aria-label="Next project"
+                >
+                  <ArrowRight className="w-5 h-5" />
+                </button>
+              </div>
+            )}
           </div>
 
-          {/* Carousel Container */}
-          <div className="relative">
-            <div
-              ref={carouselRef}
-              className="flex overflow-x-hidden scroll-smooth snap-x snap-mandatory scrollbar-hide"
-              style={{
-                cursor: isDragging ? 'grabbing' : 'grab',
-                userSelect: 'none',
-              }}
-              onMouseDown={handleMouseDown}
-              onMouseLeave={handleMouseLeave}
-              onMouseUp={handleMouseUp}
-              onMouseMove={handleMouseMove}
-              onTouchStart={handleTouchStart}
-              onTouchMove={handleTouchMove}
-              onTouchEnd={handleTouchEnd}
-            >
-              {projects.map((project, index) => (
-                <div
+          {/* Project Slider */}
+          <div className="relative min-h-[600px]">
+            {projects.map((project, index) => {
+              const isActive = index === currentIndex;
+              const isPrev = index === (currentIndex - 1 + projects.length) % projects.length;
+              const isNext = index === (currentIndex + 1) % projects.length;
+              
+              // Determine visibility state
+              let positionClass = 'opacity-0 pointer-events-none absolute inset-0 z-0 scale-95';
+              if (isActive) positionClass = 'opacity-100 z-20 relative scale-100';
+              
+              return (
+                <div 
                   key={project.id}
-                  className="flex-shrink-0 w-full"
-                  style={{ scrollSnapAlign: 'start' }}
+                  className={`transition-all duration-700 ease-in-out ${positionClass}`}
                 >
-                  <div className={`flex flex-col md:flex-row items-center gap-8 md:gap-12 ${project.url ? 'cursor-pointer' : ''}`} 
-                       onClick={() => project.url && window.open(project.url, '_blank')}>
-                    {/* Image/Visual */}
-                    <div className="w-full md:w-1/2 aspect-[4/3] rounded-lg overflow-hidden relative">
-                      {project.image ? (
-                        <img 
-                          src={project.image} 
-                          alt={project.title}
-                          className="w-full h-full object-cover"
-                        />
-                      ) : (
-                        <div className="w-full h-full bg-gradient-to-br from-primary-light/30 via-primary-light/15 to-primary-lighter/8 flex items-center justify-center p-8">
-                        <div className="w-full h-full relative">
-                          <svg 
-                            viewBox="0 0 200 200" 
-                            className="w-full h-full opacity-20 transition-opacity duration-500"
-                          >
-                            <defs>
-                              <linearGradient id={`grad-${index}`} x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" style={{ stopColor: '#04213B', stopOpacity: 0.5 }} />
-                                <stop offset="100%" style={{ stopColor: '#04213B', stopOpacity: 0.1 }} />
-                              </linearGradient>
-                            </defs>
-                            {/* Large geometric pattern */}
-                            <rect width="90" height="90" x="20" y="20" fill={`url(#grad-${index})`} rx="4" />
-                            <rect width="70" height="70" x="110" y="30" fill={`url(#grad-${index})`} rx="4" />
-                            <circle cx="50" cy="140" r="35" fill={`url(#grad-${index})`} />
-                            <circle cx="150" cy="130" r="25" fill={`url(#grad-${index})`} />
-                          </svg>
-                        </div>
-                      </div>
-                      )}
-                    </div>
-
-                    {/* Content */}
-                    <div className="w-full md:w-1/2 space-y-6">
-                      <div>
-                        <span className="text-xs text-primary-light font-light uppercase tracking-wider mb-3 block">
-                          {project.category}
-                        </span>
-                        <h3 className="text-3xl md:text-4xl font-light text-primary mb-6">
-                          {project.title}
-                        </h3>
-                        <p className="text-lg text-text-secondary font-light leading-relaxed">
-                          {project.description}
-                        </p>
-                        {project.url && (
-                          <div className="mt-4 flex items-center gap-2 text-primary hover:text-primary-light transition-colors font-light">
-                            <span>Ver proyecto</span>
-                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-                            </svg>
+                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center">
+                    
+                    {/* Visual Side (7 cols) */}
+                    <div className="lg:col-span-7 order-2 lg:order-1">
+                      <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl group">
+                        {project.image ? (
+                          <img 
+                            src={project.image} 
+                            alt={project.title}
+                            className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+                          />
+                        ) : (
+                          <div className="w-full h-full bg-primary-dark flex items-center justify-center">
+                            <span className="text-white/10 text-9xl font-serif italic">{project.title.charAt(0)}</span>
                           </div>
+                        )}
+                        
+                        {/* Overlay Content */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/20 to-transparent opacity-60 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-500" />
+                        
+                        {project.url && (
+                          <a 
+                            href={project.url} 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className="absolute bottom-8 right-8 bg-white/10 backdrop-blur-md border border-white/20 text-white px-6 py-3 rounded-full flex items-center gap-3 hover:bg-white hover:text-primary transition-all duration-300 opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0"
+                          >
+                            <span className="text-sm tracking-widest uppercase">Visitar Sitio</span>
+                            <ArrowUpRight className="w-4 h-4" />
+                          </a>
                         )}
                       </div>
                     </div>
+
+                    {/* Info Side (5 cols) */}
+                    <div className="lg:col-span-5 order-1 lg:order-2 space-y-8">
+                      <div>
+                        <div className="flex items-center gap-4 mb-6">
+                          <span className="text-xs font-bold tracking-[0.2em] uppercase text-accent">
+                            {project.category}
+                          </span>
+                          <div className="h-px flex-1 bg-primary/10" />
+                          <span className="text-xs font-light text-text-muted">
+                            {(currentIndex + 1).toString().padStart(2, '0')} / {projects.length.toString().padStart(2, '0')}
+                          </span>
+                        </div>
+                        
+                        <h3 className="text-4xl md:text-5xl font-light text-primary leading-tight mb-6">
+                          {project.title}
+                        </h3>
+                        
+                        <p className="text-lg text-text-secondary font-light leading-relaxed mb-8">
+                          {project.description}
+                        </p>
+                      </div>
+
+                      {/* Mini Cases List - Minimalist */}
+                      {Array.isArray(project.cases) && project.cases.length > 0 && (
+                        <div className="border-t border-primary/10 pt-8">
+                          <h4 className="text-xs font-bold uppercase tracking-widest text-text-muted mb-6">
+                            Casos Destacados
+                          </h4>
+                          <div className="space-y-4">
+                            {project.cases.slice(0, 2).map((caseItem) => (
+                              <div key={caseItem.id} className="group cursor-default">
+                                <div className="flex items-baseline justify-between mb-2">
+                                  <h5 className="text-lg font-medium text-primary group-hover:text-accent transition-colors">
+                                    {caseItem.title}
+                                  </h5>
+                                  {caseItem.link && (
+                                    <Link href={caseItem.link} className="opacity-0 group-hover:opacity-100 transition-opacity text-accent">
+                                      <ArrowUpRight className="w-4 h-4" />
+                                    </Link>
+                                  )}
+                                </div>
+                                <div className="flex gap-4 text-sm font-light text-text-secondary">
+                                  {caseItem.results?.metrics?.slice(0, 2).map((metric, idx) => (
+                                    <div key={idx} className="flex items-center gap-2">
+                                      <span className="w-1 h-1 rounded-full bg-accent" />
+                                      <span>{metric.label}: <strong className="font-medium text-primary">{metric.value}</strong></span>
+                                    </div>
+                                  ))}
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+                    </div>
+
                   </div>
                 </div>
-              ))}
-            </div>
-
-            {/* Navigation Dots */}
-            <div className="flex justify-center gap-2 mt-12">
-              {projects.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => goToSlide(index)}
-                  className={`transition-all duration-300 ${
-                    currentIndex === index 
-                      ? 'w-8 h-2 bg-primary rounded-full' 
-                      : 'w-2 h-2 bg-primary-light rounded-full hover:bg-primary'
-                  }`}
-                  aria-label={`Go to slide ${index + 1}`}
-                />
-              ))}
-            </div>
-
-            {/* Drag hint */}
-            <div className="flex items-center justify-center mt-6 gap-2 text-sm text-text-muted font-light">
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M8 9l4-4 4 4m0 6l-4 4-4-4" />
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16 15l-4-4-4 4" />
-              </svg>
-              <span>Drag to navigate</span>
-            </div>
+              );
+            })}
           </div>
+          
+          {/* Progress Bar */}
+          <div className="mt-16 h-1 w-full bg-primary/5 rounded-full overflow-hidden">
+            <div 
+              className="h-full bg-accent transition-all duration-500 ease-out"
+              style={{ width: `${((currentIndex + 1) / projects.length) * 100}%` }}
+            />
+          </div>
+
         </div>
       </div>
     </section>

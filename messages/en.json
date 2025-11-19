@@ -127,7 +127,12 @@
     "contact": "Contact",
     "problem": "Problem",
     "method": "Method",
-    "projects": "Projects"
+    "projects": "Projects",
+    "cases": "Cases"
+  },
+  "cases": {
+    "title": "Cases",
+    "subtitle": "A consolidated view of the highlighted cases we have solved for different brands and services.",
+    "loading": "Loading cases..."
   }
 }
-

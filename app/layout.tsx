@@ -27,8 +27,8 @@ export default function RootLayout({
   const gtmId = process.env.NEXT_PUBLIC_GTM_ID || 'GTM-56J4SKMV';
 
   return (
-    <html lang="en">
-      <body className={`${inter.variable} antialiased`}>
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${inter.variable} antialiased`} suppressHydrationWarning>
         {/* Google Tag Manager (noscript) - Debe estar inmediatamente después del body */}
         <GoogleTagManagerNoscript gtmId={gtmId} />
         {/* Inicializar dataLayer antes de GTM */}

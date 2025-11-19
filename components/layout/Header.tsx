@@ -38,7 +38,7 @@ export default function Header() {
       }
     );
 
-    const sectionIds = ['problem', 'method', 'projects'];
+    const sectionIds = ['problem', 'method', 'projects', 'cases'];
     sectionIds.forEach((id) => {
       const el = document.getElementById(id);
       if (el) {
@@ -96,13 +96,29 @@ export default function Header() {
             ].map(({ id, label }) => {
               const isActive = activeSection === id;
               const baseColor = scrolled
-                ? 'text-primary/70 hover:text-primary'
+                ? 'text-primary/70 hover:text-accent'
                 : 'text-white/70 hover:text-white';
+
+              const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+                e.preventDefault();
+                const element = document.getElementById(id);
+                if (element) {
+                  const headerOffset = 80; // Altura del header
+                  const elementPosition = element.getBoundingClientRect().top;
+                  const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                  window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                  });
+                }
+              };
 
               return (
                 <a
                   key={id}
                   href={`#${id}`}
+                  onClick={handleClick}
                   className={`group relative text-sm font-light tracking-wide transition-all duration-300 ${baseColor} ${
                     isActive
                       ? scrolled
@@ -115,17 +131,34 @@ export default function Header() {
                   <span className="relative z-[1]">{label}</span>
                   <span
                     className={`absolute inset-x-0 -bottom-2 h-0.5 origin-left transform rounded-full transition-transform duration-300 ease-out ${
-                      scrolled ? 'bg-primary' : 'bg-white'
+                      scrolled ? 'bg-accent' : 'bg-white'
                     } ${isActive ? 'scale-x-100 opacity-100' : 'scale-x-0 opacity-0'}`}
                   />
                   <span
-                    className={`pointer-events-none absolute inset-0 -z-[1] scale-95 rounded-full bg-primary/5 opacity-0 transition-all duration-300 ease-out ${
+                    className={`pointer-events-none absolute inset-0 -z-[1] scale-95 rounded-full bg-accent/5 opacity-0 transition-all duration-300 ease-out ${
                       scrolled ? 'group-hover:opacity-100 group-hover:scale-100' : 'group-hover:bg-white/10'
                     } ${isActive ? 'opacity-100 scale-100' : ''}`}
                   />
                 </a>
               );
             })}
+
+            {/* Cases Link (Separate Page) */}
+            <Link
+              href={`/${locale}/cases`}
+              className={`group relative text-sm font-light tracking-wide transition-all duration-300 ${
+                scrolled
+                  ? 'text-primary/70 hover:text-accent'
+                  : 'text-white/70 hover:text-white'
+              } ${pathname === `/${locale}/cases` ? (scrolled ? 'text-primary' : 'text-white') : ''}`}
+            >
+              <span className="relative z-[1]">{t('cases', { defaultMessage: 'Casos' })}</span>
+              <span
+                className={`absolute inset-x-0 -bottom-2 h-0.5 origin-left transform rounded-full transition-transform duration-300 ease-out ${
+                  scrolled ? 'bg-accent' : 'bg-white'
+                } ${pathname === `/${locale}/cases` ? 'scale-x-100 opacity-100' : 'scale-x-0 opacity-0'}`}
+              />
+            </Link>
           </div>
 
           {/* Language Toggle & CTA */}
@@ -134,7 +167,7 @@ export default function Header() {
               onClick={toggleLanguage}
               className={`flex items-center gap-1 text-xs font-light transition-colors ${
                 scrolled 
-                  ? 'text-primary hover:text-primary-light' 
+                  ? 'text-primary hover:text-accent' 
                   : 'text-white hover:text-white/80'
               }`}
             >
@@ -151,7 +184,7 @@ export default function Header() {
               href="#contact" 
               className={`hidden md:block text-xs font-light px-4 py-2 rounded transition-all duration-200 ${
                 scrolled 
-                  ? 'text-primary border border-primary hover:bg-primary hover:text-white' 
+                  ? 'text-primary border border-primary hover:bg-primary hover:text-white hover:border-primary' 
                   : 'text-white border border-white hover:bg-white hover:text-primary'
               }`}
             >

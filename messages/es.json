@@ -122,12 +122,18 @@
     ]
   },
   "nav": {
-    "home": "Inicio",
-    "about": "Acerca de",
-    "contact": "Contacto",
-    "problem": "Problema",
-    "method": "Método",
-    "projects": "Proyectos"
+  "home": "Inicio",
+  "about": "Acerca de",
+  "contact": "Contacto",
+  "problem": "Problema",
+  "method": "Método",
+  "projects": "Proyectos",
+  "cases": "Casos"
+  },
+  "cases": {
+    "title": "Casos",
+    "subtitle": "Una vista consolidada de los casos destacados que hemos resuelto para diferentes marcas y servicios.",
+    "loading": "Cargando casos..."
   }
 }
 

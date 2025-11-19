@@ -207,7 +207,7 @@ export default function Contact() {
 
                   {/* Personal Information Section */}
                   <div className="space-y-6 pb-6 border-b border-primary-light/10">
-                    <h3 className="text-sm uppercase tracking-[0.2em] text-primary-light/70 font-light mb-4">
+                    <h3 className="text-sm uppercase tracking-[0.2em] text-accent font-light mb-4">
                       Información Personal
                     </h3>
                     
@@ -225,8 +225,8 @@ export default function Contact() {
                             setFormData({ ...formData, fullName: e.target.value });
                             if (errors.fullName) setErrors({ ...errors, fullName: '' });
                           }}
-                          className={`w-full bg-transparent border border-primary-light/20 rounded-lg focus:border-primary focus:outline-none px-4 py-3 text-base font-light text-primary transition-all duration-300 ${
-                            errors.fullName ? 'border-rose-400 bg-rose-50/50' : 'hover:border-primary-light/40'
+                          className={`w-full bg-transparent border border-primary-light/20 rounded-lg focus:border-accent focus:outline-none px-4 py-3 text-base font-light text-primary transition-all duration-300 ${
+                            errors.fullName ? 'border-rose-400 bg-rose-50/50' : 'hover:border-accent/50'
                           }`}
                           placeholder={t('form.fullNamePlaceholder')}
                           minLength={2}
@@ -251,8 +251,8 @@ export default function Contact() {
                             setFormData({ ...formData, company: e.target.value });
                             if (errors.company) setErrors({ ...errors, company: '' });
                           }}
-                          className={`w-full bg-transparent border border-primary-light/20 rounded-lg focus:border-primary focus:outline-none px-4 py-3 text-base font-light text-primary transition-all duration-300 ${
-                            errors.company ? 'border-rose-400 bg-rose-50/50' : 'hover:border-primary-light/40'
+                          className={`w-full bg-transparent border border-primary-light/20 rounded-lg focus:border-accent focus:outline-none px-4 py-3 text-base font-light text-primary transition-all duration-300 ${
+                            errors.company ? 'border-rose-400 bg-rose-50/50' : 'hover:border-accent/50'
                           }`}
                           placeholder={t('form.companyPlaceholder')}
                           maxLength={100}
@@ -277,8 +277,8 @@ export default function Contact() {
                             setFormData({ ...formData, email: e.target.value });
                             if (errors.email) setErrors({ ...errors, email: '' });
                           }}
-                          className={`w-full bg-transparent border border-primary-light/20 rounded-lg focus:border-primary focus:outline-none px-4 py-3 text-base font-light text-primary transition-all duration-300 ${
-                            errors.email ? 'border-rose-400 bg-rose-50/50' : 'hover:border-primary-light/40'
+                          className={`w-full bg-transparent border border-primary-light/20 rounded-lg focus:border-accent focus:outline-none px-4 py-3 text-base font-light text-primary transition-all duration-300 ${
+                            errors.email ? 'border-rose-400 bg-rose-50/50' : 'hover:border-accent/50'
                           }`}
                           placeholder={t('form.emailPlaceholder')}
                           maxLength={100}
@@ -299,8 +299,8 @@ export default function Contact() {
                             setFormData({ ...formData, country: e.target.value });
                             if (errors.country) setErrors({ ...errors, country: '' });
                           }}
-                          className={`w-full bg-transparent border border-primary-light/20 rounded-lg focus:border-primary focus:outline-none px-4 py-3 text-base font-light text-primary transition-all duration-300 ${
-                            errors.country ? 'border-rose-400 bg-rose-50/50' : 'hover:border-primary-light/40'
+                          className={`w-full bg-transparent border border-primary-light/20 rounded-lg focus:border-accent focus:outline-none px-4 py-3 text-base font-light text-primary transition-all duration-300 ${
+                            errors.country ? 'border-rose-400 bg-rose-50/50' : 'hover:border-accent/50'
                           }`}
                           placeholder={t('form.countryPlaceholder')}
                           maxLength={60}
@@ -323,8 +323,8 @@ export default function Contact() {
                             setFormData({ ...formData, phone: e.target.value });
                             if (errors.phone) setErrors({ ...errors, phone: '' });
                           }}
-                          className={`w-full bg-transparent border border-primary-light/20 rounded-lg focus:border-primary focus:outline-none px-4 py-3 text-base font-light text-primary transition-all duration-300 ${
-                            errors.phone ? 'border-rose-400 bg-rose-50/50' : 'hover:border-primary-light/40'
+                          className={`w-full bg-transparent border border-primary-light/20 rounded-lg focus:border-accent focus:outline-none px-4 py-3 text-base font-light text-primary transition-all duration-300 ${
+                            errors.phone ? 'border-rose-400 bg-rose-50/50' : 'hover:border-accent/50'
                           }`}
                           placeholder={t('form.phonePlaceholder')}
                           minLength={10}
@@ -341,7 +341,7 @@ export default function Contact() {
 
                   {/* Service Selection Section */}
                   <div className="space-y-4 pb-6 border-b border-primary-light/10">
-                    <h3 className="text-sm uppercase tracking-[0.2em] text-primary-light/70 font-light mb-4">
+                    <h3 className="text-sm uppercase tracking-[0.2em] text-accent font-light mb-4">
                       {t('form.interestedIn')}
                     </h3>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -355,8 +355,8 @@ export default function Contact() {
                           }}
                           className={`px-4 py-3 border rounded-lg transition-all duration-300 font-light text-sm text-left ${
                             formData.service === option.value 
-                              ? 'border-primary bg-primary/10 text-primary shadow-sm shadow-primary/10' 
-                              : 'border-primary-light/20 bg-transparent text-text-secondary hover:border-primary-light/40 hover:bg-primary/5'
+                              ? 'border-accent bg-accent/10 text-primary shadow-sm shadow-accent/10' 
+                              : 'border-primary-light/20 bg-transparent text-text-secondary hover:border-accent/50 hover:bg-accent/5'
                           }`}
                         >
                           {option.labels[locale as 'en' | 'es']}
@@ -370,7 +370,7 @@ export default function Contact() {
 
                   {/* Schedule Section */}
                   <div className="space-y-4 pb-6 border-b border-primary-light/10">
-                    <h3 className="text-sm uppercase tracking-[0.2em] text-primary-light/70 font-light mb-4">
+                    <h3 className="text-sm uppercase tracking-[0.2em] text-accent font-light mb-4">
                       Disponibilidad
                     </h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -384,7 +384,7 @@ export default function Contact() {
                           value={formData.date}
                           onChange={(e) => setFormData({ ...formData, date: e.target.value })}
                           min={new Date().toISOString().split('T')[0]}
-                          className="w-full bg-transparent border border-primary-light/20 rounded-lg focus:border-primary focus:outline-none px-4 py-3 text-base font-light text-primary transition-all duration-300 hover:border-primary-light/40"
+                          className="w-full bg-transparent border border-primary-light/20 rounded-lg focus:border-accent focus:outline-none px-4 py-3 text-base font-light text-primary transition-all duration-300 hover:border-accent/50"
                         />
                       </div>
                       <div>
@@ -396,7 +396,7 @@ export default function Contact() {
                           required
                           value={formData.time}
                           onChange={(e) => setFormData({ ...formData, time: e.target.value })}
-                          className="w-full bg-transparent border border-primary-light/20 rounded-lg focus:border-primary focus:outline-none px-4 py-3 text-base font-light text-primary transition-all duration-300 hover:border-primary-light/40"
+                          className="w-full bg-transparent border border-primary-light/20 rounded-lg focus:border-accent focus:outline-none px-4 py-3 text-base font-light text-primary transition-all duration-300 hover:border-accent/50"
                         />
                       </div>
                     </div>
@@ -413,15 +413,15 @@ export default function Contact() {
                         setFormData({ ...formData, privacyAccepted: e.target.checked });
                         if (errors.privacyAccepted) setErrors({ ...errors, privacyAccepted: '' });
                       }}
-                      className="mt-1 w-5 h-5 border-2 border-primary-light/30 rounded focus:ring-2 focus:ring-primary/30 cursor-pointer accent-primary transition-all duration-300"
+                      className="mt-1 w-5 h-5 border-2 border-primary-light/30 rounded focus:ring-2 focus:ring-accent/30 cursor-pointer accent-accent transition-all duration-300"
                     />
                     <label htmlFor="privacy" className="text-sm text-text-secondary font-light leading-relaxed cursor-pointer flex-1">
                       {t('form.privacyText')}{' '}
-                      <a href="/privacy" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary-light underline transition-colors">
+                      <a href="/privacy" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-accent underline transition-colors">
                         {t('form.privacyPolicy')}
                       </a>
                       {' '}{t('form.and')}{' '}
-                      <a href="/terms" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-primary-light underline transition-colors">
+                      <a href="/terms" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-accent underline transition-colors">
                         {t('form.terms')}
                       </a>
                     </label>
@@ -435,7 +435,7 @@ export default function Contact() {
                     <button
                       type="submit"
                       disabled={submitted}
-                      className="px-8 py-4 bg-primary text-white hover:bg-primary-light active:bg-primary-dark transition-all duration-300 rounded-lg font-light text-base disabled:opacity-50 disabled:cursor-not-allowed shadow-sm hover:shadow-md disabled:hover:shadow-sm"
+                      className="px-8 py-4 bg-primary text-white hover:bg-accent active:bg-accent-dark transition-all duration-300 rounded-lg font-light text-base disabled:opacity-50 disabled:cursor-not-allowed shadow-sm hover:shadow-md disabled:hover:shadow-sm"
                     >
                       {submitted ? t('form.submitting') : t('form.submit')}
                     </button>

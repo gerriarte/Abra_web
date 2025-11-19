@@ -78,7 +78,7 @@ export default function Method() {
               >
                 <div className="flex items-center justify-between text-primary">
                   <span className="text-sm font-light">{`0${index + 1}`}</span>
-                  <span className="rounded-full bg-primary/10 p-3">{pillarIcons[index]}</span>
+                  <span className="rounded-full bg-accent/10 p-3">{pillarIcons[index]}</span>
                 </div>
                 <h3 className="text-xl font-light text-primary leading-snug">{t(`${key}.title`)}</h3>
                 <p className="text-sm md:text-base text-text-secondary/80 font-light leading-relaxed">

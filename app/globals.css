@@ -9,6 +9,11 @@
   --color-primary-dark: #03182f;
   --color-primary-darkest: #01101f;
   
+  /* New Accent Color */
+  --color-accent: #00c6ba;
+  --color-accent-light: #33d1c8; /* lighter version for hovers */
+  --color-accent-dark: #009e95;  /* darker version */
+
   --color-text-primary: #04213B;
   --color-text-secondary: #2f4f4f;
   --color-text-muted: #6b7a8a;

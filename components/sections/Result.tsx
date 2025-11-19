@@ -23,7 +23,7 @@ export default function Result() {
 
           {/* CTA Button */}
           <div className={`flex justify-center transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
-            <button className="bg-white text-primary hover:bg-off transition-colors px-8 py-4 text-lg font-light">
+            <button className="bg-white text-primary hover:bg-accent hover:text-white transition-colors px-8 py-4 text-lg font-light">
               {t('result.cta')}
             </button>
           </div>
