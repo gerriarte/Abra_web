@@ -3,11 +3,6 @@
   "buildCommand": "npm run build",
   "devCommand": "npm run dev",
   "installCommand": "npm install",
-  "regions": ["iad1"],
-  "functions": {
-    "app/**": {
-      "runtime": "nodejs24.x"
-    }
-  }
+  "regions": ["iad1"]
 }
 
