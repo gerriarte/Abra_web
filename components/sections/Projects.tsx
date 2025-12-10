@@ -157,57 +157,107 @@ export default function Projects() {
                     
                     {/* Visual Side (7 cols) */}
                     <div className="lg:col-span-7 order-2 lg:order-1">
-                      <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl group">
-                        {project.image ? (
-                          <img 
-                            src={project.image} 
-                            alt={project.title}
-                            className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
-                          />
-                        ) : (
-                          <div className="w-full h-full bg-primary-dark flex items-center justify-center">
-                            <span className="text-white/10 text-9xl font-serif italic">{project.title.charAt(0)}</span>
+                      {project.cases && project.cases.length > 0 && project.cases[0].link ? (
+                        <Link href={project.cases[0].link} className="block">
+                          <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl group cursor-pointer">
+                            {project.image ? (
+                              <img 
+                                src={project.image} 
+                                alt={project.title}
+                                className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+                              />
+                            ) : (
+                              <div className="w-full h-full bg-primary-dark flex items-center justify-center">
+                                <span className="text-white/10 text-9xl font-serif italic">{project.title.charAt(0)}</span>
+                              </div>
+                            )}
+                            
+                            {/* Overlay Content */}
+                            <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/20 to-transparent opacity-60 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-500" />
+                            
+                            <div className="absolute bottom-8 right-8 bg-white/10 backdrop-blur-md border border-white/20 text-white px-6 py-3 rounded-full flex items-center gap-3 hover:bg-white hover:text-primary transition-all duration-300 opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0">
+                              <span className="text-sm tracking-widest uppercase">Ver Caso</span>
+                              <ArrowUpRight className="w-4 h-4" />
+                            </div>
                           </div>
-                        )}
-                        
-                        {/* Overlay Content */}
-                        <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/20 to-transparent opacity-60 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-500" />
-                        
-                        {project.url && (
-                          <a 
-                            href={project.url} 
-                            target="_blank" 
-                            rel="noopener noreferrer"
-                            className="absolute bottom-8 right-8 bg-white/10 backdrop-blur-md border border-white/20 text-white px-6 py-3 rounded-full flex items-center gap-3 hover:bg-white hover:text-primary transition-all duration-300 opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0"
-                          >
-                            <span className="text-sm tracking-widest uppercase">Visitar Sitio</span>
-                            <ArrowUpRight className="w-4 h-4" />
-                          </a>
-                        )}
-                      </div>
+                        </Link>
+                      ) : (
+                        <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl group">
+                          {project.image ? (
+                            <img 
+                              src={project.image} 
+                              alt={project.title}
+                              className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+                            />
+                          ) : (
+                            <div className="w-full h-full bg-primary-dark flex items-center justify-center">
+                              <span className="text-white/10 text-9xl font-serif italic">{project.title.charAt(0)}</span>
+                            </div>
+                          )}
+                          
+                          {/* Overlay Content */}
+                          <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/20 to-transparent opacity-60 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-500" />
+                          
+                          {project.url && (
+                            <a 
+                              href={project.url} 
+                              target="_blank" 
+                              rel="noopener noreferrer"
+                              className="absolute bottom-8 right-8 bg-white/10 backdrop-blur-md border border-white/20 text-white px-6 py-3 rounded-full flex items-center gap-3 hover:bg-white hover:text-primary transition-all duration-300 opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0"
+                            >
+                              <span className="text-sm tracking-widest uppercase">Visitar Sitio</span>
+                              <ArrowUpRight className="w-4 h-4" />
+                            </a>
+                          )}
+                        </div>
+                      )}
                     </div>
 
                     {/* Info Side (5 cols) */}
                     <div className="lg:col-span-5 order-1 lg:order-2 space-y-8">
-                      <div>
-                        <div className="flex items-center gap-4 mb-6">
-                          <span className="text-xs font-bold tracking-[0.2em] uppercase text-accent">
-                            {project.category}
-                          </span>
-                          <div className="h-px flex-1 bg-primary/10" />
-                          <span className="text-xs font-light text-text-muted">
-                            {(currentIndex + 1).toString().padStart(2, '0')} / {projects.length.toString().padStart(2, '0')}
-                          </span>
+                      {project.cases && project.cases.length > 0 && project.cases[0].link ? (
+                        <Link href={project.cases[0].link} className="block group">
+                          <div>
+                            <div className="flex items-center gap-4 mb-6">
+                              <span className="text-xs font-bold tracking-[0.2em] uppercase text-accent">
+                                {project.category}
+                              </span>
+                              <div className="h-px flex-1 bg-primary/10" />
+                              <span className="text-xs font-light text-text-muted">
+                                {(currentIndex + 1).toString().padStart(2, '0')} / {projects.length.toString().padStart(2, '0')}
+                              </span>
+                            </div>
+                            
+                            <h3 className="text-4xl md:text-5xl font-light text-primary leading-tight mb-6 group-hover:text-accent transition-colors">
+                              {project.title}
+                            </h3>
+                            
+                            <p className="text-lg text-text-secondary font-light leading-relaxed mb-8">
+                              {project.description}
+                            </p>
+                          </div>
+                        </Link>
+                      ) : (
+                        <div>
+                          <div className="flex items-center gap-4 mb-6">
+                            <span className="text-xs font-bold tracking-[0.2em] uppercase text-accent">
+                              {project.category}
+                            </span>
+                            <div className="h-px flex-1 bg-primary/10" />
+                            <span className="text-xs font-light text-text-muted">
+                              {(currentIndex + 1).toString().padStart(2, '0')} / {projects.length.toString().padStart(2, '0')}
+                            </span>
+                          </div>
+                          
+                          <h3 className="text-4xl md:text-5xl font-light text-primary leading-tight mb-6">
+                            {project.title}
+                          </h3>
+                          
+                          <p className="text-lg text-text-secondary font-light leading-relaxed mb-8">
+                            {project.description}
+                          </p>
                         </div>
-                        
-                        <h3 className="text-4xl md:text-5xl font-light text-primary leading-tight mb-6">
-                          {project.title}
-                        </h3>
-                        
-                        <p className="text-lg text-text-secondary font-light leading-relaxed mb-8">
-                          {project.description}
-                        </p>
-                      </div>
+                      )}
 
                       {/* Mini Cases List - Minimalist */}
                       {Array.isArray(project.cases) && project.cases.length > 0 && (
@@ -217,26 +267,40 @@ export default function Projects() {
                           </h4>
                           <div className="space-y-4">
                             {project.cases.slice(0, 2).map((caseItem) => (
-                              <div key={caseItem.id} className="group cursor-default">
-                                <div className="flex items-baseline justify-between mb-2">
-                                  <h5 className="text-lg font-medium text-primary group-hover:text-accent transition-colors">
-                                    {caseItem.title}
-                                  </h5>
-                                  {caseItem.link && (
-                                    <Link href={caseItem.link} className="opacity-0 group-hover:opacity-100 transition-opacity text-accent">
-                                      <ArrowUpRight className="w-4 h-4" />
-                                    </Link>
-                                  )}
+                              caseItem.link ? (
+                                <Link key={caseItem.id} href={caseItem.link} className="block group cursor-pointer">
+                                  <div className="flex items-baseline justify-between mb-2">
+                                    <h5 className="text-lg font-medium text-primary group-hover:text-accent transition-colors">
+                                      {caseItem.title}
+                                    </h5>
+                                    <ArrowUpRight className="w-4 h-4 text-accent opacity-0 group-hover:opacity-100 transition-opacity" />
+                                  </div>
+                                  <div className="flex gap-4 text-sm font-light text-text-secondary">
+                                    {caseItem.results?.metrics?.slice(0, 2).map((metric, idx) => (
+                                      <div key={idx} className="flex items-center gap-2">
+                                        <span className="w-1 h-1 rounded-full bg-accent" />
+                                        <span>{metric.label}: <strong className="font-medium text-primary">{metric.value}</strong></span>
+                                      </div>
+                                    ))}
+                                  </div>
+                                </Link>
+                              ) : (
+                                <div key={caseItem.id} className="group cursor-default">
+                                  <div className="flex items-baseline justify-between mb-2">
+                                    <h5 className="text-lg font-medium text-primary group-hover:text-accent transition-colors">
+                                      {caseItem.title}
+                                    </h5>
+                                  </div>
+                                  <div className="flex gap-4 text-sm font-light text-text-secondary">
+                                    {caseItem.results?.metrics?.slice(0, 2).map((metric, idx) => (
+                                      <div key={idx} className="flex items-center gap-2">
+                                        <span className="w-1 h-1 rounded-full bg-accent" />
+                                        <span>{metric.label}: <strong className="font-medium text-primary">{metric.value}</strong></span>
+                                      </div>
+                                    ))}
+                                  </div>
                                 </div>
-                                <div className="flex gap-4 text-sm font-light text-text-secondary">
-                                  {caseItem.results?.metrics?.slice(0, 2).map((metric, idx) => (
-                                    <div key={idx} className="flex items-center gap-2">
-                                      <span className="w-1 h-1 rounded-full bg-accent" />
-                                      <span>{metric.label}: <strong className="font-medium text-primary">{metric.value}</strong></span>
-                                    </div>
-                                  ))}
-                                </div>
-                              </div>
+                              )
                             ))}
                           </div>
                         </div>

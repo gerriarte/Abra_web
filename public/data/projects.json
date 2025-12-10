@@ -1,181 +1,107 @@
 {
   "projects": [
     {
-      "id": 1,
-      "title": "TechFlow Systems",
-      "category": "Branding & Web",
-      "description": "Rebranding integral y desarrollo de plataforma corporativa para empresa SaaS líder en automatización industrial.",
-      "image": "https://picsum.photos/seed/techflow/800/600",
-      "url": "https://example.com",
+      "id": 2,
+      "title": "Monyte",
+      "category": "Branding & Desarrollo",
+      "description": "Plataforma unificada para arbitraje de criptoactivos en LATAM con dashboard integral para operaciones crypto y fiat.",
+      "image": "/monyte/Monyte Banner.png",
       "cases": [
         {
-          "id": "techflow-case-1",
-          "title": "TechFlow: Escalar la Identidad Visual",
-          "relatedServices": ["Branding", "Web Design", "UX/UI"],
-          "challenge": "La marca visual no reflejaba la innovación tecnológica de sus nuevos productos de IA.",
-          "solution": "Sistema de diseño modular basado en la precisión de la ingeniería y la fluidez de los datos.",
-          "resultsSummary": "Aumento del 40% en leads cualificados post-lanzamiento.",
+          "id": "monyte-case-001",
+          "title": "Plataforma Unificada para Arbitraje de Criptoactivos",
+          "relatedServices": [
+            "Branding",
+            "UX/UI Design",
+            "Desarrollo Full-Stack",
+            "Consultoría Crypto"
+          ],
+          "challenge": "Los árbitros de criptoactivos necesitaban gestionar operaciones crypto y fiat de manera unificada y automatizada.",
+          "solution": "Dashboard integral con sistema de administración centralizado, KYC/AML y gestión unificada de operaciones multi-activo.",
+          "resultsSummary": "100% de operaciones unificadas y reducción del 75% en tiempo de procesamiento.",
           "results": {
             "metrics": [
-              { "label": "Leads", "value": "+40%" },
-              { "label": "Engagement", "value": "2.5x" }
+              {
+                "label": "Operaciones Unificadas",
+                "value": "100%"
+              },
+              {
+                "label": "Tiempo de Procesamiento",
+                "value": "-75%"
+              }
             ]
           },
-          "link": "/case-studies/techflow"
+          "link": "/case-studies/monyte"
         }
       ]
     },
     {
-      "id": 2,
-      "title": "Lumina Agency",
-      "category": "Marketing Digital",
-      "description": "Estrategia de captación B2B para agencia creativa.",
-      "image": "https://picsum.photos/seed/lumina/800/600",
-      "cases": []
-    },
-    {
       "id": 3,
-      "title": "Apex Financial",
-      "category": "Desarrollo Web",
-      "description": "Portal de clientes seguro y dashboard financiero en tiempo real.",
-      "image": "https://picsum.photos/seed/apex/800/600",
-      "cases": []
-    },
-    {
-      "id": 999,
-      "title": "Casos Destacados",
-      "category": "Casos de Estudio",
-      "description": "Nuestros casos de éxito más recientes.",
+      "title": "Securitas",
+      "category": "UX/UI & Desarrollo",
+      "description": "Transformación digital para seguridad aeroportuaria con dashboard integral para optimización de procesos operativos.",
+      "image": "/Securitas/Mockup dashboard.png",
       "cases": [
         {
-          "id": "different-coffee-case",
-          "title": "Different Coffee: Redefiniendo la Experiencia",
+          "id": "securitas-case-001",
+          "title": "Transformación Digital para Seguridad Aeroportuaria",
           "relatedServices": [
-            "Estrategia",
-            "Paid Media",
-            "Email Marketing"
-          ],
-          "challenge": "Estancamiento en e-commerce y CPA alto en un mercado saturado.",
-          "solution": "Estrategia Full-Funnel integrando ASMR, Google Shopping y Email Automation.",
-          "resultsSummary": "ROAS 4.5x y Reducción de CPA en 32%.",
-          "results": {
-            "metrics": [
-              {
-                "label": "ROAS",
-                "value": "4.5x"
-              },
-              {
-                "label": "CPA",
-                "value": "-32%"
-              }
-            ]
-          },
-          "link": "/case-studies/different-coffee",
-          "image": "https://picsum.photos/seed/coffee/800/600"
-        },
-        {
-          "id": "urban-mobility-case",
-          "title": "Urban Go: Movilidad Sostenible",
-          "relatedServices": [
-            "App Design",
-            "Go-to-Market",
-            "Branding"
-          ],
-          "challenge": "Lanzamiento de app de movilidad en un mercado dominado por gigantes.",
-          "solution": "Posicionamiento hiper-local y diseño de app centrado en la comunidad.",
-          "resultsSummary": "10k descargas en el primer mes con CAC 50% menor al promedio.",
-          "results": {
-            "metrics": [
-              {
-                "label": "Descargas",
-                "value": "10k"
-              },
-              {
-                "label": "CAC",
-                "value": "$2.5"
-              }
-            ]
-          },
-          "image": "https://picsum.photos/seed/urban/800/600",
-          "link": "/case-studies/urban-mobility"
-        },
-        {
-          "id": "vertex-construction-case",
-          "title": "Vertex: Construyendo Confianza Digital",
-          "relatedServices": [
+            "UX/UI Design",
             "Web Development",
-            "SEO",
-            "Lead Gen"
+            "Full-Stack Development",
+            "User Testing"
           ],
-          "challenge": "Constructora de lujo con nula presencia digital y dependencia del boca a boca.",
-          "solution": "Website inmersivo tipo showroom y estrategia SEO local de alto valor.",
-          "resultsSummary": "Generación de 5 proyectos millonarios en Q1.",
+          "challenge": "Securitas necesitaba optimizar procesos de control, gestión, revisión y seguimiento de operaciones de seguridad aeroportuaria.",
+          "solution": "Re-diseño de experiencia de usuario, diseño de interfaz, desarrollo front-end y back-end con pruebas de usuario y entrenamiento.",
+          "resultsSummary": "100% de optimización de procesos y aumento del 60% en eficiencia operativa.",
           "results": {
             "metrics": [
               {
-                "label": "Pipeline",
-                "value": "$5M+"
+                "label": "Optimización",
+                "value": "100%"
               },
               {
-                "label": "Tráfico Orgánico",
-                "value": "+300%"
+                "label": "Eficiencia",
+                "value": "+60%"
               }
             ]
           },
-          "image": "https://picsum.photos/seed/vertex/800/600",
-          "link": "/case-studies/vertex-construction"
-        },
+          "link": "/case-studies/securitas"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "RealArt Crypto",
+      "category": "UX/UI & Blockchain",
+      "description": "Plataforma de inversión en arte con Blockchain y Web3 para democratizar el acceso a piezas de arte curadas.",
+      "image": "/RAC/Mockup Website.png",
+      "cases": [
         {
-          "id": "nova-health-case",
-          "title": "Nova Health: Telemedicina Accesible",
+          "id": "rac-case-001",
+          "title": "Plataforma de Inversión en Arte con Blockchain y Web3",
           "relatedServices": [
-            "Product Design",
-            "Growth",
-            "Automation"
+            "UX/UI Design",
+            "Blockchain Consulting",
+            "Crypto Consulting",
+            "Web3 Consulting"
           ],
-          "challenge": "Alta tasa de abandono en el proceso de agendamiento de citas.",
-          "solution": "Rediseño UX del funnel de reserva y recordatorios automatizados por WhatsApp.",
-          "resultsSummary": "Reducción del abandono del 60% a 15%.",
+          "challenge": "El mercado del arte tradicionalmente ha sido exclusivo y de difícil acceso para la mayoría de las personas.",
+          "solution": "Plataforma que democratiza el acceso a piezas de arte curadas mediante NFT's, Blockchain y Web3, permitiendo inversión fragmentada y trazabilidad.",
+          "resultsSummary": "100% de democratización del arte y trazabilidad blockchain completa.",
           "results": {
             "metrics": [
               {
-                "label": "Conversión",
-                "value": "+45%"
+                "label": "Democratización",
+                "value": "100%"
               },
               {
-                "label": "No-Shows",
-                "value": "-80%"
+                "label": "Accesibilidad",
+                "value": "+85%"
               }
             ]
           },
-          "image": "https://picsum.photos/seed/nova/800/600",
-          "link": "/case-studies/nova-health"
-        },
-        {
-          "id": "eco-packaging-case",
-          "title": "EcoPack: B2B Lead Generation",
-          "relatedServices": [
-            "LinkedIn Ads",
-            "Content Strategy",
-            "CRM"
-          ],
-          "challenge": "Ciclos de venta B2B largos y dificultad para llegar a tomadores de decisión.",
-          "solution": "Estrategia de Account-Based Marketing (ABM) en LinkedIn y nutrición de leads.",
-          "resultsSummary": "Cierre de contratos con 3 Fortune 500 companies.",
-          "results": {
-            "metrics": [
-              {
-                "label": "Deals Cerrados",
-                "value": "3"
-              },
-              {
-                "label": "ROI",
-                "value": "12x"
-              }
-            ]
-          },
-          "image": "https://picsum.photos/seed/ecopack/800/600",
-          "link": "/case-studies/eco-packaging"
+          "link": "/case-studies/rac"
         }
       ]
     }

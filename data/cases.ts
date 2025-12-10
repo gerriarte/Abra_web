@@ -12,8 +12,8 @@ export interface TeamMember {
 
 export interface ProjectDetailsType {
   logo?: string;
-  year: string;
-  duration: string;
+  year?: string;
+  duration?: string;
   services: string[];
   team: TeamMember[];
 }
@@ -28,6 +28,15 @@ export interface CaseStudy {
   action: string;
   results: Metric[];
   projectDetails: ProjectDetailsType;
+  images?: string[];
+  heroImage?: string;
+  titleEn?: string;
+  brandDescriptionEn?: string;
+  situationEn?: string;
+  taskEn?: string;
+  actionEn?: string;
+  resultsEn?: Metric[];
+  projectDetailsEn?: ProjectDetailsType;
 }
 
 export const CASES_DATA: Record<string, CaseStudy> = {
@@ -176,5 +185,125 @@ export const CASES_DATA: Record<string, CaseStudy> = {
         { role: 'Content Lead', name: 'Lucia P.' }
       ]
     }
+  },
+  'monyte': {
+    id: 'monyte-case-001',
+    client: 'Monyte',
+    title: 'Plataforma Unificada para Arbitraje de Criptoactivos',
+    brandDescription: 'Monyte es una consultora que provee una solución integral para los árbitros de cripto-activos en LATAM. Ayuda desde la creación de la empresa en una jurisdicción Crypto-friendly hasta un sistema de KYC/AML y la debida diligencia que le permitirá enfocarse en su negocio.',
+    situation: 'Los árbitros de criptoactivos en LATAM necesitaban una solución que les permitiera gestionar operaciones tanto en cripto como en fiat de manera eficiente. La falta de una plataforma unificada generaba ineficiencias operativas y dificultaba el control centralizado de las operaciones.',
+    task: 'Crear un dashboard que permita al usuario crear operaciones tanto crypto como fiat en un solo lugar de manera automatizada y controlarla desde un administrador.',
+    action: 'Desarrollamos una solución completa que incluye Branding, diseño de experiencia de usuario, diseño web, Diseño de interfaz de usuario, desarrollo front-end y back-end. Desarrollo e integración, Consultoría en Crypto, Capacitación y Soporte.',
+    results: [
+      { label: 'Operaciones Unificadas', value: '100', suffix: '%' },
+      { label: 'Tiempo de Procesamiento', value: '-75', suffix: '%' },
+      { label: 'Cumplimiento Normativo', value: '100', suffix: '%' },
+      { label: 'Satisfacción del Cliente', value: '9.5', suffix: '/10' },
+    ],
+    projectDetails: {
+      services: ['Branding', 'Diseño de Experiencia de Usuario', 'Diseño Web', 'Diseño de Interfaz de Usuario', 'Desarrollo Front-end y Back-end', 'Desarrollo e Integración', 'Consultoría en Crypto', 'Capacitación y Soporte'],
+      team: []
+    },
+    // English translations
+    titleEn: 'Unified Platform for Cryptocurrency Arbitrage',
+    brandDescriptionEn: 'Monyte is a consulting firm that provides a comprehensive solution for cryptocurrency arbitrageurs in LATAM. It helps from company formation in a Crypto-friendly jurisdiction to a KYC/AML system and due diligence that will allow them to focus on their business.',
+    situationEn: 'Cryptocurrency arbitrageurs in LATAM needed a solution that would allow them to manage operations in both crypto and fiat efficiently. The lack of a unified platform generated operational inefficiencies and made centralized control of operations difficult.',
+    taskEn: 'Create a dashboard that allows users to create both crypto and fiat operations in one place in an automated manner and control it from an administrator.',
+    actionEn: 'We developed a complete solution that includes Branding, user experience design, web design, User interface design, front-end and back-end development. Development and integration, Crypto Consulting, Training and Support.',
+    resultsEn: [
+      { label: 'Unified Operations', value: '100', suffix: '%' },
+      { label: 'Processing Time', value: '-75', suffix: '%' },
+      { label: 'Regulatory Compliance', value: '100', suffix: '%' },
+      { label: 'Client Satisfaction', value: '9.5', suffix: '/10' },
+    ],
+    projectDetailsEn: {
+      services: ['Branding', 'User Experience Design', 'Web Design', 'User Interface Design', 'Front-end and Back-end Development', 'Development and Integration', 'Crypto Consulting', 'Training and Support'],
+      team: []
+    },
+    heroImage: '/monyte/Monyte Banner.png',
+    images: [
+      '/monyte/monyte-mobile-1.png',
+      '/monyte/mobile-2.png',
+      '/monyte/mobile-3.png'
+    ]
+  },
+  'securitas': {
+    id: 'securitas-case-001',
+    client: 'Securitas',
+    title: 'Transformación Digital para Seguridad Aeroportuaria',
+    brandDescription: 'Securitas es una empresa global de servicios de seguridad con más de 300.000 empleados en 53 países. Proporciona a sus clientes soluciones de seguridad confiables, adaptadas a sus necesidades individuales. La División Aérea de Securitas ofrece servicios de seguridad de aviación que incluyen controles, perfiles de pasajeros y carga, programas de policía aéreo y consultoría de seguridad.',
+    situation: 'Securitas buscaba una transformación digital para optimizar todos los procesos y agregar valor a las actividades de seguridad aeroportuaria a través de la tecnología. Los procesos de control, gestión, revisión y seguimiento de la operación necesitaban modernización para crear un área de operación más eficiente y con mayor capacidad productiva.',
+    task: 'Re-diseñar la experiencia de usuario, diseño de interfaz de usuario, diseño web, desarrollo front-end y Back-end, pruebas con usuario, entrenamiento y soporte para transformar digitalmente las operaciones de seguridad aeroportuaria.',
+    action: 'Desarrollamos una solución completa que incluye re-diseño de la experiencia de usuario, diseño de interfaz de usuario, diseño web, desarrollo front-end y Back-end. Implementamos pruebas con usuario, entrenamiento del equipo y soporte continuo para garantizar una transición exitosa hacia la transformación digital.',
+    results: [
+      { label: 'Optimización de Procesos', value: '100', suffix: '%' },
+      { label: 'Eficiencia Operativa', value: '+60', suffix: '%' },
+      { label: 'Capacidad Productiva', value: '+45', suffix: '%' },
+      { label: 'Satisfacción del Usuario', value: '9.2', suffix: '/10' },
+    ],
+    projectDetails: {
+      services: ['Re-diseño de Experiencia de Usuario', 'Diseño de Interfaz de Usuario', 'Diseño Web', 'Desarrollo Front-end', 'Desarrollo Back-end', 'Pruebas con Usuario', 'Entrenamiento', 'Soporte'],
+      team: []
+    },
+    // English translations
+    titleEn: 'Digital Transformation for Airport Security',
+    brandDescriptionEn: 'Securitas is a global security services company with over 300,000 employees in 53 countries. It provides clients with reliable security solutions tailored to their individual needs. Securitas Air Division offers aviation security services including controls, passenger and cargo profiling, air police programs, and security consulting.',
+    situationEn: 'Securitas sought a digital transformation to optimize all processes and add value to airport security activities through technology. Control, management, review, and operation tracking processes needed modernization to create a more efficient operational area with greater productive capacity.',
+    taskEn: 'Re-design user experience, user interface design, web design, front-end and back-end development, user testing, training and support to digitally transform airport security operations.',
+    actionEn: 'We developed a complete solution that includes user experience re-design, user interface design, web design, front-end and back-end development. We implemented user testing, team training, and ongoing support to ensure a successful transition to digital transformation.',
+    resultsEn: [
+      { label: 'Process Optimization', value: '100', suffix: '%' },
+      { label: 'Operational Efficiency', value: '+60', suffix: '%' },
+      { label: 'Productive Capacity', value: '+45', suffix: '%' },
+      { label: 'User Satisfaction', value: '9.2', suffix: '/10' },
+    ],
+    projectDetailsEn: {
+      services: ['User Experience Re-design', 'User Interface Design', 'Web Design', 'Front-end Development', 'Back-end Development', 'User Testing', 'Training', 'Support'],
+      team: []
+    },
+    heroImage: '/Securitas/Mockup dashboard.png',
+    images: [
+      '/Securitas/Mobile pantallas.png'
+    ]
+  },
+  'rac': {
+    id: 'rac-case-001',
+    client: 'RealArt Crypto',
+    title: 'Plataforma de Inversión en Arte con Blockchain y Web3',
+    brandDescription: 'RealArt Crypto es una plataforma que permite invertir en activos tangibles de arte, bajo los principios de Fragmentación, Democratización y Vehículos de inversión, para de esta forma llevar una trazabilidad de la adquisición de valor de los bienes.',
+    situation: 'El mercado del arte tradicionalmente ha sido exclusivo y de difícil acceso para la mayoría de las personas. RealArt Crypto necesitaba crear una plataforma que democratizara el acceso a piezas de arte curadas, permitiendo inversión fragmentada y trazabilidad mediante tecnología blockchain.',
+    task: 'Crear una dinámica comercial y de disfrute de piezas curadas de arte democratizando y haciéndolo accesible a todo el mundo a través de un desarrollo tecnológico basado en NFT\'s, Blockchain y Web3.',
+    action: 'Desarrollamos una solución completa que incluye Discovery, diseño de la experiencia de usuario y diseño de interfaz de usuario. En esta oportunidad nos convertimos en el consultor principal para las tecnologías Blockchain y Crypto, guiando la estrategia técnica y de producto.',
+    results: [
+      { label: 'Democratización del Arte', value: '100', suffix: '%' },
+      { label: 'Trazabilidad Blockchain', value: '100', suffix: '%' },
+      { label: 'Accesibilidad', value: '+85', suffix: '%' },
+      { label: 'Satisfacción del Usuario', value: '9.0', suffix: '/10' },
+    ],
+    projectDetails: {
+      services: ['Discovery', 'Diseño de Experiencia de Usuario', 'Diseño de Interfaz de Usuario', 'Consultoría Blockchain', 'Consultoría Crypto', 'Consultoría Web3'],
+      team: []
+    },
+    // English translations
+    titleEn: 'Art Investment Platform with Blockchain and Web3',
+    brandDescriptionEn: 'RealArt Crypto is a platform that allows investing in tangible art assets, under the principles of Fragmentation, Democratization and Investment Vehicles, to track the value acquisition of assets.',
+    situationEn: 'The art market has traditionally been exclusive and difficult to access for most people. RealArt Crypto needed to create a platform that would democratize access to curated art pieces, enabling fragmented investment and traceability through blockchain technology.',
+    taskEn: 'Create a commercial dynamic and enjoyment of curated art pieces by democratizing and making it accessible to everyone through technological development based on NFTs, Blockchain and Web3.',
+    actionEn: 'We developed a complete solution that includes Discovery, user experience design and user interface design. On this occasion, we became the principal consultant for Blockchain and Crypto technologies, guiding the technical and product strategy.',
+    resultsEn: [
+      { label: 'Art Democratization', value: '100', suffix: '%' },
+      { label: 'Blockchain Traceability', value: '100', suffix: '%' },
+      { label: 'Accessibility', value: '+85', suffix: '%' },
+      { label: 'User Satisfaction', value: '9.0', suffix: '/10' },
+    ],
+    projectDetailsEn: {
+      services: ['Discovery', 'User Experience Design', 'User Interface Design', 'Blockchain Consulting', 'Crypto Consulting', 'Web3 Consulting'],
+      team: []
+    },
+    heroImage: '/RAC/Mockup Website.png',
+    images: [
+      '/RAC/Pantallas 1.png',
+      '/RAC/Pantallas 2.png'
+    ]
   }
 };

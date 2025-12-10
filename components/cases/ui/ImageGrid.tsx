@@ -3,58 +3,159 @@
 import React from 'react';
 import { FadeIn } from './FadeIn';
 
-export const ImageGrid: React.FC = () => {
+interface ImageGridProps {
+  images?: string[];
+  title?: string;
+}
+
+export const ImageGrid: React.FC<ImageGridProps> = ({ 
+  images = [
+    'https://picsum.photos/600/800?random=10',
+    'https://picsum.photos/600/800?random=11',
+    'https://picsum.photos/600/800?random=12'
+  ],
+  title = 'Visuales de Campaña'
+}) => {
+  const displayImages = images.slice(0, 3);
+  const isSingleImage = displayImages.length === 1;
+  const isTwoImages = displayImages.length === 2;
+  
   return (
-    <section className="py-24 bg-[#f0f0f0] px-6">
-      <div className="max-w-7xl mx-auto">
+    <section className="pt-24 pb-0 bg-gradient-to-b from-gray-50 via-white to-transparent px-6 overflow-visible relative" style={{ zIndex: 1 }}>
+      <div className={`mx-auto ${isTwoImages ? 'max-w-full' : 'max-w-5xl'}`}>
         <FadeIn>
-          <h3 className="text-center text-gray-500 text-xs tracking-[0.2em] uppercase mb-12">Visuales de Campaña</h3>
+          <h3 className="text-center text-gray-500 text-xs tracking-[0.2em] uppercase mb-16 font-medium">
+            {title}
+          </h3>
         </FadeIn>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 h-[120vh] md:h-[80vh]">
-          
-          {/* Image 1 */}
-          <div className="relative h-full w-full md:-mt-12">
-             <FadeIn delay={0} className="h-full">
-               <div className="w-full h-full overflow-hidden group relative cursor-pointer">
-                  <div className="absolute inset-0 bg-[#04213B]/20 group-hover:bg-transparent z-10 transition-colors duration-700 pointer-events-none" />
-                  <img 
-                    src="https://picsum.photos/600/800?random=10" 
-                    alt="Campaign Visual 1" 
-                    className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-[1500ms] ease-out" 
-                  />
-               </div>
-             </FadeIn>
+        {isSingleImage ? (
+          // Single image layout - 100% width
+          <div className="relative flex justify-center" style={{ paddingBottom: '150px', marginBottom: '-150px' }}>
+            <FadeIn delay={0}>
+              <div className="w-full overflow-visible group relative cursor-pointer">
+                <img 
+                  src={displayImages[0]} 
+                  alt="Project Visual" 
+                  loading="eager"
+                  decoding="async"
+                  className="w-full h-auto object-contain transform group-hover:scale-[1.02] transition-transform duration-[1500ms] ease-out"
+                  style={{ 
+                    imageRendering: 'auto',
+                    filter: 'drop-shadow(0 20px 40px -12px rgba(0, 0, 0, 0.25))',
+                    maxWidth: '100%',
+                    height: 'auto'
+                  }}
+                />
+              </div>
+            </FadeIn>
           </div>
-
-          {/* Image 2 */}
-          <div className="relative h-full w-full md:mt-12">
-             <FadeIn delay={200} className="h-full">
-               <div className="w-full h-full overflow-hidden group relative cursor-pointer">
-                  <div className="absolute inset-0 bg-[#04213B]/20 group-hover:bg-transparent z-10 transition-colors duration-700 pointer-events-none" />
-                  <img 
-                    src="https://picsum.photos/600/800?random=11" 
-                    alt="Campaign Visual 2" 
-                    className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-[1500ms] ease-out" 
-                  />
-               </div>
-             </FadeIn>
+        ) : isTwoImages ? (
+          // Two images layout - dynamic composition with elegant overlap (reduced 20%)
+          <div className="relative flex items-center justify-center gap-4 overflow-visible" style={{ paddingBottom: '120px', marginBottom: '-120px' }}>
+            <FadeIn delay={0}>
+              <div className="relative overflow-visible group cursor-pointer" style={{ transform: 'translateX(4%) rotate(-1.5deg) scale(2.4)', width: '50%', zIndex: 1 }}>
+                <img 
+                  src={displayImages[0]} 
+                  alt="Project Visual 1" 
+                  loading="eager"
+                  decoding="async"
+                  className="w-full h-auto object-contain transform group-hover:scale-[1.02] group-hover:rotate-0 transition-all duration-[1500ms] ease-out"
+                  style={{ 
+                    imageRendering: 'auto',
+                    filter: 'drop-shadow(0 30px 60px -15px rgba(0, 0, 0, 0.35))',
+                    maxWidth: '100%',
+                    height: 'auto'
+                  }}
+                />
+              </div>
+            </FadeIn>
+            <FadeIn delay={200}>
+              <div className="relative overflow-visible group cursor-pointer" style={{ transform: 'translateX(-4%) rotate(1.5deg) scale(2.4)', width: '50%', zIndex: 2 }}>
+                <img 
+                  src={displayImages[1]} 
+                  alt="Project Visual 2" 
+                  loading="eager"
+                  decoding="async"
+                  className="w-full h-auto object-contain transform group-hover:scale-[1.02] group-hover:rotate-0 transition-all duration-[1500ms] ease-out"
+                  style={{ 
+                    imageRendering: 'auto',
+                    filter: 'drop-shadow(0 30px 60px -15px rgba(0, 0, 0, 0.35))',
+                    maxWidth: '100%',
+                    height: 'auto'
+                  }}
+                />
+              </div>
+            </FadeIn>
           </div>
+        ) : (
+          // Multiple images layout - grid
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-6 relative" style={{ paddingBottom: '150px', marginBottom: '-150px' }}>
+            
+            {/* Image 1 */}
+            <div className="relative w-full flex justify-center md:-mt-8">
+               <FadeIn delay={0}>
+                 <div className="w-full max-w-[280px] overflow-visible group relative cursor-pointer">
+                    <img 
+                      src={displayImages[0]} 
+                      alt="Project Visual 1" 
+                      loading="eager"
+                      decoding="async"
+                      className="w-full h-auto object-contain transform group-hover:scale-[1.02] transition-transform duration-[1500ms] ease-out"
+                      style={{ 
+                        imageRendering: 'auto',
+                        filter: 'drop-shadow(0 20px 40px -12px rgba(0, 0, 0, 0.25))',
+                        maxWidth: '100%',
+                        height: 'auto'
+                      }}
+                    />
+                 </div>
+               </FadeIn>
+            </div>
 
-          {/* Image 3 */}
-          <div className="relative h-full w-full md:-mt-8">
-             <FadeIn delay={400} className="h-full">
-               <div className="w-full h-full overflow-hidden group relative cursor-pointer">
-                  <div className="absolute inset-0 bg-[#04213B]/20 group-hover:bg-transparent z-10 transition-colors duration-700 pointer-events-none" />
-                  <img 
-                    src="https://picsum.photos/600/800?random=12" 
-                    alt="Campaign Visual 3" 
-                    className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-[1500ms] ease-out" 
-                  />
-               </div>
-             </FadeIn>
+            {/* Image 2 */}
+            <div className="relative w-full flex justify-center md:mt-8">
+               <FadeIn delay={200}>
+                 <div className="w-full max-w-[280px] overflow-visible group relative cursor-pointer">
+                    <img 
+                      src={displayImages[1] || displayImages[0]} 
+                      alt="Project Visual 2" 
+                      loading="eager"
+                      decoding="async"
+                      className="w-full h-auto object-contain transform group-hover:scale-[1.02] transition-transform duration-[1500ms] ease-out"
+                      style={{ 
+                        imageRendering: 'auto',
+                        filter: 'drop-shadow(0 20px 40px -12px rgba(0, 0, 0, 0.25))',
+                        maxWidth: '100%',
+                        height: 'auto'
+                      }}
+                    />
+                 </div>
+               </FadeIn>
+            </div>
+
+            {/* Image 3 */}
+            <div className="relative w-full flex justify-center md:-mt-4">
+               <FadeIn delay={400}>
+                 <div className="w-full max-w-[280px] overflow-visible group relative cursor-pointer">
+                    <img 
+                      src={displayImages[2] || displayImages[0]} 
+                      alt="Project Visual 3" 
+                      loading="eager"
+                      decoding="async"
+                      className="w-full h-auto object-contain transform group-hover:scale-[1.02] transition-transform duration-[1500ms] ease-out"
+                      style={{ 
+                        imageRendering: 'auto',
+                        filter: 'drop-shadow(0 20px 40px -12px rgba(0, 0, 0, 0.25))',
+                        maxWidth: '100%',
+                        height: 'auto'
+                      }}
+                    />
+                 </div>
+               </FadeIn>
+            </div>
+
           </div>
-
-        </div>
+        )}
       </div>
     </section>
   );

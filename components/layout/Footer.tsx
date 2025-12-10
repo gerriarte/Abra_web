@@ -7,7 +7,7 @@ export default function Footer() {
   const t = useTranslations('contact.form');
 
   return (
-    <footer className="bg-off border-t border-border py-6 md:py-12 mt-16 md:mt-32">
+    <footer className="bg-off border-t border-border py-6 md:py-12 mt-0 relative z-10">
       <div className="container mx-auto px-4">
         <div className="max-w-6xl mx-auto">
           {/* Mobile: Compact horizontal layout */}

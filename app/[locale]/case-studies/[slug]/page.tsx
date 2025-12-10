@@ -2,7 +2,6 @@ import React from 'react';
 import { notFound } from 'next/navigation';
 import { CaseHero } from '@/components/cases/ui/CaseHero';
 import { Section } from '@/components/cases/ui/Section';
-import { Stats } from '@/components/cases/ui/Stats';
 import { ImageGrid } from '@/components/cases/ui/ImageGrid';
 import { TableOfContents } from '@/components/cases/ui/TableOfContents';
 import { ProjectDetails } from '@/components/cases/ui/ProjectDetails';
@@ -13,18 +12,30 @@ interface PageProps {
 }
 
 export async function generateMetadata({ params }: PageProps) {
-  const { slug } = await params;
+  const { slug, locale } = await params;
   const caseStudy = CASES_DATA[slug];
 
   if (!caseStudy) {
     return {
-      title: 'Case Study Not Found | Abra',
+      title: locale === 'en' ? 'Case Study Not Found | Abra' : 'Caso de Estudio No Encontrado | Abra',
     };
   }
 
+  const isEnglish = locale === 'en';
+  const title = isEnglish && caseStudy.titleEn ? caseStudy.titleEn : caseStudy.title;
+  const description = isEnglish && caseStudy.brandDescriptionEn ? caseStudy.brandDescriptionEn : caseStudy.brandDescription;
+
+  const pageTitle = slug === 'monyte' 
+    ? `${title} | Monyte.co`
+    : slug === 'securitas'
+    ? `${title} | Securitas`
+    : slug === 'rac'
+    ? `${title} | RealArt Crypto`
+    : `${title} | ${isEnglish ? 'Abra Case Study' : 'Caso de Estudio Abra'}`;
+
   return {
-    title: `${caseStudy.title} | Abra Case Study`,
-    description: caseStudy.brandDescription,
+    title: pageTitle,
+    description,
   };
 }
 
@@ -35,50 +46,83 @@ export function generateStaticParams() {
 }
 
 export default async function CaseStudyPage({ params }: PageProps) {
-  const { slug } = await params;
+  const { slug, locale } = await params;
   const caseStudy = CASES_DATA[slug];
 
   if (!caseStudy) {
     notFound();
   }
 
+  // Get localized content
+  const isEnglish = locale === 'en';
+  const title = isEnglish && caseStudy.titleEn ? caseStudy.titleEn : caseStudy.title;
+  const brandDescription = isEnglish && caseStudy.brandDescriptionEn ? caseStudy.brandDescriptionEn : caseStudy.brandDescription;
+  const situation = isEnglish && caseStudy.situationEn ? caseStudy.situationEn : caseStudy.situation;
+  const task = isEnglish && caseStudy.taskEn ? caseStudy.taskEn : caseStudy.task;
+  const action = isEnglish && caseStudy.actionEn ? caseStudy.actionEn : caseStudy.action;
+  const results = isEnglish && caseStudy.resultsEn ? caseStudy.resultsEn : caseStudy.results;
+  const projectDetails = isEnglish && caseStudy.projectDetailsEn ? caseStudy.projectDetailsEn : caseStudy.projectDetails;
+
+  // Localized labels
+  const labels = {
+    brand: isEnglish ? 'Brand' : 'Marca',
+    situation: isEnglish ? 'Situation' : 'Situación',
+    situationTitle: isEnglish ? 'The Challenge' : 'El Desafío',
+    task: isEnglish ? 'Task' : 'Tarea',
+    taskTitle: isEnglish ? 'Clear Objectives' : 'Objetivos Claros',
+    action: isEnglish ? 'Action' : 'Acción',
+    actionTitle: isEnglish ? 'Strategic Execution' : 'Ejecución Estratégica',
+    visuals: isEnglish ? 'Project Visuals' : 'Visuales del Proyecto'
+  };
+
   return (
-    <div className="min-h-screen w-full overflow-x-hidden bg-white">
+    <div className="min-h-screen w-full bg-white">
       <TableOfContents />
       
       <CaseHero 
-        title={caseStudy.title}
+        title={title}
         subtitle={caseStudy.client}
-        backgroundImage="https://picsum.photos/1920/1080?grayscale"
-        category={caseStudy.projectDetails.services[0] || 'Case Study'}
+        backgroundImage={caseStudy.heroImage || "https://picsum.photos/1920/1080?grayscale"}
+        category={
+          slug === 'monyte' 
+            ? (isEnglish ? 'Branding' : 'Branding')
+            : slug === 'securitas'
+            ? (isEnglish ? 'User Experience' : 'Experiencia de Usuario')
+            : slug === 'rac'
+            ? (isEnglish ? 'User Experience' : 'Experiencia de Usuario')
+            : (projectDetails.services[0] || (isEnglish ? 'Case Study' : 'Caso de Estudio'))
+        }
+        imageScale={slug === 'monyte' || slug === 'securitas' || slug === 'rac' ? 0.7 : 1}
       />
 
       {/* Marca / Intro */}
       <Section 
         id="brand"
-        category="Marca"
+        category={labels.brand}
         title={caseStudy.client}
-        description={caseStudy.brandDescription}
+        description={brandDescription}
         align="left"
       />
 
       {/* Situación */}
       <Section 
         id="situation"
-        category="Situación"
-        title="El Desafío"
-        description={caseStudy.situation}
-        image="https://picsum.photos/800/1000?random=1"
+        category={labels.situation}
+        title={labels.situationTitle}
+        description={situation}
+        image={slug === 'monyte' ? '/monyte/monyte-dashboard.png' : slug === 'securitas' ? '/Securitas/Dashboard.png' : slug === 'rac' ? '/RAC/Dashboard.png' : "https://picsum.photos/800/1000?random=1"}
         align="right"
         hasDivider
+        floatingImage={slug === 'monyte' || slug === 'securitas' || slug === 'rac'}
+        imageAspect="auto"
       />
 
       {/* Tarea */}
       <Section 
         id="task"
-        category="Tarea"
-        title="Objetivos Claros"
-        description={caseStudy.task}
+        category={labels.task}
+        title={labels.taskTitle}
+        description={task}
         align="left"
         theme="dark"
       />
@@ -86,24 +130,22 @@ export default async function CaseStudyPage({ params }: PageProps) {
       {/* Acción */}
       <Section 
         id="action"
-        category="Acción"
-        title="Ejecución Estratégica"
-        description={caseStudy.action}
-        // Solo mostramos video si existe (placeholder por ahora usa imagen en Section si no hay video)
-        // Para este ejemplo dinamico, usaremos imagen a menos que definamos video en data
-        image="https://picsum.photos/800/1000?random=2" 
+        category={labels.action}
+        title={labels.actionTitle}
+        description={action}
+        image={slug === 'monyte' ? '/monyte/monyte-marca.png' : slug === 'securitas' ? '/Securitas/Log securitas.png' : slug === 'rac' ? '/RAC/Logo.png' : "https://picsum.photos/800/1000?random=2"} 
         align="right"
+        floatingImage={slug === 'monyte' || slug === 'securitas' || slug === 'rac'}
+        imageAspect="auto"
+        imageMaxWidth={slug === 'rac' ? '60%' : '75%'}
       />
 
       <ProjectDetails 
-        details={caseStudy.projectDetails} 
+        details={projectDetails} 
         clientName={caseStudy.client} 
       />
 
-      <ImageGrid />
-
-      {/* Resultado */}
-      <Stats stats={caseStudy.results} />
+      <ImageGrid images={caseStudy.images} title={labels.visuals} />
       
     </div>
   );
