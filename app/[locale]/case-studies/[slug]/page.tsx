@@ -11,14 +11,21 @@ interface PageProps {
   params: Promise<{ slug: string; locale: string }>;
 }
 
-export async function generateMetadata({ params }: PageProps) {
+import { generateSEOMetadata, generateArticleSchema, generateBreadcrumbSchema } from '@/lib/utils/seo';
+import JsonLd from '@/components/seo/JsonLd';
+import type { Metadata } from 'next';
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug, locale } = await params;
   const caseStudy = CASES_DATA[slug];
 
   if (!caseStudy) {
-    return {
-      title: locale === 'en' ? 'Case Study Not Found | Abra' : 'Caso de Estudio No Encontrado | Abra',
-    };
+    return generateSEOMetadata({
+      title: locale === 'en' ? 'Case Study Not Found' : 'Caso de Estudio No Encontrado',
+      description: locale === 'en' ? 'The requested case study could not be found.' : 'El caso de estudio solicitado no se pudo encontrar.',
+      locale,
+      noindex: true,
+    });
   }
 
   const isEnglish = locale === 'en';
@@ -31,12 +38,22 @@ export async function generateMetadata({ params }: PageProps) {
     ? `${title} | Securitas`
     : slug === 'rac'
     ? `${title} | RealArt Crypto`
-    : `${title} | ${isEnglish ? 'Abra Case Study' : 'Caso de Estudio Abra'}`;
+    : `${title} | ${isEnglish ? 'A:BRA Case Study' : 'Caso de Estudio A:BRA'}`;
 
-  return {
+  const image = caseStudy.heroImage || caseStudy.images?.[0] || '/abra.png';
+  const url = `/${locale}/case-studies/${slug}`;
+
+  return generateSEOMetadata({
     title: pageTitle,
-    description,
-  };
+    description: description.substring(0, 160), // Truncate to 160 chars for SEO
+    keywords: isEnglish
+      ? ['case study', caseStudy.client, 'digital transformation', 'web development', 'branding', 'UX design']
+      : ['caso de estudio', caseStudy.client, 'transformación digital', 'desarrollo web', 'branding', 'diseño UX'],
+    image,
+    url,
+    type: 'article',
+    locale,
+  });
 }
 
 export function generateStaticParams() {
@@ -75,8 +92,28 @@ export default async function CaseStudyPage({ params }: PageProps) {
     visuals: isEnglish ? 'Project Visuals' : 'Visuales del Proyecto'
   };
 
+  const image = caseStudy.heroImage || caseStudy.images?.[0] || '/abra.png';
+  const url = `/${locale}/case-studies/${slug}`;
+  const description = brandDescription;
+
+  // Generate schemas
+  const articleSchema = generateArticleSchema({
+    title,
+    description,
+    image,
+    url,
+    datePublished: caseStudy.projectDetails?.year ? `${caseStudy.projectDetails.year}-01-01` : undefined,
+  });
+
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: isEnglish ? 'Home' : 'Inicio', url: `/${locale}` },
+    { name: isEnglish ? 'Case Studies' : 'Casos de Estudio', url: `/${locale}/cases` },
+    { name: title, url },
+  ]);
+
   return (
     <div className="min-h-screen w-full bg-white">
+      <JsonLd data={[articleSchema, breadcrumbSchema]} />
       <TableOfContents />
       
       <CaseHero 

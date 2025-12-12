@@ -4,6 +4,9 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import { GoogleTagManagerNoscript } from "@/components/analytics/GoogleTagManager";
 import GTMDebug from "@/components/analytics/GTMDebug";
+import { generateSEOMetadata } from "@/lib/utils/seo";
+import JsonLd from "@/components/seo/JsonLd";
+import { generateOrganizationSchema, generateWebSiteSchema } from "@/lib/utils/seo";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -12,10 +15,19 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+  ...generateSEOMetadata({
+    title: "A:BRA - Strategic Digital Engineering Agency | Agencia de Ingeniería Digital Estratégica",
+    description: "We transform complex data into predictable growth systems. From brand vision to web development, we build digital solutions that work, proven by metrics. | Transformamos datos complejos en sistemas de crecimiento predecibles.",
+    keywords: ["digital agency", "agencia digital", "branding", "web development", "desarrollo web", "digital marketing", "marketing digital", "growth strategy", "estrategia de crecimiento", "UX design", "diseño UX", "strategic consulting", "consultoría estratégica", "LATAM"],
+    type: "website",
+    locale: "en",
+  }),
   icons: {
     icon: "/icon.png",
     apple: "/icon.png",
   },
+  manifest: "/manifest.json",
+  themeColor: "#04213B",
 };
 
 export default function RootLayout({
@@ -29,6 +41,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${inter.variable} antialiased`} suppressHydrationWarning>
+        <JsonLd data={[generateOrganizationSchema(), generateWebSiteSchema()]} />
         {/* Google Tag Manager (noscript) - Debe estar inmediatamente después del body */}
         <GoogleTagManagerNoscript gtmId={gtmId} />
         {/* Inicializar dataLayer antes de GTM */}
