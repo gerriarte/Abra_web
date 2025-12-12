@@ -6,11 +6,15 @@ const allowedServices = [
   'Institutional Communications',
   'Digital Marketing & Growth',
   'Web Design & Development',
+  'UX/UI Design',
+  'Marketing Reports & Analytics',
   'Full Service',
   'Desarrollo de Branding',
   'Comunicaciones Institucionales',
   'Marketing Digital y Crecimiento',
   'Diseño y Desarrollo Web',
+  'Diseño UX/UI',
+  'Reporte y análisis de Marketing',
   'Servicio Completo',
 ];
 
@@ -29,9 +33,10 @@ export const contactSchema = z.object({
   
   country: z
     .string()
-    .min(2, 'Country must be at least 2 characters')
     .max(60, 'Country name is too long')
-    .regex(/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/, 'Country can only contain letters and spaces'),
+    .regex(/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]*$/, 'Country can only contain letters and spaces')
+    .optional()
+    .default(''),
   
   phone: z
     .string()
@@ -45,18 +50,29 @@ export const contactSchema = z.object({
     .max(100, 'Email is too long')
     .regex(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/, 'Invalid email format'),
   
-  service: z
+  services: z
+    .array(z.string())
+    .min(1, 'Please select at least one service')
+    .refine((val) => val.every(s => allowedServices.includes(s)), 'Invalid service selected')
+    .refine((val) => val.length <= 10, 'Too many services selected'),
+  
+  customMessage: z
     .string()
-    .min(1, 'Please select a service')
-    .refine((val) => allowedServices.includes(val), 'Invalid service selected'),
+    .max(1000, 'Message is too long')
+    .optional()
+    .default(''),
   
   date: z
     .string()
-    .regex(/^\d{4}-\d{2}-\d{2}$/, 'Invalid date format'),
+    .refine((val) => !val || /^\d{4}-\d{2}-\d{2}$/.test(val), 'Invalid date format')
+    .optional()
+    .default(''),
   
   time: z
     .string()
-    .regex(/^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$/, 'Invalid time format'),
+    .refine((val) => !val || /^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$/.test(val), 'Invalid time format')
+    .optional()
+    .default(''),
   
   privacyAccepted: z
     .boolean()

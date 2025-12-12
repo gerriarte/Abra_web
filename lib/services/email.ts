@@ -63,7 +63,7 @@ export async function sendContactEmail(payload: ContactFormData) {
       message: 'Contact email sent successfully',
       metadata: { 
         recipient, 
-        service: payload.service,
+        services: payload.services,
         messageId: result.messageId 
       },
     });
@@ -84,6 +84,15 @@ export async function sendContactEmail(payload: ContactFormData) {
 }
 
 function createPlainTextBody(payload: ContactFormData) {
+  const servicesList = Array.isArray(payload.services) 
+    ? payload.services.join(', ') 
+    : payload.services || 'No especificado';
+  
+  const customMessage = payload.customMessage ? `\n\nConsulta personalizada:\n${payload.customMessage}` : '';
+  const availability = (payload.date || payload.time) 
+    ? `\n\nDisponibilidad:\nFecha preferida: ${payload.date || 'No especificada'}\nHorario preferido: ${payload.time || 'No especificado'}`
+    : '';
+  
   return `Nuevo mensaje del formulario de contacto:
 
 Nombre completo: ${payload.fullName}
@@ -91,23 +100,35 @@ Empresa: ${payload.company}
 Correo: ${payload.email}
 País: ${payload.country}
 Teléfono: ${payload.phone}
-Servicio de interés: ${payload.service}
-Fecha preferida: ${payload.date}
-Horario preferido: ${payload.time}`;
+Servicios de interés: ${servicesList}${customMessage}${availability}`;
 }
 
 function createHtmlBody(payload: ContactFormData) {
+  const servicesList = Array.isArray(payload.services) ? payload.services.join(', ') : payload.services || 'No especificado';
+  const customMessageSection = payload.customMessage 
+    ? `<div style="margin-top: 20px; padding: 15px; background-color: #f8f9fa; border-left: 4px solid #04213B; border-radius: 4px;">
+        <p style="margin: 0 0 10px 0; font-weight: 500; color: #0f172a;">Consulta personalizada:</p>
+        <p style="margin: 0; white-space: pre-wrap; color: #1b1b1b;">${payload.customMessage}</p>
+      </div>`
+    : '';
+  const availabilitySection = (payload.date || payload.time)
+    ? `<div style="margin-top: 20px;">
+        <p><strong>Fecha preferida:</strong> ${payload.date || 'No especificada'}</p>
+        <p><strong>Horario preferido:</strong> ${payload.time || 'No especificado'}</p>
+      </div>`
+    : '';
+  
   return `
     <div style="font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; color: #1b1b1b; line-height: 1.6;">
       <h2 style="font-weight: 400; color: #0f172a;">Nuevo contacto desde A:BRA</h2>
       <p><strong>Nombre completo:</strong> ${payload.fullName}</p>
       <p><strong>Empresa:</strong> ${payload.company}</p>
       <p><strong>Correo:</strong> <a href="mailto:${payload.email}">${payload.email}</a></p>
-      <p><strong>País:</strong> ${payload.country}</p>
+      <p><strong>País:</strong> ${payload.country || 'No especificado'}</p>
       <p><strong>Teléfono:</strong> ${payload.phone}</p>
-      <p><strong>Servicio de interés:</strong> ${payload.service}</p>
-      <p><strong>Fecha preferida:</strong> ${payload.date}</p>
-      <p><strong>Horario preferido:</strong> ${payload.time}</p>
+      <p><strong>Servicios de interés:</strong> ${servicesList}</p>
+      ${customMessageSection}
+      ${availabilitySection}
     </div>
   `;
 }

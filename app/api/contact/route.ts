@@ -44,13 +44,20 @@ export async function POST(request: NextRequest) {
     }
 
     // Sanitize inputs
+    const services = Array.isArray(body.services) 
+      ? body.services.map((s: string) => sanitizeInput(s))
+      : body.service 
+        ? [sanitizeInput(body.service)]
+        : [];
+    
     const sanitizedBody = {
       fullName: sanitizeInput(body.fullName || ''),
       company: sanitizeInput(body.company || ''),
       country: sanitizeInput(body.country || ''),
       phone: sanitizeInput(body.phone || ''),
       email: sanitizeInput(body.email || ''),
-      service: sanitizeInput(body.service || ''),
+      services: services,
+      customMessage: sanitizeInput(body.customMessage || ''),
       date: body.date || '',
       time: body.time || '',
       privacyAccepted: Boolean(body.privacyAccepted),
@@ -65,7 +72,7 @@ export async function POST(request: NextRequest) {
       functionName: 'POST',
       message: 'Validated contact form submission',
       metadata: {
-        service: validatedData.service,
+        services: validatedData.services,
         ip: clientIP,
       },
     });
@@ -85,7 +92,7 @@ export async function POST(request: NextRequest) {
           error: errorMessage,
           formData: {
             email: validatedData.email,
-            service: validatedData.service,
+            services: validatedData.services,
           }
         },
       });
