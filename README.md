@@ -44,7 +44,9 @@ All secrets must be provided via environment variables—never commit credential
 - ✅ **Scroll Animations** and micro-interactions
 - ✅ **Dynamic Header** with scroll-based color transition
 - ✅ **Projects Carousel** with draggable functionality
-- ✅ **Contact Form** with comprehensive security validations
+- ✅ **Contact Form** with multiple service selection and custom inquiry
+- ✅ **Complete SEO** (Open Graph, Twitter Cards, JSON-LD schemas, Sitemap, Robots)
+- ✅ **Google Tag Manager** integration
 
 ## 📁 Project Structure
 
@@ -82,41 +84,18 @@ Translation files are in `messages/en.json` and `messages/es.json`.
 - ✅ **XSS Protection**: Input sanitization removes HTML tags and scripts
 - ✅ **Privacy**: Checkbox acceptance of terms and privacy policy
 
-## 🚀 Deployment on Vercel
+## 🚀 Deployment
 
-### Easy Deployment:
+Para instrucciones completas de despliegue, configuración de variables de entorno y setup, consulta la [Documentación Completa](./docs/README.md).
+
+### Quick Start:
 
 1. **Go to [Vercel](https://vercel.com)**
-2. **Click "Add New" → "Project"**
-3. **Import from GitHub**: Select `gerriarte/Abra_web`
-4. **Configure Environment Variables**:
-   - Go to **Settings → Environment Variables**
-   - Add the following variables:
-     
-     **Required for contact form:**
-     ```
-     SMTP_HOST=your-smtp-host
-     SMTP_PORT=587
-     SMTP_USER=your-smtp-username
-     SMTP_PASS=your-smtp-password
-     CONTACT_FROM_EMAIL=noreply@yourdomain.com
-     CONTACT_RECIPIENT_EMAIL=contact@yourdomain.com
-     ```
-     
-     **Optional for analytics:**
-     ```
-     NEXT_PUBLIC_GTM_ID=GTM-XXXXXXX
-     ```
-5. **Click "Deploy"** (Vercel auto-detects Next.js)
+2. **Import from GitHub**: Select `gerriarte/Abra_web`
+3. **Configure Environment Variables** (ver [docs/setup/README.md](./docs/setup/README.md))
+4. **Deploy**
 
-**Important**: The contact form will return a 503 error if SMTP variables are not configured. Make sure to add all environment variables before testing the form.
-
-### Using Vercel CLI:
-
-```bash
-npm i -g vercel
-vercel
-```
+**Documentación completa**: [docs/README.md](./docs/README.md)
 
 ## 📝 Development
 

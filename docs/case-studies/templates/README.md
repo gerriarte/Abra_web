@@ -70,7 +70,39 @@ Esta plantilla está basada en el caso de estudio de **Monyte** y sirve como bas
   client: 'Securitas',
   title: 'Título en Español',
   titleEn: 'Title in English',
-  // ... resto de campos
+  brandDescription: 'Descripción de la marca...',
+  brandDescriptionEn: 'Brand description...',
+  situation: 'El desafío...',
+  situationEn: 'The challenge...',
+  task: 'Los objetivos...',
+  taskEn: 'The objectives...',
+  action: 'La ejecución...',
+  actionEn: 'The execution...',
+  results: [
+    { label: 'Métrica 1', value: '100', suffix: '%' },
+    { label: 'Métrica 2', value: '+50', suffix: '%' }
+  ],
+  resultsEn: [
+    { label: 'Metric 1', value: '100', suffix: '%' },
+    { label: 'Metric 2', value: '+50', suffix: '%' }
+  ],
+  projectDetails: {
+    services: ['Servicio 1', 'Servicio 2'],
+    team: [
+      { role: 'Rol', name: 'Nombre' }
+    ]
+  },
+  projectDetailsEn: {
+    services: ['Service 1', 'Service 2']
+  },
+  heroImage: '/ruta/a/imagen.png',
+  images: ['/imagen1.png', '/imagen2.png']
 }
 ```
 
+## Ubicación de Archivos
+
+Los casos de estudio se definen en:
+- **Código**: `data/cases.ts`
+- **Contenido adicional**: `docs/case-studies/content/`
+- **Imágenes**: `public/[nombre-caso]/`

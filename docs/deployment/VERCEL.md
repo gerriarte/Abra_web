@@ -16,18 +16,19 @@ SMTP_HOST=smtp.gmail.com (o tu proveedor SMTP)
 SMTP_PORT=587 (o 465 para SSL)
 SMTP_USER=tu-email@gmail.com
 SMTP_PASS=tu-app-password (NO tu contraseña normal)
-CONTACT_RECIPIENT_EMAIL=destino@abra.com
-CONTACT_FROM_EMAIL=noreply@abra.com
+CONTACT_RECIPIENT_EMAIL=destino@abralatam.com
+CONTACT_FROM_EMAIL=noreply@abralatam.com
 ```
 
 #### Opcionales:
 ```
-NEXT_PUBLIC_GTM_ID=GTM-56J4SKMV
+NEXT_PUBLIC_GTM_ID=GTM-XXXXXXX
+NEXT_PUBLIC_SITE_URL=https://abralatam.com
 ```
 
 ### 2. Configuración de Node.js
 
-✅ Ya está configurado en `package.json`: `"node": ">=22.0.0"`
+✅ Ya está configurado en `package.json`: `"node": ">=24.0.0"`
 
 ### 3. Sistema de Archivos (Read-Only en Vercel)
 
@@ -68,12 +69,12 @@ NEXT_PUBLIC_GTM_ID=GTM-56J4SKMV
 - **Hero Slides**: Los cambios deben hacerse editando `public/data/hero.json` y haciendo commit
 - **i18n**: Está configurado para funcionar en producción con `next-intl` y renderizado estático optimizado
 - **Rutas estáticas**: Se generarán automáticamente para todos los casos de estudio y locales
+- **SEO**: Sitemap y robots.txt se generan automáticamente
 
 ## 🧪 Prueba Local del Build
 
-El build ya fue probado exitosamente:
 ```bash
-npm run build  # ✅ Completado sin errores
+npm run build  # ✅ Debe completarse sin errores
 ```
 
 ## 📊 Estado del Build
@@ -81,5 +82,6 @@ npm run build  # ✅ Completado sin errores
 - ✅ Build completado exitosamente
 - ✅ Todas las rutas generadas correctamente
 - ✅ Renderizado estático optimizado con `setRequestLocale`
-- ⚠️ Algunas rutas se renderizan dinámicamente (normal para next-intl, no afecta el despliegue)
+- ✅ SEO completo (sitemap, robots, schemas JSON-LD)
+- ✅ Metadatos dinámicos por página
 
