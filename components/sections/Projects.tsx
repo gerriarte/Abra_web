@@ -164,7 +164,11 @@ export default function Projects() {
                               <img 
                                 src={project.image} 
                                 alt={project.title}
-                                className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+                                className={`h-full transition-transform duration-1000 group-hover:scale-105 ${
+                                  project.id === 5 || project.title === 'Invia 1912' 
+                                    ? 'object-contain w-[80%] mx-auto' 
+                                    : 'object-cover w-full'
+                                }`}
                               />
                             ) : (
                               <div className="w-full h-full bg-primary-dark flex items-center justify-center">
@@ -187,13 +191,17 @@ export default function Projects() {
                             <img 
                               src={project.image} 
                               alt={project.title}
-                              className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+                              className={`h-full transition-transform duration-1000 group-hover:scale-105 ${
+                                project.id === 5 || project.title === 'Invia 1912' 
+                                  ? 'object-contain w-[80%] mx-auto' 
+                                  : 'object-cover w-full'
+                              }`}
                             />
                           ) : (
-                            <div className="w-full h-full bg-primary-dark flex items-center justify-center">
-                              <span className="text-white/10 text-9xl font-serif italic">{project.title.charAt(0)}</span>
-                            </div>
-                          )}
+                              <div className="w-full h-full bg-primary-dark flex items-center justify-center">
+                                <span className="text-white/10 text-9xl font-serif italic">{project.title.charAt(0)}</span>
+                              </div>
+                            )}
                           
                           {/* Overlay Content */}
                           <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/20 to-transparent opacity-60 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-500" />
