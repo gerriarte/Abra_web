@@ -102,23 +102,23 @@ export default function Projects() {
   }
 
   return (
-    <section id="projects" className="py-32 bg-white overflow-x-hidden">
+    <section id="projects" className="py-16 md:py-32 bg-white overflow-x-hidden">
       <div className="container mx-auto px-4 max-w-full">
         <div className="max-w-7xl mx-auto w-full">
-          {/* Header */}
-          <div ref={ref} className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
+          {/* Header - Mobile optimized */}
+          <div ref={ref} className="mb-8 md:mb-16 relative">
             <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-              <h2 className="text-4xl md:text-6xl font-light text-primary mb-4 tracking-tight">
+              <h2 className="text-3xl md:text-6xl font-light text-primary mb-2 md:mb-4 tracking-tight">
                 {t('projects.title')}
               </h2>
-              <p className="text-lg text-text-secondary font-light max-w-xl">
+              <p className="text-base md:text-lg text-text-secondary font-light max-w-xl">
                 {t('projects.subtitle')}
               </p>
             </div>
             
-            {/* Controls */}
+            {/* Desktop Controls - In header */}
             {projects.length > 1 && (
-              <div className="flex items-center gap-4">
+              <div className="hidden md:flex items-center gap-4 absolute top-0 right-0">
                 <button 
                   onClick={prevSlide}
                   className="w-12 h-12 rounded-full border border-primary/10 flex items-center justify-center hover:bg-primary hover:text-white hover:border-primary transition-all duration-300 group"
@@ -138,7 +138,7 @@ export default function Projects() {
           </div>
 
           {/* Project Slider */}
-          <div className="relative min-h-[600px]">
+          <div className="relative min-h-[400px] md:min-h-[600px]">
             {projects.map((project, index) => {
               const isActive = index === currentIndex;
               const isPrev = index === (currentIndex - 1 + projects.length) % projects.length;
@@ -222,11 +222,11 @@ export default function Projects() {
                     </div>
 
                     {/* Info Side (5 cols) */}
-                    <div className="lg:col-span-5 order-1 lg:order-2 space-y-8">
+                    <div className="lg:col-span-5 order-1 lg:order-2 space-y-4 md:space-y-8">
                       {project.cases && project.cases.length > 0 && project.cases[0].link ? (
                         <Link href={project.cases[0].link} className="block group">
                           <div>
-                            <div className="flex items-center gap-4 mb-6">
+                            <div className="flex items-center gap-4 mb-4 md:mb-6">
                               <span className="text-xs font-bold tracking-[0.2em] uppercase text-accent">
                                 {project.category}
                               </span>
@@ -236,18 +236,18 @@ export default function Projects() {
                               </span>
                             </div>
                             
-                            <h3 className="text-4xl md:text-5xl font-light text-primary leading-tight mb-6 group-hover:text-accent transition-colors">
+                            <h3 className="text-2xl md:text-5xl font-light text-primary leading-tight mb-4 md:mb-6 group-hover:text-accent transition-colors">
                               {project.title}
                             </h3>
                             
-                            <p className="text-lg text-text-secondary font-light leading-relaxed mb-8">
+                            <p className="text-base md:text-lg text-text-secondary font-light leading-relaxed mb-4 md:mb-8">
                               {project.description}
                             </p>
                           </div>
                         </Link>
                       ) : (
                         <div>
-                          <div className="flex items-center gap-4 mb-6">
+                          <div className="flex items-center gap-4 mb-4 md:mb-6">
                             <span className="text-xs font-bold tracking-[0.2em] uppercase text-accent">
                               {project.category}
                             </span>
@@ -257,11 +257,11 @@ export default function Projects() {
                             </span>
                           </div>
                           
-                          <h3 className="text-4xl md:text-5xl font-light text-primary leading-tight mb-6">
+                          <h3 className="text-2xl md:text-5xl font-light text-primary leading-tight mb-4 md:mb-6">
                             {project.title}
                           </h3>
                           
-                          <p className="text-lg text-text-secondary font-light leading-relaxed mb-8">
+                          <p className="text-base md:text-lg text-text-secondary font-light leading-relaxed mb-4 md:mb-8">
                             {project.description}
                           </p>
                         </div>
@@ -321,8 +321,28 @@ export default function Projects() {
             })}
           </div>
           
+          {/* Controls - Mobile: Below project */}
+          {projects.length > 1 && (
+            <div className="flex items-center justify-center gap-4 mt-8 md:hidden">
+              <button 
+                onClick={prevSlide}
+                className="w-12 h-12 rounded-full border border-primary/10 flex items-center justify-center hover:bg-primary hover:text-white hover:border-primary transition-all duration-300 group"
+                aria-label="Previous project"
+              >
+                <ArrowRight className="w-5 h-5 rotate-180" />
+              </button>
+              <button 
+                onClick={nextSlide}
+                className="w-12 h-12 rounded-full border border-primary/10 flex items-center justify-center hover:bg-primary hover:text-white hover:border-primary transition-all duration-300 group"
+                aria-label="Next project"
+              >
+                <ArrowRight className="w-5 h-5" />
+              </button>
+            </div>
+          )}
+          
           {/* Progress Bar */}
-          <div className="mt-16 h-1 w-full bg-primary/5 rounded-full overflow-hidden">
+          <div className="mt-8 md:mt-16 h-1 w-full bg-primary/5 rounded-full overflow-hidden">
             <div 
               className="h-full bg-accent transition-all duration-500 ease-out"
               style={{ width: `${((currentIndex + 1) / projects.length) * 100}%` }}
