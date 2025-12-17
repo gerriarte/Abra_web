@@ -29,10 +29,10 @@ export const ImageGrid: React.FC<ImageGridProps> = ({
           </h3>
         </FadeIn>
         {isSingleImage ? (
-          // Single image layout - 100% width
+          // Single image layout - 80% width (reduced 20%)
           <div className="relative flex justify-center" style={{ paddingBottom: '150px', marginBottom: '-150px' }}>
             <FadeIn delay={0}>
-              <div className="w-full overflow-visible group relative cursor-pointer">
+              <div className="w-full max-w-[80%] overflow-visible group relative cursor-pointer">
                 <img 
                   src={displayImages[0]} 
                   alt="Project Visual" 
@@ -50,10 +50,10 @@ export const ImageGrid: React.FC<ImageGridProps> = ({
             </FadeIn>
           </div>
         ) : isTwoImages ? (
-          // Two images layout - dynamic composition with elegant overlap (reduced 20%)
+          // Two images layout - dynamic composition with elegant overlap (reduced 20% - scale from 2.4 to 1.92)
           <div className="relative flex items-center justify-center gap-4 overflow-visible" style={{ paddingBottom: '120px', marginBottom: '-120px' }}>
             <FadeIn delay={0}>
-              <div className="relative overflow-visible group cursor-pointer" style={{ transform: 'translateX(4%) rotate(-1.5deg) scale(2.4)', width: '50%', zIndex: 1 }}>
+              <div className="relative overflow-visible group cursor-pointer" style={{ transform: 'translateX(4%) rotate(-1.5deg) scale(1.92)', width: '50%', zIndex: 1 }}>
                 <img 
                   src={displayImages[0]} 
                   alt="Project Visual 1" 
@@ -70,7 +70,7 @@ export const ImageGrid: React.FC<ImageGridProps> = ({
               </div>
             </FadeIn>
             <FadeIn delay={200}>
-              <div className="relative overflow-visible group cursor-pointer" style={{ transform: 'translateX(-4%) rotate(1.5deg) scale(2.4)', width: '50%', zIndex: 2 }}>
+              <div className="relative overflow-visible group cursor-pointer" style={{ transform: 'translateX(-4%) rotate(1.5deg) scale(1.92)', width: '50%', zIndex: 2 }}>
                 <img 
                   src={displayImages[1]} 
                   alt="Project Visual 2" 
@@ -88,13 +88,13 @@ export const ImageGrid: React.FC<ImageGridProps> = ({
             </FadeIn>
           </div>
         ) : (
-          // Multiple images layout - grid
+          // Multiple images layout - grid (reduced 20% - max-w from 280px to 224px)
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-6 relative" style={{ paddingBottom: '150px', marginBottom: '-150px' }}>
             
             {/* Image 1 */}
             <div className="relative w-full flex justify-center md:-mt-8">
                <FadeIn delay={0}>
-                 <div className="w-full max-w-[280px] overflow-visible group relative cursor-pointer">
+                 <div className="w-full max-w-[224px] overflow-visible group relative cursor-pointer">
                     <img 
                       src={displayImages[0]} 
                       alt="Project Visual 1" 
@@ -115,7 +115,7 @@ export const ImageGrid: React.FC<ImageGridProps> = ({
             {/* Image 2 */}
             <div className="relative w-full flex justify-center md:mt-8">
                <FadeIn delay={200}>
-                 <div className="w-full max-w-[280px] overflow-visible group relative cursor-pointer">
+                 <div className="w-full max-w-[224px] overflow-visible group relative cursor-pointer">
                     <img 
                       src={displayImages[1] || displayImages[0]} 
                       alt="Project Visual 2" 
@@ -136,7 +136,7 @@ export const ImageGrid: React.FC<ImageGridProps> = ({
             {/* Image 3 */}
             <div className="relative w-full flex justify-center md:-mt-4">
                <FadeIn delay={400}>
-                 <div className="w-full max-w-[280px] overflow-visible group relative cursor-pointer">
+                 <div className="w-full max-w-[224px] overflow-visible group relative cursor-pointer">
                     <img 
                       src={displayImages[2] || displayImages[0]} 
                       alt="Project Visual 3" 

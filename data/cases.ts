@@ -344,8 +344,7 @@ export const CASES_DATA: Record<string, CaseStudy> = {
     },
     heroImage: '/Invia/Hero - Tienda Invia.png',
     images: [
-      '/Invia/visuales del proyecto - Tienda invia.png',
-      '/Invia/Situacion - Tienda invia.png'
+      '/Invia/visuales del proyecto - Tienda invia.png'
     ]
   }
 };

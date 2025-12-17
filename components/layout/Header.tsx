@@ -101,23 +101,66 @@ export default function Header() {
 
               const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
                 e.preventDefault();
-                const element = document.getElementById(id);
-                if (element) {
-                  const headerOffset = 80; // Altura del header
-                  const elementPosition = element.getBoundingClientRect().top;
-                  const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                
+                // Si estamos en el home, hacer scroll a la sección
+                if (pathname === `/${locale}` || pathname === `/${locale}/`) {
+                  const element = document.getElementById(id);
+                  if (element) {
+                    const headerOffset = 80; // Altura del header
+                    const elementPosition = element.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
-                  window.scrollTo({
-                    top: offsetPosition,
-                    behavior: 'smooth'
-                  });
+                    window.scrollTo({
+                      top: offsetPosition,
+                      behavior: 'smooth'
+                    });
+                  }
+                } else {
+                  // Si estamos en otra página, navegar al home y luego hacer scroll
+                  router.push(`/${locale}`);
+                  
+                  // Esperar a que la navegación se complete y luego actualizar el hash y hacer scroll
+                  setTimeout(() => {
+                    // Actualizar el hash en la URL
+                    window.history.replaceState(null, '', `/${locale}#${id}`);
+                    
+                    // Función para hacer scroll cuando el elemento esté disponible
+                    const scrollToSection = () => {
+                      const element = document.getElementById(id);
+                      if (element) {
+                        const headerOffset = 80;
+                        const elementPosition = element.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                        window.scrollTo({
+                          top: offsetPosition,
+                          behavior: 'smooth'
+                        });
+                        return true;
+                      }
+                      return false;
+                    };
+
+                    // Intentar hacer scroll inmediatamente
+                    if (!scrollToSection()) {
+                      // Si no está disponible, intentar varias veces con intervalos
+                      let attempts = 0;
+                      const maxAttempts = 30;
+                      const interval = setInterval(() => {
+                        attempts++;
+                        if (scrollToSection() || attempts >= maxAttempts) {
+                          clearInterval(interval);
+                        }
+                      }, 50);
+                    }
+                  }, 100);
                 }
               };
 
               return (
                 <a
                   key={id}
-                  href={`#${id}`}
+                  href={`/${locale}#${id}`}
                   onClick={handleClick}
                   className={`group relative text-sm font-light tracking-wide transition-all duration-300 ${baseColor} ${
                     isActive
@@ -181,7 +224,64 @@ export default function Header() {
             </button>
             
             <a 
-              href="#contact" 
+              href={`/${locale}#contact`}
+              onClick={(e) => {
+                e.preventDefault();
+                
+                // Si estamos en el home, hacer scroll a la sección
+                if (pathname === `/${locale}` || pathname === `/${locale}/`) {
+                  const element = document.getElementById('contact');
+                  if (element) {
+                    const headerOffset = 80;
+                    const elementPosition = element.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                    window.scrollTo({
+                      top: offsetPosition,
+                      behavior: 'smooth'
+                    });
+                  }
+                } else {
+                  // Si estamos en otra página, navegar al home y luego hacer scroll
+                  router.push(`/${locale}`);
+                  
+                  // Esperar a que la navegación se complete y luego actualizar el hash y hacer scroll
+                  setTimeout(() => {
+                    // Actualizar el hash en la URL
+                    window.history.replaceState(null, '', `/${locale}#contact`);
+                    
+                    // Función para hacer scroll cuando el elemento esté disponible
+                    const scrollToSection = () => {
+                      const element = document.getElementById('contact');
+                      if (element) {
+                        const headerOffset = 80;
+                        const elementPosition = element.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                        window.scrollTo({
+                          top: offsetPosition,
+                          behavior: 'smooth'
+                        });
+                        return true;
+                      }
+                      return false;
+                    };
+
+                    // Intentar hacer scroll inmediatamente
+                    if (!scrollToSection()) {
+                      // Si no está disponible, intentar varias veces con intervalos
+                      let attempts = 0;
+                      const maxAttempts = 30;
+                      const interval = setInterval(() => {
+                        attempts++;
+                        if (scrollToSection() || attempts >= maxAttempts) {
+                          clearInterval(interval);
+                        }
+                      }, 50);
+                    }
+                  }, 100);
+                }
+              }}
               className={`hidden md:block text-xs font-light px-4 py-2 rounded transition-all duration-200 ${
                 scrolled 
                   ? 'text-primary border border-primary hover:bg-primary hover:text-white hover:border-primary' 

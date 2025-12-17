@@ -46,6 +46,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import WhatsAppFloating from '@/components/ui/WhatsAppFloating';
+import HashScrollHandler from '@/components/layout/HashScrollHandler';
 
 export default async function LocaleLayout({
   children,
@@ -68,6 +69,7 @@ export default async function LocaleLayout({
 
     return (
       <NextIntlClientProvider messages={messages}>
+        <HashScrollHandler />
         <Header />
         <main>
           {children}
