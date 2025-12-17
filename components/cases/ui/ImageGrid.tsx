@@ -6,6 +6,7 @@ import { FadeIn } from './FadeIn';
 interface ImageGridProps {
   images?: string[];
   title?: string;
+  imageLink?: string;
 }
 
 export const ImageGrid: React.FC<ImageGridProps> = ({ 
@@ -14,7 +15,8 @@ export const ImageGrid: React.FC<ImageGridProps> = ({
     'https://picsum.photos/600/800?random=11',
     'https://picsum.photos/600/800?random=12'
   ],
-  title = 'Visuales de Campaña'
+  title = 'Visuales de Campaña',
+  imageLink
 }) => {
   const displayImages = images.slice(0, 3);
   const isSingleImage = displayImages.length === 1;
@@ -32,20 +34,43 @@ export const ImageGrid: React.FC<ImageGridProps> = ({
           // Single image layout - increased 150% (from 80% to 120% of container width)
           <div className="relative flex justify-center items-center" style={{ paddingBottom: '150px', marginBottom: '-150px', width: '100%' }}>
             <FadeIn delay={0}>
-              <div className="w-full overflow-visible group relative cursor-pointer" style={{ maxWidth: '120%', width: '120%' }}>
-                <img 
-                  src={displayImages[0]} 
-                  alt="Project Visual" 
-                  loading="eager"
-                  decoding="async"
-                  className="w-full h-auto object-contain transform group-hover:scale-[1.02] transition-transform duration-[1500ms] ease-out"
-                  style={{ 
-                    imageRendering: 'auto',
-                    filter: 'drop-shadow(0 20px 40px -12px rgba(0, 0, 0, 0.25))',
-                    maxWidth: '100%',
-                    height: 'auto'
-                  }}
-                />
+              <div className="w-full overflow-visible group relative" style={{ maxWidth: '120%', width: '120%' }}>
+                {imageLink ? (
+                  <a 
+                    href={imageLink} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="block cursor-pointer"
+                  >
+                    <img 
+                      src={displayImages[0]} 
+                      alt="Project Visual" 
+                      loading="eager"
+                      decoding="async"
+                      className="w-full h-auto object-contain transform group-hover:scale-[1.02] transition-transform duration-[1500ms] ease-out"
+                      style={{ 
+                        imageRendering: 'auto',
+                        filter: 'drop-shadow(0 20px 40px -12px rgba(0, 0, 0, 0.25))',
+                        maxWidth: '100%',
+                        height: 'auto'
+                      }}
+                    />
+                  </a>
+                ) : (
+                  <img 
+                    src={displayImages[0]} 
+                    alt="Project Visual" 
+                    loading="eager"
+                    decoding="async"
+                    className="w-full h-auto object-contain transform group-hover:scale-[1.02] transition-transform duration-[1500ms] ease-out"
+                    style={{ 
+                      imageRendering: 'auto',
+                      filter: 'drop-shadow(0 20px 40px -12px rgba(0, 0, 0, 0.25))',
+                      maxWidth: '100%',
+                      height: 'auto'
+                    }}
+                  />
+                )}
               </div>
             </FadeIn>
           </div>
@@ -53,37 +78,83 @@ export const ImageGrid: React.FC<ImageGridProps> = ({
           // Two images layout - dynamic composition with elegant overlap (reduced 20% - scale from 2.4 to 1.92)
           <div className="relative flex items-center justify-center gap-4 overflow-visible" style={{ paddingBottom: '120px', marginBottom: '-120px' }}>
             <FadeIn delay={0}>
-              <div className="relative overflow-visible group cursor-pointer" style={{ transform: 'translateX(4%) rotate(-1.5deg) scale(1.92)', width: '50%', zIndex: 1 }}>
-                <img 
-                  src={displayImages[0]} 
-                  alt="Project Visual 1" 
-                  loading="eager"
-                  decoding="async"
-                  className="w-full h-auto object-contain transform group-hover:scale-[1.02] group-hover:rotate-0 transition-all duration-[1500ms] ease-out"
-                  style={{ 
-                    imageRendering: 'auto',
-                    filter: 'drop-shadow(0 30px 60px -15px rgba(0, 0, 0, 0.35))',
-                    maxWidth: '100%',
-                    height: 'auto'
-                  }}
-                />
+              <div className="relative overflow-visible group" style={{ transform: 'translateX(4%) rotate(-1.5deg) scale(1.92)', width: '50%', zIndex: 1 }}>
+                {imageLink ? (
+                  <a 
+                    href={imageLink} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="block cursor-pointer"
+                  >
+                    <img 
+                      src={displayImages[0]} 
+                      alt="Project Visual 1" 
+                      loading="eager"
+                      decoding="async"
+                      className="w-full h-auto object-contain transform group-hover:scale-[1.02] group-hover:rotate-0 transition-all duration-[1500ms] ease-out"
+                      style={{ 
+                        imageRendering: 'auto',
+                        filter: 'drop-shadow(0 30px 60px -15px rgba(0, 0, 0, 0.35))',
+                        maxWidth: '100%',
+                        height: 'auto'
+                      }}
+                    />
+                  </a>
+                ) : (
+                  <img 
+                    src={displayImages[0]} 
+                    alt="Project Visual 1" 
+                    loading="eager"
+                    decoding="async"
+                    className="w-full h-auto object-contain transform group-hover:scale-[1.02] group-hover:rotate-0 transition-all duration-[1500ms] ease-out"
+                    style={{ 
+                      imageRendering: 'auto',
+                      filter: 'drop-shadow(0 30px 60px -15px rgba(0, 0, 0, 0.35))',
+                      maxWidth: '100%',
+                      height: 'auto'
+                    }}
+                  />
+                )}
               </div>
             </FadeIn>
             <FadeIn delay={200}>
-              <div className="relative overflow-visible group cursor-pointer" style={{ transform: 'translateX(-4%) rotate(1.5deg) scale(1.92)', width: '50%', zIndex: 2 }}>
-                <img 
-                  src={displayImages[1]} 
-                  alt="Project Visual 2" 
-                  loading="eager"
-                  decoding="async"
-                  className="w-full h-auto object-contain transform group-hover:scale-[1.02] group-hover:rotate-0 transition-all duration-[1500ms] ease-out"
-                  style={{ 
-                    imageRendering: 'auto',
-                    filter: 'drop-shadow(0 30px 60px -15px rgba(0, 0, 0, 0.35))',
-                    maxWidth: '100%',
-                    height: 'auto'
-                  }}
-                />
+              <div className="relative overflow-visible group" style={{ transform: 'translateX(-4%) rotate(1.5deg) scale(1.92)', width: '50%', zIndex: 2 }}>
+                {imageLink ? (
+                  <a 
+                    href={imageLink} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="block cursor-pointer"
+                  >
+                    <img 
+                      src={displayImages[1]} 
+                      alt="Project Visual 2" 
+                      loading="eager"
+                      decoding="async"
+                      className="w-full h-auto object-contain transform group-hover:scale-[1.02] group-hover:rotate-0 transition-all duration-[1500ms] ease-out"
+                      style={{ 
+                        imageRendering: 'auto',
+                        filter: 'drop-shadow(0 30px 60px -15px rgba(0, 0, 0, 0.35))',
+                        maxWidth: '100%',
+                        height: 'auto'
+                      }}
+                    />
+                  </a>
+                ) : (
+                  <img 
+                    src={displayImages[1]} 
+                    alt="Project Visual 2" 
+                    loading="eager"
+                    decoding="async"
+                    className="w-full h-auto object-contain transform group-hover:scale-[1.02] group-hover:rotate-0 transition-all duration-[1500ms] ease-out"
+                    style={{ 
+                      imageRendering: 'auto',
+                      filter: 'drop-shadow(0 30px 60px -15px rgba(0, 0, 0, 0.35))',
+                      maxWidth: '100%',
+                      height: 'auto'
+                    }}
+                  />
+                )}
               </div>
             </FadeIn>
           </div>
@@ -94,20 +165,43 @@ export const ImageGrid: React.FC<ImageGridProps> = ({
             {/* Image 1 */}
             <div className="relative w-full flex justify-center md:-mt-8">
                <FadeIn delay={0}>
-                 <div className="w-full max-w-[224px] overflow-visible group relative cursor-pointer">
-                    <img 
-                      src={displayImages[0]} 
-                      alt="Project Visual 1" 
-                      loading="eager"
-                      decoding="async"
-                      className="w-full h-auto object-contain transform group-hover:scale-[1.02] transition-transform duration-[1500ms] ease-out"
-                      style={{ 
-                        imageRendering: 'auto',
-                        filter: 'drop-shadow(0 20px 40px -12px rgba(0, 0, 0, 0.25))',
-                        maxWidth: '100%',
-                        height: 'auto'
-                      }}
-                    />
+                 <div className="w-full max-w-[224px] overflow-visible group relative">
+                    {imageLink ? (
+                      <a 
+                        href={imageLink} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="block cursor-pointer"
+                      >
+                        <img 
+                          src={displayImages[0]} 
+                          alt="Project Visual 1" 
+                          loading="eager"
+                          decoding="async"
+                          className="w-full h-auto object-contain transform group-hover:scale-[1.02] transition-transform duration-[1500ms] ease-out"
+                          style={{ 
+                            imageRendering: 'auto',
+                            filter: 'drop-shadow(0 20px 40px -12px rgba(0, 0, 0, 0.25))',
+                            maxWidth: '100%',
+                            height: 'auto'
+                          }}
+                        />
+                      </a>
+                    ) : (
+                      <img 
+                        src={displayImages[0]} 
+                        alt="Project Visual 1" 
+                        loading="eager"
+                        decoding="async"
+                        className="w-full h-auto object-contain transform group-hover:scale-[1.02] transition-transform duration-[1500ms] ease-out"
+                        style={{ 
+                          imageRendering: 'auto',
+                          filter: 'drop-shadow(0 20px 40px -12px rgba(0, 0, 0, 0.25))',
+                          maxWidth: '100%',
+                          height: 'auto'
+                        }}
+                      />
+                    )}
                  </div>
                </FadeIn>
             </div>
@@ -115,20 +209,43 @@ export const ImageGrid: React.FC<ImageGridProps> = ({
             {/* Image 2 */}
             <div className="relative w-full flex justify-center md:mt-8">
                <FadeIn delay={200}>
-                 <div className="w-full max-w-[224px] overflow-visible group relative cursor-pointer">
-                    <img 
-                      src={displayImages[1] || displayImages[0]} 
-                      alt="Project Visual 2" 
-                      loading="eager"
-                      decoding="async"
-                      className="w-full h-auto object-contain transform group-hover:scale-[1.02] transition-transform duration-[1500ms] ease-out"
-                      style={{ 
-                        imageRendering: 'auto',
-                        filter: 'drop-shadow(0 20px 40px -12px rgba(0, 0, 0, 0.25))',
-                        maxWidth: '100%',
-                        height: 'auto'
-                      }}
-                    />
+                 <div className="w-full max-w-[224px] overflow-visible group relative">
+                    {imageLink ? (
+                      <a 
+                        href={imageLink} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="block cursor-pointer"
+                      >
+                        <img 
+                          src={displayImages[1] || displayImages[0]} 
+                          alt="Project Visual 2" 
+                          loading="eager"
+                          decoding="async"
+                          className="w-full h-auto object-contain transform group-hover:scale-[1.02] transition-transform duration-[1500ms] ease-out"
+                          style={{ 
+                            imageRendering: 'auto',
+                            filter: 'drop-shadow(0 20px 40px -12px rgba(0, 0, 0, 0.25))',
+                            maxWidth: '100%',
+                            height: 'auto'
+                          }}
+                        />
+                      </a>
+                    ) : (
+                      <img 
+                        src={displayImages[1] || displayImages[0]} 
+                        alt="Project Visual 2" 
+                        loading="eager"
+                        decoding="async"
+                        className="w-full h-auto object-contain transform group-hover:scale-[1.02] transition-transform duration-[1500ms] ease-out"
+                        style={{ 
+                          imageRendering: 'auto',
+                          filter: 'drop-shadow(0 20px 40px -12px rgba(0, 0, 0, 0.25))',
+                          maxWidth: '100%',
+                          height: 'auto'
+                        }}
+                      />
+                    )}
                  </div>
                </FadeIn>
             </div>
@@ -136,20 +253,43 @@ export const ImageGrid: React.FC<ImageGridProps> = ({
             {/* Image 3 */}
             <div className="relative w-full flex justify-center md:-mt-4">
                <FadeIn delay={400}>
-                 <div className="w-full max-w-[224px] overflow-visible group relative cursor-pointer">
-                    <img 
-                      src={displayImages[2] || displayImages[0]} 
-                      alt="Project Visual 3" 
-                      loading="eager"
-                      decoding="async"
-                      className="w-full h-auto object-contain transform group-hover:scale-[1.02] transition-transform duration-[1500ms] ease-out"
-                      style={{ 
-                        imageRendering: 'auto',
-                        filter: 'drop-shadow(0 20px 40px -12px rgba(0, 0, 0, 0.25))',
-                        maxWidth: '100%',
-                        height: 'auto'
-                      }}
-                    />
+                 <div className="w-full max-w-[224px] overflow-visible group relative">
+                    {imageLink ? (
+                      <a 
+                        href={imageLink} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="block cursor-pointer"
+                      >
+                        <img 
+                          src={displayImages[2] || displayImages[0]} 
+                          alt="Project Visual 3" 
+                          loading="eager"
+                          decoding="async"
+                          className="w-full h-auto object-contain transform group-hover:scale-[1.02] transition-transform duration-[1500ms] ease-out"
+                          style={{ 
+                            imageRendering: 'auto',
+                            filter: 'drop-shadow(0 20px 40px -12px rgba(0, 0, 0, 0.25))',
+                            maxWidth: '100%',
+                            height: 'auto'
+                          }}
+                        />
+                      </a>
+                    ) : (
+                      <img 
+                        src={displayImages[2] || displayImages[0]} 
+                        alt="Project Visual 3" 
+                        loading="eager"
+                        decoding="async"
+                        className="w-full h-auto object-contain transform group-hover:scale-[1.02] transition-transform duration-[1500ms] ease-out"
+                        style={{ 
+                          imageRendering: 'auto',
+                          filter: 'drop-shadow(0 20px 40px -12px rgba(0, 0, 0, 0.25))',
+                          maxWidth: '100%',
+                          height: 'auto'
+                        }}
+                      />
+                    )}
                  </div>
                </FadeIn>
             </div>

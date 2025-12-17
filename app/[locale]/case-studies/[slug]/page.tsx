@@ -134,6 +134,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
             : (projectDetails.services[0] || (isEnglish ? 'Case Study' : 'Caso de Estudio'))
         }
         imageScale={slug === 'monyte' || slug === 'securitas' || slug === 'rac' || slug === 'invia' ? 0.7 : 1}
+        imageLink={slug === 'invia' ? 'https://tiendainvia.com/' : undefined}
       />
 
       {/* Marca / Intro */}
@@ -156,6 +157,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
         hasDivider
         floatingImage={slug === 'monyte' || slug === 'securitas' || slug === 'rac' || slug === 'invia'}
         imageAspect="auto"
+        imageLink={slug === 'invia' ? 'https://tiendainvia.com/' : undefined}
       />
 
       {/* Tarea */}
@@ -179,6 +181,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
         floatingImage={slug === 'monyte' || slug === 'securitas' || slug === 'rac' || slug === 'invia'}
         imageAspect="auto"
         imageMaxWidth={slug === 'rac' ? '60%' : slug === 'invia' ? '50%' : '75%'}
+        imageLink={slug === 'invia' ? 'https://tiendainvia.com/' : undefined}
       />
 
       <ProjectDetails 
@@ -186,7 +189,11 @@ export default async function CaseStudyPage({ params }: PageProps) {
         clientName={caseStudy.client} 
       />
 
-      <ImageGrid images={caseStudy.images} title={labels.visuals} />
+      <ImageGrid 
+        images={caseStudy.images} 
+        title={labels.visuals}
+        imageLink={slug === 'invia' ? 'https://tiendainvia.com/' : undefined}
+      />
       
     </div>
   );

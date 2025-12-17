@@ -16,6 +16,7 @@ interface SectionProps {
   floatingImage?: boolean;
   imageAspect?: string;
   imageMaxWidth?: string;
+  imageLink?: string;
 }
 
 export const Section: React.FC<SectionProps> = ({ 
@@ -30,7 +31,8 @@ export const Section: React.FC<SectionProps> = ({
   hasDivider = false,
   floatingImage = false,
   imageAspect = 'aspect-[4/5]',
-  imageMaxWidth = '75%'
+  imageMaxWidth = '75%',
+  imageLink
 }) => {
   const isDark = theme === 'dark';
   // Abra colors: Primary (#04213B) for dark background, White for light
@@ -77,20 +79,44 @@ export const Section: React.FC<SectionProps> = ({
                   // Floating image without container - full quality, modern composition
                   <div className="relative group w-full flex justify-center">
                     <div className="relative overflow-visible" style={{ maxWidth: imageMaxWidth }}>
-                      <img 
-                        src={image} 
-                        alt={title} 
-                        loading="eager"
-                        decoding="async"
-                        className="w-full h-auto object-contain transition-all duration-[1200ms] ease-out transform group-hover:scale-[1.01]"
-                        style={{ 
-                          imageRendering: 'auto',
-                          filter: 'drop-shadow(0 35px 70px -12px rgba(0, 0, 0, 0.35))',
-                          maxWidth: '100%',
-                          height: 'auto',
-                          willChange: 'transform'
-                        }}
-                      />
+                      {imageLink ? (
+                        <a 
+                          href={imageLink} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="block cursor-pointer"
+                        >
+                          <img 
+                            src={image} 
+                            alt={title} 
+                            loading="eager"
+                            decoding="async"
+                            className="w-full h-auto object-contain transition-all duration-[1200ms] ease-out transform group-hover:scale-[1.01]"
+                            style={{ 
+                              imageRendering: 'auto',
+                              filter: 'drop-shadow(0 35px 70px -12px rgba(0, 0, 0, 0.35))',
+                              maxWidth: '100%',
+                              height: 'auto',
+                              willChange: 'transform'
+                            }}
+                          />
+                        </a>
+                      ) : (
+                        <img 
+                          src={image} 
+                          alt={title} 
+                          loading="eager"
+                          decoding="async"
+                          className="w-full h-auto object-contain transition-all duration-[1200ms] ease-out transform group-hover:scale-[1.01]"
+                          style={{ 
+                            imageRendering: 'auto',
+                            filter: 'drop-shadow(0 35px 70px -12px rgba(0, 0, 0, 0.35))',
+                            maxWidth: '100%',
+                            height: 'auto',
+                            willChange: 'transform'
+                          }}
+                        />
+                      )}
                     </div>
                   </div>
                 ) : (
@@ -108,13 +134,30 @@ export const Section: React.FC<SectionProps> = ({
                       ) : (
                         <>
                           <div className="absolute inset-0 bg-gradient-to-t from-[#04213B]/20 via-transparent to-transparent group-hover:from-transparent z-10 transition-all duration-700 pointer-events-none rounded-2xl" />
-                          <img 
-                            src={image} 
-                            alt={title} 
-                            loading="eager"
-                            className="w-full h-full object-cover transition-all duration-[1200ms] ease-out transform group-hover:scale-105 rounded-2xl"
-                            style={{ imageRendering: 'auto' }}
-                          />
+                          {imageLink ? (
+                            <a 
+                              href={imageLink} 
+                              target="_blank" 
+                              rel="noopener noreferrer"
+                              className="block w-full h-full cursor-pointer"
+                            >
+                              <img 
+                                src={image} 
+                                alt={title} 
+                                loading="eager"
+                                className="w-full h-full object-cover transition-all duration-[1200ms] ease-out transform group-hover:scale-105 rounded-2xl"
+                                style={{ imageRendering: 'auto' }}
+                              />
+                            </a>
+                          ) : (
+                            <img 
+                              src={image} 
+                              alt={title} 
+                              loading="eager"
+                              className="w-full h-full object-cover transition-all duration-[1200ms] ease-out transform group-hover:scale-105 rounded-2xl"
+                              style={{ imageRendering: 'auto' }}
+                            />
+                          )}
                         </>
                       )}
                     </div>
