@@ -10,9 +10,10 @@ export default function Footer() {
     <footer className="bg-off border-t border-border py-6 md:py-12 mt-0 relative z-10 overflow-x-hidden">
       <div className="container mx-auto px-4 max-w-full">
         <div className="max-w-6xl mx-auto w-full">
-          {/* Mobile: Compact horizontal layout */}
-          <div className="md:hidden space-y-4">
-            <div className="flex items-center justify-between">
+          {/* Mobile: Centered layout */}
+          <div className="md:hidden space-y-6 text-center">
+            {/* Logo */}
+            <div className="flex justify-center">
               <Image
                 src="/abra-negro.png"
                 alt="A:BRA Logo"
@@ -20,32 +21,39 @@ export default function Footer() {
                 height={24}
                 className="h-6 w-auto opacity-90"
               />
-              <div className="flex items-center gap-4">
-                <a 
-                  href="https://linkedin.com/company/abra" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="text-xs text-text-secondary hover:text-primary transition-colors font-light"
-                >
-                  LinkedIn
-                </a>
-                <a 
-                  href="https://instagram.com/abra" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="text-xs text-text-secondary hover:text-primary transition-colors font-light"
-                >
-                  Instagram
-                </a>
-              </div>
             </div>
-            <div className="flex items-center gap-4 text-xs text-text-secondary font-light">
+            
+            {/* Social Links */}
+            <div className="flex items-center justify-center gap-4">
+              <a 
+                href="https://linkedin.com/company/abra" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-xs text-text-secondary hover:text-primary transition-colors font-light"
+              >
+                LinkedIn
+              </a>
+              <span className="text-primary-light/30">•</span>
+              <a 
+                href="https://instagram.com/abra" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="text-xs text-text-secondary hover:text-primary transition-colors font-light"
+              >
+                Instagram
+              </a>
+            </div>
+            
+            {/* Locations */}
+            <div className="flex items-center justify-center gap-4 text-xs text-text-secondary font-light">
               <span>Argentina</span>
               <span className="text-primary-light/30">•</span>
               <span>Colombia</span>
               <span className="text-primary-light/30">•</span>
               <span>España</span>
             </div>
+            
+            {/* Copyright */}
             <p className="text-center text-[10px] text-text-muted font-light pt-2 border-t border-primary-light/10">
               © {new Date().getFullYear()} A:BRA - Strategic Digital Engineering
             </p>
