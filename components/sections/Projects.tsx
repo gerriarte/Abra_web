@@ -102,9 +102,9 @@ export default function Projects() {
   }
 
   return (
-    <section id="projects" className="py-32 bg-white overflow-hidden">
-      <div className="container mx-auto px-4">
-        <div className="max-w-7xl mx-auto">
+    <section id="projects" className="py-32 bg-white overflow-x-hidden">
+      <div className="container mx-auto px-4 max-w-full">
+        <div className="max-w-7xl mx-auto w-full">
           {/* Header */}
           <div ref={ref} className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
             <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>

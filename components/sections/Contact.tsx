@@ -183,9 +183,9 @@ export default function Contact() {
   ] as const;
 
   return (
-    <section id="contact" className="py-12 md:py-16 bg-off">
-      <div className="container mx-auto px-4">
-        <div className="max-w-5xl mx-auto">
+    <section id="contact" className="py-12 md:py-16 bg-off overflow-x-hidden">
+      <div className="container mx-auto px-4 max-w-full">
+        <div className="max-w-5xl mx-auto w-full">
           {/* Section Title */}
           <div ref={ref} className="mb-8 md:mb-10 text-center">
             <h2 className={`text-3xl md:text-4xl font-light text-primary mb-3 md:mb-4 tracking-tight transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>

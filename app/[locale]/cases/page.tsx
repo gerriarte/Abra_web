@@ -88,9 +88,9 @@ export default function CasesPage() {
   };
 
   return (
-    <div className="bg-white min-h-screen">
+    <div className="bg-white min-h-screen overflow-x-hidden">
       {/* Hero Section */}
-      <section className="pt-40 pb-32 px-6 md:px-12 bg-[#04213B] text-white rounded-b-[3rem] md:rounded-b-[5rem] relative overflow-hidden">
+      <section className="pt-40 pb-32 px-6 md:px-12 bg-[#04213B] text-white rounded-b-[3rem] md:rounded-b-[5rem] relative overflow-hidden max-w-full">
         {/* Abstract background element */}
         <div className="absolute top-0 right-0 w-full h-full opacity-10 pointer-events-none">
              <div className="absolute -top-[20%] -right-[10%] w-[60%] h-[60%] rounded-full bg-white blur-[100px]" />

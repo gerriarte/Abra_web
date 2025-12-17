@@ -212,10 +212,11 @@ export default function Hero() {
             src={`${formatEmbedUrl(activeSlide.mediaUrl)}`}
             className={`absolute top-0 left-0 w-full h-full transition-all duration-700 ease-in-out ${transitionClass}`}
             style={{
-              width: '100vw',
+              width: '100%',
               height: '56.25vw',
               minHeight: '100vh',
-              minWidth: '177.77vh',
+              minWidth: '100%',
+              maxWidth: '100vw',
             }}
             allow="autoplay; fullscreen; picture-in-picture"
             allowFullScreen
@@ -289,8 +290,8 @@ export default function Hero() {
         </>
       )}
 
-      <div ref={ref} className="container mx-auto px-4 lg:px-8 py-32 md:py-48 relative z-10">
-        <div className="max-w-6xl mx-auto">
+      <div ref={ref} className="container mx-auto px-4 lg:px-8 py-32 md:py-48 relative z-10 max-w-full overflow-x-hidden">
+        <div className="max-w-6xl mx-auto w-full">
           <div className="flex flex-col md:flex-row items-start justify-between gap-12">
             <div className="flex-1 space-y-6">
               <div 

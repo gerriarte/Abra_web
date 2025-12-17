@@ -114,7 +114,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
   ]);
 
   return (
-    <div className="min-h-screen w-full bg-white">
+    <div className="min-h-screen w-full bg-white overflow-x-hidden">
       <JsonLd data={[articleSchema, breadcrumbSchema]} />
       <TableOfContents />
       

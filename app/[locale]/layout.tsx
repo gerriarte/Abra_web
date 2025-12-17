@@ -71,7 +71,7 @@ export default async function LocaleLayout({
       <NextIntlClientProvider messages={messages}>
         <HashScrollHandler />
         <Header />
-        <main>
+        <main className="overflow-x-hidden">
           {children}
         </main>
         <Footer />

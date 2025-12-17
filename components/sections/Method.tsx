@@ -42,8 +42,8 @@ export default function Method() {
 
   return (
     <section id="method" className="py-20 bg-off">
-      <div className="container mx-auto px-4">
-        <div className="max-w-6xl mx-auto text-center">
+      <div className="container mx-auto px-4 max-w-full">
+        <div className="max-w-6xl mx-auto text-center w-full overflow-x-hidden">
           <div ref={titleRef}>
             <h2
               className={`text-4xl md:text-5xl font-light text-primary tracking-tight transition-all duration-700 ${

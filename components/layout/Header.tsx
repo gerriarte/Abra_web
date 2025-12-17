@@ -73,16 +73,16 @@ export default function Header() {
           : 'bg-transparent'
       }`}
     >
-      <nav className="container mx-auto px-4 lg:px-8">
-        <div className="flex items-center justify-between h-20">
+      <nav className="container mx-auto px-4 lg:px-8 max-w-full overflow-hidden">
+        <div className="flex items-center justify-between h-20 min-w-0">
           {/* Logo */}
-          <Link href={`/${locale}`} className="flex items-center">
+          <Link href={`/${locale}`} className="flex items-center flex-shrink-0 min-w-0">
             <Image
               src={scrolled ? "/abra-negro.png" : "/abra-blanco.png"}
               alt="A:BRA"
               width={90}
               height={28}
-              className="h-7 w-auto transition-opacity duration-500"
+              className="h-7 w-auto transition-opacity duration-500 max-w-[90px]"
               priority
             />
           </Link>
@@ -205,10 +205,10 @@ export default function Header() {
           </div>
 
           {/* Language Toggle & CTA */}
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-2 md:gap-6 min-w-0 flex-shrink-0">
             <button
               onClick={toggleLanguage}
-              className={`flex items-center gap-1 text-xs font-light transition-colors ${
+              className={`flex items-center gap-1 text-xs font-light transition-colors flex-shrink-0 ${
                 scrolled 
                   ? 'text-primary hover:text-accent' 
                   : 'text-white hover:text-white/80'

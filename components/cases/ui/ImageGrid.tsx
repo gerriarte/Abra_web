@@ -23,8 +23,8 @@ export const ImageGrid: React.FC<ImageGridProps> = ({
   const isTwoImages = displayImages.length === 2;
   
   return (
-    <section className="pt-24 pb-0 bg-gradient-to-b from-gray-50 via-white to-transparent px-6 overflow-visible relative" style={{ zIndex: 1 }}>
-      <div className={`mx-auto ${isTwoImages ? 'max-w-full' : isSingleImage ? 'max-w-7xl' : 'max-w-5xl'}`}>
+    <section className="pt-24 pb-0 bg-gradient-to-b from-gray-50 via-white to-transparent px-6 overflow-x-hidden relative" style={{ zIndex: 1 }}>
+      <div className={`mx-auto ${isTwoImages ? 'max-w-full' : isSingleImage ? 'max-w-7xl' : 'max-w-5xl'} w-full`}>
         <FadeIn>
           <h3 className="text-center text-gray-500 text-xs tracking-[0.2em] uppercase mb-16 font-medium">
             {title}
@@ -32,9 +32,9 @@ export const ImageGrid: React.FC<ImageGridProps> = ({
         </FadeIn>
         {isSingleImage ? (
           // Single image layout - increased 150% (from 80% to 120% of container width)
-          <div className="relative flex justify-center items-center" style={{ paddingBottom: '150px', marginBottom: '-150px', width: '100%' }}>
+          <div className="relative flex justify-center items-center" style={{ paddingBottom: '150px', marginBottom: '-150px', width: '100%', maxWidth: '100vw' }}>
             <FadeIn delay={0}>
-              <div className="w-full overflow-visible group relative" style={{ maxWidth: '120%', width: '120%' }}>
+              <div className="w-full overflow-visible group relative" style={{ maxWidth: 'min(120%, 100vw)', width: '100%' }}>
                 {imageLink ? (
                   <a 
                     href={imageLink} 

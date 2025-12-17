@@ -39,8 +39,8 @@ export default function RootLayout({
   const gtmId = process.env.NEXT_PUBLIC_GTM_ID || 'GTM-56J4SKMV';
 
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.variable} antialiased`} suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className="overflow-x-hidden">
+      <body className={`${inter.variable} antialiased overflow-x-hidden`} suppressHydrationWarning>
         <JsonLd data={[generateOrganizationSchema(), generateWebSiteSchema()]} />
         {/* Google Tag Manager (noscript) - Debe estar inmediatamente después del body */}
         <GoogleTagManagerNoscript gtmId={gtmId} />

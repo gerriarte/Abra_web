@@ -51,9 +51,9 @@ export default function Problem() {
   };
 
   return (
-    <section id="problem" className="py-20 bg-white">
-      <div className="container mx-auto px-4">
-        <div className="max-w-5xl mx-auto text-center">
+    <section id="problem" className="py-20 bg-white overflow-x-hidden">
+      <div className="container mx-auto px-4 max-w-full">
+        <div className="max-w-5xl mx-auto text-center w-full">
           <div ref={titleRef}>
             <h2
               className={`text-4xl md:text-5xl font-light text-primary tracking-tight transition-all duration-700 ${

@@ -60,10 +60,10 @@ export default function WhatsAppFloating() {
   };
 
   return (
-    <div ref={menuRef} className="fixed bottom-20 md:bottom-6 right-4 md:right-6 z-50">
+    <div ref={menuRef} className="fixed bottom-20 md:bottom-6 right-2 md:right-6 z-50" style={{ maxWidth: 'calc(100vw - 1rem)' }}>
       {/* Options Menu */}
       {isOpen && (
-        <div className="mb-4 space-y-2">
+        <div className="mb-4 space-y-2 max-w-[calc(100vw-2rem)]">
           {whatsappOptions.map((option, index) => (
             <button
               key={option.country}
