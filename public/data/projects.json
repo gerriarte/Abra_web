@@ -104,6 +104,41 @@
           "link": "/case-studies/rac"
         }
       ]
+    },
+    {
+      "id": 5,
+      "title": "Invia 1912",
+      "category": "E-commerce & Desarrollo",
+      "description": "E-commerce para maquinaria industrial de bebidas y alimentos con más de 1500 productos, atendiendo múltiples países europeos.",
+      "image": "/Invia/Hero - Tienda Invia.png",
+      "cases": [
+        {
+          "id": "invia-case-001",
+          "title": "E-commerce para Maquinaria Industrial de Bebidas y Alimentos",
+          "relatedServices": [
+            "UX/UI Design",
+            "Web Design",
+            "WordPress Development",
+            "E-commerce Development"
+          ],
+          "challenge": "Tradicionalmente su venta ha sido por compra directa en su fábrica, pero necesitaban digitalizar el proceso comercial para responder a la demanda de productores vitivinícolas en todo Europa.",
+          "solution": "Diseño de experiencia de compra y desarrollo de sitio web en WordPress con múltiples personalizaciones para comercializar más de 1500 productos de forma clara y atractiva.",
+          "resultsSummary": "1500+ productos catalogados y aumento del 45% en conversión e-commerce.",
+          "results": {
+            "metrics": [
+              {
+                "label": "Productos Catalogados",
+                "value": "1500+"
+              },
+              {
+                "label": "Conversión",
+                "value": "+45%"
+              }
+            ]
+          },
+          "link": "/case-studies/invia"
+        }
+      ]
     }
   ]
 }

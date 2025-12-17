@@ -85,3 +85,4 @@ npm run build  # ✅ Debe completarse sin errores
 - ✅ SEO completo (sitemap, robots, schemas JSON-LD)
 - ✅ Metadatos dinámicos por página
 
+

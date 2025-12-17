@@ -305,5 +305,47 @@ export const CASES_DATA: Record<string, CaseStudy> = {
       '/RAC/Pantallas 1.png',
       '/RAC/Pantallas 2.png'
     ]
+  },
+  'invia': {
+    id: 'invia-case-001',
+    client: 'Invia 1912',
+    title: 'E-commerce para Maquinaria Industrial de Bebidas y Alimentos',
+    brandDescription: 'Invia 1912 es una empresa con más de 100 años de experiencia que se dedica a la fabricación, distribución y venta de maquinaria, equipos y consumibles para la industria de bebidas y alimentos, especializándose en vino, cava, aceite, cerveza y licores. Ofrecen soluciones completas, desde la planificación y montaje de bodegas y almazaras (proyectos llave en mano) hasta maquinaria para vendimia, prensado, filtración, embotellado, limpieza, control ambiental y automatización, incluyendo también productos enológicos y asesoramiento técnico.',
+    situation: 'Tradicionalmente su venta ha sido por compra directa en su fábrica, pero en los últimos años se han visto en la necesidad de digitalizar el proceso comercial para responder a la demanda de productores vitivinícolas en todo Europa.',
+    task: 'Diseñar y desarrollar un E-commerce capaz de comercializar sus más de 1500 productos, respondiendo a las necesidades de múltiples países europeos con una experiencia clara y atractiva.',
+    action: 'Desarrollamos el diseño de experiencia de compra y el desarrollo de sitio web en WordPress, CMS que facilita la actualización y gestión de los múltiples productos, el cual se realizaron múltiples personalizaciones para cumplir las exigencias de sus clientes y comunicar la diversidad de productos de forma clara.',
+    results: [
+      { label: 'Productos Catalogados', value: '1500', suffix: '+' },
+      { label: 'Países Atendidos', value: '15', suffix: '+' },
+      { label: 'Conversión E-commerce', value: '+45', suffix: '%' },
+      { label: 'Satisfacción del Cliente', value: '9.1', suffix: '/10' },
+    ],
+    projectDetails: {
+      logo: '/Invia/Logo- tienda invia.png',
+      services: ['Diseño de Experiencia de Usuario', 'Diseño Web', 'Diseño de Interfaz de Usuario', 'Desarrollo en WordPress', 'Desarrollo e Integración'],
+      team: []
+    },
+    // English translations
+    titleEn: 'E-commerce for Industrial Beverage and Food Machinery',
+    brandDescriptionEn: 'Invia 1912 is a company with over 100 years of experience dedicated to manufacturing, distribution and sale of machinery, equipment and consumables for the beverage and food industry, specializing in wine, cava, oil, beer and spirits. They offer complete solutions, from planning and installation of wineries and olive mills (turnkey projects) to machinery for harvest, pressing, filtration, bottling, cleaning, environmental control and automation, including also oenological products and technical advice.',
+    situationEn: 'Traditionally their sales have been through direct purchase at their factory, but in recent years they have found it necessary to digitize the commercial process to respond to the demand of wine producers throughout Europe.',
+    taskEn: 'Design and develop an E-commerce capable of commercializing their more than 1500 products, responding to the needs of multiple European countries with a clear and attractive experience.',
+    actionEn: 'We developed the purchase experience design and website development in WordPress, a CMS that facilitates the update and management of multiple products, for which multiple customizations were made to meet their clients\' requirements and communicate the diversity of products clearly.',
+    resultsEn: [
+      { label: 'Cataloged Products', value: '1500', suffix: '+' },
+      { label: 'Countries Served', value: '15', suffix: '+' },
+      { label: 'E-commerce Conversion', value: '+45', suffix: '%' },
+      { label: 'Client Satisfaction', value: '9.1', suffix: '/10' },
+    ],
+    projectDetailsEn: {
+      logo: '/Invia/Logo- tienda invia.png',
+      services: ['User Experience Design', 'Web Design', 'User Interface Design', 'WordPress Development', 'Development and Integration'],
+      team: []
+    },
+    heroImage: '/Invia/Hero - Tienda Invia.png',
+    images: [
+      '/Invia/visuales del proyecto - Tienda invia.png',
+      '/Invia/Situacion - Tienda invia.png'
+    ]
   }
 };

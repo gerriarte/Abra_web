@@ -176,3 +176,4 @@ Las siguientes variables estarán disponibles en GTM:
 3. **Documentar eventos**: Mantén un registro de todos los eventos personalizados que uses
 4. **Testing**: Siempre prueba los eventos en desarrollo antes de desplegar
 
+

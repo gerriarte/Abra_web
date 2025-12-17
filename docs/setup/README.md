@@ -92,3 +92,4 @@ SMTP_PORT=587
 - [Panel de Administración](ADMIN_PANEL.md) - Configuración del admin panel
 - [Despliegue en Vercel](../deployment/VERCEL.md) - Variables de entorno en producción
 
+

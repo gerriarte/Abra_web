@@ -38,6 +38,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     ? `${title} | Securitas`
     : slug === 'rac'
     ? `${title} | RealArt Crypto`
+    : slug === 'invia'
+    ? `${title} | Invia 1912`
     : `${title} | ${isEnglish ? 'A:BRA Case Study' : 'Caso de Estudio A:BRA'}`;
 
   const image = caseStudy.heroImage || caseStudy.images?.[0] || '/abra.png';
@@ -127,9 +129,11 @@ export default async function CaseStudyPage({ params }: PageProps) {
             ? (isEnglish ? 'User Experience' : 'Experiencia de Usuario')
             : slug === 'rac'
             ? (isEnglish ? 'User Experience' : 'Experiencia de Usuario')
+            : slug === 'invia'
+            ? (isEnglish ? 'E-commerce' : 'E-commerce')
             : (projectDetails.services[0] || (isEnglish ? 'Case Study' : 'Caso de Estudio'))
         }
-        imageScale={slug === 'monyte' || slug === 'securitas' || slug === 'rac' ? 0.7 : 1}
+        imageScale={slug === 'monyte' || slug === 'securitas' || slug === 'rac' || slug === 'invia' ? 0.7 : 1}
       />
 
       {/* Marca / Intro */}
@@ -147,10 +151,10 @@ export default async function CaseStudyPage({ params }: PageProps) {
         category={labels.situation}
         title={labels.situationTitle}
         description={situation}
-        image={slug === 'monyte' ? '/monyte/monyte-dashboard.png' : slug === 'securitas' ? '/Securitas/Dashboard.png' : slug === 'rac' ? '/RAC/Dashboard.png' : "https://picsum.photos/800/1000?random=1"}
+        image={slug === 'monyte' ? '/monyte/monyte-dashboard.png' : slug === 'securitas' ? '/Securitas/Dashboard.png' : slug === 'rac' ? '/RAC/Dashboard.png' : slug === 'invia' ? '/Invia/Situacion - Tienda invia.png' : "https://picsum.photos/800/1000?random=1"}
         align="right"
         hasDivider
-        floatingImage={slug === 'monyte' || slug === 'securitas' || slug === 'rac'}
+        floatingImage={slug === 'monyte' || slug === 'securitas' || slug === 'rac' || slug === 'invia'}
         imageAspect="auto"
       />
 
@@ -170,11 +174,11 @@ export default async function CaseStudyPage({ params }: PageProps) {
         category={labels.action}
         title={labels.actionTitle}
         description={action}
-        image={slug === 'monyte' ? '/monyte/monyte-marca.png' : slug === 'securitas' ? '/Securitas/Log securitas.png' : slug === 'rac' ? '/RAC/Logo.png' : "https://picsum.photos/800/1000?random=2"} 
+        image={slug === 'monyte' ? '/monyte/monyte-marca.png' : slug === 'securitas' ? '/Securitas/Log securitas.png' : slug === 'rac' ? '/RAC/Logo.png' : slug === 'invia' ? '/Invia/Logo- tienda invia.png' : "https://picsum.photos/800/1000?random=2"} 
         align="right"
-        floatingImage={slug === 'monyte' || slug === 'securitas' || slug === 'rac'}
+        floatingImage={slug === 'monyte' || slug === 'securitas' || slug === 'rac' || slug === 'invia'}
         imageAspect="auto"
-        imageMaxWidth={slug === 'rac' ? '60%' : '75%'}
+        imageMaxWidth={slug === 'rac' ? '60%' : slug === 'invia' ? '50%' : '75%'}
       />
 
       <ProjectDetails 
