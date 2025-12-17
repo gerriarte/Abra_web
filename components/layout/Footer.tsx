@@ -43,6 +43,8 @@ export default function Footer() {
               <span>Argentina</span>
               <span className="text-primary-light/30">•</span>
               <span>Colombia</span>
+              <span className="text-primary-light/30">•</span>
+              <span>España</span>
             </div>
             <p className="text-center text-[10px] text-text-muted font-light pt-2 border-t border-primary-light/10">
               © {new Date().getFullYear()} A:BRA - Strategic Digital Engineering
@@ -75,6 +77,10 @@ export default function Footer() {
                 <div className="flex items-center gap-2 group">
                   <div className="w-1 h-1 rounded-full bg-primary/40 group-hover:bg-primary transition-colors" />
                   <p className="text-sm text-text-secondary font-light group-hover:text-primary transition-colors">Colombia</p>
+                </div>
+                <div className="flex items-center gap-2 group">
+                  <div className="w-1 h-1 rounded-full bg-primary/40 group-hover:bg-primary transition-colors" />
+                  <p className="text-sm text-text-secondary font-light group-hover:text-primary transition-colors">España</p>
                 </div>
               </div>
             </div>

@@ -23,6 +23,12 @@ const whatsappOptions: WhatsAppOption[] = [
     code: '+54',
     flag: '🇦🇷',
   },
+  {
+    country: 'España',
+    number: '34677846668',
+    code: '+34',
+    flag: '🇪🇸',
+  },
 ];
 
 export default function WhatsAppFloating() {

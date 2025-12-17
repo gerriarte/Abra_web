@@ -22,17 +22,17 @@ export const ImageGrid: React.FC<ImageGridProps> = ({
   
   return (
     <section className="pt-24 pb-0 bg-gradient-to-b from-gray-50 via-white to-transparent px-6 overflow-visible relative" style={{ zIndex: 1 }}>
-      <div className={`mx-auto ${isTwoImages ? 'max-w-full' : 'max-w-5xl'}`}>
+      <div className={`mx-auto ${isTwoImages ? 'max-w-full' : isSingleImage ? 'max-w-7xl' : 'max-w-5xl'}`}>
         <FadeIn>
           <h3 className="text-center text-gray-500 text-xs tracking-[0.2em] uppercase mb-16 font-medium">
             {title}
           </h3>
         </FadeIn>
         {isSingleImage ? (
-          // Single image layout - 80% width (reduced 20%)
-          <div className="relative flex justify-center" style={{ paddingBottom: '150px', marginBottom: '-150px' }}>
+          // Single image layout - increased 150% (from 80% to 120% of container width)
+          <div className="relative flex justify-center items-center" style={{ paddingBottom: '150px', marginBottom: '-150px', width: '100%' }}>
             <FadeIn delay={0}>
-              <div className="w-full max-w-[80%] overflow-visible group relative cursor-pointer">
+              <div className="w-full overflow-visible group relative cursor-pointer" style={{ maxWidth: '120%', width: '120%' }}>
                 <img 
                   src={displayImages[0]} 
                   alt="Project Visual" 
