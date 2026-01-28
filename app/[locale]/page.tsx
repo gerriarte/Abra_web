@@ -3,6 +3,7 @@ import Problem from '@/components/sections/Problem';
 import Method from '@/components/sections/Method';
 import Projects from '@/components/sections/Projects';
 import Result from '@/components/sections/Result';
+import { PartnerShowcase } from '@/components/sections/PartnerShowcase';
 import Contact from '@/components/sections/Contact';
 import JsonLd from '@/components/seo/JsonLd';
 import { generateServiceSchema } from '@/lib/utils/seo';
@@ -16,17 +17,17 @@ export default async function HomePage() {
     // Generate service schemas for main services
     const services = isEnglish
       ? [
-          { name: 'Branding Development', description: 'Institutional Value Proposition and identity (visual/discursive). A strategic operations manual.' },
-          { name: 'Institutional Communications', description: 'Design of institutional narrative and crisis management. Expert, formal, and clear tone projecting authority.' },
-          { name: 'Digital Marketing & Growth', description: 'Strategies, Paid Media, Advanced Analytics. Investment with the certainty of a risk analyst: only where data guarantees ROI.' },
-          { name: 'Web Design & Development', description: 'UX, UI, and Development services focused on B2B conversion. Your website is your best salesperson, logically structured and powerfully executed.' },
-        ]
+        { name: 'Branding Development', description: 'Institutional Value Proposition and identity (visual/discursive). A strategic operations manual.' },
+        { name: 'Institutional Communications', description: 'Design of institutional narrative and crisis management. Expert, formal, and clear tone projecting authority.' },
+        { name: 'Digital Marketing & Growth', description: 'Strategies, Paid Media, Advanced Analytics. Investment with the certainty of a risk analyst: only where data guarantees ROI.' },
+        { name: 'Web Design & Development', description: 'UX, UI, and Development services focused on B2B conversion. Your website is your best salesperson, logically structured and powerfully executed.' },
+      ]
       : [
-          { name: 'Desarrollo de Branding', description: 'Construcción de Propuesta de Valor Institucional e identidad visual/discursiva. Es un manual de operaciones estratégico.' },
-          { name: 'Estrategias de Comunicación', description: 'Diseño de narrativa institucional y manejo de crisis. Tono experto, formal y claro que proyecta autoridad.' },
-          { name: 'Marketing Digital y Crecimiento', description: 'Estrategias, Medios Pagos, Analítica Avanzada. Inversión solo donde los datos garantizan el Retorno de Inversión.' },
-          { name: 'Diseño y Desarrollo Web', description: 'Servicios de Experiencia de Usuario, Interfaz de Usuario y Desarrollo con foco en la conversión entre empresas. Web como sistema de conversión.' },
-        ];
+        { name: 'Desarrollo de Branding', description: 'Construcción de Propuesta de Valor Institucional e identidad visual/discursiva. Es un manual de operaciones estratégico.' },
+        { name: 'Estrategias de Comunicación', description: 'Diseño de narrativa institucional y manejo de crisis. Tono experto, formal y claro que proyecta autoridad.' },
+        { name: 'Marketing Digital y Crecimiento', description: 'Estrategias, Medios Pagos, Analítica Avanzada. Inversión solo donde los datos garantizan el Retorno de Inversión.' },
+        { name: 'Diseño y Desarrollo Web', description: 'Servicios de Experiencia de Usuario, Interfaz de Usuario y Desarrollo con foco en la conversión entre empresas. Web como sistema de conversión.' },
+      ];
 
     const serviceSchemas = services.map(service => generateServiceSchema(service.name, service.description));
 
@@ -37,6 +38,7 @@ export default async function HomePage() {
         <Problem />
         <Method />
         <Projects />
+        <PartnerShowcase locale={locale} />
         <Result />
         <Contact />
       </>

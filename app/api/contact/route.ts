@@ -19,13 +19,13 @@ export async function POST(request: NextRequest) {
   try {
     // Get client IP for rate limiting
     const clientIP = getClientIP(request);
-    
+
     // Check rate limit
     if (!checkRateLimit(clientIP)) {
       return NextResponse.json(
-        { 
-          success: false, 
-          error: 'Too many requests. Please try again later.' 
+        {
+          success: false,
+          error: 'Too many requests. Please try again later.'
         },
         { status: 429 }
       );
@@ -33,7 +33,7 @@ export async function POST(request: NextRequest) {
 
     // Get request body
     const body = await request.json();
-    
+
     // Check body size (max 10KB)
     const bodySize = JSON.stringify(body).length;
     if (bodySize > 10000) {
@@ -44,12 +44,12 @@ export async function POST(request: NextRequest) {
     }
 
     // Sanitize inputs
-    const services = Array.isArray(body.services) 
+    const services = Array.isArray(body.services)
       ? body.services.map((s: string) => sanitizeInput(s))
-      : body.service 
+      : body.service
         ? [sanitizeInput(body.service)]
         : [];
-    
+
     const sanitizedBody = {
       fullName: sanitizeInput(body.fullName || ''),
       company: sanitizeInput(body.company || ''),
@@ -62,10 +62,10 @@ export async function POST(request: NextRequest) {
       time: body.time || '',
       privacyAccepted: Boolean(body.privacyAccepted),
     };
-    
+
     // Validate data with Zod
     const validatedData = contactSchema.parse(sanitizedBody);
-    
+
     logEvent({
       level: 'info',
       module: 'api/contact',
@@ -81,14 +81,14 @@ export async function POST(request: NextRequest) {
       await sendContactEmail(validatedData);
     } catch (emailError) {
       const errorMessage = emailError instanceof Error ? emailError.message : 'Unknown email error';
-      
+
       // Log email error
       logEvent({
         level: 'error',
         module: 'api/contact',
         functionName: 'POST',
         message: 'Failed to send contact email',
-        metadata: { 
+        metadata: {
           error: errorMessage,
           formData: {
             email: validatedData.email,
@@ -96,36 +96,36 @@ export async function POST(request: NextRequest) {
           }
         },
       });
-      
+
       // Return error response - don't pretend success if email fails
-      if (errorMessage.includes('SMTP configuration') || errorMessage.includes('not configured')) {
+      if (errorMessage.includes('SMTP configuration') || errorMessage.includes('not configured') || errorMessage.includes('SMTP_CONFIG_ERROR')) {
         return NextResponse.json(
-          { 
-            success: false, 
-            error: 'El servicio de correo no está configurado. Por favor, contáctanos directamente por WhatsApp o email.' 
+          {
+            success: false,
+            error: 'El servicio de correo no está configurado correctamente. Por favor, contáctanos directamente por WhatsApp o email.'
           },
           { status: 503 }
         );
       }
-      
+
       // Return generic error for other email failures
       return NextResponse.json(
-        { 
-          success: false, 
-          error: 'Error al enviar el correo. Por favor, intenta nuevamente o contáctanos directamente.' 
+        {
+          success: false,
+          error: 'Error al enviar el correo. Por favor, intenta nuevamente o contáctanos directamente.'
         },
         { status: 500 }
       );
     }
 
     return NextResponse.json(
-      { 
-        success: true, 
-        message: '¡Gracias! Te contactaremos pronto.' 
+      {
+        success: true,
+        message: '¡Gracias! Te contactaremos pronto.'
       },
       { status: 200 }
     );
-    
+
   } catch (error) {
     if (error instanceof Error && error.name === 'ZodError') {
       logEvent({
@@ -136,15 +136,15 @@ export async function POST(request: NextRequest) {
         metadata: { details: error.message },
       });
       return NextResponse.json(
-        { 
-          success: false, 
+        {
+          success: false,
           error: 'Validation failed',
-          details: error.message 
+          details: error.message
         },
         { status: 400 }
       );
     }
-    
+
     logEvent({
       level: 'error',
       module: 'api/contact',
@@ -152,13 +152,13 @@ export async function POST(request: NextRequest) {
       message: 'Unhandled contact form error',
       metadata: { error: error instanceof Error ? error.message : 'Unknown error' },
     });
-    
+
     console.error('Contact form error:', error);
-    
+
     return NextResponse.json(
-      { 
-        success: false, 
-        error: error instanceof Error ? error.message : 'Internal server error' 
+      {
+        success: false,
+        error: error instanceof Error ? error.message : 'Internal server error'
       },
       { status: 500 }
     );

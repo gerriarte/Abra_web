@@ -1,34 +1,8 @@
 'use client';
 
 import { useTranslations } from 'next-intl';
-import Card from '../ui/Card';
 import useOnScreen from '@/hooks/useOnScreen';
-
-  const icons = [
-  (
-    <svg className="w-10 h-10 text-accent" fill="currentColor" viewBox="0 0 20 20">
-      <path
-        fillRule="evenodd"
-        d="M10 18a8 8 0 100-16 8 8 0 000 16zm0-11a1 1 0 11-2 0 1 1 0 012 0zm-1 2a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
-        clipRule="evenodd"
-      />
-    </svg>
-  ),
-  (
-    <svg className="w-10 h-10 text-accent" fill="currentColor" viewBox="0 0 20 20">
-      <path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z" />
-    </svg>
-  ),
-  (
-    <svg className="w-10 h-10 text-accent" fill="currentColor" viewBox="0 0 20 20">
-      <path
-        fillRule="evenodd"
-        d="M4 17a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zm3.293-6.707a1 1 0 011.414 0L10 11.586V4a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z"
-        clipRule="evenodd"
-      />
-    </svg>
-  ),
-];
+import { FadeIn } from '../cases/ui/FadeIn';
 
 const problemKeys = [
   'problem.points.unstableBrand',
@@ -38,75 +12,100 @@ const problemKeys = [
 
 export default function Problem() {
   const t = useTranslations();
-  const [titleRef, isTitleVisible] = useOnScreen({ threshold: 0.2 });
-  const [introRef, isIntroVisible] = useOnScreen({ threshold: 0.2 });
-  const [cardsRef, areCardsVisible] = useOnScreen({ threshold: 0.1 });
+  const [ref, isVisible] = useOnScreen({ threshold: 0.1 });
 
   const getContent = (value: string) => {
     const [heading, ...rest] = value.split(':');
     return {
-      heading,
+      heading: heading.trim(),
       body: rest.join(':').trim(),
     };
   };
 
   return (
-    <section id="problem" className="py-20 bg-white overflow-x-hidden">
-      <div className="container mx-auto px-4 max-w-full">
-        <div className="max-w-5xl mx-auto text-center w-full">
-          <div ref={titleRef}>
-            <h2
-              className={`text-4xl md:text-5xl font-light text-primary tracking-tight transition-all duration-700 ${
-                isTitleVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-              }`}
-            >
+    <section id="problem" className="py-24 bg-white overflow-hidden">
+      <div className="container mx-auto px-6 max-w-7xl">
+        {/* Header */}
+        <div className="max-w-4xl mx-auto text-center mb-24">
+          <FadeIn>
+            <h2 className="text-4xl md:text-6xl font-light text-[#04213B] tracking-tight mb-8">
               {t('problem.title')}
             </h2>
-          </div>
-
-          <div ref={introRef}>
-            <p
-              className={`text-lg md:text-xl text-text-secondary mt-6 mb-10 mx-auto max-w-3xl font-light leading-relaxed transition-all duration-700 delay-150 ${
-                isIntroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-              }`}
-            >
+            <p className="text-lg md:text-xl text-gray-500 font-light leading-relaxed mb-12">
               {t('problem.intro')}
             </p>
-          </div>
+            <div className="flex flex-col items-center gap-4">
+              <span className="text-xs font-bold tracking-[0.4em] uppercase text-accent">
+                {t('problem.subtitle')}
+              </span>
+              <div className="w-px h-16 bg-gradient-to-b from-accent to-transparent" />
+            </div>
+          </FadeIn>
+        </div>
 
-          <p className="text-base uppercase tracking-[0.3em] text-accent mb-16">
-            {t('problem.subtitle')}
-          </p>
+        {/* Modern Flow Map */}
+        <div ref={ref} className="relative">
+          {/* Background Decoration - Logic Lines */}
+          <div className="absolute top-1/2 left-0 w-full h-px bg-gray-100 -translate-y-1/2 hidden lg:block" />
 
-          <div
-            ref={cardsRef}
-            className={`grid gap-6 md:grid-cols-3 transition-all duration-700 ease-out ${
-              areCardsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
-            }`}
-          >
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-20">
             {problemKeys.map((key, index) => {
               const { heading, body } = getContent(t(key));
 
               return (
-                <Card
-                  key={key}
-                  className="h-full rounded-3xl border border-primary-light/15 shadow-sm shadow-primary-light/10 flex flex-col items-start gap-4 text-left px-6 py-8 bg-white/90"
-                >
-                  <div className="flex items-center justify-between w-full text-primary">
-                    <span className="text-sm font-light">{`0${index + 1}`}</span>
-                    <span className="rounded-full bg-accent/10 p-3">{icons[index]}</span>
+                <FadeIn key={key} delay={index * 200}>
+                  <div className="relative group">
+                    {/* Flow Connector (Desktop) */}
+                    {index < 2 && (
+                      <div className="hidden lg:block absolute top-12 -right-10 w-20 h-px bg-accent/20 z-0">
+                        <div className="absolute right-0 -top-1 w-2 h-2 rounded-full bg-accent/20" />
+                      </div>
+                    )}
+
+                    {/* Node Number */}
+                    <div className="absolute -top-12 left-1/2 -translate-x-1/2 lg:left-0 lg:translate-x-0">
+                      <span className="text-[60px] font-bold text-gray-50/80 select-none leading-none">
+                        {`0${index + 1}`}
+                      </span>
+                    </div>
+
+                    {/* Card Content */}
+                    <div className="relative z-10 pt-4">
+                      <div className="flex flex-col items-center lg:items-start text-center lg:text-left space-y-6">
+                        {/* Status Light */}
+                        <div className="w-3 h-3 rounded-full bg-accent shadow-[0_0_10px_rgba(var(--accent-rgb),0.5)] animate-pulse" />
+
+                        <h4 className="text-2xl font-medium text-[#04213B] tracking-tight leading-tight group-hover:text-accent transition-colors duration-300">
+                          {heading}
+                        </h4>
+
+                        <p className="text-gray-500 font-light leading-relaxed">
+                          {body}
+                        </p>
+
+                        {/* Decorative Flow Detail */}
+                        <div className="pt-4 flex items-center gap-2">
+                          <div className="h-px w-8 bg-gray-200" />
+                          <div className="w-2 h-2 rounded-full border border-gray-200" />
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  <h4 className="text-xl font-light text-primary leading-snug">{heading.trim()}</h4>
-                  <p className="text-sm md:text-base text-text-secondary/80 font-light leading-relaxed">
-                    {body}
-                  </p>
-                </Card>
+                </FadeIn>
               );
             })}
+          </div>
+
+          {/* Bottom Logic Path */}
+          <div className="mt-20 flex justify-center">
+            <FadeIn delay={800}>
+              <div className="px-8 py-3 rounded-full border border-accent/10 bg-accent/5 text-accent text-xs font-bold tracking-[0.2em] uppercase">
+                Análisis de Cuello de Botella Detectado
+              </div>
+            </FadeIn>
           </div>
         </div>
       </div>
     </section>
   );
 }
-

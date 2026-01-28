@@ -23,18 +23,18 @@ export const contactSchema = z.object({
     .string()
     .min(2, 'Name must be at least 2 characters')
     .max(100, 'Name is too long')
-    .regex(/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$/, 'Name can only contain letters and spaces'),
+    .regex(/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s.'\-]+$/, 'Name can only contain letters, spaces, and common characters like . or -'),
   
   company: z
     .string()
     .min(2, 'Company name must be at least 2 characters')
     .max(100, 'Company name is too long')
-    .regex(/^[a-zA-Z0-9\s.\-&]+$/, 'Company name contains invalid characters'),
+    .regex(/^[a-zA-Z0-9\s.\-&(),'#]+$/, 'Company name contains invalid characters'),
   
   country: z
     .string()
     .max(60, 'Country name is too long')
-    .regex(/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]*$/, 'Country can only contain letters and spaces')
+    .regex(/^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s.'\-]*$/, 'Country can only contain letters, spaces, and common characters like . or -')
     .optional()
     .default(''),
   
@@ -42,7 +42,7 @@ export const contactSchema = z.object({
     .string()
     .min(10, 'Phone number must be at least 10 digits')
     .max(15, 'Phone number is too long')
-    .regex(/^[\d\s\-\(\)]+$/, 'Phone number can only contain digits and formatting characters'),
+    .regex(/^[\d\s\-\(\)\+]+$/, 'Phone number can only contain digits and formatting characters including +'),
   
   email: z
     .string()

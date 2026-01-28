@@ -139,6 +139,33 @@
           "link": "/case-studies/invia"
         }
       ]
+    },
+    {
+      "id": 6,
+      "title": "Bestune",
+      "category": "Producción Audiovisual",
+      "description": "Campaña publicitaria cinematográfica para el lanzamiento de la línea de vehículos eléctricos Bestune en LATAM.",
+      "image": "/Bestune/Bestune-01.jpg",
+      "cases": [
+        {
+          "id": "bestune-case-001",
+          "title": "Producción Publicitaria para Autos Eléctricos",
+          "relatedServices": [
+            "Producción Audiovisual",
+            "Dirección de Arte",
+            "Post-producción"
+          ],
+          "link": "/case-studies/bestune"
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "title": "A:BRA Latam",
+      "category": "Algunos Proyectos",
+      "description": "Ecosistemas visuales inteligentes y narrativa en movimiento diseñados para maximizar el impacto y la retención en entornos digitales críticos.",
+      "image": "/abra.png",
+      "cases": []
     }
   ]
 }

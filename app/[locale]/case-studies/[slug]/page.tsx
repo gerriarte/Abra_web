@@ -5,6 +5,11 @@ import { Section } from '@/components/cases/ui/Section';
 import { ImageGrid } from '@/components/cases/ui/ImageGrid';
 import { TableOfContents } from '@/components/cases/ui/TableOfContents';
 import { ProjectDetails } from '@/components/cases/ui/ProjectDetails';
+import { VideoGrid } from '@/components/cases/ui/VideoGrid';
+import { AudiovisualHero } from '@/components/cases/ui/AudiovisualHero';
+import { VideoCinema } from '@/components/cases/ui/VideoCinema';
+import { PartnerSection } from '@/components/cases/ui/PartnerSection';
+import { VisualSeparator } from '@/components/cases/ui/VisualSeparator';
 import { CASES_DATA } from '@/data/cases';
 
 interface PageProps {
@@ -32,15 +37,15 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const title = isEnglish && caseStudy.titleEn ? caseStudy.titleEn : caseStudy.title;
   const description = isEnglish && caseStudy.brandDescriptionEn ? caseStudy.brandDescriptionEn : caseStudy.brandDescription;
 
-  const pageTitle = slug === 'monyte' 
+  const pageTitle = slug === 'monyte'
     ? `${title} | Monyte.co`
     : slug === 'securitas'
-    ? `${title} | Securitas`
-    : slug === 'rac'
-    ? `${title} | RealArt Crypto`
-    : slug === 'invia'
-    ? `${title} | Invia 1912`
-    : `${title} | ${isEnglish ? 'A:BRA Case Study' : 'Caso de Estudio A:BRA'}`;
+      ? `${title} | Securitas`
+      : slug === 'rac'
+        ? `${title} | RealArt Crypto`
+        : slug === 'invia'
+          ? `${title} | Invia 1912`
+          : `${title} | ${isEnglish ? 'A:BRA Case Study' : 'Caso de Estudio A:BRA'}`;
 
   const image = caseStudy.heroImage || caseStudy.images?.[0] || '/abra.png';
   const url = `/${locale}/case-studies/${slug}`;
@@ -113,32 +118,113 @@ export default async function CaseStudyPage({ params }: PageProps) {
     { name: title, url },
   ]);
 
+  const category = slug === 'monyte'
+    ? (isEnglish ? 'Branding' : 'Branding')
+    : slug === 'securitas'
+      ? (isEnglish ? 'User Experience' : 'Experiencia de Usuario')
+      : slug === 'rac'
+        ? (isEnglish ? 'User Experience' : 'Experiencia de Usuario')
+        : slug === 'invia'
+          ? (isEnglish ? 'E-commerce' : 'E-commerce')
+          : (projectDetails.services[0] || (isEnglish ? 'Case Study' : 'Caso de Estudio'));
+
+  if (caseStudy.template === 'audiovisual') {
+    return (
+      <div className="min-h-screen w-full bg-black overflow-x-hidden">
+        <JsonLd data={[articleSchema, breadcrumbSchema]} />
+        <TableOfContents
+          items={[
+            { id: 'situation', label: labels.situation, theme: 'dark', image: caseStudy.images?.[0] },
+            { id: 'task', label: labels.task, theme: 'dark', image: caseStudy.images?.[1] },
+            { id: 'action', label: labels.action, theme: 'dark', image: caseStudy.images?.[2] },
+            { id: 'videos', label: locale === 'en' ? 'Audiovisual Production' : 'Producción', theme: 'dark' },
+            { id: 'partner', label: 'MTM', theme: 'dark', image: caseStudy.partner?.logo }
+          ]}
+        />
+
+        <AudiovisualHero
+          title={title}
+          category={category}
+          backgroundImage={caseStudy.heroImage || ''}
+          partnerLogo={caseStudy.partner?.logo}
+          partnerName={caseStudy.partner?.name}
+        />
+
+        <Section
+          id="situation"
+          category={labels.situation}
+          title={labels.situationTitle}
+          description={situation}
+          align="left"
+          theme="dark"
+        />
+
+        {caseStudy.images?.[0] && (
+          <VisualSeparator image={caseStudy.images[0]} />
+        )}
+
+        <Section
+          id="task"
+          category={labels.task}
+          title={labels.taskTitle}
+          description={task}
+          align="right"
+          theme="dark"
+        />
+
+        {caseStudy.images?.[1] && (
+          <VisualSeparator image={caseStudy.images[1]} />
+        )}
+
+        <Section
+          id="action"
+          category={labels.action}
+          title={labels.actionTitle}
+          description={action}
+          align="left"
+          theme="dark"
+        />
+
+        {caseStudy.images?.[2] && (
+          <VisualSeparator image={caseStudy.images[2]} />
+        )}
+
+        {caseStudy.videos && caseStudy.videos.length > 0 && (
+          <div id="videos">
+            <VideoCinema videos={caseStudy.videos} locale={locale} />
+          </div>
+        )}
+
+        {caseStudy.partner && (
+          <div id="partner">
+            <PartnerSection partner={caseStudy.partner} locale={locale} />
+          </div>
+        )}
+
+        <ProjectDetails
+          details={projectDetails}
+          clientName={caseStudy.client}
+        />
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen w-full bg-white overflow-x-hidden">
       <JsonLd data={[articleSchema, breadcrumbSchema]} />
       <TableOfContents />
-      
-      <CaseHero 
+
+      <CaseHero
         title={title}
         subtitle={caseStudy.client}
         backgroundImage={caseStudy.heroImage || "https://picsum.photos/1920/1080?grayscale"}
-        category={
-          slug === 'monyte' 
-            ? (isEnglish ? 'Branding' : 'Branding')
-            : slug === 'securitas'
-            ? (isEnglish ? 'User Experience' : 'Experiencia de Usuario')
-            : slug === 'rac'
-            ? (isEnglish ? 'User Experience' : 'Experiencia de Usuario')
-            : slug === 'invia'
-            ? (isEnglish ? 'E-commerce' : 'E-commerce')
-            : (projectDetails.services[0] || (isEnglish ? 'Case Study' : 'Caso de Estudio'))
-        }
+        category={category}
         imageScale={slug === 'monyte' || slug === 'securitas' || slug === 'rac' || slug === 'invia' ? 0.7 : 1}
         imageLink={slug === 'invia' ? 'https://tiendainvia.com/' : undefined}
       />
 
       {/* Marca / Intro */}
-      <Section 
+      <Section
         id="brand"
         category={labels.brand}
         title={caseStudy.client}
@@ -147,7 +233,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
       />
 
       {/* Situación */}
-      <Section 
+      <Section
         id="situation"
         category={labels.situation}
         title={labels.situationTitle}
@@ -161,7 +247,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
       />
 
       {/* Tarea */}
-      <Section 
+      <Section
         id="task"
         category={labels.task}
         title={labels.taskTitle}
@@ -171,12 +257,12 @@ export default async function CaseStudyPage({ params }: PageProps) {
       />
 
       {/* Acción */}
-      <Section 
+      <Section
         id="action"
         category={labels.action}
         title={labels.actionTitle}
         description={action}
-        image={slug === 'monyte' ? '/monyte/monyte-marca.png' : slug === 'securitas' ? '/Securitas/Log securitas.png' : slug === 'rac' ? '/RAC/Logo.png' : slug === 'invia' ? '/Invia/Logo- tienda invia.png' : "https://picsum.photos/800/1000?random=2"} 
+        image={slug === 'monyte' ? '/monyte/monyte-marca.png' : slug === 'securitas' ? '/Securitas/Log securitas.png' : slug === 'rac' ? '/RAC/Logo.png' : slug === 'invia' ? '/Invia/Logo- tienda invia.png' : "https://picsum.photos/800/1000?random=2"}
         align="right"
         floatingImage={slug === 'monyte' || slug === 'securitas' || slug === 'rac' || slug === 'invia'}
         imageAspect="auto"
@@ -184,17 +270,21 @@ export default async function CaseStudyPage({ params }: PageProps) {
         imageLink={slug === 'invia' ? 'https://tiendainvia.com/' : undefined}
       />
 
-      <ProjectDetails 
-        details={projectDetails} 
-        clientName={caseStudy.client} 
+      <ProjectDetails
+        details={projectDetails}
+        clientName={caseStudy.client}
       />
 
-      <ImageGrid 
-        images={caseStudy.images} 
+      {caseStudy.videos && caseStudy.videos.length > 0 && (
+        <VideoGrid videos={caseStudy.videos} locale={locale} />
+      )}
+
+      <ImageGrid
+        images={caseStudy.images}
         title={labels.visuals}
         imageLink={slug === 'invia' ? 'https://tiendainvia.com/' : undefined}
       />
-      
+
     </div>
   );
 }

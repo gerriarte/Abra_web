@@ -32,3 +32,6 @@ Los casos de estudio se definen en `data/cases.ts` con la siguiente estructura:
 Para más detalles, consulta la [plantilla completa](templates/README.md).
 
 
+
+
+

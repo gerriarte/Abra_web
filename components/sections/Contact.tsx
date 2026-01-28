@@ -5,12 +5,14 @@ import { useLocale, useTranslations } from 'next-intl';
 import useOnScreen from '@/hooks/useOnScreen';
 import { useGTM } from '@/hooks/useGTM';
 import { contactSchema } from '@/lib/validation/contactSchema';
+import { ArrowRight, ArrowLeft, CheckCircle2 } from 'lucide-react';
 
 export default function Contact() {
   const t = useTranslations('contact');
   const locale = useLocale();
   const { pushEvent } = useGTM();
   const [ref, isVisible] = useOnScreen({ threshold: 0.1 });
+  const [currentStep, setCurrentStep] = useState(1);
   const [formData, setFormData] = useState({
     fullName: '',
     company: '',
@@ -25,21 +27,48 @@ export default function Contact() {
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [submitted, setSubmitted] = useState(false);
-  const [honeypot, setHoneypot] = useState(''); // Honeypot field para spam
+  const [honeypot, setHoneypot] = useState('');
   const [status, setStatus] = useState<{ type: 'success' | 'error'; message: string } | null>(null);
+
+  const nextStep = () => {
+    // Validate current step before proceeding
+    const stepErrors: Record<string, string> = {};
+
+    if (currentStep === 1) {
+      if (!formData.fullName || formData.fullName.length < 2) stepErrors.fullName = "Name is too short";
+      if (!formData.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) stepErrors.email = "Invalid email";
+      if (!formData.company) stepErrors.company = "Company is required";
+      if (!formData.phone || formData.phone.length < 10) stepErrors.phone = "Invalid phone";
+    } else if (currentStep === 2) {
+      if (formData.services.length === 0) stepErrors.services = "Select at least one service";
+    }
+
+    if (Object.keys(stepErrors).length > 0) {
+      setErrors(stepErrors);
+      return;
+    }
+
+    setErrors({});
+    setCurrentStep(prev => Math.min(prev + 1, 3));
+  };
+
+  const prevStep = () => {
+    setCurrentStep(prev => Math.max(prev - 1, 1));
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setErrors({});
-    setStatus(null);
-    
-    // Honeypot check - si este campo tiene valor, es bot
-    if (honeypot) {
-      console.log('Bot detected via honeypot');
+    if (currentStep < 3) {
+      nextStep();
       return;
     }
-    
-    // Client-side validation
+
+    setErrors({});
+    setStatus(null);
+
+    if (honeypot) return;
+
+    // Final validation
     try {
       contactSchema.parse(formData);
     } catch (error: any) {
@@ -52,31 +81,26 @@ export default function Contact() {
       }
       return;
     }
-    
+
     setSubmitted(true);
-    
+
     try {
       const response = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
       });
-      
+
       const data = await response.json();
-      
+
       if (response.ok) {
         setStatus({ type: 'success', message: t('form.success') });
-        
-        // Track form submission success in GTM
         pushEvent('form_submit', {
           form_name: 'contact_form',
           form_status: 'success',
           services_selected: formData.services,
-          services_count: formData.services.length,
-          page_location: typeof window !== 'undefined' ? window.location.href : '',
         });
-        
-        // Reset form
+
         setFormData({
           fullName: '',
           company: '',
@@ -89,413 +113,243 @@ export default function Contact() {
           time: '',
           privacyAccepted: false
         });
-        setErrors({});
+        setCurrentStep(1);
       } else {
-        if (response.status === 429) {
-          setStatus({ type: 'error', message: t('form.rateLimitError') || 'Demasiadas solicitudes. Por favor espera unos minutos.' });
-        } else if (response.status === 503) {
-          // Service unavailable - email not configured
-          setStatus({ 
-            type: 'error', 
-            message: data.error || 'El servicio de correo no está disponible. Por favor, contáctanos directamente por WhatsApp usando el botón flotante.' 
-          });
-        } else {
-          // Track form submission error in GTM
-          pushEvent('form_submit', {
-            form_name: 'contact_form',
-            form_status: 'error',
-            error_type: response.status.toString(),
-            services_selected: formData.services,
-            page_location: typeof window !== 'undefined' ? window.location.href : '',
-          });
-          
-          setStatus({ 
-            type: 'error', 
-            message: data.error || t('form.error') || 'Error al enviar el formulario. Por favor intenta nuevamente o contáctanos por WhatsApp.' 
-          });
-        }
+        setStatus({ type: 'error', message: data.error || t('form.error') });
       }
     } catch (error) {
-      console.error('Form submission error:', error);
-      setStatus({ type: 'error', message: t('form.error') || 'Error sending form. Please try again.' });
+      setStatus({ type: 'error', message: t('form.error') });
     } finally {
       setSubmitted(false);
     }
   };
 
   const serviceOptions = [
-    {
-      id: 'branding',
-      value: 'Branding Development',
-      labels: {
-        en: 'Branding Development',
-        es: 'Desarrollo de Branding',
-      },
-    },
-    {
-      id: 'communications',
-      value: 'Institutional Communications',
-      labels: {
-        en: 'Institutional Communications',
-        es: 'Comunicaciones Institucionales',
-      },
-    },
-    {
-      id: 'marketing',
-      value: 'Digital Marketing & Growth',
-      labels: {
-        en: 'Digital Marketing & Growth',
-        es: 'Marketing Digital y Crecimiento',
-      },
-    },
-    {
-      id: 'web',
-      value: 'Web Design & Development',
-      labels: {
-        en: 'Web Design & Development',
-        es: 'Diseño y Desarrollo Web',
-      },
-    },
-    {
-      id: 'uxui',
-      value: 'UX/UI Design',
-      labels: {
-        en: 'UX/UI Design',
-        es: 'Diseño UX/UI',
-      },
-    },
-    {
-      id: 'analytics',
-      value: 'Marketing Reports & Analytics',
-      labels: {
-        en: 'Marketing Reports & Analytics',
-        es: 'Reporte y análisis de Marketing',
-      },
-    },
-    {
-      id: 'full',
-      value: 'Full Service',
-      labels: {
-        en: 'Full Service',
-        es: 'Servicio Completo',
-      },
-    },
-  ] as const;
+    { id: 'branding', value: 'Branding Development', labels: { en: 'Branding Development', es: 'Desarrollo de Branding' } },
+    { id: 'communications', value: 'Institutional Communications', labels: { en: 'Institutional Communications', es: 'Comunicaciones Institucionales' } },
+    { id: 'marketing', value: 'Digital Marketing & Growth', labels: { en: 'Digital Marketing & Growth', es: 'Marketing Digital y Crecimiento' } },
+    { id: 'web', value: 'Web Design & Development', labels: { en: 'Web Design & Development', es: 'Diseño y Desarrollo Web' } },
+    { id: 'uxui', value: 'UX/UI Design', labels: { en: 'UX/UI Design', es: 'Diseño UX/UI' } },
+    { id: 'analytics', value: 'Marketing Reports & Analytics', labels: { en: 'Marketing Reports & Analytics', es: 'Reporte y análisis de Marketing' } },
+    { id: 'full', value: 'Full Service', labels: { en: 'Full Service', es: 'Servicio Completo' } },
+  ];
 
   return (
-    <section id="contact" className="py-12 md:py-16 bg-off overflow-x-hidden">
-      <div className="container mx-auto px-4 max-w-full">
-        <div className="max-w-5xl mx-auto w-full">
-          {/* Section Title */}
-          <div ref={ref} className="mb-8 md:mb-10 text-center">
-            <h2 className={`text-3xl md:text-4xl font-light text-primary mb-3 md:mb-4 tracking-tight transition-all duration-700 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+    <section id="contact" className="py-24 bg-white overflow-hidden">
+      <div className="container mx-auto px-6 max-w-7xl">
+        <div ref={ref} className="max-w-4xl mx-auto">
+          {/* Header */}
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-6xl font-light text-[#04213B] tracking-tight mb-6 transition-all duration-1000">
               {t('title')}
             </h2>
-            <p className={`text-base md:text-lg text-text-secondary font-light max-w-2xl mx-auto leading-relaxed transition-all duration-700 delay-150 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+            <p className="text-lg text-gray-400 font-light leading-relaxed max-w-2xl mx-auto">
               {t('subtitle')}
             </p>
           </div>
 
-          {status && (
-            <div
-              aria-live="assertive"
-              className={`mb-4 rounded-xl border px-4 py-3 text-sm font-light transition-all duration-500 max-w-3xl mx-auto ${
-                status.type === 'success'
-                  ? 'border-emerald-200/50 bg-emerald-50/80 text-emerald-800 shadow-sm shadow-emerald-100/50'
-                  : 'border-rose-200/50 bg-rose-50/80 text-rose-800 shadow-sm shadow-rose-100/50'
-              }`}
-            >
-              {status.message}
+          <div className="bg-[#FBFBFB] rounded-[40px] border border-gray-100 p-8 md:p-16 relative overflow-hidden">
+            {/* Progress Bar */}
+            <div className="flex items-center justify-center gap-4 mb-12">
+              {[1, 2, 3].map((step) => (
+                <div key={step} className="flex items-center">
+                  <div className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-medium transition-all duration-500 ${currentStep >= step ? 'bg-[#04213B] text-white' : 'bg-gray-100 text-gray-400'
+                    }`}>
+                    {currentStep > step ? <CheckCircle2 size={18} /> : step}
+                  </div>
+                  {step < 3 && (
+                    <div className={`w-12 h-px ml-4 transition-all duration-700 ${currentStep > step ? 'bg-[#04213B]' : 'bg-gray-100'
+                      }`} />
+                  )}
+                </div>
+              ))}
             </div>
-          )}
 
-          {/* Contact Form - Compact Layout */}
-          <div className={`max-w-4xl mx-auto transition-all duration-700 delay-200 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
-            <div className="bg-white/90 rounded-2xl border border-primary-light/15 shadow-sm shadow-primary-light/10 p-6 md:p-8">
-                <form onSubmit={handleSubmit} className="space-y-5 md:space-y-6" noValidate>
-                  {/* Honeypot field - hidden from users */}
-                  <input
-                    type="text"
-                    name="website"
-                    value={honeypot}
-                    onChange={(e) => setHoneypot(e.target.value)}
-                    className="hidden"
-                    tabIndex={-1}
-                    autoComplete="off"
-                  />
+            <form onSubmit={handleSubmit} className="space-y-8">
+              <input type="text" name="website" value={honeypot} onChange={(e) => setHoneypot(e.target.value)} className="hidden" tabIndex={-1} autoComplete="off" />
 
-                  {/* Personal Information Section - Compact Grid */}
-                  <div className="space-y-4 pb-4 border-b border-primary-light/10">
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                      {/* Full Name */}
-                      <div>
-                        <label className="block text-xs text-text-muted/70 mb-1.5 font-light uppercase tracking-wide">
-                          {t('form.fullName')} *
-                        </label>
-                        <input
-                          type="text"
-                          required
-                          value={formData.fullName}
-                          onChange={(e) => {
-                            setFormData({ ...formData, fullName: e.target.value });
-                            if (errors.fullName) setErrors({ ...errors, fullName: '' });
-                          }}
-                          className={`w-full bg-transparent border border-primary-light/20 rounded-lg focus:border-accent focus:outline-none px-3 py-2 text-sm font-light text-primary transition-all duration-300 ${
-                            errors.fullName ? 'border-rose-400 bg-rose-50/50' : 'hover:border-accent/50'
-                          }`}
-                          placeholder={t('form.fullNamePlaceholder')}
-                          minLength={2}
-                          maxLength={100}
-                          pattern="^[a-zA-ZáéíóúÁÉÍÓÚñÑ\s]+$"
-                        />
-                        {errors.fullName && (
-                          <p className="text-rose-500 text-xs mt-1 font-light">{errors.fullName}</p>
-                        )}
-                      </div>
-
-                      {/* Company Name */}
-                      <div>
-                        <label className="block text-xs text-text-muted/70 mb-1.5 font-light uppercase tracking-wide">
-                          {t('form.company')} *
-                        </label>
-                        <input
-                          type="text"
-                          required
-                          value={formData.company}
-                          onChange={(e) => {
-                            setFormData({ ...formData, company: e.target.value });
-                            if (errors.company) setErrors({ ...errors, company: '' });
-                          }}
-                          className={`w-full bg-transparent border border-primary-light/20 rounded-lg focus:border-accent focus:outline-none px-3 py-2 text-sm font-light text-primary transition-all duration-300 ${
-                            errors.company ? 'border-rose-400 bg-rose-50/50' : 'hover:border-accent/50'
-                          }`}
-                          placeholder={t('form.companyPlaceholder')}
-                          maxLength={100}
-                        />
-                        {errors.company && (
-                          <p className="text-rose-500 text-xs mt-1 font-light">{errors.company}</p>
-                        )}
-                      </div>
-
-                      {/* Email */}
-                      <div>
-                        <label className="block text-xs text-text-muted/70 mb-1.5 font-light uppercase tracking-wide">
-                          {t('form.email')} *
-                        </label>
-                        <input
-                          type="email"
-                          required
-                          value={formData.email}
-                          onChange={(e) => {
-                            setFormData({ ...formData, email: e.target.value });
-                            if (errors.email) setErrors({ ...errors, email: '' });
-                          }}
-                          className={`w-full bg-transparent border border-primary-light/20 rounded-lg focus:border-accent focus:outline-none px-3 py-2 text-sm font-light text-primary transition-all duration-300 ${
-                            errors.email ? 'border-rose-400 bg-rose-50/50' : 'hover:border-accent/50'
-                          }`}
-                          placeholder={t('form.emailPlaceholder')}
-                          maxLength={100}
-                        />
-                        {errors.email && (
-                          <p className="text-rose-500 text-xs mt-1 font-light">{errors.email}</p>
-                        )}
-                      </div>
-
-                      {/* Country */}
-                      <div>
-                        <label className="block text-xs text-text-muted/70 mb-1.5 font-light uppercase tracking-wide">
-                          {t('form.country')}
-                        </label>
-                        <input
-                          type="text"
-                          value={formData.country}
-                          onChange={(e) => {
-                            setFormData({ ...formData, country: e.target.value });
-                            if (errors.country) setErrors({ ...errors, country: '' });
-                          }}
-                          className={`w-full bg-transparent border border-primary-light/20 rounded-lg focus:border-accent focus:outline-none px-3 py-2 text-sm font-light text-primary transition-all duration-300 ${
-                            errors.country ? 'border-rose-400 bg-rose-50/50' : 'hover:border-accent/50'
-                          }`}
-                          placeholder={t('form.countryPlaceholder')}
-                          maxLength={60}
-                          aria-label={t('form.country')}
-                        />
-                        {errors.country && (
-                          <p className="text-rose-500 text-xs mt-1 font-light">{errors.country}</p>
-                        )}
-                      </div>
-                      
-                      {/* Phone */}
-                      <div>
-                        <label className="block text-xs text-text-muted/70 mb-1.5 font-light uppercase tracking-wide">
-                          {t('form.phone')} *
-                        </label>
-                        <input
-                          type="tel"
-                          required
-                          value={formData.phone}
-                          onChange={(e) => {
-                            setFormData({ ...formData, phone: e.target.value });
-                            if (errors.phone) setErrors({ ...errors, phone: '' });
-                          }}
-                          className={`w-full bg-transparent border border-primary-light/20 rounded-lg focus:border-accent focus:outline-none px-3 py-2 text-sm font-light text-primary transition-all duration-300 ${
-                            errors.phone ? 'border-rose-400 bg-rose-50/50' : 'hover:border-accent/50'
-                          }`}
-                          placeholder={t('form.phonePlaceholder')}
-                          minLength={10}
-                          maxLength={15}
-                          pattern="^[\d\s\-\(\)]+$"
-                          aria-label={t('form.phone')}
-                        />
-                        {errors.phone && (
-                          <p className="text-rose-500 text-xs mt-1 font-light">{errors.phone}</p>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Service Selection Section - Compact Grid */}
-                  <div className="space-y-3 pb-4 border-b border-primary-light/10">
-                    <h3 className="text-xs uppercase tracking-[0.15em] text-accent font-light mb-3">
-                      {t('form.interestedIn')}
-                    </h3>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5">
-                      {serviceOptions.map((option) => {
-                        const isSelected = formData.services.includes(option.value);
-                        return (
-                          <label
-                            key={option.id}
-                            className={`flex items-center gap-2.5 px-3 py-2 border rounded-lg transition-all duration-300 font-light text-xs cursor-pointer ${
-                              isSelected
-                                ? 'border-accent bg-accent/10 text-primary shadow-sm shadow-accent/10' 
-                                : 'border-primary-light/20 bg-transparent text-text-secondary hover:border-accent/50 hover:bg-accent/5'
-                            }`}
-                          >
-                            <input
-                              type="checkbox"
-                              checked={isSelected}
-                              onChange={(e) => {
-                                const newServices = e.target.checked
-                                  ? [...formData.services, option.value]
-                                  : formData.services.filter(s => s !== option.value);
-                                setFormData({ ...formData, services: newServices });
-                                if (errors.services) setErrors({ ...errors, services: '' });
-                              }}
-                              className="w-4 h-4 border-2 border-primary-light/30 rounded focus:ring-2 focus:ring-accent/30 cursor-pointer accent-accent transition-all duration-300 flex-shrink-0"
-                            />
-                            <span className="flex-1 leading-tight">{option.labels[locale as 'en' | 'es']}</span>
-                          </label>
-                        );
-                      })}
-                    </div>
-                    {errors.services && (
-                      <p className="text-rose-500 text-xs mt-1.5 font-light">{errors.services}</p>
-                    )}
-                  </div>
-
-                  {/* Custom Message & Availability - Side by Side */}
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 pb-4 border-b border-primary-light/10">
-                    {/* Custom Message Section */}
-                    <div>
-                      <label className="block text-xs text-text-muted/70 mb-1.5 font-light uppercase tracking-wide">
-                        {t('form.customMessage') || 'Consulta Personalizada'} <span className="text-text-muted/50 normal-case">({t('form.optional') || 'Opcional'})</span>
-                      </label>
-                      <textarea
-                        value={formData.customMessage}
-                        onChange={(e) => {
-                          setFormData({ ...formData, customMessage: e.target.value });
-                          if (errors.customMessage) setErrors({ ...errors, customMessage: '' });
-                        }}
-                        rows={4}
-                        maxLength={1000}
-                        className={`w-full bg-transparent border border-primary-light/20 rounded-lg focus:border-accent focus:outline-none px-3 py-2 text-sm font-light text-primary transition-all duration-300 resize-none ${
-                          errors.customMessage ? 'border-rose-400 bg-rose-50/50' : 'hover:border-accent/50'
-                        }`}
-                        placeholder={t('form.customMessagePlaceholder') || 'Describe tu proyecto, objetivos, presupuesto...'}
-                      />
-                      <p className="text-xs text-text-muted/60 mt-1 font-light">
-                        {formData.customMessage.length}/1000
-                      </p>
-                      {errors.customMessage && (
-                        <p className="text-rose-500 text-xs mt-1 font-light">{errors.customMessage}</p>
-                      )}
-                    </div>
-
-                    {/* Schedule Section */}
-                    <div>
-                      <label className="block text-xs text-text-muted/70 mb-1.5 font-light uppercase tracking-wide">
-                        {t('form.availability') || 'Disponibilidad'} <span className="text-text-muted/50 normal-case">({t('form.optional') || 'Opcional'})</span>
-                      </label>
-                      <div className="space-y-3">
-                        <div>
-                          <label className="block text-xs text-text-muted/60 mb-1.5 font-light">
-                            {t('form.date')}
-                          </label>
-                          <input
-                            type="date"
-                            value={formData.date}
-                            onChange={(e) => setFormData({ ...formData, date: e.target.value })}
-                            min={new Date().toISOString().split('T')[0]}
-                            className="w-full bg-transparent border border-primary-light/20 rounded-lg focus:border-accent focus:outline-none px-3 py-2 text-sm font-light text-primary transition-all duration-300 hover:border-accent/50"
-                          />
-                        </div>
-                        <div>
-                          <label className="block text-xs text-text-muted/60 mb-1.5 font-light">
-                            {t('form.time')}
-                          </label>
-                          <input
-                            type="time"
-                            value={formData.time}
-                            onChange={(e) => setFormData({ ...formData, time: e.target.value })}
-                            className="w-full bg-transparent border border-primary-light/20 rounded-lg focus:border-accent focus:outline-none px-3 py-2 text-sm font-light text-primary transition-all duration-300 hover:border-accent/50"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Privacy Acceptance & Submit */}
-                  <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pt-2">
-                    <div className="flex items-start gap-3 flex-1">
+              {/* Step 1: Basic Info */}
+              {currentStep === 1 && (
+                <div className="animate-in fade-in slide-in-from-right-4 duration-500 space-y-8">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <Field label={t('form.fullName')} error={errors.fullName}>
                       <input
-                        type="checkbox"
-                        required
-                        id="privacy"
-                        checked={formData.privacyAccepted}
-                        onChange={(e) => {
-                          setFormData({ ...formData, privacyAccepted: e.target.checked });
-                          if (errors.privacyAccepted) setErrors({ ...errors, privacyAccepted: '' });
-                        }}
-                        className="mt-0.5 w-4 h-4 border-2 border-primary-light/30 rounded focus:ring-2 focus:ring-accent/30 cursor-pointer accent-accent transition-all duration-300 flex-shrink-0"
+                        type="text"
+                        value={formData.fullName}
+                        onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
+                        placeholder={t('form.fullNamePlaceholder')}
+                        className="w-full bg-white border border-gray-100 rounded-2xl px-6 py-4 focus:border-accent outline-none transition-all"
                       />
-                      <label htmlFor="privacy" className="text-xs text-text-secondary font-light leading-relaxed cursor-pointer">
-                        {t('form.privacyText')}{' '}
-                        <a href="/privacy" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-accent underline transition-colors">
-                          {t('form.privacyPolicy')}
-                        </a>
-                        {' '}{t('form.and')}{' '}
-                        <a href="/terms" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-accent underline transition-colors">
-                          {t('form.terms')}
-                        </a>
-                      </label>
-                    </div>
-                    {errors.privacyAccepted && (
-                      <p className="text-rose-500 text-xs font-light">{errors.privacyAccepted}</p>
-                    )}
-                    <button
-                      type="submit"
-                      disabled={submitted}
-                      className="px-6 py-2.5 bg-primary text-white hover:bg-accent active:bg-accent-dark transition-all duration-300 rounded-lg font-light text-sm disabled:opacity-50 disabled:cursor-not-allowed shadow-sm hover:shadow-md disabled:hover:shadow-sm whitespace-nowrap"
-                    >
-                      {submitted ? t('form.submitting') : t('form.submit')}
-                    </button>
+                    </Field>
+                    <Field label={t('form.company')} error={errors.company}>
+                      <input
+                        type="text"
+                        value={formData.company}
+                        onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+                        placeholder={t('form.companyPlaceholder')}
+                        className="w-full bg-white border border-gray-100 rounded-2xl px-6 py-4 focus:border-accent outline-none transition-all"
+                      />
+                    </Field>
+                    <Field label={t('form.email')} error={errors.email}>
+                      <input
+                        type="email"
+                        value={formData.email}
+                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                        placeholder={t('form.emailPlaceholder')}
+                        className="w-full bg-white border border-gray-100 rounded-2xl px-6 py-4 focus:border-accent outline-none transition-all"
+                      />
+                    </Field>
+                    <Field label={t('form.phone')} error={errors.phone}>
+                      <input
+                        type="tel"
+                        value={formData.phone}
+                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                        placeholder={t('form.phonePlaceholder')}
+                        className="w-full bg-white border border-gray-100 rounded-2xl px-6 py-4 focus:border-accent outline-none transition-all"
+                      />
+                    </Field>
                   </div>
-                </form>
+                </div>
+              )}
+
+              {/* Step 2: Project Details */}
+              {currentStep === 2 && (
+                <div className="animate-in fade-in slide-in-from-right-4 duration-500 space-y-8">
+                  <div className="space-y-6">
+                    <label className="text-xs font-bold uppercase tracking-widest text-gray-400 block mb-4">
+                      {t('form.interestedIn')}
+                    </label>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      {serviceOptions.map((option) => (
+                        <label
+                          key={option.id}
+                          className={`flex items-center gap-4 px-6 py-4 rounded-2xl border transition-all cursor-pointer ${formData.services.includes(option.value)
+                            ? 'bg-[#04213B] border-[#04213B] text-white shadow-xl shadow-[#04213B]/20'
+                            : 'bg-white border-gray-100 text-gray-500 hover:border-accent/50'
+                            }`}
+                        >
+                          <input
+                            type="checkbox"
+                            className="hidden"
+                            checked={formData.services.includes(option.value)}
+                            onChange={(e) => {
+                              const newServices = e.target.checked
+                                ? [...formData.services, option.value]
+                                : formData.services.filter(s => s !== option.value);
+                              setFormData({ ...formData, services: newServices });
+                            }}
+                          />
+                          <span className="text-sm font-medium">{option.labels[locale as 'en' | 'es']}</span>
+                        </label>
+                      ))}
+                    </div>
+                    {errors.services && <p className="text-rose-500 text-xs mt-2">{errors.services}</p>}
+                  </div>
+
+                  <Field label={t('form.customMessage')}>
+                    <textarea
+                      value={formData.customMessage}
+                      onChange={(e) => setFormData({ ...formData, customMessage: e.target.value })}
+                      placeholder={t('form.customMessagePlaceholder')}
+                      rows={4}
+                      className="w-full bg-white border border-gray-100 rounded-2xl px-6 py-4 focus:border-accent outline-none transition-all resize-none"
+                    />
+                  </Field>
+                </div>
+              )}
+
+              {/* Step 3: Schedule & Submit */}
+              {currentStep === 3 && (
+                <div className="animate-in fade-in slide-in-from-right-4 duration-500 space-y-10">
+                  <div className="space-y-4">
+                    <p className="text-gray-500 font-light leading-relaxed">
+                      {locale === 'es'
+                        ? 'Si deseas agendar una reunión de una vez, compártenos día y hora y nos contactaremos.'
+                        : 'If you would like to schedule a meeting right away, please share a preferred day and time and we will get in touch.'}
+                    </p>
+                  </div>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <Field label={t('form.date')}>
+                      <input
+                        type="date"
+                        value={formData.date}
+                        onChange={(e) => setFormData({ ...formData, date: e.target.value })}
+                        className="w-full bg-white border border-gray-100 rounded-2xl px-6 py-4 focus:border-accent outline-none transition-all"
+                      />
+                    </Field>
+                    <Field label={t('form.time')}>
+                      <input
+                        type="time"
+                        value={formData.time}
+                        onChange={(e) => setFormData({ ...formData, time: e.target.value })}
+                        className="w-full bg-white border border-gray-100 rounded-2xl px-6 py-4 focus:border-accent outline-none transition-all"
+                      />
+                    </Field>
+                  </div>
+
+                  <div className="flex items-center gap-4 bg-white/50 p-6 rounded-3xl border border-gray-100">
+                    <input
+                      type="checkbox"
+                      id="privacy"
+                      checked={formData.privacyAccepted}
+                      onChange={(e) => setFormData({ ...formData, privacyAccepted: e.target.checked })}
+                      className="w-5 h-5 rounded border-gray-200 accent-[#04213B]"
+                    />
+                    <label htmlFor="privacy" className="text-xs text-gray-400 font-light leading-relaxed">
+                      {t('form.privacyText')} <a href="#" className="underline text-gray-600">{t('form.privacyPolicy')}</a>
+                    </label>
+                  </div>
+                  {errors.privacyAccepted && <p className="text-rose-500 text-xs">{errors.privacyAccepted}</p>}
+                </div>
+              )}
+
+              {/* Navigation Buttons */}
+              <div className="flex items-center justify-between pt-8 border-t border-gray-100/50">
+                {currentStep > 1 ? (
+                  <button
+                    type="button"
+                    onClick={prevStep}
+                    className="flex items-center gap-2 text-gray-400 hover:text-[#04213B] transition-all font-medium text-sm"
+                  >
+                    <ArrowLeft size={16} />
+                    Atrás
+                  </button>
+                ) : <div />}
+
+                <button
+                  type={currentStep === 3 ? "submit" : "button"}
+                  onClick={currentStep === 3 ? undefined : nextStep}
+                  disabled={submitted}
+                  className="flex items-center gap-3 px-10 py-4 rounded-full border border-[#04213B] text-[#04213B] hover:bg-[#04213B] hover:text-white transition-all duration-500 text-xs font-bold tracking-[0.2em] uppercase disabled:opacity-50 group"
+                >
+                  {submitted ? '...' : (currentStep === 3 ? (locale === 'es' ? 'Enviar' : 'Send') : (locale === 'es' ? 'Siguiente' : 'Next'))}
+                  {currentStep < 3 && <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />}
+                </button>
               </div>
-            </div>
+            </form>
+
+            {/* Status Messages */}
+            {status && (
+              <div className={`mt-8 p-6 rounded-3xl border text-sm font-medium ${status.type === 'success' ? 'bg-emerald-50 border-emerald-100 text-emerald-600' : 'bg-rose-50 border-rose-100 text-rose-600'
+                }`}>
+                {status.message}
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </section>
   );
 }
 
+function Field({ label, error, children }: { label: string; error?: string; children: React.ReactNode }) {
+  return (
+    <div className="space-y-3">
+      <label className="text-xs font-bold uppercase tracking-[0.2em] text-gray-500">
+        {label}
+      </label>
+      {children}
+      {error && <p className="text-rose-500 text-xs font-light">{error}</p>}
+    </div>
+  );
+}

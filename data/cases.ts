@@ -27,6 +27,9 @@ export interface CaseStudy {
   task: string;
   action: string;
   results: Metric[];
+  videos?: { url: string; title: string; titleEn: string }[];
+  template?: 'standard' | 'audiovisual';
+  partner?: { name: string; logo: string };
   projectDetails: ProjectDetailsType;
   images?: string[];
   heroImage?: string;
@@ -345,6 +348,63 @@ export const CASES_DATA: Record<string, CaseStudy> = {
     heroImage: '/Invia/Hero - Tienda Invia.png',
     images: [
       '/Invia/visuales del proyecto - Tienda invia.png'
+    ]
+  },
+  'bestune': {
+    id: 'bestune-case-001',
+    client: 'Bestune',
+    template: 'audiovisual',
+    partner: {
+      name: 'MTM Marca tu Marca',
+      logo: '/Bestune/MTM-Marca-tu-marca-brand.jpeg'
+    },
+    title: 'Electrificando el Futuro: Producción Publicitaria para Bestune',
+    brandDescription: 'Bestune es una marca automotriz de vanguardia enfocada en la movilidad eléctrica sostenible. Con un diseño audaz y tecnología de punta, Bestune busca transformar la relación entre el conductor y el medio ambiente, ofreciendo vehículos de lujo que no comprometen la potencia ni el planeta.',
+    situation: 'La marca necesitaba una presencia visual impactante para el lanzamiento de su nueva línea de vehículos eléctricos. El desafío era comunicar tanto la sofisticación tecnológica como la potencia dinámica de los autos Bestune a través de piezas audiovisuales de alta calidad.',
+    task: 'Producir una serie de piezas publicitarias en video que capturen la esencia de la marca Bestune. La misión fue resaltar la aerodinámica, el interior tecnológico y la experiencia de conducción silenciosa y potente.',
+    action: 'En colaboración con nuestro partner estratégico MTM Marca tu Marca, realizamos una producción publicitaria integral. Esto incluyó el rodaje en estudio con equipos de iluminación de cine, cámaras de alta velocidad y post-producción avanzada para lograr un look futurista y premium que define la identidad de Bestune.',
+    results: [
+      { label: 'Impacto Visual', value: '100', suffix: '%' },
+      { label: 'Alcance de Campaña', value: '+1.5', suffix: 'M' },
+      { label: 'Retención de Video', value: '85', suffix: '%' },
+      { label: 'Satisfacción de Marca', value: '9.8', suffix: '/10' },
+    ],
+    videos: [
+      { url: 'https://www.youtube.com/watch?v=z6sWxXGpqz4', title: 'Bestune: Poder Eléctrico', titleEn: 'Bestune: Electric Power' },
+      { url: 'https://www.youtube.com/watch?v=0ZCmdY0Nduk', title: 'Diseño Aerodinámico', titleEn: 'Aerodynamic Design' },
+      { url: 'https://www.youtube.com/watch?v=AXFLg8_bqjk', title: 'Tecnología de Vanguardia', titleEn: 'State-of-the-Art Technology' }
+    ],
+    projectDetails: {
+      year: '2025',
+      duration: '3 Meses',
+      services: ['Producción Audiovisual', 'Estrategia de Marca', 'Dirección de Arte', 'Post-producción'],
+      team: [
+        { role: 'Partner de Producción', name: 'MTM Marca tu Marca' }
+      ]
+    },
+    // English translations
+    titleEn: 'Electrifying the Future: Advertising Production for Bestune',
+    brandDescriptionEn: 'Bestune is a cutting-edge automotive brand focused on sustainable electric mobility. With bold design and state-of-the-art technology, Bestune seeks to transform the relationship between the driver and the environment, offering luxury vehicles that compromise neither power nor the planet.',
+    situationEn: 'The brand needed an impactful visual presence for the launch of its new line of electric vehicles. The challenge was to communicate both the technological sophistication and the dynamic power of Bestune cars through high-quality audiovisual pieces.',
+    taskEn: 'Produce a series of video advertising pieces that capture the essence of the Bestune brand. The mission was to highlight aerodynamics, technological interior, and the silent yet powerful driving experience.',
+    actionEn: 'In collaboration with our strategic partner MTM Marca tu Marca, we carried out a comprehensive advertising production. This included studio shooting with cinema lighting equipment, high-speed cameras, and advanced post-production to achieve a futuristic and premium look that defines Bestune\'s identity.',
+    resultsEn: [
+      { label: 'Visual Impact', value: '100', suffix: '%' },
+      { label: 'Campaign Reach', value: '+1.5', suffix: 'M' },
+      { label: 'Video Retention', value: '85', suffix: '%' },
+      { label: 'Brand Satisfaction', value: '9.8', suffix: '/10' },
+    ],
+    projectDetailsEn: {
+      services: ['Audiovisual Production', 'Brand Strategy', 'Art Direction', 'Post-production'],
+      team: [
+        { role: 'Production Partner', name: 'MTM Marca tu Marca' }
+      ]
+    },
+    heroImage: '/Bestune/Bestune-01.jpg',
+    images: [
+      '/Bestune/Bestune-02.jpg',
+      '/Bestune/Bestune-03.jpg',
+      '/Bestune/Bestune-04.jpg'
     ]
   }
 };

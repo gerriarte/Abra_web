@@ -86,3 +86,6 @@ npm run build  # ✅ Debe completarse sin errores
 - ✅ Metadatos dinámicos por página
 
 
+
+
+

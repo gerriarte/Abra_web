@@ -177,3 +177,6 @@ Las siguientes variables estarán disponibles en GTM:
 4. **Testing**: Siempre prueba los eventos en desarrollo antes de desplegar
 
 
+
+
+
