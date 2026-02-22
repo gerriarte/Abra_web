@@ -9,6 +9,7 @@ interface SectionProps {
   title: string;
   description: string;
   image?: string;
+  image2?: string;
   video?: string;
   align?: 'left' | 'right';
   theme?: 'light' | 'dark';
@@ -19,14 +20,15 @@ interface SectionProps {
   imageLink?: string;
 }
 
-export const Section: React.FC<SectionProps> = ({ 
-  id, 
-  category, 
-  title, 
-  description, 
-  image, 
+export const Section: React.FC<SectionProps> = ({
+  id,
+  category,
+  title,
+  description,
+  image,
+  image2,
   video,
-  align = 'left', 
+  align = 'left',
   theme = 'light',
   hasDivider = false,
   floatingImage = false,
@@ -45,10 +47,10 @@ export const Section: React.FC<SectionProps> = ({
       {hasDivider && !isDark && (
         <div className="absolute top-0 left-12 right-12 h-px bg-gray-100" />
       )}
-      
+
       <div className="max-w-7xl mx-auto">
         <div className={`flex flex-col lg:flex-row gap-16 lg:gap-24 ${floatingImage ? 'items-start' : 'items-center'} ${align === 'right' ? 'lg:flex-row-reverse' : ''}`}>
-          
+
           {/* Text Content */}
           <div className={`flex-1 space-y-8 ${floatingImage ? 'lg:pt-8' : ''}`}>
             <FadeIn>
@@ -63,7 +65,7 @@ export const Section: React.FC<SectionProps> = ({
                 {title}
               </h3>
             </FadeIn>
-            
+
             <FadeIn delay={200}>
               <p className={`text-lg md:text-xl leading-relaxed font-light ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
                 {description}
@@ -79,20 +81,37 @@ export const Section: React.FC<SectionProps> = ({
                   // Floating image without container - full quality, modern composition
                   <div className="relative group w-full flex justify-center">
                     <div className="relative overflow-visible" style={{ maxWidth: imageMaxWidth }}>
-                      {imageLink ? (
-                        <a 
-                          href={imageLink} 
-                          target="_blank" 
-                          rel="noopener noreferrer"
-                          className="block cursor-pointer"
-                        >
-                          <img 
-                            src={image} 
-                            alt={title} 
+                      <div className="relative">
+                        {imageLink ? (
+                          <a
+                            href={imageLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="block cursor-pointer"
+                          >
+                            <img
+                              src={image}
+                              alt={title}
+                              loading="eager"
+                              decoding="async"
+                              className="w-full h-auto object-contain transition-all duration-[1200ms] ease-out transform group-hover:scale-[1.01]"
+                              style={{
+                                imageRendering: 'auto',
+                                filter: 'drop-shadow(0 35px 70px -12px rgba(0, 0, 0, 0.35))',
+                                maxWidth: '100%',
+                                height: 'auto',
+                                willChange: 'transform'
+                              }}
+                            />
+                          </a>
+                        ) : (
+                          <img
+                            src={image}
+                            alt={title}
                             loading="eager"
                             decoding="async"
                             className="w-full h-auto object-contain transition-all duration-[1200ms] ease-out transform group-hover:scale-[1.01]"
-                            style={{ 
+                            style={{
                               imageRendering: 'auto',
                               filter: 'drop-shadow(0 35px 70px -12px rgba(0, 0, 0, 0.35))',
                               maxWidth: '100%',
@@ -100,23 +119,23 @@ export const Section: React.FC<SectionProps> = ({
                               willChange: 'transform'
                             }}
                           />
-                        </a>
-                      ) : (
-                        <img 
-                          src={image} 
-                          alt={title} 
-                          loading="eager"
-                          decoding="async"
-                          className="w-full h-auto object-contain transition-all duration-[1200ms] ease-out transform group-hover:scale-[1.01]"
-                          style={{ 
-                            imageRendering: 'auto',
-                            filter: 'drop-shadow(0 35px 70px -12px rgba(0, 0, 0, 0.35))',
-                            maxWidth: '100%',
-                            height: 'auto',
-                            willChange: 'transform'
-                          }}
-                        />
-                      )}
+                        )}
+
+                        {/* Secondary Image Overlay (Composite) */}
+                        {image2 && (
+                          <div className="absolute -bottom-12 -right-12 w-2/3 md:w-1/2 z-20 transition-all duration-700 delay-150 transform group-hover:translate-x-4 group-hover:-translate-y-4">
+                            <img
+                              src={image2}
+                              alt={`${title} detail`}
+                              loading="lazy"
+                              className="w-full h-auto rounded-xl shadow-2xl border-4 border-white/10 backdrop-blur-sm"
+                              style={{
+                                filter: 'drop-shadow(0 25px 50px rgba(0, 0, 0, 0.5))'
+                              }}
+                            />
+                          </div>
+                        )}
+                      </div>
                     </div>
                   </div>
                 ) : (
@@ -124,35 +143,35 @@ export const Section: React.FC<SectionProps> = ({
                     {/* Main Image/Video Container - Material Design Elevation */}
                     <div className={`relative h-full w-full overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 ease-out ${video ? 'bg-black' : 'bg-gray-100'}`}>
                       {video ? (
-                         <iframe 
-                           src={video} 
-                           title={title}
-                           className="w-full h-full rounded-2xl"
-                           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                           allowFullScreen
-                         />
+                        <iframe
+                          src={video}
+                          title={title}
+                          className="w-full h-full rounded-2xl"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                          allowFullScreen
+                        />
                       ) : (
                         <>
                           <div className="absolute inset-0 bg-gradient-to-t from-[#04213B]/20 via-transparent to-transparent group-hover:from-transparent z-10 transition-all duration-700 pointer-events-none rounded-2xl" />
                           {imageLink ? (
-                            <a 
-                              href={imageLink} 
-                              target="_blank" 
+                            <a
+                              href={imageLink}
+                              target="_blank"
                               rel="noopener noreferrer"
                               className="block w-full h-full cursor-pointer"
                             >
-                              <img 
-                                src={image} 
-                                alt={title} 
+                              <img
+                                src={image}
+                                alt={title}
                                 loading="eager"
                                 className="w-full h-full object-cover transition-all duration-[1200ms] ease-out transform group-hover:scale-105 rounded-2xl"
                                 style={{ imageRendering: 'auto' }}
                               />
                             </a>
                           ) : (
-                            <img 
-                              src={image} 
-                              alt={title} 
+                            <img
+                              src={image}
+                              alt={title}
                               loading="eager"
                               className="w-full h-full object-cover transition-all duration-[1200ms] ease-out transform group-hover:scale-105 rounded-2xl"
                               style={{ imageRendering: 'auto' }}
@@ -161,16 +180,16 @@ export const Section: React.FC<SectionProps> = ({
                         </>
                       )}
                     </div>
-                    
+
                     {/* Material Design Decorative element */}
-                    <div 
-                      className={`absolute -bottom-4 -right-4 w-20 h-20 rounded-lg border-2 ${isDark ? 'border-white/20' : 'border-[#04213B]/20'} z-[-1] transition-all duration-500 ease-out group-hover:translate-x-2 group-hover:translate-y-2 group-hover:border-[#04213B]/40`} 
+                    <div
+                      className={`absolute -bottom-4 -right-4 w-20 h-20 rounded-lg border-2 ${isDark ? 'border-white/20' : 'border-[#04213B]/20'} z-[-1] transition-all duration-500 ease-out group-hover:translate-x-2 group-hover:translate-y-2 group-hover:border-[#04213B]/40`}
                     />
                   </div>
                 )}
               </FadeIn>
             ) : (
-               <div className="hidden lg:block flex-1" />
+              <div className="hidden lg:block flex-1" />
             )}
           </div>
 

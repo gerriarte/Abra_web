@@ -238,7 +238,8 @@ export default async function CaseStudyPage({ params }: PageProps) {
         category={labels.situation}
         title={labels.situationTitle}
         description={situation}
-        image={slug === 'monyte' ? '/monyte/monyte-dashboard.png' : slug === 'securitas' ? '/Securitas/Dashboard.png' : slug === 'rac' ? '/RAC/Dashboard.png' : slug === 'invia' ? '/Invia/Situacion - Tienda invia.png' : slug === 'different-coffee' ? '/differente-coffee/Differente Tienda.jpg' : "https://picsum.photos/800/1000?random=1"}
+        image={slug === 'monyte' ? '/monyte/monyte-dashboard.png' : slug === 'securitas' ? '/Securitas/Dashboard.png' : slug === 'rac' ? '/RAC/Dashboard.png' : slug === 'invia' ? '/Invia/Situacion - Tienda invia.png' : slug === 'different-coffee' ? '/differente-coffee/Differente Home.jpg' : "https://picsum.photos/800/1000?random=1"}
+        image2={slug === 'different-coffee' ? '/differente-coffee/Differente Producto.jpg' : undefined}
         align="right"
         hasDivider
         floatingImage={slug === 'monyte' || slug === 'securitas' || slug === 'rac' || slug === 'invia' || slug === 'different-coffee'}
