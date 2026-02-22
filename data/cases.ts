@@ -45,29 +45,55 @@ export interface CaseStudy {
 export const CASES_DATA: Record<string, CaseStudy> = {
   'different-coffee': {
     id: 'different-coffee-001',
-    client: 'Different Coffee',
-    title: 'Redefiniendo la Experiencia del Café Especialidad',
-    brandDescription: 'Different Coffee es una tostaduría boutique que busca democratizar el acceso al café de especialidad. Con un enfoque en la trazabilidad y el comercio justo, su identidad visual y verbal refleja sofisticación, pero con un tono accesible y humano. No venden solo granos; venden rituales matutinos.',
-    situation: 'A pesar de tener un producto superior y una marca visualmente potente, Different Coffee enfrentaba un estancamiento en su canal e-commerce. El costo por adquisición (CPA) en Meta Ads había aumentado un 40% debido a la saturación de competidores genéricos, y la retención de clientes (LTV) era baja.',
-    task: 'Nuestra misión fue clara: Reestructurar el ecosistema de pauta digital para optimizar el CPA por debajo de $15 USD y aumentar la tasa de recompra en un 20% durante el Q4, aprovechando la temporada alta para posicionar la marca como líder en regalos corporativos y consumo hogareño premium.',
-    action: 'Implementamos una estrategia "Full-Funnel". En la etapa de descubrimiento, utilizamos videos de alto impacto (Reels/TikTok) centrados en el ASMR de la preparación del café para generar deseo sensorial. En consideración, activamos campañas de Google Search y Shopping para capturar intención de compra de "café de especialidad". Finalmente, para retención, diseñamos flujos de Email Marketing automatizados post-compra y campañas de Remarketing dinámico con ofertas exclusivas para suscripciones mensuales.',
+    client: 'Differente Coffee',
+    title: 'Rediseño Web y Estrategia de Growth para Differente Coffee',
+    brandDescription: 'Differente Coffee es una marca de café de especialidad que busca ofrecer una experiencia única y de alta calidad a sus clientes, enfocándose en la excelencia del grano y la sofisticación de su preparación.',
+    situation: 'La marca contaba con una presencia digital que no reflejaba la calidad premium de sus productos, con campañas poco optimizadas y un crecimiento estancado.',
+    task: 'Rediseñar el sitio web para mejorar la experiencia de usuario y la tasa de conversión, optimizar las campañas de pauta digital y aplicar estrategias de growth marketing para impulsar el crecimiento mensual.',
+    action: 'Realizamos un rediseño integral del sitio web, enfocándonos en una estética premium y minimalista. Optimizamos las campañas de Meta y Google Ads con inversiones bajas pero altamente segmentadas, e implementamos diversas tácticas de growth marketing para fidelizar clientes y aumentar la recurrencia.',
     results: [
-      { label: 'Retorno de Inversión (ROAS)', value: '4.5', suffix: 'x' },
-      { label: 'Reducción de CPA', value: '32', suffix: '%' },
-      { label: 'Tasa de Conversión', value: '2.8', suffix: '%' },
-      { label: 'Nuevos Suscriptores', value: '+150', suffix: '' },
+      { label: 'Crecimiento Mensual', value: '15', suffix: '%' },
+      { label: 'Optimización de Pauta', value: 'Alta', suffix: '' },
+      { label: 'Experiencia de Usuario', value: 'Premium', suffix: '' },
+      { label: 'Retorno de Inversión', value: 'Máximo', suffix: '' },
     ],
     projectDetails: {
-      logo: 'https://placehold.co/400x150/171717/ffffff/png?text=Different+Coffee&font=playfair',
-      year: '2023',
-      duration: '4 Meses (Sept - Dic)',
-      services: ['Estrategia Digital', 'Paid Media', 'Content Creation', 'Email Automation'],
+      year: '2024',
+      duration: 'Continuo',
+      services: ['Web Redesign', 'Growth Marketing', 'Ads Optimization', 'E-commerce'],
       team: [
-        { role: 'Director Creativo', name: 'Ana Silva' },
-        { role: 'Growth Manager', name: 'Carlos Ruiz' },
-        { role: 'Copywriter', name: 'Elena Martínez' }
+        { role: 'Growth Strategist', name: 'Abra Team' },
+        { role: 'Lead Designer', name: 'Abra Team' }
       ]
-    }
+    },
+    // English translations
+    titleEn: 'Web Redesign and Growth Strategy for Differente Coffee',
+    brandDescriptionEn: 'Differente Coffee is a specialty coffee brand that seeks to offer a unique and high-quality experience to its customers, focusing on grain excellence and the sophistication of its preparation.',
+    situationEn: 'The brand had a digital presence that did not reflect the premium quality of its products, with poorly optimized campaigns and stagnant growth.',
+    taskEn: 'Redesign the website to improve user experience and conversion rate, optimize digital advertising campaigns, and apply growth marketing strategies to boost monthly growth.',
+    actionEn: 'We carried out a comprehensive redesign of the website, focusing on a premium and minimalist aesthetic. We optimized Meta and Google Ads campaigns with low but highly segmented investments, and implemented various growth marketing tactics to build customer loyalty and increase recurrence.',
+    resultsEn: [
+      { label: 'Monthly Growth', value: '15', suffix: '%' },
+      { label: 'Ad Optimization', value: 'High', suffix: '' },
+      { label: 'User Experience', value: 'Premium', suffix: '' },
+      { label: 'ROI', value: 'Maximum', suffix: '' },
+    ],
+    projectDetailsEn: {
+      services: ['Web Redesign', 'Growth Marketing', 'Ads Optimization', 'E-commerce'],
+      team: [
+        { role: 'Growth Strategist', name: 'Abra Team' },
+        { role: 'Lead Designer', name: 'Abra Team' }
+      ]
+    },
+    heroImage: '/differente-coffee/Differente Home.jpg',
+    images: [
+      '/differente-coffee/Differente-mock.png',
+      '/differente-coffee/Differente Coffee mobile.png',
+      '/differente-coffee/Differente Tienda.jpg',
+      '/differente-coffee/Differente Producto.jpg',
+      '/differente-coffee/Differente Coffee negocios.jpg',
+      '/differente-coffee/Differente Coffee nosotros.jpg'
+    ]
   },
   'techflow': {
     id: 'techflow-case-1',

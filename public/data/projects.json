@@ -160,6 +160,41 @@
       ]
     },
     {
+      "id": 8,
+      "title": "Differente Coffee",
+      "category": "Growth & Web Design",
+      "description": "Rediseño web y estrategia de growth marketing que logró un crecimiento mensual del 15% con optimización de pauta digital.",
+      "image": "/differente-coffee/Differente Home.jpg",
+      "cases": [
+        {
+          "id": "different-coffee-001",
+          "title": "Rediseño Web y Estrategia de Growth para Differente Coffee",
+          "relatedServices": [
+            "Web Redesign",
+            "Growth Marketing",
+            "Ads Optimization",
+            "E-commerce"
+          ],
+          "challenge": "La marca contaba con una presencia digital que no reflejaba su calidad premium, con campañas poco optimizadas y crecimiento estancado.",
+          "solution": "Rediseño integral del sitio con estética premium, optimización de campañas con baja inversión y tácticas de growth para fidelización.",
+          "resultsSummary": "15% de crecimiento mensual y máximo retorno de inversión en pauta digital.",
+          "results": {
+            "metrics": [
+              {
+                "label": "Crecimiento Mensual",
+                "value": "15%"
+              },
+              {
+                "label": "Experiencia UX",
+                "value": "Premium"
+              }
+            ]
+          },
+          "link": "/case-studies/different-coffee"
+        }
+      ]
+    },
+    {
       "id": 7,
       "title": "A:BRA Latam",
       "category": "Algunos Proyectos",

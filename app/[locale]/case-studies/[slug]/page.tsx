@@ -219,7 +219,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
         subtitle={caseStudy.client}
         backgroundImage={caseStudy.heroImage || "https://picsum.photos/1920/1080?grayscale"}
         category={category}
-        imageScale={slug === 'monyte' || slug === 'securitas' || slug === 'rac' || slug === 'invia' ? 0.7 : 1}
+        imageScale={slug === 'monyte' || slug === 'securitas' || slug === 'rac' || slug === 'invia' || slug === 'different-coffee' ? 0.7 : 1}
         imageLink={slug === 'invia' ? 'https://tiendainvia.com/' : undefined}
       />
 
@@ -238,10 +238,10 @@ export default async function CaseStudyPage({ params }: PageProps) {
         category={labels.situation}
         title={labels.situationTitle}
         description={situation}
-        image={slug === 'monyte' ? '/monyte/monyte-dashboard.png' : slug === 'securitas' ? '/Securitas/Dashboard.png' : slug === 'rac' ? '/RAC/Dashboard.png' : slug === 'invia' ? '/Invia/Situacion - Tienda invia.png' : "https://picsum.photos/800/1000?random=1"}
+        image={slug === 'monyte' ? '/monyte/monyte-dashboard.png' : slug === 'securitas' ? '/Securitas/Dashboard.png' : slug === 'rac' ? '/RAC/Dashboard.png' : slug === 'invia' ? '/Invia/Situacion - Tienda invia.png' : slug === 'different-coffee' ? '/differente-coffee/Differente Tienda.jpg' : "https://picsum.photos/800/1000?random=1"}
         align="right"
         hasDivider
-        floatingImage={slug === 'monyte' || slug === 'securitas' || slug === 'rac' || slug === 'invia'}
+        floatingImage={slug === 'monyte' || slug === 'securitas' || slug === 'rac' || slug === 'invia' || slug === 'different-coffee'}
         imageAspect="auto"
         imageLink={slug === 'invia' ? 'https://tiendainvia.com/' : undefined}
       />
@@ -262,9 +262,9 @@ export default async function CaseStudyPage({ params }: PageProps) {
         category={labels.action}
         title={labels.actionTitle}
         description={action}
-        image={slug === 'monyte' ? '/monyte/monyte-marca.png' : slug === 'securitas' ? '/Securitas/Log securitas.png' : slug === 'rac' ? '/RAC/Logo.png' : slug === 'invia' ? '/Invia/Logo- tienda invia.png' : "https://picsum.photos/800/1000?random=2"}
+        image={slug === 'monyte' ? '/monyte/monyte-marca.png' : slug === 'securitas' ? '/Securitas/Log securitas.png' : slug === 'rac' ? '/RAC/Logo.png' : slug === 'invia' ? '/Invia/Logo- tienda invia.png' : slug === 'different-coffee' ? '/differente-coffee/Differente Coffee mobile.png' : "https://picsum.photos/800/1000?random=2"}
         align="right"
-        floatingImage={slug === 'monyte' || slug === 'securitas' || slug === 'rac' || slug === 'invia'}
+        floatingImage={slug === 'monyte' || slug === 'securitas' || slug === 'rac' || slug === 'invia' || slug === 'different-coffee'}
         imageAspect="auto"
         imageMaxWidth={slug === 'rac' ? '60%' : slug === 'invia' ? '50%' : '75%'}
         imageLink={slug === 'invia' ? 'https://tiendainvia.com/' : undefined}
