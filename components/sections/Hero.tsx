@@ -71,10 +71,10 @@ export default function Hero() {
 
   const changeSlide = useCallback((newIndex: number) => {
     if (newIndex === activeIndex) return;
-    
+
     setIsTransitioning(true);
     setProgress(0);
-    
+
     setTimeout(() => {
       setActiveIndex(newIndex);
       setTimeout(() => {
@@ -200,10 +200,10 @@ export default function Hero() {
   }, [slideData.length, isPaused, activeIndex, changeSlide]);
 
   const renderBackground = () => {
-    const transitionClass = isTransitioning 
-      ? 'opacity-0 scale-105' 
+    const transitionClass = isTransitioning
+      ? 'opacity-0 scale-105'
       : 'opacity-100 scale-100';
-    
+
     if (activeSlide.mediaType === 'video') {
       if (isEmbeddableService(activeSlide.mediaUrl)) {
         return (
@@ -250,11 +250,26 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden bg-primary-darkest">
+    <section className="relative min-h-screen flex items-center overflow-hidden bg-primary-darkest hero-glass-mask">
+      {/* Background Media */}
       <div className="absolute inset-0 z-0 opacity-60 transition-opacity duration-1000">
         {renderBackground()}
       </div>
-      <div className="absolute inset-0 bg-primary-darkest/80 z-0" />
+
+      {/* Massive Background Typography (A:BRA Concept) */}
+      <div className="absolute inset-0 z-[1] flex items-center justify-center overflow-hidden select-none pointer-events-none">
+        <h2
+          key={`massive-outline-${activeIndex}`}
+          className={`text-outline-massive transition-all duration-1000 ease-out ${isTransitioning ? 'opacity-0 scale-110 blur-xl' : 'opacity-100 scale-100 blur-0'
+            }`}
+        >
+          {activeSlide.title === fallbackSlide.title ? 'A:BRA' : activeSlide.title.split(' ')[0]}
+        </h2>
+      </div>
+
+      {/* Glass Portal & Vignette Effect */}
+      <div className="absolute inset-0 z-[2] hero-vignette opacity-80" />
+      <div className="absolute inset-0 bg-primary-darkest/60 z-[2]" />
 
       {/* Navigation Arrows */}
       {slideData.length > 1 && (
@@ -294,79 +309,73 @@ export default function Hero() {
         <div className="max-w-6xl mx-auto w-full">
           <div className="flex flex-col md:flex-row items-start justify-between gap-12">
             <div className="flex-1 space-y-6">
-              <div 
-                key={`welcome-${activeIndex}`} 
-                className={`text-sm text-white/70 font-light transition-all duration-500 ease-out ${
-                  isTransitioning 
-                    ? 'opacity-0 translate-y-4' 
-                    : isVisible 
-                    ? 'opacity-100 translate-y-0' 
+              <div
+                key={`welcome-${activeIndex}`}
+                className={`text-sm text-white/70 font-light transition-all duration-500 ease-out ${isTransitioning
+                  ? 'opacity-0 translate-y-4'
+                  : isVisible
+                    ? 'opacity-100 translate-y-0'
                     : 'opacity-0 translate-y-4'
-                }`}
+                  }`}
               >
                 {t('hero.welcome')}
               </div>
-              <h1 
-                key={`title-${activeIndex}`} 
-                className={`text-5xl md:text-7xl lg:text-8xl font-light text-white leading-tight tracking-tight transition-all duration-500 ease-out delay-75 ${
-                  isTransitioning 
-                    ? 'opacity-0 translate-y-8 scale-95' 
-                    : isVisible 
-                    ? 'opacity-100 translate-y-0 scale-100' 
+              <h1
+                key={`title-${activeIndex}`}
+                className={`text-5xl md:text-7xl lg:text-8xl font-light text-white leading-tight tracking-tight transition-all duration-500 ease-out delay-75 ${isTransitioning
+                  ? 'opacity-0 translate-y-8 scale-95'
+                  : isVisible
+                    ? 'opacity-100 translate-y-0 scale-100'
                     : 'opacity-0 translate-y-8 scale-95'
-                }`}
+                  }`}
               >
                 {activeSlide.title || fallbackSlide.title}
               </h1>
-              <p 
-                key={`tagline-${activeIndex}`} 
-                className={`text-lg md:text-xl text-white/80 font-light transition-all duration-500 ease-out delay-150 ${
-                  isTransitioning 
-                    ? 'opacity-0 translate-y-6' 
-                    : isVisible 
-                    ? 'opacity-100 translate-y-0' 
+              <p
+                key={`tagline-${activeIndex}`}
+                className={`text-lg md:text-xl text-white/80 font-light transition-all duration-500 ease-out delay-150 ${isTransitioning
+                  ? 'opacity-0 translate-y-6'
+                  : isVisible
+                    ? 'opacity-100 translate-y-0'
                     : 'opacity-0 translate-y-6'
-                }`}
+                  }`}
               >
                 {t('hero.tagline')}
               </p>
-              <div 
-                key={`description-${activeIndex}`} 
-                className={`space-y-3 max-w-2xl transition-all duration-500 ease-out delay-200 ${
-                  isTransitioning 
-                    ? 'opacity-0 translate-y-6' 
-                    : isVisible 
-                    ? 'opacity-100 translate-y-0' 
+              <div
+                key={`description-${activeIndex}`}
+                className={`space-y-3 max-w-2xl transition-all duration-500 ease-out delay-200 ${isTransitioning
+                  ? 'opacity-0 translate-y-6'
+                  : isVisible
+                    ? 'opacity-100 translate-y-0'
                     : 'opacity-0 translate-y-6'
-                }`}
+                  }`}
               >
                 <p className="text-lg md:text-xl text-white font-light leading-relaxed">
                   {activeSlide.description || fallbackSlide.description}
                 </p>
               </div>
-              <p 
-                key={`subdescription-${activeIndex}`} 
-                className={`text-sm md:text-base text-white/70 font-light max-w-xl leading-relaxed transition-all duration-500 ease-out delay-300 ${
-                  isTransitioning 
-                    ? 'opacity-0 translate-y-6' 
-                    : isVisible 
-                    ? 'opacity-100 translate-y-0' 
+              <p
+                key={`subdescription-${activeIndex}`}
+                className={`text-sm md:text-base text-white/70 font-light max-w-xl leading-relaxed transition-all duration-500 ease-out delay-300 ${isTransitioning
+                  ? 'opacity-0 translate-y-6'
+                  : isVisible
+                    ? 'opacity-100 translate-y-0'
                     : 'opacity-0 translate-y-6'
-                }`}
+                  }`}
               >
                 {t('hero.description')}
               </p>
             </div>
 
-            <div 
+            <div
               key={`cta-${activeIndex}`}
-              className={`self-end transition-all duration-500 ease-out delay-400 ${
-                isTransitioning 
-                  ? 'opacity-0 translate-y-6 scale-95' 
-                  : isVisible 
-                  ? 'opacity-100 translate-y-0 scale-100' 
+              className={`self-end transition-all duration-500 ease-out delay-400 ${isTransitioning
+                ? 'opacity-0 translate-y-6 scale-95'
+                : isVisible
+                  ? 'opacity-100 translate-y-0 scale-100'
                   : 'opacity-0 translate-y-6 scale-95'
-              }`}
+                }`}
             >
               <a
                 href={activeSlide.ctaHref || '#contact'}
@@ -383,7 +392,7 @@ export default function Hero() {
             {slideData.map((slide, index) => {
               const isActive = index === activeIndex;
               const progressWidth = isActive && !isPaused ? `${progress}%` : '0%';
-              
+
               return (
                 <button
                   key={slide.id}
@@ -392,12 +401,11 @@ export default function Hero() {
                   aria-label={`Mostrar ${slide.title}`}
                   aria-current={isActive ? 'true' : 'false'}
                 >
-                  <div 
-                    className={`h-full rounded-full transition-all duration-500 ease-out ${
-                      isActive 
-                        ? 'w-12 bg-accent/20 shadow-lg shadow-accent/20' 
-                        : 'w-6 bg-white/40 group-hover:bg-accent/60 group-hover:w-8'
-                    }`}
+                  <div
+                    className={`h-full rounded-full transition-all duration-500 ease-out ${isActive
+                      ? 'w-12 bg-accent/20 shadow-lg shadow-accent/20'
+                      : 'w-6 bg-white/40 group-hover:bg-accent/60 group-hover:w-8'
+                      }`}
                   />
                   {isActive && (
                     <div
