@@ -17,7 +17,7 @@ export default function Header() {
 
   useEffect(() => {
     setMounted(true);
-    
+
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
     };
@@ -66,12 +66,11 @@ export default function Header() {
   }
 
   return (
-    <header 
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled 
-          ? 'bg-white/95 backdrop-blur-md border-b border-border' 
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${scrolled
+          ? 'bg-white/70 backdrop-blur-xl border-b border-black/[0.03] shadow-[0_2px_20px_-10px_rgba(0,0,0,0.05)]'
           : 'bg-transparent'
-      }`}
+        }`}
     >
       <nav className="container mx-auto px-4 lg:px-8 max-w-full overflow-hidden">
         <div className="flex items-center justify-between h-20 min-w-0">
@@ -101,7 +100,7 @@ export default function Header() {
 
               const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
                 e.preventDefault();
-                
+
                 // Si estamos en el home, hacer scroll a la sección
                 if (pathname === `/${locale}` || pathname === `/${locale}/`) {
                   const element = document.getElementById(id);
@@ -118,12 +117,12 @@ export default function Header() {
                 } else {
                   // Si estamos en otra página, navegar al home y luego hacer scroll
                   router.push(`/${locale}`);
-                  
+
                   // Esperar a que la navegación se complete y luego actualizar el hash y hacer scroll
                   setTimeout(() => {
                     // Actualizar el hash en la URL
                     window.history.replaceState(null, '', `/${locale}#${id}`);
-                    
+
                     // Función para hacer scroll cuando el elemento esté disponible
                     const scrollToSection = () => {
                       const element = document.getElementById(id);
@@ -162,25 +161,22 @@ export default function Header() {
                   key={id}
                   href={`/${locale}#${id}`}
                   onClick={handleClick}
-                  className={`group relative text-sm font-light tracking-wide transition-all duration-300 ${baseColor} ${
-                    isActive
+                  className={`group relative text-sm font-light tracking-wide transition-all duration-300 ${baseColor} ${isActive
                       ? scrolled
                         ? 'text-primary'
                         : 'text-white'
                       : ''
-                  }`}
+                    }`}
                   aria-current={isActive ? 'true' : undefined}
                 >
                   <span className="relative z-[1]">{label}</span>
                   <span
-                    className={`absolute inset-x-0 -bottom-2 h-0.5 origin-left transform rounded-full transition-transform duration-300 ease-out ${
-                      scrolled ? 'bg-accent' : 'bg-white'
-                    } ${isActive ? 'scale-x-100 opacity-100' : 'scale-x-0 opacity-0'}`}
+                    className={`absolute inset-x-0 -bottom-2 h-0.5 origin-left transform rounded-full transition-transform duration-300 ease-out ${scrolled ? 'bg-accent' : 'bg-white'
+                      } ${isActive ? 'scale-x-100 opacity-100' : 'scale-x-0 opacity-0'}`}
                   />
                   <span
-                    className={`pointer-events-none absolute inset-0 -z-[1] scale-95 rounded-full bg-accent/5 opacity-0 transition-all duration-300 ease-out ${
-                      scrolled ? 'group-hover:opacity-100 group-hover:scale-100' : 'group-hover:bg-white/10'
-                    } ${isActive ? 'opacity-100 scale-100' : ''}`}
+                    className={`pointer-events-none absolute inset-0 -z-[1] scale-95 rounded-full bg-accent/5 opacity-0 transition-all duration-300 ease-out ${scrolled ? 'group-hover:opacity-100 group-hover:scale-100' : 'group-hover:bg-white/10'
+                      } ${isActive ? 'opacity-100 scale-100' : ''}`}
                   />
                 </a>
               );
@@ -189,17 +185,15 @@ export default function Header() {
             {/* Cases Link (Separate Page) */}
             <Link
               href={`/${locale}/cases`}
-              className={`group relative text-sm font-light tracking-wide transition-all duration-300 ${
-                scrolled
+              className={`group relative text-sm font-light tracking-wide transition-all duration-300 ${scrolled
                   ? 'text-primary/70 hover:text-accent'
                   : 'text-white/70 hover:text-white'
-              } ${pathname === `/${locale}/cases` ? (scrolled ? 'text-primary' : 'text-white') : ''}`}
+                } ${pathname === `/${locale}/cases` ? (scrolled ? 'text-primary' : 'text-white') : ''}`}
             >
               <span className="relative z-[1]">{t('cases', { defaultMessage: 'Casos' })}</span>
               <span
-                className={`absolute inset-x-0 -bottom-2 h-0.5 origin-left transform rounded-full transition-transform duration-300 ease-out ${
-                  scrolled ? 'bg-accent' : 'bg-white'
-                } ${pathname === `/${locale}/cases` ? 'scale-x-100 opacity-100' : 'scale-x-0 opacity-0'}`}
+                className={`absolute inset-x-0 -bottom-2 h-0.5 origin-left transform rounded-full transition-transform duration-300 ease-out ${scrolled ? 'bg-accent' : 'bg-white'
+                  } ${pathname === `/${locale}/cases` ? 'scale-x-100 opacity-100' : 'scale-x-0 opacity-0'}`}
               />
             </Link>
           </div>
@@ -208,11 +202,10 @@ export default function Header() {
           <div className="flex items-center gap-2 md:gap-6 min-w-0 flex-shrink-0">
             <button
               onClick={toggleLanguage}
-              className={`flex items-center gap-1 text-xs font-light transition-colors flex-shrink-0 ${
-                scrolled 
-                  ? 'text-primary hover:text-accent' 
+              className={`flex items-center gap-1 text-xs font-light transition-colors flex-shrink-0 ${scrolled
+                  ? 'text-primary hover:text-accent'
                   : 'text-white hover:text-white/80'
-              }`}
+                }`}
             >
               <span className={locale === 'en' ? 'font-normal' : (scrolled ? 'text-text-muted' : 'text-white/60')}>
                 EN
@@ -222,12 +215,12 @@ export default function Header() {
                 ES
               </span>
             </button>
-            
-            <a 
+
+            <a
               href={`/${locale}#contact`}
               onClick={(e) => {
                 e.preventDefault();
-                
+
                 // Si estamos en el home, hacer scroll a la sección
                 if (pathname === `/${locale}` || pathname === `/${locale}/`) {
                   const element = document.getElementById('contact');
@@ -244,12 +237,12 @@ export default function Header() {
                 } else {
                   // Si estamos en otra página, navegar al home y luego hacer scroll
                   router.push(`/${locale}`);
-                  
+
                   // Esperar a que la navegación se complete y luego actualizar el hash y hacer scroll
                   setTimeout(() => {
                     // Actualizar el hash en la URL
                     window.history.replaceState(null, '', `/${locale}#contact`);
-                    
+
                     // Función para hacer scroll cuando el elemento esté disponible
                     const scrollToSection = () => {
                       const element = document.getElementById('contact');
@@ -282,11 +275,10 @@ export default function Header() {
                   }, 100);
                 }
               }}
-              className={`hidden md:block text-xs font-light px-4 py-2 rounded transition-all duration-200 ${
-                scrolled 
-                  ? 'text-primary border border-primary hover:bg-primary hover:text-white hover:border-primary' 
+              className={`hidden md:block text-xs font-light px-4 py-2 rounded transition-all duration-200 ${scrolled
+                  ? 'text-primary border border-primary hover:bg-primary hover:text-white hover:border-primary'
                   : 'text-white border border-white hover:bg-white hover:text-primary'
-              }`}
+                }`}
             >
               {t('contact')}
             </a>

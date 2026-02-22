@@ -19,14 +19,14 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
   const messages = await getMessages({ locale });
-  
+
   const isEnglish = locale === 'en';
   const hero = messages.hero as any;
-  
-  const title = isEnglish 
+
+  const title = isEnglish
     ? 'A:BRA - Strategic Digital Engineering Agency'
     : 'A:BRA - Agencia de Ingeniería Digital Estratégica';
-  
+
   const description = hero?.subtitle || (isEnglish
     ? 'We transform complex data into predictable growth systems. From brand vision to web development, we build digital solutions that work, proven by metrics.'
     : 'Transformamos datos complejos en sistemas de crecimiento predecibles. De la visión de marca al desarrollo web, construimos soluciones digitales que funcionan, probadas por la métrica.');
@@ -47,6 +47,7 @@ import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import WhatsAppFloating from '@/components/ui/WhatsAppFloating';
 import HashScrollHandler from '@/components/layout/HashScrollHandler';
+import { SmoothScrollProvider } from '@/components/ui/SmoothScrollProvider';
 
 export default async function LocaleLayout({
   children,
@@ -57,25 +58,28 @@ export default async function LocaleLayout({
 }) {
   try {
     const { locale } = await params;
-    
+
     if (!locales.includes(locale as any)) {
       notFound();
     }
 
     // Enable static rendering
     setRequestLocale(locale);
-    
+
     const messages = await getMessages();
 
     return (
       <NextIntlClientProvider messages={messages}>
-        <HashScrollHandler />
-        <Header />
-        <main className="overflow-x-hidden">
-          {children}
-        </main>
-        <Footer />
-        <WhatsAppFloating />
+        <SmoothScrollProvider>
+          <div className="grain-overlay" />
+          <HashScrollHandler />
+          <Header />
+          <main className="overflow-x-hidden">
+            {children}
+          </main>
+          <Footer />
+          <WhatsAppFloating />
+        </SmoothScrollProvider>
       </NextIntlClientProvider>
     );
   } catch (error) {
