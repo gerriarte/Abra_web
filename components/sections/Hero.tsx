@@ -256,20 +256,29 @@ export default function Hero() {
         {renderBackground()}
       </div>
 
-      {/* Massive Background Typography (A:BRA Concept) */}
-      <div className="absolute inset-0 z-[1] flex items-center justify-center overflow-hidden select-none pointer-events-none">
+      {/* Massive Background Typography (Subtle) */}
+      <div className="absolute inset-0 z-[1] flex items-center justify-center overflow-hidden select-none pointer-events-none opacity-20">
         <h2
           key={`massive-outline-${activeIndex}`}
-          className={`text-outline-massive transition-all duration-1000 ease-out ${isTransitioning ? 'opacity-0 scale-110 blur-xl' : 'opacity-100 scale-100 blur-0'
+          className={`text-outline-massive transition-all duration-[2000ms] ease-out ${isTransitioning ? 'opacity-0 scale-110 blur-2xl' : 'opacity-100 scale-100 blur-0'
             }`}
         >
           {activeSlide.title === fallbackSlide.title ? 'A:BRA' : activeSlide.title.split(' ')[0]}
         </h2>
       </div>
 
+      {/* Spatial Grid Layer - 3D Perspective */}
+      <div className="absolute inset-x-0 bottom-0 top-0 z-[1] pointer-events-none overflow-hidden">
+        <div className="spatial-grid opacity-30" />
+      </div>
+
+      {/* Dynamic Glows / Nebulas */}
+      <div className="absolute top-[20%] -left-[10%] w-[40%] h-[40%] bg-accent/10 blur-[150px] rounded-full z-[1] animate-pulse" />
+      <div className="absolute bottom-[10%] -right-[5%] w-[30%] h-[30%] bg-primary/20 blur-[120px] rounded-full z-[1]" />
+
       {/* Glass Portal & Vignette Effect */}
-      <div className="absolute inset-0 z-[2] hero-vignette opacity-80" />
-      <div className="absolute inset-0 bg-primary-darkest/60 z-[2]" />
+      <div className="absolute inset-0 z-[2] hero-vignette opacity-90" />
+      <div className="absolute inset-0 bg-primary-darkest/50 z-[2]" />
 
       {/* Navigation Arrows */}
       {slideData.length > 1 && (
