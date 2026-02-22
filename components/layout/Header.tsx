@@ -3,14 +3,13 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useLocale, useTranslations } from 'next-intl';
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
 export default function Header() {
   const locale = useLocale();
   const t = useTranslations('nav');
   const pathname = usePathname();
-  const router = useRouter();
   const [mounted, setMounted] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState<string | null>(null);
@@ -57,10 +56,9 @@ export default function Header() {
   const toggleLanguage = () => {
     const newLocale = locale === 'en' ? 'es' : 'en';
     const newPath = pathname.replace(`/${locale}`, `/${newLocale}`);
-    router.push(newPath);
+    window.location.href = newPath;
   };
 
-  // Prevent hydration mismatch
   if (!mounted) {
     return null;
   }
@@ -98,91 +96,23 @@ export default function Header() {
                 ? 'text-primary/70 hover:text-accent'
                 : 'text-white/70 hover:text-white';
 
-              const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-                e.preventDefault();
-
-                // Si estamos en el home, hacer scroll a la sección
-                if (pathname === `/${locale}` || pathname === `/${locale}/`) {
-                  const element = document.getElementById(id);
-                  if (element) {
-                    const headerOffset = 80; // Altura del header
-                    const elementPosition = element.getBoundingClientRect().top;
-                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-                    window.scrollTo({
-                      top: offsetPosition,
-                      behavior: 'smooth'
-                    });
-                  }
-                } else {
-                  // Si estamos en otra página, navegar al home y luego hacer scroll
-                  router.push(`/${locale}`);
-
-                  // Esperar a que la navegación se complete y luego actualizar el hash y hacer scroll
-                  setTimeout(() => {
-                    // Actualizar el hash en la URL
-                    window.history.replaceState(null, '', `/${locale}#${id}`);
-
-                    // Función para hacer scroll cuando el elemento esté disponible
-                    const scrollToSection = () => {
-                      const element = document.getElementById(id);
-                      if (element) {
-                        const headerOffset = 80;
-                        const elementPosition = element.getBoundingClientRect().top;
-                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-                        window.scrollTo({
-                          top: offsetPosition,
-                          behavior: 'smooth'
-                        });
-                        return true;
-                      }
-                      return false;
-                    };
-
-                    // Intentar hacer scroll inmediatamente
-                    if (!scrollToSection()) {
-                      // Si no está disponible, intentar varias veces con intervalos
-                      let attempts = 0;
-                      const maxAttempts = 30;
-                      const interval = setInterval(() => {
-                        attempts++;
-                        if (scrollToSection() || attempts >= maxAttempts) {
-                          clearInterval(interval);
-                        }
-                      }, 50);
-                    }
-                  }, 100);
-                }
-              };
-
               return (
-                <a
+                <Link
                   key={id}
                   href={`/${locale}#${id}`}
-                  onClick={handleClick}
-                  className={`group relative text-sm font-light tracking-wide transition-all duration-300 ${baseColor} ${isActive
-                      ? scrolled
-                        ? 'text-primary'
-                        : 'text-white'
-                      : ''
+                  className={`group relative text-sm font-light tracking-wide transition-all duration-300 ${baseColor} ${isActive ? (scrolled ? 'text-primary' : 'text-white') : ''
                     }`}
-                  aria-current={isActive ? 'true' : undefined}
                 >
                   <span className="relative z-[1]">{label}</span>
                   <span
                     className={`absolute inset-x-0 -bottom-2 h-0.5 origin-left transform rounded-full transition-transform duration-300 ease-out ${scrolled ? 'bg-accent' : 'bg-white'
                       } ${isActive ? 'scale-x-100 opacity-100' : 'scale-x-0 opacity-0'}`}
                   />
-                  <span
-                    className={`pointer-events-none absolute inset-0 -z-[1] scale-95 rounded-full bg-accent/5 opacity-0 transition-all duration-300 ease-out ${scrolled ? 'group-hover:opacity-100 group-hover:scale-100' : 'group-hover:bg-white/10'
-                      } ${isActive ? 'opacity-100 scale-100' : ''}`}
-                  />
-                </a>
+                </Link>
               );
             })}
 
-            {/* Cases Link (Separate Page) */}
+            {/* Cases Link */}
             <Link
               href={`/${locale}/cases`}
               className={`group relative text-sm font-light tracking-wide transition-all duration-300 ${scrolled
@@ -190,7 +120,7 @@ export default function Header() {
                   : 'text-white/70 hover:text-white'
                 } ${pathname === `/${locale}/cases` ? (scrolled ? 'text-primary' : 'text-white') : ''}`}
             >
-              <span className="relative z-[1]">{t('cases', { defaultMessage: 'Casos' })}</span>
+              <span className="relative z-[1]">{t('cases')}</span>
               <span
                 className={`absolute inset-x-0 -bottom-2 h-0.5 origin-left transform rounded-full transition-transform duration-300 ease-out ${scrolled ? 'bg-accent' : 'bg-white'
                   } ${pathname === `/${locale}/cases` ? 'scale-x-100 opacity-100' : 'scale-x-0 opacity-0'}`}
@@ -202,90 +132,26 @@ export default function Header() {
           <div className="flex items-center gap-2 md:gap-6 min-w-0 flex-shrink-0">
             <button
               onClick={toggleLanguage}
-              className={`flex items-center gap-1 text-xs font-light transition-colors flex-shrink-0 ${scrolled
-                  ? 'text-primary hover:text-accent'
-                  : 'text-white hover:text-white/80'
+              className={`flex items-center gap-1 text-xs font-light transition-colors ${scrolled ? 'text-primary hover:text-accent' : 'text-white hover:text-white/80'
                 }`}
             >
-              <span className={locale === 'en' ? 'font-normal' : (scrolled ? 'text-text-muted' : 'text-white/60')}>
-                EN
-              </span>
+              <span className={locale === 'en' ? 'font-normal' : (scrolled ? 'text-text-muted' : 'text-white/60')}>EN</span>
               <span className={scrolled ? 'text-text-muted' : 'text-white/60'}>/</span>
-              <span className={locale === 'es' ? 'font-normal' : (scrolled ? 'text-text-muted' : 'text-white/60')}>
-                ES
-              </span>
+              <span className={locale === 'es' ? 'font-normal' : (scrolled ? 'text-text-muted' : 'text-white/60')}>ES</span>
             </button>
 
-            <a
+            <Link
               href={`/${locale}#contact`}
-              onClick={(e) => {
-                e.preventDefault();
-
-                // Si estamos en el home, hacer scroll a la sección
-                if (pathname === `/${locale}` || pathname === `/${locale}/`) {
-                  const element = document.getElementById('contact');
-                  if (element) {
-                    const headerOffset = 80;
-                    const elementPosition = element.getBoundingClientRect().top;
-                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-                    window.scrollTo({
-                      top: offsetPosition,
-                      behavior: 'smooth'
-                    });
-                  }
-                } else {
-                  // Si estamos en otra página, navegar al home y luego hacer scroll
-                  router.push(`/${locale}`);
-
-                  // Esperar a que la navegación se complete y luego actualizar el hash y hacer scroll
-                  setTimeout(() => {
-                    // Actualizar el hash en la URL
-                    window.history.replaceState(null, '', `/${locale}#contact`);
-
-                    // Función para hacer scroll cuando el elemento esté disponible
-                    const scrollToSection = () => {
-                      const element = document.getElementById('contact');
-                      if (element) {
-                        const headerOffset = 80;
-                        const elementPosition = element.getBoundingClientRect().top;
-                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-                        window.scrollTo({
-                          top: offsetPosition,
-                          behavior: 'smooth'
-                        });
-                        return true;
-                      }
-                      return false;
-                    };
-
-                    // Intentar hacer scroll inmediatamente
-                    if (!scrollToSection()) {
-                      // Si no está disponible, intentar varias veces con intervalos
-                      let attempts = 0;
-                      const maxAttempts = 30;
-                      const interval = setInterval(() => {
-                        attempts++;
-                        if (scrollToSection() || attempts >= maxAttempts) {
-                          clearInterval(interval);
-                        }
-                      }, 50);
-                    }
-                  }, 100);
-                }
-              }}
               className={`hidden md:block text-xs font-light px-4 py-2 rounded transition-all duration-200 ${scrolled
-                  ? 'text-primary border border-primary hover:bg-primary hover:text-white hover:border-primary'
+                  ? 'text-primary border border-primary hover:bg-primary hover:text-white'
                   : 'text-white border border-white hover:bg-white hover:text-primary'
                 }`}
             >
               {t('contact')}
-            </a>
+            </Link>
           </div>
         </div>
       </nav>
     </header>
   );
 }
-
