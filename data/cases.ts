@@ -58,7 +58,7 @@ export const CASES_DATA: Record<string, CaseStudy> = {
       { label: 'Retorno de Inversión', value: 'Máximo', suffix: '' },
     ],
     projectDetails: {
-      year: '2024',
+      year: '2025/2026',
       duration: 'Continuo',
       services: ['Web Redesign', 'Growth Marketing', 'Ads Optimization', 'E-commerce'],
       team: [
@@ -79,6 +79,7 @@ export const CASES_DATA: Record<string, CaseStudy> = {
       { label: 'ROI', value: 'Maximum', suffix: '' },
     ],
     projectDetailsEn: {
+      year: '2025/2026',
       services: ['Web Redesign', 'Growth Marketing', 'Ads Optimization', 'E-commerce'],
       team: [
         { role: 'Growth Strategist', name: 'Abra Team' },
@@ -88,7 +89,6 @@ export const CASES_DATA: Record<string, CaseStudy> = {
     heroImage: '/differente-coffee/Differente-mock.png',
     images: [
       '/differente-coffee/Differente Home.jpg',
-      '/differente-coffee/Differente Coffee mobile.png',
       '/differente-coffee/Differente Tienda.jpg',
       '/differente-coffee/Differente Producto.jpg',
       '/differente-coffee/Differente Coffee negocios.jpg',
