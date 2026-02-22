@@ -10,6 +10,7 @@ import { AudiovisualHero } from '@/components/cases/ui/AudiovisualHero';
 import { VideoCinema } from '@/components/cases/ui/VideoCinema';
 import { PartnerSection } from '@/components/cases/ui/PartnerSection';
 import { VisualSeparator } from '@/components/cases/ui/VisualSeparator';
+import { NextProjectNavigation } from '@/components/cases/ui/NextProjectNavigation';
 import { CASES_DATA } from '@/data/cases';
 
 interface PageProps {
@@ -98,6 +99,24 @@ export default async function CaseStudyPage({ params }: PageProps) {
     actionTitle: isEnglish ? 'Strategic Execution' : 'Ejecución Estratégica',
     visuals: isEnglish ? 'Project Visuals' : 'Visuales del Proyecto'
   };
+
+  // Determine previous and next projects
+  const caseSlugs = Object.keys(CASES_DATA);
+  const currentIndex = caseSlugs.indexOf(slug);
+
+  const prevSlug = currentIndex > 0 ? caseSlugs[currentIndex - 1] : null;
+  const nextSlug = currentIndex < caseSlugs.length - 1 ? caseSlugs[currentIndex + 1] : null;
+
+  const prevProject = prevSlug ? {
+    slug: prevSlug,
+    title: isEnglish && CASES_DATA[prevSlug].titleEn ? CASES_DATA[prevSlug].titleEn! : CASES_DATA[prevSlug].title
+  } : undefined;
+
+  const nextProject = nextSlug ? {
+    slug: nextSlug,
+    title: isEnglish && CASES_DATA[nextSlug].titleEn ? CASES_DATA[nextSlug].titleEn! : CASES_DATA[nextSlug].title
+  } : undefined;
+
 
   const image = caseStudy.heroImage || caseStudy.images?.[0] || '/abra.png';
   const url = `/${locale}/case-studies/${slug}`;
@@ -205,6 +224,12 @@ export default async function CaseStudyPage({ params }: PageProps) {
           details={projectDetails}
           clientName={caseStudy.client}
         />
+
+        <NextProjectNavigation
+          prev={prevProject}
+          next={nextProject}
+          locale={locale}
+        />
       </div>
     );
   }
@@ -284,6 +309,12 @@ export default async function CaseStudyPage({ params }: PageProps) {
         images={caseStudy.images}
         title={labels.visuals}
         imageLink={slug === 'invia' ? 'https://tiendainvia.com/' : undefined}
+      />
+
+      <NextProjectNavigation
+        prev={prevProject}
+        next={nextProject}
+        locale={locale}
       />
 
     </div>
