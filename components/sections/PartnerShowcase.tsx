@@ -31,8 +31,13 @@ export const PartnerShowcase: React.FC<PartnerShowcaseProps> = ({ locale }) => {
     const isEn = locale === 'en';
 
     return (
-        <section className="bg-black py-24 md:py-32 px-6 border-y border-white/5">
-            <div className="max-w-7xl mx-auto">
+        <section className="bg-primary-darkest py-24 md:py-32 px-6 border-y border-white/5 relative overflow-hidden">
+            {/* 3D Spatial Grid Background */}
+            <div className="absolute inset-x-0 bottom-0 top-0 z-0 pointer-events-none overflow-hidden mask-spatial-grid opacity-15">
+                <div className="spatial-grid" />
+            </div>
+
+            <div className="max-w-7xl mx-auto relative z-10">
                 {/* Header */}
                 <div className="max-w-3xl mb-16">
                     <FadeIn>

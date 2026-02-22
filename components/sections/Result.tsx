@@ -8,8 +8,13 @@ export default function Result() {
   const [ref, isVisible] = useOnScreen({ threshold: 0.2 });
 
   return (
-    <section id="result" className="py-32 bg-primary overflow-x-hidden">
-      <div className="container mx-auto px-4 max-w-full">
+    <section id="result" className="py-32 bg-primary-darkest overflow-hidden relative">
+      {/* 3D Spatial Grid Background */}
+      <div className="absolute inset-x-0 bottom-0 top-0 z-0 pointer-events-none overflow-hidden mask-spatial-grid opacity-20">
+        <div className="spatial-grid" />
+      </div>
+
+      <div className="container mx-auto px-4 max-w-full relative z-10">
         <div ref={ref} className="max-w-4xl mx-auto text-center w-full">
           {/* Section Title */}
           <h2 className={`text-4xl md:text-5xl font-light text-white mb-8 tracking-tight transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>

@@ -92,9 +92,9 @@
     top: -50%;
     left: -50%;
     background-image:
-      linear-gradient(rgba(0, 198, 186, 0.05) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(0, 198, 186, 0.05) 1px, transparent 1px);
-    background-size: 50px 50px;
+      linear-gradient(rgba(0, 198, 186, 0.12) 1.5px, transparent 1.5px),
+      linear-gradient(90deg, rgba(0, 198, 186, 0.12) 1.5px, transparent 1.5px);
+    background-size: 60px 60px;
     transform: perspective(1000px) rotateX(60deg) translateZ(0);
     transform-origin: center center;
     animation: grid-move 20s linear infinite;
@@ -106,8 +106,13 @@
     }
 
     100% {
-      transform: perspective(1000px) rotateX(60deg) translateY(50px);
+      transform: perspective(1000px) rotateX(60deg) translateY(60px);
     }
+  }
+
+  .mask-spatial-grid {
+    mask-image: radial-gradient(circle at center, black 30%, transparent 80%);
+    -webkit-mask-image: radial-gradient(circle at center, black 30%, transparent 80%);
   }
 
   .hero-vignette {
