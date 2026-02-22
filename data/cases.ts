@@ -85,9 +85,9 @@ export const CASES_DATA: Record<string, CaseStudy> = {
         { role: 'Lead Designer', name: 'Abra Team' }
       ]
     },
-    heroImage: '/differente-coffee/Differente Home.jpg',
+    heroImage: '/differente-coffee/Differente-mock.png',
     images: [
-      '/differente-coffee/Differente-mock.png',
+      '/differente-coffee/Differente Home.jpg',
       '/differente-coffee/Differente Coffee mobile.png',
       '/differente-coffee/Differente Tienda.jpg',
       '/differente-coffee/Differente Producto.jpg',
