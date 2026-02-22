@@ -1,6 +1,6 @@
 import "./globals.css";
 import { Inter } from "next/font/google";
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import Script from "next/script";
 import { GoogleTagManagerNoscript } from "@/components/analytics/GoogleTagManager";
 import GTMDebug from "@/components/analytics/GTMDebug";
@@ -27,6 +27,9 @@ export const metadata: Metadata = {
     apple: "/icon.png",
   },
   manifest: "/manifest.json",
+};
+
+export const viewport: Viewport = {
   themeColor: "#04213B",
 };
 
