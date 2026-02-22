@@ -250,7 +250,7 @@ export default function Hero() {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden bg-primary-darkest hero-glass-mask">
+    <section className="relative min-h-screen flex items-center overflow-hidden bg-primary-darkest">
       {/* Background Media */}
       <div className="absolute inset-0 z-0 opacity-60 transition-opacity duration-1000">
         {renderBackground()}
