@@ -43,11 +43,8 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   });
 }
 
-import Header from '@/components/layout/Header';
-import Footer from '@/components/layout/Footer';
-import WhatsAppFloating from '@/components/ui/WhatsAppFloating';
-import HashScrollHandler from '@/components/layout/HashScrollHandler';
 import { SmoothScrollProvider } from '@/components/ui/SmoothScrollProvider';
+import LocaleChrome from '@/components/layout/LocaleChrome';
 
 export default async function LocaleLayout({
   children,
@@ -71,14 +68,9 @@ export default async function LocaleLayout({
     return (
       <NextIntlClientProvider messages={messages}>
         <SmoothScrollProvider>
-          <div className="grain-overlay" />
-          <HashScrollHandler />
-          <Header />
-          <main className="overflow-x-hidden">
+          <LocaleChrome locale={locale}>
             {children}
-          </main>
-          <Footer />
-          <WhatsAppFloating />
+          </LocaleChrome>
         </SmoothScrollProvider>
       </NextIntlClientProvider>
     );
