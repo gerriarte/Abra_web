@@ -1,16 +1,9 @@
-import { Inter } from "next/font/google";
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { locales } from '@/lib/i18n/config';
 import type { Metadata } from 'next';
 import { generateSEOMetadata } from '@/lib/utils/seo';
-
-const inter = Inter({
-  subsets: ['latin'],
-  variable: '--font-inter',
-  display: 'swap',
-});
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));

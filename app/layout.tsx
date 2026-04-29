@@ -1,5 +1,4 @@
 import "./globals.css";
-import { Inter } from "next/font/google";
 import type { Metadata, Viewport } from "next";
 import Script from "next/script";
 import { GoogleTagManagerNoscript } from "@/components/analytics/GoogleTagManager";
@@ -8,19 +7,13 @@ import { generateSEOMetadata } from "@/lib/utils/seo";
 import JsonLd from "@/components/seo/JsonLd";
 import { generateOrganizationSchema, generateWebSiteSchema } from "@/lib/utils/seo";
 
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
-  display: "swap",
-});
-
 export const metadata: Metadata = {
   ...generateSEOMetadata({
-    title: "A:BRA - Strategic Digital Engineering Agency | Agencia de Ingeniería Digital Estratégica",
-    description: "We transform complex data into predictable growth systems. From brand vision to web development, we build digital solutions that work, proven by metrics. | Transformamos datos complejos en sistemas de crecimiento predecibles.",
-    keywords: ["digital agency", "agencia digital", "branding", "web development", "desarrollo web", "digital marketing", "marketing digital", "growth strategy", "estrategia de crecimiento", "UX design", "diseño UX", "strategic consulting", "consultoría estratégica", "LATAM"],
+    title: "A:BRA | Growth Marketing + IA Studio en Bogotá y Buenos Aires",
+    description: "Studio híbrido que combina growth, IA y desarrollo de producto. Construimos sistemas de crecimiento y los productos que los hacen posibles.",
+    keywords: ["agencia growth marketing", "IA aplicada", "desarrollo de producto", "growth engineering", "A:BRA Loop", "Bogotá", "Buenos Aires"],
     type: "website",
-    locale: "en",
+    locale: "es",
   }),
   icons: {
     icon: "/icon.png",
@@ -30,8 +23,9 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#04213B",
+  themeColor: "#0A0A0A",
 };
+
 
 export default function RootLayout({
   children,
@@ -43,7 +37,7 @@ export default function RootLayout({
 
   return (
     <html lang="en" suppressHydrationWarning className="overflow-x-hidden">
-      <body className={`${inter.variable} antialiased overflow-x-hidden`} suppressHydrationWarning>
+      <body className="antialiased overflow-x-hidden" suppressHydrationWarning>
         <JsonLd data={[generateOrganizationSchema(), generateWebSiteSchema()]} />
         {/* Google Tag Manager (noscript) - Debe estar inmediatamente después del body */}
         <GoogleTagManagerNoscript gtmId={gtmId} />
