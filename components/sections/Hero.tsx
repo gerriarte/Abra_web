@@ -3,6 +3,7 @@
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import useOnScreen from '@/hooks/useOnScreen';
+import { SectionFlowLine } from '@/components/ui/SectionFlowLine';
 
 export default function Hero() {
   const t = useTranslations('hero');
@@ -33,6 +34,7 @@ export default function Hero() {
 
   return (
     <section
+      id="hero"
       ref={ref}
       className="relative min-h-screen flex items-center pt-32 pb-20 overflow-hidden"
     >
@@ -60,6 +62,7 @@ export default function Hero() {
             <span className="text-[9px] font-mono uppercase tracking-[0.6em] text-text-muted border-l border-white/20 pl-4 py-1">
               {t('eyebrow')}
             </span>
+            <SectionFlowLine className="mt-8" variant="short" />
           </motion.div>
 
           <motion.h1

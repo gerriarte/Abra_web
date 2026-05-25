@@ -1,3 +1,4 @@
+import { HomePageFlow } from '@/components/background/HomePageFlow';
 import Hero from '@/components/sections/Hero';
 import Problem from '@/components/sections/Problem';
 import Method from '@/components/sections/Method';
@@ -39,17 +40,19 @@ export default async function HomePage() {
     return (
       <>
         <JsonLd data={serviceSchemas} />
-        <Hero />
-        <Problem />
-        <Method />
-        <Services />
-        <Laboratory />
-        <ClientCases />
-        <Process />
-        <Founder />
-        <PartnerShowcase locale={locale} />
-        <Result />
-        <Contact />
+        <HomePageFlow>
+          <Hero />
+          <Problem />
+          <Method />
+          <Services />
+          <Laboratory />
+          <ClientCases />
+          <Process />
+          <Founder />
+          <PartnerShowcase locale={locale} />
+          <Result />
+          <Contact />
+        </HomePageFlow>
       </>
     );
   } catch (error) {

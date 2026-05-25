@@ -3,6 +3,7 @@
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import useOnScreen from '@/hooks/useOnScreen';
+import { SectionFlowLine } from '@/components/ui/SectionFlowLine';
 
 export default function Services() {
   const t = useTranslations('services');
@@ -56,6 +57,9 @@ export default function Services() {
             >
               {t('title')}
             </motion.h2>
+            <motion.div variants={itemVariants}>
+              <SectionFlowLine />
+            </motion.div>
           </div>
 
           {/* Services Grid */}

@@ -4,6 +4,7 @@ import { useLocale, useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import useOnScreen from '@/hooks/useOnScreen';
 import Link from 'next/link';
+import { SectionFlowLine } from '@/components/ui/SectionFlowLine';
 
 export default function Founder() {
   const t = useTranslations('founder');
@@ -41,6 +42,10 @@ export default function Founder() {
           <motion.h2 variants={itemVariants} className="text-4xl md:text-5xl font-light tracking-tight mb-8">
             {t('title')}
           </motion.h2>
+
+          <motion.div variants={itemVariants} className="mb-8">
+            <SectionFlowLine variant="short" />
+          </motion.div>
 
           <motion.p
             variants={itemVariants}

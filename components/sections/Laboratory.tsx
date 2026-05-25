@@ -3,6 +3,7 @@
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import useOnScreen from '@/hooks/useOnScreen';
+import { SectionFlowLine } from '@/components/ui/SectionFlowLine';
 
 export default function Laboratory() {
   const t = useTranslations('lab');
@@ -78,6 +79,9 @@ export default function Laboratory() {
               </p>
             </motion.div>
           </div>
+          <motion.div variants={itemVariants} className="mb-16">
+            <SectionFlowLine />
+          </motion.div>
 
           {/* Product Cards Grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

@@ -3,6 +3,7 @@
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import useOnScreen from '@/hooks/useOnScreen';
+import { SectionFlowLine } from '@/components/ui/SectionFlowLine';
 
 export default function Problem() {
   const t = useTranslations('problem');
@@ -65,10 +66,15 @@ export default function Problem() {
             >
               {t('body')}
             </motion.p>
+            <motion.div variants={itemVariants} className="mt-10">
+              <SectionFlowLine />
+            </motion.div>
           </div>
 
           {/* Cards Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="relative">
+            <div className="hidden md:block absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/15 to-transparent -translate-y-1/2" />
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
             {cards.map((key) => (
               <motion.div
                 key={key}
@@ -95,6 +101,7 @@ export default function Problem() {
                 </span>
               </motion.div>
             ))}
+            </div>
           </div>
 
           {/* Bottom Callout */}

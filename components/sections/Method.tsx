@@ -3,6 +3,7 @@
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import useOnScreen from '@/hooks/useOnScreen';
+import { SectionFlowLine } from '@/components/ui/SectionFlowLine';
 
 const LOOP_PDF_MAILTO =
   'mailto:business@abralatam.com?subject=Solicitud%20A%3ABRA%20Loop%20PDF&body=Hola%2C%20quiero%20recibir%20el%20PDF%20del%20A%3ABRA%20Loop.';
@@ -65,6 +66,9 @@ export default function Method() {
             >
               {t('subtitle')}
             </motion.p>
+            <motion.div variants={itemVariants} className="mt-10">
+              <SectionFlowLine />
+            </motion.div>
           </div>
 
           {/* The Loop Flow */}

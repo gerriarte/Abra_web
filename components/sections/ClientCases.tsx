@@ -4,6 +4,7 @@ import { useLocale, useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import useOnScreen from '@/hooks/useOnScreen';
 import Link from 'next/link';
+import { SectionFlowLine } from '@/components/ui/SectionFlowLine';
 
 interface Case {
   id: string;
@@ -73,6 +74,9 @@ export default function ClientCases() {
             <motion.p variants={itemVariants} className="text-lg text-text-secondary font-light leading-relaxed">
               {t('subtitle')}
             </motion.p>
+            <motion.div variants={itemVariants} className="mt-10">
+              <SectionFlowLine />
+            </motion.div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-12 gap-8 auto-rows-[280px]">
