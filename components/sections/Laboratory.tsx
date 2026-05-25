@@ -106,8 +106,7 @@ export default function Laboratory() {
                 </div>
 
                 <div className="pt-8">
-                  {/* Robust check for translation existence */}
-                  {t.raw(`products.${key}.cta`) && typeof t.raw(`products.${key}.cta`) === 'string' ? (
+                  {t.has(`products.${key}.cta`) ? (
                     <a
                       href={productLinks[key] ?? '#laboratory'}
                       target={productLinks[key] ? '_blank' : undefined}
