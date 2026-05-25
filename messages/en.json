@@ -1,53 +1,69 @@
 {
   "hero": {
-    "title": "A:BRA",
-    "subtitle": "We transform complex data into predictable growth systems. From brand vision to web development, we build digital solutions that work, proven by metrics.",
-    "cta": "Request Strategic Evaluation",
-    "welcome": "Welcome to",
-    "tagline": "STRATEGIC ENGINEERING AGENCY",
-    "description": "From strategic concept to final implementation, we engineer systems that drive measurable growth."
+    "eyebrow": "Agency · Studio · AI Laboratory",
+    "title": "We build growth systems. And the products that make them possible.",
+    "subtitle": "A:BRA is not just another agency. We are a hybrid studio where growth is powered by real technical capability, and where every development is born with a marketing vision. The strategy we recommend is the same one we use to build our own products —like Nougram— and validate it with data before applying it to your business.",
+    "ctaPrimary": "Download the A:BRA Loop (PDF) →",
+    "ctaSecondary": "Meet the method"
   },
+
   "problem": {
-    "title": "The Cost of Closed Vision: Why Effort Is Not Enough",
-    "intro": "In a saturated market, the problem isn't a lack of data; it's the inability to connect it with a clear action. Marketing without brand coherence or analytical rigor is a blind investment. It's time to open the focus.",
-    "subtitle": "Do you recognize this pattern?",
-    "points": {
-      "unstableBrand": "Unstable Brand: The institutional message constantly shifts or fails to reflect your true expertise.",
-      "erraticMarketing": "Erratic Marketing: Paid Media campaigns generate volume but with unacceptable lead quality (confused attribution).",
-      "webBottleneck": "Web as Bottleneck: Your digital platform is not optimized (UX/Dev) to capitalize on traffic investment."
-    }
-  },
-  "method": {
-    "title": "A:BRA Method: The Integrated System to Unlock Your Scale",
-    "quote": "Our methodology is based on controlled openness: we use Artificial Intelligence as a catalyst to ensure your four growth pillars work in perfect harmony.",
-    "pillars": {
-      "pillar1": {
-        "title": "Branding Development",
-        "focus": "Institutional Value Proposition and identity (visual/discursive). A strategic operations manual.",
-        "dataConnection": "Data-Driven Positioning: AI-powered analysis of market perception to ensure unique and credible positioning."
+    "eyebrow": "The cost of disconnected marketing",
+    "title": "The problem is not a lack of data. It's that marketing, product, and technology work as islands.",
+    "body": "You invest in ads, hire agencies, install dashboards. And yet you feel like you're operating blindly. The reason is structural: your brand, your website, your product, and your ads were built at different times, with different providers, without a system to coordinate them.",
+    "cards": {
+      "01": {
+        "title": "01 — Brand that doesn't scale",
+        "description": "Your message changes with every campaign. The sales team says one thing, the website another, the ads another."
       },
-      "pillar2": {
-        "title": "Institutional Communications",
-        "focus": "Design of institutional narrative and crisis management. Expert, formal, and clear tone projecting authority.",
-        "dataConnection": "Data Alignment: Comms strategy defined by high-conversion topics identified through predictive analytics."
+      "02": {
+        "title": "02 — Ads that burn money",
+        "description": "High volume, low quality, confused attribution. The CAC goes up, nobody knows why."
       },
-      "pillar3": {
-        "title": "Digital Marketing & Growth",
-        "focus": "Strategies, Paid Media, Advanced Analytics. Investment with the certainty of a risk analyst: only where data guarantees ROI.",
-        "dataConnection": "Continuous Optimization: AI/ML enhances segmentation and bidding in Paid Media, moving investment based on advanced analytics validation."
-      },
-      "pillar4": {
-        "title": "Web Design & Development",
-        "focus": "UX, UI, and Development services focused on B2B conversion. Your website is your best salesperson, logically structured and powerfully executed.",
-        "dataConnection": "Technical Validation: Design tested with A/B Testing, ensuring the web architecture is not an obstacle to conversion and First-Party Data."
+      "03": {
+        "title": "03 — Technology that slows down",
+        "description": "Your stack is a collection of tools, not a system. Every new integration breaks something."
       }
     }
   },
-  "result": {
-    "title": "The Final Result: Strategic Freedom",
-    "description": "The end of uncertainty. Working with A:BRA means replacing chaos with a structured system. You gain the amplitude of vision and the freedom to make key decisions, knowing your brand, communication, and technology are perfectly calibrated for sustained growth.",
-    "cta": "Schedule Your Aperture Session (Strategic Analysis)"
+
+  "method": {
+    "eyebrow": "Our framework",
+    "title": "A:BRA Loop: the system where growth and engineering feed each other.",
+    "subtitle": "Most agencies sell you strategy. Product studios sell you code. We operate at the intersection: every marketing decision is validated by building, and every product is built with growth logic from day one.",
+    "phases": {
+      "01": {
+        "name": "Insight",
+        "title": "360° Audit",
+        "description": "Brand, data, attribution, stack, market. AI applied to perception and competitive analysis."
+      },
+      "02": {
+        "name": "Build",
+        "title": "Growth Systems",
+        "description": "Brand, web, landings, automations, micro-products. Vibe coding with technical rigor: AI-assisted prototyping."
+      },
+      "03": {
+        "name": "Launch",
+        "title": "Integrated Launch",
+        "description": "Ads, SEO, content. Predictive models for bidding, segmentation, and attribution."
+      },
+      "04": {
+        "name": "Learn",
+        "title": "Analytics & Iteration",
+        "description": "Dashboards, continuous iteration. Learning feeds back into Insight. The system improves with each cycle."
+      }
+    },
+    "footer": "It's not a funnel. It's a Flywheel: each turn of the Loop increases knowledge, reduces cost, and accelerates growth.",
+    "cta": "Download the complete framework (PDF) →"
   },
+
+  "result": {
+    "title": "Ready to stop operating blindly?",
+    "description": "Download the complete A:BRA Loop in PDF. It's the same framework we apply to our own products and clients. It shows you how to connect marketing, product, and technology into a single system.",
+    "ctaPrimary": "Download the A:BRA Loop (PDF) →",
+    "ctaSecondary": "Schedule a free diagnosis →"
+  },
+
   "contact": {
     "title": "Let's Start Your Project",
     "subtitle": "Schedule a strategic consultation session",
@@ -133,12 +149,95 @@
     "contact": "Contact",
     "problem": "Problem",
     "method": "Method",
-    "projects": "Projects",
+    "services": "Services",
     "cases": "Cases"
   },
+  "services": {
+    "eyebrow": "Services",
+    "title": "Four capabilities. One integrated system.",
+    "list": {
+      "01": {
+        "title": "Data-Driven Branding",
+        "description": "Identity and value proposition built on real perception analysis, not focus group intuitions."
+      },
+      "02": {
+        "title": "Conversion-Focused Communication",
+        "description": "Institutional narrative calibrated by the topics and messages that your data says convert."
+      },
+      "03": {
+        "title": "Growth Marketing with applied AI",
+        "description": "Paid media, SEO, automation, and advanced analytics. CAC down, LTV up, clear attribution."
+      },
+      "04": {
+        "title": "Product and Web Development",
+        "description": "Web, landings, and micro-products designed as conversion systems. Built fast, without breaking."
+      }
+    }
+  },
+  "lab": {
+    "eyebrow": "Our Laboratory",
+    "title": "We build our own products. That's why we know what works.",
+    "body": "Most agencies sell you strategy they never had to execute with their own money. We do. A:BRA operates a portfolio of our own digital products where we apply —before any client— the same A:BRA Loop strategies. Each product is an experiment that validates (or discards) growth, AI, branding, and development hypotheses. Our laboratory is our best case study.",
+    "microcopy": "Built with vibe coding and technical rigor: prototypes validated with real users, audited code, metrics from day one. The same thing we do for you.",
+    "products": {
+      "nougram": {
+        "title": "Nougram",
+        "description": "AI-powered creative services estimator.",
+        "status": "Live",
+        "cta": "View Case →"
+      },
+      "product2": {
+        "title": "[Product 2]",
+        "description": "In validation phase.",
+        "status": "Beta"
+      },
+      "incubating": {
+        "title": "[Incubating]",
+        "description": "New automation vertical.",
+        "status": "Incubating"
+      }
+    }
+  },
   "cases": {
-    "title": "Cases",
-    "subtitle": "A consolidated view of the highlighted cases we have solved for different brands and services.",
-    "loading": "Loading cases..."
+    "eyebrow": "Cases",
+    "title": "The Loop, applied to real clients.",
+    "subtitle": "Growth, branding, and product systems implemented with the same framework we use in our laboratory.",
+    "cardNote": "A:BRA Loop implementation to scale operations and maximize retention.",
+    "ctaAll": "Explore all systems",
+    "loading": "Loading systems..."
+  },
+  "process": {
+    "eyebrow": "The process",
+    "title": "From audit to a running system. In 90 days.",
+    "steps": {
+      "01": {
+        "period": "Wk 1-2",
+        "title": "Insight",
+        "description": "360° audit: brand, data, attribution, stack, and market."
+      },
+      "02": {
+        "period": "Wk 3-4",
+        "title": "System design",
+        "description": "We define pillars, KPIs, and the technical growth architecture."
+      },
+      "03": {
+        "period": "Wk 5-8",
+        "title": "Build & Launch",
+        "description": "We launch campaigns, web, automations, and AI models."
+      },
+      "04": {
+        "period": "Wk 9-12",
+        "title": "Learn & Optimize",
+        "description": "Data-driven iteration with biweekly executive reporting."
+      }
+    }
+  },
+  "founder": {
+    "eyebrow": "About the founder",
+    "title": "Gerardo Riarte. Growth, AI, and product in one profile.",
+    "body": "A:BRA was born from a personal obsession: combining digital marketing with real technical development at a time when AI finally makes it possible. I am Gerardo Riarte, Argentine based in Bogotá. Over a decade designing growth strategies for LATAM brands, building web products and SaaS platforms, and applying AI to marketing before it was mainstream.",
+    "ctaPersonal": "See my personal work →",
+    "ctaLinkedin": "LinkedIn",
+    "ctaInstagram": "Instagram"
   }
 }

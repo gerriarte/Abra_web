@@ -1,111 +1,133 @@
-'use client';
+﻿'use client';
 
 import { useTranslations } from 'next-intl';
+import { motion } from 'framer-motion';
 import useOnScreen from '@/hooks/useOnScreen';
-import { FadeIn } from '../cases/ui/FadeIn';
 
-const pillarIcons = [
-  // Branding - Blueprint icon
-  <svg key="p1" viewBox="0 0 24 24" fill="none" className="w-6 h-6" stroke="currentColor" strokeWidth="1.5">
-    <path d="M3 3h18v18H3V3z" strokeDasharray="2 2" />
-    <path d="M12 3v18M3 12h18" />
-    <circle cx="12" cy="12" r="3" fill="currentColor" fillOpacity="0.1" />
-  </svg>,
-  // Strategy - Flow icon
-  <svg key="p2" viewBox="0 0 24 24" fill="none" className="w-6 h-6" stroke="currentColor" strokeWidth="1.5">
-    <path d="M4 4h6v6H4V4zM14 14h6v6h-6v-6z" />
-    <path d="M10 7h2a2 2 0 012 2v5" />
-    <circle cx="20" cy="20" r="1" fill="currentColor" />
-  </svg>,
-  // Marketing - Rocket/Growth icon (Geometric)
-  <svg key="p3" viewBox="0 0 24 24" fill="none" className="w-6 h-6" stroke="currentColor" strokeWidth="1.5">
-    <path d="M12 3l9 18H3L12 3z" />
-    <path d="M12 3v18" />
-    <path d="M7 14h10" />
-  </svg>,
-  // Web - Terminal icon
-  <svg key="p4" viewBox="0 0 24 24" fill="none" className="w-6 h-6" stroke="currentColor" strokeWidth="1.5">
-    <path d="M3 5h18v14H3V5z" />
-    <path d="M7 12l2 2-2 2M11 15h6" />
-  </svg>,
-];
-
-const pillarKeys = [
-  'method.pillars.pillar1',
-  'method.pillars.pillar2',
-  'method.pillars.pillar3',
-  'method.pillars.pillar4',
-];
+const LOOP_PDF_MAILTO =
+  'mailto:business@abralatam.com?subject=Solicitud%20A%3ABRA%20Loop%20PDF&body=Hola%2C%20quiero%20recibir%20el%20PDF%20del%20A%3ABRA%20Loop.';
 
 export default function Method() {
-  const t = useTranslations();
+  const t = useTranslations('method');
   const [ref, isVisible] = useOnScreen({ threshold: 0.1 });
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.8,
+        ease: [0.21, 0.47, 0.32, 0.98] as const,
+      },
+    },
+  };
+
+  const phases = ['01', '02', '03', '04'];
+
   return (
-    <section id="method" className="pt-20 pb-[100px] bg-off overflow-hidden">
-      <div className="container mx-auto px-6 max-w-7xl">
-        <div ref={ref} className="max-w-4xl mx-auto text-center mb-20">
-          <FadeIn>
-            <span className="text-xs font-bold tracking-[0.3em] uppercase text-accent mb-4 block">
-              {t('nav.method')}
-            </span>
-            <h2 className="text-4xl md:text-6xl font-light text-[#04213B] tracking-tight mb-8">
-              {t('method.title')}
-            </h2>
-            <p className="text-lg md:text-xl text-gray-500 font-light leading-relaxed">
-              {t('method.quote')}
-            </p>
-          </FadeIn>
-        </div>
-
-        {/* Framework Grid */}
-        <div className="relative">
-          {/* Connecting Line (Desktop) */}
-          <div className="hidden lg:block absolute top-[40px] left-0 w-full h-px bg-gray-200 z-0" />
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10">
-            {pillarKeys.map((key, index) => (
-              <FadeIn key={key} delay={index * 150}>
-                <div className="group h-full flex flex-col bg-white border border-gray-100 rounded-2xl transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 overflow-hidden">
-
-                  {/* Step Indicator & Icon */}
-                  <div className="p-8 pb-4 flex items-center justify-between">
-                    <div className="w-10 h-10 rounded-full bg-[#04213B] text-white flex items-center justify-center text-xs font-bold ring-8 ring-off">
-                      {`0${index + 1}`}
-                    </div>
-                    <div className="text-accent transition-transform duration-500 group-hover:scale-110">
-                      {pillarIcons[index]}
-                    </div>
-                  </div>
-
-                  {/* Core Content */}
-                  <div className="p-8 pt-4 flex-1">
-                    <h3 className="text-xl font-medium text-[#04213B] mb-4 group-hover:text-accent transition-colors">
-                      {t(`${key}.title`)}
-                    </h3>
-                    <p className="text-sm text-gray-500 font-light leading-relaxed mb-6">
-                      {t(`${key}.focus`)}
-                    </p>
-                  </div>
-
-                  {/* Technical/Data Layer (The "Framework" Output) */}
-                  <div className="bg-[#F8F9FA] p-6 border-t border-gray-50">
-                    <div className="flex items-center gap-2 mb-3">
-                      <div className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
-                      <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-gray-400">
-                        Data Validation Layer
-                      </span>
-                    </div>
-                    <p className="text-xs text-[#04213B]/70 font-light leading-relaxed font-mono">
-                      {t(`${key}.dataConnection`)}
-                    </p>
-                  </div>
-                </div>
-              </FadeIn>
-            ))}
+    <section id="method" className="py-32 relative overflow-hidden">
+      <div className="container mx-auto px-4 lg:px-8 relative z-10 max-w-7xl">
+        <motion.div
+          ref={ref}
+          variants={containerVariants}
+          initial="hidden"
+          animate={isVisible ? "visible" : "hidden"}
+          className="max-w-6xl mx-auto"
+        >
+          {/* Header */}
+          <div className="text-center max-w-4xl mx-auto mb-24">
+            <motion.span 
+              variants={itemVariants}
+              className="text-xs font-mono tracking-[0.3em] uppercase text-primary mb-4 block"
+            >
+              {t('eyebrow')}
+            </motion.span>
+            <motion.h2 
+              variants={itemVariants}
+              className="text-balance mb-8"
+            >
+              {t('title')}
+            </motion.h2>
+            <motion.p 
+              variants={itemVariants}
+              className="text-lg text-text-secondary font-light leading-relaxed"
+            >
+              {t('subtitle')}
+            </motion.p>
           </div>
-        </div>
+
+          {/* The Loop Flow */}
+          <div className="relative">
+            {/* Desktop Connector Line */}
+            <div className="hidden lg:block absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent -translate-y-1/2" />
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10">
+              {phases.map((key, index) => (
+                <motion.div
+                  key={key}
+                  variants={itemVariants}
+                  className="group"
+                >
+                  <div className="h-full p-8 rounded-3xl bg-background border border-white/5 hover:border-primary/50 transition-all duration-500 flex flex-col items-center text-center">
+                    {/* Phase Number & Name */}
+                    <div className="mb-6 relative">
+                       <div className="w-16 h-16 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center text-primary font-mono text-xl group-hover:bg-primary group-hover:text-background transition-all duration-500 shadow-[0_0_20px_rgba(0,122,255,0.1)]">
+                         {key}
+                       </div>
+                       <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 px-2 py-0.5 bg-background border border-white/10 rounded text-[10px] font-mono uppercase tracking-widest text-text-muted">
+                         {t(`phases.${key}.name`)}
+                       </div>
+                    </div>
+
+                    <h3 className="text-xl font-medium text-text-primary mb-4 group-hover:text-primary transition-colors duration-300">
+                      {t(`phases.${key}.title`)}
+                    </h3>
+                    
+                    <p className="text-sm text-text-secondary font-light leading-relaxed">
+                      {t(`phases.${key}.description`)}
+                    </p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+
+          {/* Footer & CTA */}
+          <motion.div 
+            variants={itemVariants}
+            className="mt-24 text-center space-y-12"
+          >
+            <div className="max-w-2xl mx-auto">
+              <p className="text-sm text-text-muted italic font-light leading-relaxed">
+                "{t('footer')}"
+              </p>
+            </div>
+
+            <a
+              href={LOOP_PDF_MAILTO}
+              className="inline-flex items-center gap-3 px-10 py-5 bg-transparent border border-primary text-primary font-medium rounded-full hover:bg-primary hover:text-background transition-all duration-300 shadow-[0_0_40px_rgba(0,122,255,0.2)] group"
+            >
+              <span>{t('cta')}</span>
+              <span className="group-hover:translate-x-1 transition-transform">→</span>
+            </a>
+          </motion.div>
+        </motion.div>
       </div>
+
+      {/* Decorative background circle */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] border border-primary/5 rounded-full pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-primary/5 rounded-full pointer-events-none" />
     </section>
   );
 }

@@ -1,7 +1,11 @@
 import Hero from '@/components/sections/Hero';
 import Problem from '@/components/sections/Problem';
 import Method from '@/components/sections/Method';
-import Projects from '@/components/sections/Projects';
+import Services from '@/components/sections/Services';
+import Laboratory from '@/components/sections/Laboratory';
+import ClientCases from '@/components/sections/ClientCases';
+import Process from '@/components/sections/Process';
+import Founder from '@/components/sections/Founder';
 import Result from '@/components/sections/Result';
 import { PartnerShowcase } from '@/components/sections/PartnerShowcase';
 import Contact from '@/components/sections/Contact';
@@ -14,22 +18,23 @@ export default async function HomePage() {
     const locale = await getLocale();
     const isEnglish = locale === 'en';
 
-    // Generate service schemas for main services
-    const services = isEnglish
+    const servicesData = isEnglish
       ? [
-        { name: 'Branding Development', description: 'Institutional Value Proposition and identity (visual/discursive). A strategic operations manual.' },
-        { name: 'Institutional Communications', description: 'Design of institutional narrative and crisis management. Expert, formal, and clear tone projecting authority.' },
-        { name: 'Digital Marketing & Growth', description: 'Strategies, Paid Media, Advanced Analytics. Investment with the certainty of a risk analyst: only where data guarantees ROI.' },
-        { name: 'Web Design & Development', description: 'UX, UI, and Development services focused on B2B conversion. Your website is your best salesperson, logically structured and powerfully executed.' },
-      ]
+          { name: 'Data-Driven Branding', description: 'Identity and value proposition built on real perception analysis, not focus group intuitions.' },
+          { name: 'Conversion-Focused Communication', description: 'Institutional narrative calibrated by the topics and messages that your data says convert.' },
+          { name: 'Growth Marketing with applied AI', description: 'Paid media, SEO, automation, and advanced analytics. CAC down, LTV up, clear attribution.' },
+          { name: 'Product and Web Development', description: 'Web, landings, and micro-products designed as conversion systems. Built fast, without breaking.' },
+        ]
       : [
-        { name: 'Desarrollo de Branding', description: 'Construcción de Propuesta de Valor Institucional e identidad visual/discursiva. Es un manual de operaciones estratégico.' },
-        { name: 'Estrategias de Comunicación', description: 'Diseño de narrativa institucional y manejo de crisis. Tono experto, formal y claro que proyecta autoridad.' },
-        { name: 'Marketing Digital y Crecimiento', description: 'Estrategias, Medios Pagos, Analítica Avanzada. Inversión solo donde los datos garantizan el Retorno de Inversión.' },
-        { name: 'Diseño y Desarrollo Web', description: 'Servicios de Experiencia de Usuario, Interfaz de Usuario y Desarrollo con foco en la conversión entre empresas. Web como sistema de conversión.' },
-      ];
+          { name: 'Branding con base en datos', description: 'Identidad y propuesta de valor construidas sobre análisis de percepción real, no intuiciones de focus group.' },
+          { name: 'Comunicación con foco en conversión', description: 'Narrativa institucional calibrada por los temas y mensajes que tus datos dicen que convierten.' },
+          { name: 'Growth Marketing con IA aplicada', description: 'Pauta, SEO, automatización y analítica avanzada. CAC en baja, LTV en alza, atribución clara.' },
+          { name: 'Producto y desarrollo web', description: 'Web, landings y micro-productos diseñados como sistemas de conversión. Construidos rápido, sin romperse.' },
+        ];
 
-    const serviceSchemas = services.map(service => generateServiceSchema(service.name, service.description));
+    const serviceSchemas = servicesData.map((service) =>
+      generateServiceSchema(service.name, service.description)
+    );
 
     return (
       <>
@@ -37,7 +42,11 @@ export default async function HomePage() {
         <Hero />
         <Problem />
         <Method />
-        <Projects />
+        <Services />
+        <Laboratory />
+        <ClientCases />
+        <Process />
+        <Founder />
         <PartnerShowcase locale={locale} />
         <Result />
         <Contact />
