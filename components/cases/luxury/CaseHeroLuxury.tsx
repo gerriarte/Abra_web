@@ -34,7 +34,7 @@ export const CaseHeroLuxury: React.FC<CaseHeroLuxuryProps> = ({ title, client, c
     <section className="relative h-[95vh] md:h-screen w-full flex items-center justify-center overflow-hidden bg-background">
       {/* Ken Burns Background Layer */}
       <motion.div 
-        style={{ y: y1, x: mousePos.x, y: mousePos.y }}
+        style={{ y: useTransform(scrollY, [0, 1000], [mousePos.y, 400 + mousePos.y]), x: mousePos.x }}
         className="absolute inset-0 z-0"
       >
         <motion.img 
