@@ -1,5 +1,3 @@
-import { HomePageFlow } from '@/components/background/HomePageFlow';
-import { ScrollBackground } from '@/components/background/ScrollBackground';
 import Hero from '@/components/sections/Hero';
 import Problem from '@/components/sections/Problem';
 import Method from '@/components/sections/Method';
@@ -41,8 +39,7 @@ export default async function HomePage() {
     return (
       <>
         <JsonLd data={serviceSchemas} />
-        <ScrollBackground />
-        <HomePageFlow>
+        <main className="relative z-10">
           <Hero />
           <Problem />
           <Method />
@@ -54,7 +51,7 @@ export default async function HomePage() {
           <PartnerShowcase locale={locale} />
           <Result />
           <Contact />
-        </HomePageFlow>
+        </main>
       </>
     );
   } catch (error) {
