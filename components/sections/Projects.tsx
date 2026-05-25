@@ -43,12 +43,12 @@ export default function Projects() {
   if (loading || !projects.length) return null;
 
   return (
-    <section id="projects" className="bg-off overflow-hidden">
+    <section id="projects" className="bg-transparent overflow-hidden">
       <div className="pt-0">
         {/* Header - Contained for readability */}
         <div ref={ref} className="pt-0 mb-8 container mx-auto px-6">
           <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <h2 className="text-4xl md:text-7xl font-light text-[#04213B] mb-6 tracking-tight">
+            <h2 className="text-4xl md:text-7xl font-light text-white mb-6 tracking-tight">
               {t('projects.title')}
             </h2>
             <p className="text-lg md:text-xl text-gray-500 font-light max-w-2xl leading-relaxed">
@@ -72,7 +72,7 @@ export default function Projects() {
               onMouseLeave={() => setHoveredIndex(null)}
             >
               {/* Background Image / Fallback */}
-              <div className="absolute inset-0 bg-[#04213B]">
+              <div className="absolute inset-0 bg-primary-darkest">
                 {project.image ? (
                   <img
                     src={project.image}
@@ -80,12 +80,12 @@ export default function Projects() {
                     className="w-full h-full object-cover transition-transform duration-[1.5s] ease-out group-hover:scale-110"
                   />
                 ) : (
-                  <div className="w-full h-full bg-gradient-to-br from-[#04213B] to-[#0A3D6B]" />
+                  <div className="w-full h-full bg-gradient-to-br from-primary-darkest to-[#0A3D6B]" />
                 )}
               </div>
 
               {/* Overlays */}
-              <div className="absolute inset-0 bg-gradient-to-t from-[#04213B]/95 via-[#04213B]/20 to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute inset-0 bg-gradient-to-t from-primary-darkest/95 via-primary-darkest/20 to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-500" />
               <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-colors duration-500" />
 
               {/* Vertical Title (when collapsed) */}
@@ -119,7 +119,7 @@ export default function Projects() {
                     {project.cases && project.cases[0]?.link && (
                       <Link
                         href={project.cases[0].link}
-                        className="inline-flex items-center gap-4 bg-white text-[#04213B] px-8 py-4 rounded-full text-xs font-bold tracking-[0.2em] uppercase hover:bg-accent hover:text-white transition-all duration-500 group/btn"
+                        className="inline-flex items-center gap-4 bg-white text-primary-darkest px-8 py-4 rounded-full text-xs font-bold tracking-[0.2em] uppercase hover:bg-accent hover:text-white transition-all duration-500 group/btn"
                       >
                         Ver Proyecto
                         <ArrowUpRight size={18} className="group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform" />

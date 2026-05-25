@@ -1,6 +1,41 @@
 {
   "projects": [
     {
+      "id": 1,
+      "title": "Ruta Teatro Bogotá",
+      "category": "Estrategia & Web",
+      "description": "Ecosistema digital integrado para la escena teatral de Bogotá, centralizando la oferta cultural y optimizando la conversión.",
+      "image": "/cases/Ruta Teatro Bogotá/rutateatro-home.png",
+      "url": "https://rutateatro.com",
+      "cases": [
+        {
+          "id": "ruta-teatro-001",
+          "title": "Digitalizando la Escena Teatral de Bogotá",
+          "relatedServices": [
+            "Estrategia Digital",
+            "Desarrollo Web",
+            "Diseño UX/UI"
+          ],
+          "challenge": "La cartelera teatral estaba fragmentada y los teatros carecían de una plataforma centralizada.",
+          "solution": "Plataforma interactiva con mapas dinámicos, filtros inteligentes y sistema de recomendación personalizado.",
+          "resultsSummary": "200% aumento en tráfico web y 45% en conversión de boletería.",
+          "results": {
+            "metrics": [
+              {
+                "label": "Tráfico",
+                "value": "200%"
+              },
+              {
+                "label": "Conversión",
+                "value": "45%"
+              }
+            ]
+          },
+          "link": "/case-studies/ruta-teatro"
+        }
+      ]
+    },
+    {
       "id": 2,
       "title": "Monyte",
       "category": "Branding & Desarrollo",
@@ -160,7 +195,7 @@
       ]
     },
     {
-      "id": 8,
+      "id": 7,
       "title": "Differente Coffee",
       "category": "Growth & Web Design",
       "description": "Rediseño web y estrategia de growth marketing que logró un crecimiento mensual del 15% con optimización de pauta digital.",
@@ -195,7 +230,7 @@
       ]
     },
     {
-      "id": 7,
+      "id": 8,
       "title": "A:BRA Latam",
       "category": "Algunos Proyectos",
       "description": "Ecosistemas visuales inteligentes y narrativa en movimiento diseñados para maximizar el impacto y la retención en entornos digitales críticos.",

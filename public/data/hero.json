@@ -2,27 +2,15 @@
   "slides": [
     {
       "id": 1,
-      "titleEs": "A:BRA",
-      "titleEn": "A:BRA",
-      "descriptionEs": "Transformamos datos complejos en sistemas de crecimiento predecibles. De la visión de marca al desarrollo web, construimos soluciones digitales que funcionan, probadas por la métrica.",
-      "descriptionEn": "We transform complex data into predictable growth systems. From brand vision to web development, we build digital solutions that work, proven by metrics.",
+      "titleEs": "Construimos sistemas de crecimiento.",
+      "titleEn": "We build growth systems.",
+      "descriptionEs": "A:BRA no es una agencia más. Somos un studio híbrido donde el growth está potenciado por capacidad técnica real, y donde cada desarrollo nace con visión de marketing. La estrategia que te recomendamos es la misma que usamos para construir nuestros propios productos —como Nougram— y validarla con datos antes de aplicarla a tu negocio.",
+      "descriptionEn": "A:BRA is not just another agency. We are a hybrid studio where growth is powered by real technical capability, and where every development is born with a marketing vision. The strategy we recommend is the same one we use to build our own products —like Nougram— and validate it with data before applying it to your business.",
       "mediaType": "video",
       "mediaUrl": "https://player.vimeo.com/video/39610409",
-      "ctaLabelEs": "Solicitar Evaluación Estratégica",
-      "ctaLabelEn": "Request Strategic Assessment",
+      "ctaLabelEs": "Agendar diagnóstico gratuito →",
+      "ctaLabelEn": "Schedule a free diagnosis →",
       "ctaHref": "#contact"
-    },
-    {
-      "id": 2,
-      "titleEs": "Ingeniería de Marca",
-      "titleEn": "Brand Engineering",
-      "descriptionEs": "Diseñamos experiencias B2B con foco en crecimiento, desde branding hasta ecosistemas digitales completos.",
-      "descriptionEn": "We design B2B experiences focused on growth, from branding to complete digital ecosystems.",
-      "mediaType": "image",
-      "mediaUrl": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1600&q=80",
-      "ctaLabelEs": "Ver Proyectos",
-      "ctaLabelEn": "View Projects",
-      "ctaHref": "#projects"
     }
   ]
 }

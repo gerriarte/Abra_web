@@ -79,7 +79,7 @@ export default function Cases() {
 
   if (loading) {
     return (
-      <section id="cases" className="bg-white py-24">
+      <section id="cases" className="bg-transparent py-24">
         <div className="container mx-auto px-4">
           <div className="mx-auto max-w-6xl text-center text-text-secondary">
             {t('cases.loading')}
@@ -91,7 +91,7 @@ export default function Cases() {
 
   if (cases.length === 0) {
     return (
-      <section id="cases" className="bg-white py-24">
+      <section id="cases" className="bg-transparent py-24">
         <div className="container mx-auto px-4">
           <div className="mx-auto max-w-6xl text-center text-text-secondary">
             <p>{t('cases.noCases', { defaultMessage: 'No hay casos disponibles en este momento.' })}</p>
@@ -102,7 +102,7 @@ export default function Cases() {
   }
 
   return (
-    <section id="cases" className="bg-white py-24">
+    <section id="cases" className="bg-transparent py-24">
       <div className="container mx-auto px-4">
         <div ref={ref} className="mx-auto max-w-6xl">
           {/* Title */}

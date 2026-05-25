@@ -5,9 +5,6 @@ import { motion } from 'framer-motion';
 import useOnScreen from '@/hooks/useOnScreen';
 import { SectionFlowLine } from '@/components/ui/SectionFlowLine';
 
-const LOOP_PDF_MAILTO =
-  'mailto:business@abralatam.com?subject=Solicitud%20A%3ABRA%20Loop%20PDF&body=Hola%2C%20quiero%20recibir%20el%20PDF%20del%20A%3ABRA%20Loop.';
-
 export default function Result() {
   const t = useTranslations('result');
   const [ref, isVisible] = useOnScreen({ threshold: 0.1 });
@@ -26,8 +23,6 @@ export default function Result() {
 
   return (
     <section id="result" className="py-32 relative overflow-hidden border-t border-white/5">
-      <span id="loop-pdf" className="absolute -top-24 block h-0 w-0" aria-hidden="true" />
-
       <div className="absolute inset-x-0 bottom-0 top-0 z-0 pointer-events-none overflow-hidden mask-spatial-grid opacity-30">
         <div className="spatial-grid" />
       </div>
@@ -54,23 +49,12 @@ export default function Result() {
             <SectionFlowLine variant="short" />
           </motion.div>
 
-          <motion.div
-            variants={itemVariants}
-            className="flex flex-col sm:flex-row gap-6 justify-center items-center"
-          >
-            <a
-              href={LOOP_PDF_MAILTO}
-              className="group relative px-10 py-5 bg-white text-background font-medium rounded-full overflow-hidden transition-all duration-300 hover:scale-105 active:scale-95"
-            >
-              <span className="relative z-10">{t('ctaPrimary')}</span>
-              <div className="absolute inset-0 bg-white/20 translate-y-full transition-transform duration-300 group-hover:translate-y-0" />
-            </a>
-
+          <motion.div variants={itemVariants} className="flex justify-center">
             <a
               href="#contact"
-              className="px-10 py-5 text-text-primary font-light rounded-full border border-white/10 hover:bg-white/5 transition-all duration-300 active:scale-95"
+              className="inline-flex items-center justify-center px-10 py-5 bg-white text-background text-sm font-medium tracking-wide rounded-sm transition-all duration-300 hover:bg-white/90 hover:scale-[1.02] active:scale-[0.98]"
             >
-              {t('ctaSecondary')}
+              {t('ctaPrimary')}
             </a>
           </motion.div>
         </motion.div>

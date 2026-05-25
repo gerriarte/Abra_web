@@ -1,29 +1,31 @@
 @import "tailwindcss";
 
 @theme {
-  /* A:BRA Color System - Gamas del color principal */
-  --color-primary: #04213B;
-  --color-primary-light: #0a3a5f;
-  --color-primary-lighter: #0f5478;
-  --color-primary-lightest: #1a7ba3;
-  --color-primary-dark: #03182f;
-  --color-primary-darkest: #01101f;
+  /* A:BRA Luxury System - Deep Night */
+  --color-background: #020C17; /* Azul noche profundo, casi negro */
+  --color-background-off: #01080F; 
+  --color-surface: #031525;
+  
+  --color-primary: #FFFFFF; /* Blanco puro para contraste luxury */
+  --color-primary-dark: #A0A0A8; /* Plateado/Gris seda */
+  --color-accent: #0A2D4D; /* Azul profundo sutil */
+  --color-warning: #FFB547;
 
-  /* New Accent Color */
-  --color-accent: #00c6ba;
-  --color-accent-light: #33d1c8;
-  /* lighter version for hovers */
-  --color-accent-dark: #009e95;
-  /* darker version */
+  --color-text-primary: #FFFFFF;
+  --color-text-secondary: rgba(255, 255, 255, 0.6);
+  --color-text-muted: rgba(255, 255, 255, 0.3);
+  
+  --color-border: rgba(255, 255, 255, 0.05);
+  --color-border-bright: rgba(255, 255, 255, 0.1);
 
-  --color-text-primary: #04213B;
-  --color-text-secondary: #2f4f4f;
-  --color-text-muted: #6b7a8a;
-
-  --color-background: #FFFFFF;
-  --color-background-off: #F8F9FA;
-  --color-border: #e5e7eb;
+  /* Typography - Refined */
+  --font-display: "General Sans", "Inter", sans-serif;
+  --font-body: "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", "Geist Mono", monospace;
 }
+
+
+
 
 @layer base {
   * {
@@ -33,39 +35,44 @@
   }
 
   body {
-    background: #ffffff;
-    color: #04213B;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: var(--color-background);
+    color: var(--color-text-secondary);
+    font-family: var(--font-body);
     font-weight: 400;
+    -webkit-font-smoothing: antialiased;
   }
 
-  /* Typography - Delicate and Minimalist */
+
+  /* Typography - Editorial Tech Aesthetic */
   h1,
   h2,
   h3,
   h4,
   h5,
   h6 {
-    font-weight: 300;
-    /* Light weight for headings */
-    letter-spacing: -0.02em;
+    font-family: var(--font-display);
+    color: var(--color-text-primary);
+    font-weight: 500; /* Medium per brief */
+    letter-spacing: -0.03em;
+    line-height: 1.1;
   }
 
   h1 {
-    font-size: 3rem;
+    font-size: clamp(2.5rem, 6vw, 3.5rem);
+    font-weight: 300;
+    letter-spacing: -0.04em;
   }
 
   h2 {
-    font-size: 2.25rem;
+    font-size: clamp(2rem, 4vw, 2.5rem);
+    font-weight: 300;
   }
 
   h3 {
-    font-size: 1.875rem;
+    font-size: clamp(1.25rem, 2vw, 1.5rem);
+    font-weight: 400;
   }
 
-  h4 {
-    font-size: 1.5rem;
-  }
 
   /* Utility classes */
   .bg-off {
@@ -84,7 +91,7 @@
     letter-spacing: -0.05em;
   }
 
-  /* Spatial Grid 3D Effect */
+  /* Spatial Grid - Sky/Sea technical mesh */
   .spatial-grid {
     position: absolute;
     width: 200%;
@@ -92,13 +99,28 @@
     top: -50%;
     left: -50%;
     background-image:
-      linear-gradient(rgba(0, 198, 186, 0.12) 1.5px, transparent 1.5px),
-      linear-gradient(90deg, rgba(0, 198, 186, 0.12) 1.5px, transparent 1.5px);
-    background-size: 60px 60px;
+      linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 100px 100px;
     transform: perspective(1000px) rotateX(60deg) translateZ(0);
     transform-origin: center center;
-    animation: grid-move 20s linear infinite;
+    animation: grid-move 30s linear infinite;
   }
+
+  /* Apertura Nebula - Deep space/ocean feel */
+  .nebula-glow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+      radial-gradient(circle at 10% 20%, rgba(10, 45, 77, 0.15) 0%, transparent 40%),
+      radial-gradient(circle at 90% 80%, rgba(10, 45, 77, 0.1) 0%, transparent 40%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
 
   @keyframes grid-move {
     0% {
@@ -120,10 +142,20 @@
     pointer-events: none;
   }
 
+  .hero-tech-grid {
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 20%, transparent 75%);
+    -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 20%, transparent 75%);
+  }
+
   html {
     scroll-behavior: smooth;
     overflow-x: hidden;
     width: 100%;
+    background: var(--color-background);
   }
 
   body {
@@ -313,5 +345,99 @@
 
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
+  }
+
+  /* ═══ Atmosphere Background Keyframes ═══ */
+
+  @keyframes shimmer {
+    0%, 100% { opacity: 0.5; }
+    50%      { opacity: 0.72; }
+  }
+
+  @keyframes atmosphere-cloud-float {
+    from { transform: translateX(-350px); }
+    to   { transform: translateX(calc(100vw + 350px)); }
+  }
+
+  @keyframes atmosphere-bubble-rise {
+    0%   { transform: translateY(0)     translateX(0);    opacity: 0.5; }
+    50%  { transform: translateY(-50vh) translateX(12px); opacity: 0.3; }
+    100% { transform: translateY(-110vh) translateX(-8px); opacity: 0; }
+  }
+
+  @keyframes atmosphere-biolum-pulse {
+    0%, 100% { opacity: 0.85; transform: scale(1); }
+    50%      { opacity: 0.12; transform: scale(0.55); }
+  }
+
+  @keyframes atmosphere-biolum-drift {
+    0%, 100% { margin-left: 0; }
+    50%      { margin-left: 22px; }
+  }
+
+  /* ═══ Creature Animation Keyframes ═══ */
+
+  @keyframes creature-traverse-ltr {
+    from { transform: translateX(-25vw); }
+    to   { transform: translateX(115vw); }
+  }
+
+  @keyframes creature-traverse-rtl {
+    from { transform: translateX(115vw); }
+    to   { transform: translateX(-25vw); }
+  }
+
+  @keyframes creature-float-drift {
+    0%   { transform: translate(0px, 0px); }
+    25%  { transform: translate(var(--drift-x, 20px), calc(var(--drift-y, 15px) * 0.5)); }
+    50%  { transform: translate(0px, var(--drift-y, 15px)); }
+    75%  { transform: translate(calc(var(--drift-x, 20px) * -0.6), calc(var(--drift-y, 15px) * 0.3)); }
+    100% { transform: translate(0px, 0px); }
+  }
+
+  @keyframes creature-wing-flap {
+    0%   { d: path("M-12 0 Q-6 -8 0 -2 Q6 -8 12 0"); }
+    100% { d: path("M-12 0 Q-6 -3 0 -2 Q6 -3 12 0"); }
+  }
+
+  @keyframes creature-jellyfish-pulse {
+    0%, 100% { rx: 35; ry: 30; }
+    50%      { rx: 32; ry: 34; }
+  }
+
+  @keyframes creature-tentacle-sway {
+    0%   { transform: translateX(0px) rotate(0deg); }
+    100% { transform: translateX(6px) rotate(3deg); }
+  }
+
+  @keyframes creature-flipper {
+    0%, 100% { transform: rotate(0deg); }
+    50%      { transform: rotate(-15deg); }
+  }
+
+  @keyframes creature-tail-sway {
+    0%, 100% { transform: rotate(0deg); }
+    25%      { transform: rotate(5deg); }
+    75%      { transform: rotate(-5deg); }
+  }
+
+  @keyframes creature-manta-wing {
+    0%, 100% { transform: scaleY(1); }
+    50%      { transform: scaleY(0.92); }
+  }
+
+  @keyframes creature-lure-sway {
+    0%, 100% { transform: rotate(0deg); }
+    50%      { transform: rotate(8deg); }
+  }
+
+  @keyframes creature-ear-flap {
+    0%   { transform: rotate(0deg); }
+    100% { transform: rotate(-12deg); }
+  }
+
+  @keyframes creature-fish-wiggle {
+    0%   { transform: translateY(0) rotate(0deg); }
+    100% { transform: translateY(2px) rotate(3deg); }
   }
 }

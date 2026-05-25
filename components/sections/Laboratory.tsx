@@ -5,6 +5,8 @@ import { motion } from 'framer-motion';
 import useOnScreen from '@/hooks/useOnScreen';
 import { SectionFlowLine } from '@/components/ui/SectionFlowLine';
 
+const NOUGRAM_URL = 'https://nougram.co';
+
 export default function Laboratory() {
   const t = useTranslations('lab');
   const [ref, isVisible] = useOnScreen({ threshold: 0.1 });
@@ -31,21 +33,7 @@ export default function Laboratory() {
     },
   };
 
-  const productKeys = ['nougram', 'product2', 'incubating'] as const;
-
-  const productLinks: Record<(typeof productKeys)[number], string | undefined> = {
-    nougram: 'https://nougram.co',
-    product2: undefined,
-    incubating: undefined,
-  };
-
-  const getStatusColor = (status: string) => {
-    switch (status.toLowerCase()) {
-      case 'live': return 'text-primary bg-primary/10 border-primary/20';
-      case 'beta': return 'text-accent bg-accent/10 border-accent/20';
-      default: return 'text-warning bg-warning/10 border-warning/20';
-    }
-  };
+  const highlights = ['01', '02', '03'] as const;
 
   return (
     <section id="laboratory" className="py-32 relative overflow-hidden">
@@ -54,22 +42,18 @@ export default function Laboratory() {
           ref={ref}
           variants={containerVariants}
           initial="hidden"
-          animate={isVisible ? "visible" : "hidden"}
+          animate={isVisible ? 'visible' : 'hidden'}
           className="max-w-6xl mx-auto"
         >
-          {/* Header */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-24 items-end">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16 items-end">
             <div>
-              <motion.span 
+              <motion.span
                 variants={itemVariants}
                 className="text-xs font-mono tracking-[0.3em] uppercase text-text-muted mb-4 block"
               >
                 {t('eyebrow')}
               </motion.span>
-              <motion.h2 
-                variants={itemVariants}
-                className="text-balance"
-              >
+              <motion.h2 variants={itemVariants} className="text-balance">
                 {t('title')}
               </motion.h2>
             </div>
@@ -79,70 +63,61 @@ export default function Laboratory() {
               </p>
             </motion.div>
           </div>
-          <motion.div variants={itemVariants} className="mb-16">
+
+          <motion.div variants={itemVariants} className="mb-12">
             <SectionFlowLine />
           </motion.div>
 
-          {/* Product Cards Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {productKeys.map((key) => (
-              <motion.div
-                key={key}
-                variants={itemVariants}
-                className="group p-8 rounded-3xl bg-background border border-white/5 hover:border-primary/30 transition-all duration-500 flex flex-col h-full"
-              >
-                <div className="flex justify-between items-start mb-12">
-                   <div className="w-12 h-12 rounded-2xl bg-white/5 flex items-center justify-center group-hover:bg-primary/10 transition-colors duration-500">
-                      <div className="w-2 h-2 rounded-full bg-primary shadow-[0_0_10px_rgba(0,122,255,0.5)]" />
-                   </div>
-                   <span className={`text-[10px] font-mono uppercase tracking-widest px-2 py-1 rounded border ${getStatusColor(t(`products.${key}.status`))}`}>
-                     {t(`products.${key}.status`)}
-                   </span>
-                </div>
-
-                <div className="flex-1 space-y-4">
-                  <h3 className="text-2xl font-medium text-text-primary tracking-tight group-hover:text-primary transition-colors">
-                    {t(`products.${key}.title`)}
-                  </h3>
-                  <p className="text-sm text-text-secondary font-light leading-relaxed">
-                    {t(`products.${key}.description`)}
-                  </p>
-                </div>
-
-                <div className="pt-8">
-                  {t.has(`products.${key}.cta`) ? (
-                    <a
-                      href={productLinks[key] ?? '#laboratory'}
-                      target={productLinks[key] ? '_blank' : undefined}
-                      rel={productLinks[key] ? 'noopener noreferrer' : undefined}
-                      className="inline-flex items-center gap-2 text-xs font-medium text-text-primary hover:text-primary transition-colors"
-                    >
-                      {t(`products.${key}.cta`)}
-                    </a>
-                  ) : (
-                    <div className="h-4" />
-                  )}
-                </div>
-
-              </motion.div>
-            ))}
-          </div>
-
-          {/* Microcopy / Closing footer */}
-          <motion.div 
+          <motion.div
             variants={itemVariants}
-            className="mt-20 pt-12 border-t border-white/5"
+            className="rounded-[2rem] border border-[#E54D00]/25 bg-[#262537] p-8 md:p-12 shadow-[0_20px_60px_rgba(0,0,0,0.35)]"
           >
-            <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
-              <p className="text-xs text-text-muted italic max-w-2xl">
-                {t('microcopy')}
-              </p>
-              <div className="flex items-center gap-4">
-                <span className="text-[10px] font-mono text-primary uppercase tracking-[0.2em]">Validated by AI</span>
-                <div className="w-px h-4 bg-white/10" />
-                <span className="text-[10px] font-mono text-accent uppercase tracking-[0.2em]">Handcrafted</span>
+            <div className="flex flex-wrap items-center justify-between gap-4 mb-8">
+              <div>
+                <p className="text-[10px] font-mono uppercase tracking-[0.35em] text-white/50 mb-3">
+                  {t('products.nougram.eyebrow')}
+                </p>
+                <h3 className="text-3xl md:text-4xl font-semibold text-white tracking-tight">
+                  {t('products.nougram.title')}
+                </h3>
               </div>
+              <span className="text-[10px] font-mono uppercase tracking-widest px-3 py-1 rounded-full border border-[#E54D00]/40 bg-[#E54D00]/10 text-[#FFB48A]">
+                {t('products.nougram.status')}
+              </span>
             </div>
+
+            <p className="text-xl md:text-2xl font-medium leading-snug text-white mb-4">
+              {t('products.nougram.headline')}
+            </p>
+            <p className="text-base text-white/75 font-light leading-relaxed max-w-3xl mb-8">
+              {t('products.nougram.description')}
+            </p>
+
+            <ul className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
+              {highlights.map((key) => (
+                <li
+                  key={key}
+                  className="rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-4 text-sm text-white/80 font-light leading-relaxed"
+                >
+                  {t(`products.nougram.highlights.${key}`)}
+                </li>
+              ))}
+            </ul>
+
+            <a
+              href={NOUGRAM_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-full bg-[#E54D00] px-8 py-3.5 text-sm font-semibold text-white transition hover:bg-[#f05f18]"
+            >
+              {t('products.nougram.cta')}
+            </a>
+          </motion.div>
+
+          <motion.div variants={itemVariants} className="mt-12 pt-8 border-t border-white/5">
+            <p className="text-xs text-text-muted italic max-w-3xl font-light leading-relaxed">
+              {t('microcopy')}
+            </p>
           </motion.div>
         </motion.div>
       </div>

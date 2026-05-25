@@ -5,9 +5,6 @@ import { motion } from 'framer-motion';
 import useOnScreen from '@/hooks/useOnScreen';
 import { SectionFlowLine } from '@/components/ui/SectionFlowLine';
 
-const LOOP_PDF_MAILTO =
-  'mailto:business@abralatam.com?subject=Solicitud%20A%3ABRA%20Loop%20PDF&body=Hola%2C%20quiero%20recibir%20el%20PDF%20del%20A%3ABRA%20Loop.';
-
 export default function Method() {
   const t = useTranslations('method');
   const [ref, isVisible] = useOnScreen({ threshold: 0.1 });
@@ -107,24 +104,12 @@ export default function Method() {
             </div>
           </div>
 
-          {/* Footer & CTA */}
-          <motion.div 
-            variants={itemVariants}
-            className="mt-24 text-center space-y-12"
-          >
+          <motion.div variants={itemVariants} className="mt-24 text-center">
             <div className="max-w-2xl mx-auto">
               <p className="text-sm text-text-muted italic font-light leading-relaxed">
-                "{t('footer')}"
+                &ldquo;{t('footer')}&rdquo;
               </p>
             </div>
-
-            <a
-              href={LOOP_PDF_MAILTO}
-              className="inline-flex items-center gap-3 px-10 py-5 bg-transparent border border-primary text-primary font-medium rounded-full hover:bg-primary hover:text-background transition-all duration-300 shadow-[0_0_40px_rgba(0,122,255,0.2)] group"
-            >
-              <span>{t('cta')}</span>
-              <span className="group-hover:translate-x-1 transition-transform">→</span>
-            </a>
           </motion.div>
         </motion.div>
       </div>

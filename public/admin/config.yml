@@ -1,0 +1,44 @@
+backend:
+  name: github
+  repo: gerriarte/Abra_web # Usuario debe confirmar si este es el repo
+  branch: main
+
+media_folder: "public/cases"
+public_folder: "/cases"
+
+collections:
+  - name: "cases"
+    label: "Casos de Estudio"
+    folder: "content/cases"
+    create: true
+    slug: "{{slug}}"
+    extension: "json"
+    format: "json"
+    fields:
+      - { label: "Slug/ID", name: "slug", widget: "string" }
+      - { label: "Cliente", name: "client", widget: "string" }
+      - { label: "Título (ES)", name: "title", widget: "string" }
+      - { label: "Título (EN)", name: "titleEn", widget: "string", required: false }
+      - { label: "Descripción Marca (ES)", name: "brandDescription", widget: "text" }
+      - { label: "Descripción Marca (EN)", name: "brandDescriptionEn", widget: "text", required: false }
+      - { label: "El Dolor (ES)", name: "situation", widget: "text" }
+      - { label: "El Dolor (EN)", name: "situationEn", widget: "text", required: false }
+      - { label: "La Táctica (ES)", name: "task", widget: "text" }
+      - { label: "La Táctica (EN)", name: "taskEn", widget: "text", required: false }
+      - { label: "La Acción (ES)", name: "action", widget: "text" }
+      - { label: "La Acción (EN)", name: "actionEn", widget: "text", required: false }
+      - { label: "Imagen Hero", name: "heroImage", widget: "image" }
+      - { label: "Galería de Imágenes", name: "images", widget: "list", field: { label: "Imagen", name: "image", widget: "image" } }
+      - name: "results"
+        label: "Métricas de Impacto"
+        widget: "list"
+        fields:
+          - { label: "Etiqueta", name: "label", widget: "string" }
+          - { label: "Valor", name: "value", widget: "string" }
+          - { label: "Sufijo", name: "suffix", widget: "string", required: false }
+      - name: "projectDetails"
+        label: "Detalles del Proyecto"
+        widget: "object"
+        fields:
+          - { label: "Año", name: "year", widget: "string" }
+          - { label: "Servicios", name: "services", widget: "list" }

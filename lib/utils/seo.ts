@@ -4,9 +4,10 @@ import { locales } from '@/lib/i18n/config';
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://abralatam.com';
 const siteName = 'A:BRA';
 const defaultDescription = {
-  en: 'Strategic Digital Engineering Agency. We transform complex data into predictable growth systems. From brand vision to web development, we build digital solutions that work, proven by metrics.',
-  es: 'Agencia de Ingeniería Digital Estratégica. Transformamos datos complejos en sistemas de crecimiento predecibles. De la visión de marca al desarrollo web, construimos soluciones digitales que funcionan, probadas por la métrica.',
+  en: 'Hybrid studio combining growth, AI, and product development. We build growth systems and the products that make them possible. Discover the A:BRA Loop.',
+  es: 'Studio híbrido que combina growth, IA y desarrollo de producto. Construimos sistemas de crecimiento y los productos que los hacen posibles. Conocé el A:BRA Loop.',
 };
+
 
 export interface SEOConfig {
   title: string;

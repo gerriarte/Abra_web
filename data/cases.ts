@@ -265,52 +265,127 @@ export const CASES_DATA: Record<string, CaseStudy> = {
       logo: '/Bestune/MTM-Marca-tu-marca-brand.jpeg'
     },
     title: 'Electrificando el Futuro: Producción Publicitaria para Bestune',
-    brandDescription: 'Bestune es una marca automotriz de vanguardia enfocada en la movilidad eléctrica sostenible. Con un diseño audaz y tecnología de punta, Bestune busca transformar la relación entre el conductor y el medio ambiente, ofreciendo vehículos de lujo que no comprometen la potencia ni el planeta.',
-    situation: 'La marca necesitaba una presencia visual impactante para el lanzamiento de su nueva línea de vehículos eléctricos. El desafío era comunicar tanto la sofisticación tecnológica como la potencia dinámica de los autos Bestune a través de piezas audiovisuales de alta calidad.',
-    task: 'Producir una serie de piezas publicitarias en video que capturen la esencia de la marca Bestune. La misión fue resaltar la aerodinámica, el interior tecnológico y la experiencia de conducción silenciosa y potente.',
-    action: 'En colaboración con nuestro partner estratégico MTM Marca tu Marca, realizamos una producción publicitaria integral. Esto incluyó el rodaje en estudio con equipos de iluminación de cine, cámaras de alta velocidad y post-producción avanzada para lograr un look futurista y premium que define la identidad de Bestune.',
+    brandDescription: 'Bestune es una marca automotriz de vanguardia enfocada en la movilidad eléctrica sostenible. Con un diseño audaz y tecnología de punta.',
+    situation: 'La marca necesitaba una presencia visual impactante para el lanzamiento de su nueva línea de vehículos eléctricos. El desafío era comunicar tanto la sofisticación tecnológica como la potencia dinámica.',
+    task: 'Producir una serie de piezas publicitarias en video que capturen la esencia de la marca Bestune. La misión fue resaltar la aerodinámica y el interior tecnológico.',
+    action: 'En colaboración con MTM Marca tu Marca, realizamos una producción publicitaria integral con equipos de iluminación de cine y post-producción avanzada.',
     results: [
       { label: 'Impacto Visual', value: '100', suffix: '%' },
       { label: 'Alcance de Campaña', value: '+1.5', suffix: 'M' },
       { label: 'Retención de Video', value: '85', suffix: '%' },
       { label: 'Satisfacción de Marca', value: '9.8', suffix: '/10' },
     ],
-    videos: [
-      { url: 'https://www.youtube.com/watch?v=z6sWxXGpqz4', title: 'Bestune: Poder Eléctrico', titleEn: 'Bestune: Electric Power' },
-      { url: 'https://www.youtube.com/watch?v=0ZCmdY0Nduk', title: 'Diseño Aerodinámico', titleEn: 'Aerodynamic Design' },
-      { url: 'https://www.youtube.com/watch?v=AXFLg8_bqjk', title: 'Tecnología de Vanguardia', titleEn: 'State-of-the-Art Technology' }
-    ],
-    projectDetails: {
-      year: '2025',
-      duration: '3 Meses',
-      services: ['Producción Audiovisual', 'Estrategia de Marca', 'Dirección de Arte', 'Post-producción'],
-      team: [
-        { role: 'Partner de Producción', name: 'MTM Marca tu Marca' }
-      ]
-    },
-    // English translations
-    titleEn: 'Electrifying the Future: Advertising Production for Bestune',
-    brandDescriptionEn: 'Bestune is a cutting-edge automotive brand focused on sustainable electric mobility. With bold design and state-of-the-art technology, Bestune seeks to transform the relationship between the driver and the environment, offering luxury vehicles that compromise neither power nor the planet.',
-    situationEn: 'The brand needed an impactful visual presence for the launch of its new line of electric vehicles. The challenge was to communicate both the technological sophistication and the dynamic power of Bestune cars through high-quality audiovisual pieces.',
-    taskEn: 'Produce a series of video advertising pieces that capture the essence of the Bestune brand. The mission was to highlight aerodynamics, technological interior, and the silent yet powerful driving experience.',
-    actionEn: 'In collaboration with our strategic partner MTM Marca tu Marca, we carried out a comprehensive advertising production. This included studio shooting with cinema lighting equipment, high-speed cameras, and advanced post-production to achieve a futuristic and premium look that defines Bestune\'s identity.',
-    resultsEn: [
-      { label: 'Visual Impact', value: '100', suffix: '%' },
-      { label: 'Campaign Reach', value: '+1.5', suffix: 'M' },
-      { label: 'Video Retention', value: '85', suffix: '%' },
-      { label: 'Brand Satisfaction', value: '9.8', suffix: '/10' },
-    ],
-    projectDetailsEn: {
-      services: ['Audiovisual Production', 'Brand Strategy', 'Art Direction', 'Post-production'],
-      team: [
-        { role: 'Production Partner', name: 'MTM Marca tu Marca' }
-      ]
-    },
     heroImage: '/Bestune/Bestune-01.jpg',
+    images: ['/Bestune/Bestune-02.jpg', '/Bestune/Bestune-03.jpg', '/Bestune/Bestune-04.jpg'],
+    projectDetails: { year: '2025', services: ['Producción Audiovisual', 'Estrategia de Marca'], team: [] }
+  },
+  'ruta-teatro': {
+    id: 'ruta-teatro-001',
+    client: 'Ruta Teatro Bogotá',
+    title: 'Digitalizando la Escena Teatral de Bogotá',
+    brandDescription: 'La plataforma líder para descubrir y vivir el teatro en la capital, conectando audiencias con la oferta cultural más vibrante.',
+    situation: 'La cartelera teatral de Bogotá estaba fragmentada. Los espectadores tenían dificultades para encontrar funciones en tiempo real y los teatros carecían de una plataforma centralizada para visibilizar sus obras.',
+    task: 'Crear un ecosistema digital integrado que centralice la oferta teatral, optimice la experiencia de búsqueda y potencie la venta de boletería mediante ingeniería de datos.',
+    action: 'Desarrollamos una plataforma web interactiva con mapas dinámicos, filtros inteligentes de cartelera y un sistema de recomendación personalizado, optimizado para una navegación fluida en dispositivos móviles.',
+    results: [
+      { label: 'Tráfico Web', value: '200', suffix: '%' },
+      { label: 'Conversión Boletería', value: '45', suffix: '%' },
+      { label: 'Usuarios Activos', value: '15', suffix: 'k+' },
+      { label: 'Visibilidad Teatros', value: 'Alta', suffix: '' },
+    ],
+    heroImage: '/cases/Ruta Teatro Bogotá/rutateatro-home.png',
     images: [
-      '/Bestune/Bestune-02.jpg',
-      '/Bestune/Bestune-03.jpg',
-      '/Bestune/Bestune-04.jpg'
+      '/cases/Ruta Teatro Bogotá/rutateatro-home.png',
+      '/cases/Ruta Teatro Bogotá/Rutateatro-cartelera.png',
+      '/cases/Ruta Teatro Bogotá/rutateatro-mapa.png',
+      '/cases/Ruta Teatro Bogotá/Rutateatro-obra.png',
+      '/cases/Ruta Teatro Bogotá/rutateatro-loquesevivio.png',
+      '/cases/Ruta Teatro Bogotá/rutateatro-grupoteatral.png'
+    ],
+    projectDetails: { year: '2025', services: ['Estrategia Digital', 'Desarrollo Web'], team: [] },
+    titleEn: 'Digitalizing Bogotá\'s Theater Scene',
+    brandDescriptionEn: 'The leading platform to discover and experience theater in the capital, connecting audiences with the most vibrant cultural offerings.',
+    situationEn: 'Bogotá\'s theater listings were fragmented. Spectators struggled to find shows in real-time, and theaters lacked a centralized platform to showcase their plays.',
+    taskEn: 'Create an integrated digital ecosystem that centralizes theater offerings, optimizes the search experience, and boosts ticket sales through data engineering.',
+    actionEn: 'We developed an interactive web platform with dynamic maps, smart listing filters, and a personalized recommendation system, optimized for smooth mobile navigation.',
+    resultsEn: [
+      { label: 'Web Traffic', value: '200', suffix: '%' },
+      { label: 'Ticket Conversion', value: '45', suffix: '%' },
+      { label: 'Active Users', value: '15', suffix: 'k+' },
+      { label: 'Theater Visibility', value: 'High', suffix: '' },
     ]
+  },
+  'duvyclass': {
+    id: 'duvyclass-001',
+    client: 'DuvyClass',
+    title: 'Optimización de CAC y Retención en Belleza Profesional',
+    brandDescription: 'Marca premium de productos para el cuidado capilar profesional y salones de alta gama.',
+    situation: 'DuvyClass enfrentaba un costo de adquisición (CAC) elevado y una baja recurrencia en su canal digital debido a una experiencia de usuario fragmentada.',
+    task: 'Reducir el CAC mediante ingeniería de datos y aumentar el LTV (Life Time Value) del cliente profesional.',
+    action: 'Rediseñamos el flujo de conversión y automatizamos el ciclo de recompra mediante CRM y segmentación avanzada por comportamiento de compra.',
+    results: [
+      { label: 'Reducción CAC', value: '40', suffix: '%' },
+      { label: 'Aumento LTV', value: '25', suffix: '%' },
+      { label: 'Conversión Web', value: '+55', suffix: '%' },
+      { label: 'Recurrencia', value: 'High', suffix: '' },
+    ],
+    heroImage: '/cases/duvyclass.png',
+    images: ['/cases/duvyclass.png'],
+    projectDetails: { year: '2024', services: ['Data Engineering', 'Growth Marketing'], team: [] }
+  },
+  'gea-beauty': {
+    id: 'gea-beauty-001',
+    client: 'Gea Beauty',
+    title: 'Ecosistema Digital para Clínicas de Bienestar',
+    brandDescription: 'Clínica de medicina estética y bienestar integral con enfoque en resultados naturales y tecnología médica.',
+    situation: 'La clínica operaba sin un sistema centralizado de captación, dependiendo excesivamente de referidos manuales y redes sociales efímeras.',
+    task: 'Construir un activo digital propio que canalice la demanda y eduque al paciente sobre los procedimientos de alta gama.',
+    action: 'Desarrollamos una plataforma de "Apertura" visual que comunica confianza médica y facilita el agendamiento inteligente integrado al CRM de la clínica.',
+    results: [
+      { label: 'Agendamientos', value: '200', suffix: '%' },
+      { label: 'Costo por Lead', value: '-60', suffix: '%' },
+      { label: 'Autoridad Marca', value: 'Elite', suffix: '' },
+      { label: 'Retención', value: '95', suffix: '%' },
+    ],
+    heroImage: '/cases/gea-beauty.png',
+    images: ['/cases/gea-beauty.png'],
+    projectDetails: { year: '2025', services: ['UI/UX Design', 'Lead Generation'], team: [] }
+  },
+  'praxis-school': {
+    id: 'praxis-001',
+    client: 'Praxis School',
+    title: 'Growth e Ingeniería para el Futuro de la Educación',
+    brandDescription: 'Plataforma educativa enfocada en habilidades prácticas y formación técnica acelerada.',
+    situation: 'Praxis necesitaba escalar su base de alumnos pero su plataforma actual no permitía el tracking preciso de la atribución de ventas.',
+    task: 'Implementar un sistema de tracking "full-funnel" y optimizar la landing de ventas para maximizar la conversión en dispositivos móviles.',
+    action: 'Auditoría técnica del funnel y rediseño de la arquitectura de información basada en psicología de conversión y optimización de velocidad.',
+    results: [
+      { label: 'Escalamiento', value: '3', suffix: 'x' },
+      { label: 'Velocidad Carga', value: '-80', suffix: '%' },
+      { label: 'Conversión Móvil', value: '+70', suffix: '%' },
+      { label: 'Ventas Orgánicas', value: '+25', suffix: '%' },
+    ],
+    heroImage: '/cases/praxis-school.png',
+    images: ['/cases/praxis-school.png'],
+    projectDetails: { year: '2024', services: ['EdTech Engineering', 'Conversion Optimization'], team: [] }
+  },
+  'message-boutique': {
+    id: 'message-001',
+    client: 'Message Boutique',
+    title: 'Fashion E-commerce: De Catálogo a Plataforma de Conversión',
+    brandDescription: 'Boutique de moda femenina con curaduría exclusiva y enfoque en el mercado premium.',
+    situation: 'El e-commerce funcionaba como un catálogo estático con procesos de pago complejos que causaban un abandono de carrito del 70%.',
+    task: 'Reducir la fricción en el checkout y crear una narrativa visual que justifique el ticket promedio alto de la marca.',
+    action: 'Simplificación total del flujo de pago (One-page checkout) y mejora de la performance visual mediante lazy-loading y WebP optimizado.',
+    results: [
+      { label: 'Abandono Carrito', value: '-50', suffix: '%' },
+      { label: 'Ticket Promedio', value: '+30', suffix: '%' },
+      { label: 'Ventas Mensuales', value: '+45', suffix: '%' },
+      { label: 'Satisfacción', value: '4.9', suffix: '/5' },
+    ],
+    heroImage: '/cases/message-boutique.png',
+    images: ['/cases/message-boutique.png'],
+    projectDetails: { year: '2025', services: ['E-commerce', 'Visual Strategy'], team: [] }
   }
 };
+

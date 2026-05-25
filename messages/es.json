@@ -1,10 +1,16 @@
 {
   "hero": {
     "eyebrow": "Agencia · Studio · Laboratorio de IA",
-    "title": "Construimos sistemas de crecimiento. Y los productos que los hacen posibles.",
+    "title": "Construimos sistemas de crecimiento.",
     "subtitle": "A:BRA no es una agencia más. Somos un studio híbrido donde el growth está potenciado por capacidad técnica real, y donde cada desarrollo nace con visión de marketing. La estrategia que te recomendamos es la misma que usamos para construir nuestros propios productos —como Nougram— y validarla con datos antes de aplicarla a tu negocio.",
-    "ctaPrimary": "Descargar el A:BRA Loop (PDF) →",
-    "ctaSecondary": "Conocer el método"
+    "ctaPrimary": "Agendar diagnóstico gratuito →",
+    "ctaSecondary": "Conocer el método",
+    "statusLabel": "Sistema activo",
+    "statusValue": "A:BRA Loop · v2.0",
+    "metric01": "Insight",
+    "metric02": "Build",
+    "metric03": "Launch",
+    "metric04": "Learn"
   },
 
   "problem": {
@@ -53,15 +59,13 @@
         "description": "Dashboards, iteración continua. El aprendizaje vuelve al Insight. El sistema mejora con cada ciclo."
       }
     },
-    "footer": "No es un funnel. Es un Flywheel: cada vuelta del Loop aumenta el conocimiento, reduce el costo y acelera el crecimiento.",
-    "cta": "Descargar el framework completo (PDF) →"
+    "footer": "No es un funnel. Es un Flywheel: cada vuelta del Loop aumenta el conocimiento, reduce el costo y acelera el crecimiento."
   },
 
   "result": {
     "title": "¿Listo para dejar de operar a ciegas?",
-    "description": "Descargá el A:BRA Loop completo en PDF. Es el mismo framework que aplicamos a nuestros productos y a clientes. Te muestra cómo conectar marketing, producto y tecnología en un sistema único.",
-    "ctaPrimary": "Descargar el A:BRA Loop (PDF) →",
-    "ctaSecondary": "Agendar diagnóstico gratuito →"
+    "description": "Conectamos marketing, producto y tecnología en un solo sistema. El mismo framework que aplicamos en Nougram y en cada cliente, ahora para tu operación.",
+    "ctaPrimary": "Agendar diagnóstico gratuito →"
   },
 
   "contact": {
@@ -177,24 +181,21 @@
   "lab": {
     "eyebrow": "Nuestro laboratorio",
     "title": "Construimos productos propios. Por eso sabemos lo que funciona.",
-    "body": "La mayoría de las agencias te venden estrategia que nunca tuvieron que ejecutar con su propio dinero. Nosotros sí. A:BRA opera un portafolio de productos digitales propios donde aplicamos —antes que a cualquier cliente— las mismas estrategias del A:BRA Loop. Cada producto es un experimento que valida (o descarta) hipótesis de growth, IA, branding y desarrollo. Nuestro laboratorio es nuestro mejor caso de estudio.",
-    "microcopy": "Construidos con vibe coding y rigor técnico: prototipos validados con usuarios reales, código auditado, métricas desde el día uno. Lo mismo que hacemos para vos.",
+    "body": "La mayoría de las agencias venden estrategia que nunca ejecutaron con su propio dinero. Nosotros sí: validamos el A:BRA Loop en productos reales antes de aplicarlo a clientes.",
+    "microcopy": "Nougram nació en nuestro laboratorio para resolver un dolor concreto del mercado: cotizar conocimiento con ganancia neta predecible.",
     "products": {
       "nougram": {
+        "eyebrow": "Producto del laboratorio",
         "title": "Nougram",
-        "description": "Cotizador de servicios creativos potenciado por IA.",
+        "headline": "¿Cuánto ganás realmente en cada propuesta que mandás?",
+        "description": "Cotizador con IA para agencias y profesionales que venden conocimiento. Convierte tu experiencia en propuestas precisas y rentables, con foco en margen neto y sin adivinar.",
         "status": "Live",
-        "cta": "Ver caso →"
-      },
-      "product2": {
-        "title": "[Producto 2]",
-        "description": "En fase de validación.",
-        "status": "Beta"
-      },
-      "incubating": {
-        "title": "[En incubación]",
-        "description": "Nueva vertical de automatización.",
-        "status": "Incubando"
+        "cta": "→ Conocer Nougram",
+        "highlights": {
+          "01": "Asegurá tu ganancia neta antes de firmar cada propuesta.",
+          "02": "Dejá la matemática a la IA y recuperá foco en crear valor.",
+          "03": "Pensado para consultores, diseñadores, marketers y agencias."
+        }
       }
     }
   },

@@ -1,10 +1,16 @@
 {
   "hero": {
     "eyebrow": "Agency · Studio · AI Laboratory",
-    "title": "We build growth systems. And the products that make them possible.",
+    "title": "We build growth systems.",
     "subtitle": "A:BRA is not just another agency. We are a hybrid studio where growth is powered by real technical capability, and where every development is born with a marketing vision. The strategy we recommend is the same one we use to build our own products —like Nougram— and validate it with data before applying it to your business.",
-    "ctaPrimary": "Download the A:BRA Loop (PDF) →",
-    "ctaSecondary": "Meet the method"
+    "ctaPrimary": "Schedule a free diagnosis →",
+    "ctaSecondary": "Meet the method",
+    "statusLabel": "System online",
+    "statusValue": "A:BRA Loop · v2.0",
+    "metric01": "Insight",
+    "metric02": "Build",
+    "metric03": "Launch",
+    "metric04": "Learn"
   },
 
   "problem": {
@@ -53,15 +59,13 @@
         "description": "Dashboards, continuous iteration. Learning feeds back into Insight. The system improves with each cycle."
       }
     },
-    "footer": "It's not a funnel. It's a Flywheel: each turn of the Loop increases knowledge, reduces cost, and accelerates growth.",
-    "cta": "Download the complete framework (PDF) →"
+    "footer": "It's not a funnel. It's a Flywheel: each turn of the Loop increases knowledge, reduces cost, and accelerates growth."
   },
 
   "result": {
     "title": "Ready to stop operating blindly?",
-    "description": "Download the complete A:BRA Loop in PDF. It's the same framework we apply to our own products and clients. It shows you how to connect marketing, product, and technology into a single system.",
-    "ctaPrimary": "Download the A:BRA Loop (PDF) →",
-    "ctaSecondary": "Schedule a free diagnosis →"
+    "description": "We connect marketing, product, and technology into one system. The same framework we use at Nougram and with every client, now for your operation.",
+    "ctaPrimary": "Schedule a free diagnosis →"
   },
 
   "contact": {
@@ -177,24 +181,21 @@
   "lab": {
     "eyebrow": "Our Laboratory",
     "title": "We build our own products. That's why we know what works.",
-    "body": "Most agencies sell you strategy they never had to execute with their own money. We do. A:BRA operates a portfolio of our own digital products where we apply —before any client— the same A:BRA Loop strategies. Each product is an experiment that validates (or discards) growth, AI, branding, and development hypotheses. Our laboratory is our best case study.",
-    "microcopy": "Built with vibe coding and technical rigor: prototypes validated with real users, audited code, metrics from day one. The same thing we do for you.",
+    "body": "Most agencies sell strategy they never executed with their own money. We do: we validate the A:BRA Loop on real products before applying it to clients.",
+    "microcopy": "Nougram was born in our lab to solve a real market pain: quoting knowledge with predictable net profitability.",
     "products": {
       "nougram": {
+        "eyebrow": "Lab product",
         "title": "Nougram",
-        "description": "AI-powered creative services estimator.",
+        "headline": "How much do you really earn on every proposal you send?",
+        "description": "An AI-powered quoter for agencies and professionals who sell knowledge. It turns your expertise into precise, profitable proposals with a focus on net margin—without guessing.",
         "status": "Live",
-        "cta": "View Case →"
-      },
-      "product2": {
-        "title": "[Product 2]",
-        "description": "In validation phase.",
-        "status": "Beta"
-      },
-      "incubating": {
-        "title": "[Incubating]",
-        "description": "New automation vertical.",
-        "status": "Incubating"
+        "cta": "→ Discover Nougram",
+        "highlights": {
+          "01": "Secure your net profit before signing each deal.",
+          "02": "Let AI handle the math and regain focus on creating value.",
+          "03": "Built for consultants, designers, marketers, and agencies."
+        }
       }
     }
   },

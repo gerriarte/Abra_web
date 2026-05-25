@@ -1,0 +1,27 @@
+{
+  "slug": "securitas",
+  "client": "Securitas",
+  "title": "Transformación Digital para Seguridad Aeroportuaria",
+  "brandDescription": "Securitas es una empresa global de servicios de seguridad.",
+  "situation": "Securitas buscaba una transformación digital para optimizar todos los procesos aeroportuarios.",
+  "task": "Re-diseñar la experiencia de usuario y el backend de gestión operativa.",
+  "action": "Desarrollamos una solución completa con tracking en tiempo real.",
+  "results": [
+    {
+      "label": "Eficiencia Operativa",
+      "value": "+60",
+      "suffix": "%"
+    }
+  ],
+  "heroImage": "/Securitas/Mockup dashboard.png",
+  "images": [
+    "/Securitas/Mobile pantallas.png"
+  ],
+  "projectDetails": {
+    "year": "2024",
+    "services": [
+      "UX Design",
+      "Development"
+    ]
+  }
+}

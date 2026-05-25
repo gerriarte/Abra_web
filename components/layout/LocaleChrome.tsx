@@ -17,6 +17,8 @@ export default function LocaleChrome({ children, locale }: LocaleChromeProps) {
 
   return (
     <>
+      {!isQrLanding && <div className="nebula-glow opacity-30 fixed inset-0 z-0" />}
+      {!isQrLanding && <div className="spatial-grid opacity-[0.03] fixed inset-0 z-0" />}
       {!isQrLanding && <div className="grain-overlay" />}
       {!isQrLanding && <HashScrollHandler />}
       {!isQrLanding && <Header />}

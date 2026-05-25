@@ -1,323 +1,169 @@
 import React from 'react';
 import { notFound } from 'next/navigation';
-import { CaseHero } from '@/components/cases/ui/CaseHero';
-import { Section } from '@/components/cases/ui/Section';
-import { ImageGrid } from '@/components/cases/ui/ImageGrid';
-import { TableOfContents } from '@/components/cases/ui/TableOfContents';
-import { ProjectDetails } from '@/components/cases/ui/ProjectDetails';
-import { VideoGrid } from '@/components/cases/ui/VideoGrid';
-import { AudiovisualHero } from '@/components/cases/ui/AudiovisualHero';
-import { VideoCinema } from '@/components/cases/ui/VideoCinema';
-import { PartnerSection } from '@/components/cases/ui/PartnerSection';
-import { VisualSeparator } from '@/components/cases/ui/VisualSeparator';
-import { NextProjectNavigation } from '@/components/cases/ui/NextProjectNavigation';
 import { CASES_DATA } from '@/data/cases';
+import { CaseHeroLuxury } from '@/components/cases/luxury/CaseHeroLuxury';
+import { SectionLuxury } from '@/components/cases/luxury/SectionLuxury';
+import { MetricsLuxury } from '@/components/cases/luxury/MetricsLuxury';
+import { ImageGrid } from '@/components/cases/ui/ImageGrid';
+import { ProjectDetails } from '@/components/cases/ui/ProjectDetails';
+import { NextProjectNavigation } from '@/components/cases/ui/NextProjectNavigation';
+import JsonLd from '@/components/seo/JsonLd';
+import { generateSEOMetadata, generateArticleSchema, generateBreadcrumbSchema } from '@/lib/utils/seo';
+import type { Metadata } from 'next';
 
 interface PageProps {
   params: Promise<{ slug: string; locale: string }>;
 }
 
-import { generateSEOMetadata, generateArticleSchema, generateBreadcrumbSchema } from '@/lib/utils/seo';
-import JsonLd from '@/components/seo/JsonLd';
-import type { Metadata } from 'next';
-
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug, locale } = await params;
   const caseStudy = CASES_DATA[slug];
 
-  if (!caseStudy) {
-    return generateSEOMetadata({
-      title: locale === 'en' ? 'Case Study Not Found' : 'Caso de Estudio No Encontrado',
-      description: locale === 'en' ? 'The requested case study could not be found.' : 'El caso de estudio solicitado no se pudo encontrar.',
-      locale,
-      noindex: true,
-    });
-  }
+  if (!caseStudy) return { title: 'Case Study Not Found' };
 
   const isEnglish = locale === 'en';
   const title = isEnglish && caseStudy.titleEn ? caseStudy.titleEn : caseStudy.title;
-  const description = isEnglish && caseStudy.brandDescriptionEn ? caseStudy.brandDescriptionEn : caseStudy.brandDescription;
-
-  const pageTitle = slug === 'monyte'
-    ? `${title} | Monyte.co`
-    : slug === 'securitas'
-      ? `${title} | Securitas`
-      : slug === 'rac'
-        ? `${title} | RealArt Crypto`
-        : slug === 'invia'
-          ? `${title} | Invia 1912`
-          : `${title} | ${isEnglish ? 'A:BRA Case Study' : 'Caso de Estudio A:BRA'}`;
-
-  const image = caseStudy.heroImage || caseStudy.images?.[0] || '/abra.png';
-  const url = `/${locale}/case-studies/${slug}`;
-
+  
   return generateSEOMetadata({
-    title: pageTitle,
-    description: description.substring(0, 160), // Truncate to 160 chars for SEO
-    keywords: isEnglish
-      ? ['case study', caseStudy.client, 'digital transformation', 'web development', 'branding', 'UX design']
-      : ['caso de estudio', caseStudy.client, 'transformación digital', 'desarrollo web', 'branding', 'diseño UX'],
-    image,
-    url,
+    title: `${title} | A:BRA`,
+    description: (isEnglish ? caseStudy.brandDescriptionEn : caseStudy.brandDescription)?.substring(0, 160),
+    image: caseStudy.heroImage || '/abra.png',
+    url: `/${locale}/case-studies/${slug}`,
     type: 'article',
     locale,
   });
 }
 
 export function generateStaticParams() {
-  return Object.keys(CASES_DATA).map((slug) => ({
-    slug,
-  }));
+  return Object.keys(CASES_DATA).map((slug) => ({ slug }));
 }
 
 export default async function CaseStudyPage({ params }: PageProps) {
   const { slug, locale } = await params;
   const caseStudy = CASES_DATA[slug];
 
-  if (!caseStudy) {
-    notFound();
-  }
+  if (!caseStudy) notFound();
 
-  // Get localized content
   const isEnglish = locale === 'en';
   const title = isEnglish && caseStudy.titleEn ? caseStudy.titleEn : caseStudy.title;
-  const brandDescription = isEnglish && caseStudy.brandDescriptionEn ? caseStudy.brandDescriptionEn : caseStudy.brandDescription;
+  const client = caseStudy.client;
+  const description = isEnglish && caseStudy.brandDescriptionEn ? caseStudy.brandDescriptionEn : caseStudy.brandDescription;
   const situation = isEnglish && caseStudy.situationEn ? caseStudy.situationEn : caseStudy.situation;
   const task = isEnglish && caseStudy.taskEn ? caseStudy.taskEn : caseStudy.task;
   const action = isEnglish && caseStudy.actionEn ? caseStudy.actionEn : caseStudy.action;
-  const results = isEnglish && caseStudy.resultsEn ? caseStudy.resultsEn : caseStudy.results;
-  const projectDetails = isEnglish && caseStudy.projectDetailsEn ? caseStudy.projectDetailsEn : caseStudy.projectDetails;
-
-  // Localized labels
+  const metrics = (isEnglish && caseStudy.resultsEn ? caseStudy.resultsEn : caseStudy.results) || [];
+  
   const labels = {
-    brand: isEnglish ? 'Brand' : 'Marca',
-    situation: isEnglish ? 'Situation' : 'Situación',
-    situationTitle: isEnglish ? 'The Challenge' : 'El Desafío',
-    task: isEnglish ? 'Task' : 'Tarea',
-    taskTitle: isEnglish ? 'Clear Objectives' : 'Objetivos Claros',
-    action: isEnglish ? 'Action' : 'Acción',
-    actionTitle: isEnglish ? 'Strategic Execution' : 'Ejecución Estratégica',
-    visuals: isEnglish ? 'Project Visuals' : 'Visuales del Proyecto'
+    context: isEnglish ? 'Context' : 'Contexto',
+    challenge: isEnglish ? 'The Challenge' : 'El Desafío',
+    solution: isEnglish ? 'The Strategy' : 'La Estrategia',
+    execution: isEnglish ? 'Execution' : 'Ejecución',
+    results: isEnglish ? 'System Impact' : 'Impacto del Sistema',
+    visuals: isEnglish ? 'Gallery' : 'Galería Editorial'
   };
 
-  // Determine previous and next projects
-  const caseSlugs = Object.keys(CASES_DATA);
-  const currentIndex = caseSlugs.indexOf(slug);
-
-  const prevSlug = currentIndex > 0 ? caseSlugs[currentIndex - 1] : null;
-  const nextSlug = currentIndex < caseSlugs.length - 1 ? caseSlugs[currentIndex + 1] : null;
-
-  const prevProject = prevSlug ? {
-    slug: prevSlug,
-    title: isEnglish && CASES_DATA[prevSlug].titleEn ? CASES_DATA[prevSlug].titleEn! : CASES_DATA[prevSlug].title
-  } : undefined;
-
-  const nextProject = nextSlug ? {
-    slug: nextSlug,
-    title: isEnglish && CASES_DATA[nextSlug].titleEn ? CASES_DATA[nextSlug].titleEn! : CASES_DATA[nextSlug].title
-  } : undefined;
-
-
-  const image = caseStudy.heroImage || caseStudy.images?.[0] || '/abra.png';
-  const url = `/${locale}/case-studies/${slug}`;
-  const description = brandDescription;
-
-  // Generate schemas
-  const articleSchema = generateArticleSchema({
-    title,
-    description,
-    image,
-    url,
-    datePublished: caseStudy.projectDetails?.year ? `${caseStudy.projectDetails.year}-01-01` : undefined,
-  });
-
-  const breadcrumbSchema = generateBreadcrumbSchema([
-    { name: isEnglish ? 'Home' : 'Inicio', url: `/${locale}` },
-    { name: isEnglish ? 'Case Studies' : 'Casos de Estudio', url: `/${locale}/cases` },
-    { name: title, url },
-  ]);
-
-  const category = slug === 'monyte'
-    ? (isEnglish ? 'Branding' : 'Branding')
-    : slug === 'securitas'
-      ? (isEnglish ? 'User Experience' : 'Experiencia de Usuario')
-      : slug === 'rac'
-        ? (isEnglish ? 'User Experience' : 'Experiencia de Usuario')
-        : slug === 'invia'
-          ? (isEnglish ? 'E-commerce' : 'E-commerce')
-          : (projectDetails.services[0] || (isEnglish ? 'Case Study' : 'Caso de Estudio'));
-
-  if (caseStudy.template === 'audiovisual') {
-    return (
-      <div className="min-h-screen w-full bg-black overflow-x-hidden">
-        <JsonLd data={[articleSchema, breadcrumbSchema]} />
-        <TableOfContents
-          items={[
-            { id: 'situation', label: labels.situation, theme: 'dark', image: caseStudy.images?.[0] },
-            { id: 'task', label: labels.task, theme: 'dark', image: caseStudy.images?.[1] },
-            { id: 'action', label: labels.action, theme: 'dark', image: caseStudy.images?.[2] },
-            { id: 'videos', label: locale === 'en' ? 'Audiovisual Production' : 'Producción', theme: 'dark' },
-            { id: 'partner', label: 'MTM', theme: 'dark', image: caseStudy.partner?.logo }
-          ]}
-        />
-
-        <AudiovisualHero
-          title={title}
-          category={category}
-          backgroundImage={caseStudy.heroImage || ''}
-          partnerLogo={caseStudy.partner?.logo}
-          partnerName={caseStudy.partner?.name}
-        />
-
-        <Section
-          id="situation"
-          category={labels.situation}
-          title={labels.situationTitle}
-          description={situation}
-          align="left"
-          theme="dark"
-        />
-
-        {caseStudy.images?.[0] && (
-          <VisualSeparator image={caseStudy.images[0]} />
-        )}
-
-        <Section
-          id="task"
-          category={labels.task}
-          title={labels.taskTitle}
-          description={task}
-          align="right"
-          theme="dark"
-        />
-
-        {caseStudy.images?.[1] && (
-          <VisualSeparator image={caseStudy.images[1]} />
-        )}
-
-        <Section
-          id="action"
-          category={labels.action}
-          title={labels.actionTitle}
-          description={action}
-          align="left"
-          theme="dark"
-        />
-
-        {caseStudy.images?.[2] && (
-          <VisualSeparator image={caseStudy.images[2]} />
-        )}
-
-        {caseStudy.videos && caseStudy.videos.length > 0 && (
-          <div id="videos">
-            <VideoCinema videos={caseStudy.videos} locale={locale} />
-          </div>
-        )}
-
-        {caseStudy.partner && (
-          <div id="partner">
-            <PartnerSection partner={caseStudy.partner} locale={locale} />
-          </div>
-        )}
-
-        <ProjectDetails
-          details={projectDetails}
-          clientName={caseStudy.client}
-        />
-
-        <NextProjectNavigation
-          prev={prevProject}
-          next={nextProject}
-          locale={locale}
-        />
-      </div>
-    );
-  }
+  // Determine prev/next
+  const hiddenSlugs = ['duvyclass', 'gea-beauty', 'praxis-school', 'message-boutique'];
+  const slugs = Object.keys(CASES_DATA).filter(s => !hiddenSlugs.includes(s));
+  const idx = slugs.indexOf(slug);
+  const prevProject = idx > 0 ? { slug: slugs[idx-1], title: CASES_DATA[slugs[idx-1]].client } : undefined;
+  const nextProject = idx < slugs.length - 1 ? { slug: slugs[idx+1], title: CASES_DATA[slugs[idx+1]].client } : undefined;
 
   return (
-    <div className="min-h-screen w-full bg-white overflow-x-hidden">
-      <JsonLd data={[articleSchema, breadcrumbSchema]} />
-      <TableOfContents />
+    <div className="min-h-screen bg-background text-text-primary overflow-x-hidden selection:bg-white selection:text-background">
+      <JsonLd data={[
+        generateArticleSchema({ title, description, image: caseStudy.heroImage || '', url: `/${locale}/case-studies/${slug}` }),
+        generateBreadcrumbSchema([
+          { name: isEnglish ? 'Home' : 'Inicio', url: `/${locale}` },
+          { name: isEnglish ? 'Cases' : 'Casos', url: `/${locale}/cases` },
+          { name: client, url: `/${locale}/case-studies/${slug}` }
+        ])
+      ]} />
 
-      <CaseHero
+      {/* Block 1: Hero Luxury */}
+      <CaseHeroLuxury
         title={title}
-        subtitle={caseStudy.client}
-        backgroundImage={caseStudy.heroImage || "https://picsum.photos/1920/1080?grayscale"}
-        category={category}
-        imageScale={slug === 'monyte' || slug === 'securitas' || slug === 'rac' || slug === 'invia' || slug === 'different-coffee' ? 0.7 : 1}
-        imageLink={slug === 'invia' ? 'https://tiendainvia.com/' : undefined}
+        client={client}
+        category={caseStudy.projectDetails?.services[0] || 'Digital Engineering'}
+        metric={metrics[0] || { label: 'Impact', value: 'High' }}
+        backgroundImage={caseStudy.heroImage || ''}
       />
 
-      {/* Marca / Intro */}
-      <Section
-        id="brand"
-        category={labels.brand}
-        title={caseStudy.client}
-        description={brandDescription}
-        align="left"
-      />
+      {/* Block 2: Context / Quick Info */}
+      <section className="py-24 border-y border-white/5 bg-background-off">
+        <div className="container mx-auto px-6 max-w-7xl">
+           <div className="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-8">
+              <div className="space-y-4">
+                 <span className="text-[9px] font-mono uppercase tracking-[0.4em] text-text-muted">{isEnglish ? 'Sector' : 'Sector'}</span>
+                 <p className="text-lg font-light tracking-tight">{caseStudy.projectDetails?.services[0]}</p>
+              </div>
+              <div className="space-y-4">
+                 <span className="text-[9px] font-mono uppercase tracking-[0.4em] text-text-muted">{isEnglish ? 'Role' : 'Rol'}</span>
+                 <p className="text-lg font-light tracking-tight">{isEnglish ? 'Digital Strategy & Dev' : 'Estrategia Digital y Dev'}</p>
+              </div>
+              <div className="space-y-4">
+                 <span className="text-[9px] font-mono uppercase tracking-[0.4em] text-text-muted">{isEnglish ? 'Year' : 'Año'}</span>
+                 <p className="text-lg font-light tracking-tight">{caseStudy.projectDetails?.year || '2025'}</p>
+              </div>
+           </div>
+        </div>
+      </section>
 
-      {/* Situación */}
-      <Section
-        id="situation"
-        category={labels.situation}
-        title={labels.situationTitle}
+      {/* Block 3: The Challenge (Description) - Visual First */}
+      <SectionLuxury
+        category={labels.challenge}
+        title={isEnglish ? 'The Critical Pain' : 'El Dolor Crítico'}
         description={situation}
-        image={slug === 'monyte' ? '/monyte/monyte-dashboard.png' : slug === 'securitas' ? '/Securitas/Dashboard.png' : slug === 'rac' ? '/RAC/Dashboard.png' : slug === 'invia' ? '/Invia/Situacion - Tienda invia.png' : slug === 'different-coffee' ? '/differente-coffee/Differente Home.jpg' : "https://picsum.photos/800/1000?random=1"}
-        image2={slug === 'different-coffee' ? '/differente-coffee/Differente Producto.jpg' : undefined}
-        align="right"
-        hasDivider
-        floatingImage={slug === 'monyte' || slug === 'securitas' || slug === 'rac' || slug === 'invia' || slug === 'different-coffee'}
-        imageAspect="auto"
-        imageLink={slug === 'invia' ? 'https://tiendainvia.com/' : undefined}
+        image={caseStudy.images?.[0]}
+        align="full-image"
+        painPoint={isEnglish ? 'Operational Inefficiency' : 'Ineficiencia Operativa'}
       />
 
-      {/* Tarea */}
-      <Section
-        id="task"
-        category={labels.task}
-        title={labels.taskTitle}
+      {/* Block 4: The Strategy (Task) - Direct */}
+      <SectionLuxury
+        category={labels.solution}
+        title={isEnglish ? 'Tactical Engineering' : 'Ingeniería Táctica'}
         description={task}
-        align="left"
-        theme="dark"
+        theme="deep"
       />
 
-      {/* Acción */}
-      <Section
-        id="action"
-        category={labels.action}
-        title={labels.actionTitle}
+
+      {/* Block 5: Execution (Action) */}
+      <SectionLuxury
+        category={labels.execution}
+        title={isEnglish ? 'Applying the A:BRA Loop' : 'Aplicando el A:BRA Loop'}
         description={action}
-        image={slug === 'monyte' ? '/monyte/monyte-marca.png' : slug === 'securitas' ? '/Securitas/Log securitas.png' : slug === 'rac' ? '/RAC/Logo.png' : slug === 'invia' ? '/Invia/Logo- tienda invia.png' : slug === 'different-coffee' ? '/differente-coffee/Differente_Image.png' : "https://picsum.photos/800/1000?random=2"}
-        align="right"
-        floatingImage={slug === 'monyte' || slug === 'securitas' || slug === 'rac' || slug === 'invia' || slug === 'different-coffee'}
-        imageAspect="auto"
-        imageMaxWidth={slug === 'rac' ? '60%' : slug === 'invia' ? '50%' : '75%'}
-        imageLink={slug === 'invia' ? 'https://tiendainvia.com/' : undefined}
+        image={caseStudy.images?.[0]}
+        align="left"
+        imagePosition="top"
       />
 
+      {/* Block 6: Metrics Dashboard */}
+      <MetricsLuxury 
+        metrics={metrics}
+        title={labels.results}
+      />
+
+      {/* Block 7: Gallery */}
+      <div className="py-32 bg-background">
+        <ImageGrid 
+          images={caseStudy.images || []} 
+          title={labels.visuals}
+        />
+      </div>
+
+      {/* Block 8: Project Details (Credits) */}
       <ProjectDetails
-        details={projectDetails}
-        clientName={caseStudy.client}
+        details={caseStudy.projectDetails}
+        clientName={client}
       />
 
-      {caseStudy.videos && caseStudy.videos.length > 0 && (
-        <VideoGrid videos={caseStudy.videos} locale={locale} />
-      )}
-
-      <ImageGrid
-        images={caseStudy.images}
-        title={labels.visuals}
-        imageLink={slug === 'invia' ? 'https://tiendainvia.com/' : undefined}
-      />
-
+      {/* Navigation */}
       <NextProjectNavigation
         prev={prevProject}
         next={nextProject}
         locale={locale}
       />
-
     </div>
   );
 }
-
