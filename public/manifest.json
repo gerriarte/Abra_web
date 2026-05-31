@@ -1,0 +1,19 @@
+{
+  "name": "A:BRA Growth Studio",
+  "short_name": "A:BRA",
+  "description": "Studio híbrido que combina growth, IA y desarrollo de producto. Construimos sistemas de crecimiento y los productos que los hacen posibles.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0A0A0A",
+  "theme_color": "#0A0A0A",
+  "lang": "es",
+  "icons": [
+    {
+      "src": "/icon.png",
+      "sizes": "any",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["business", "productivity"]
+}

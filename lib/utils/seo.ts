@@ -130,9 +130,8 @@ export function generateOrganizationSchema() {
     logo: `${siteUrl}/abra.png`,
     description: defaultDescription.en,
     sameAs: [
-      // Agregar redes sociales cuando estén disponibles
-      // 'https://www.linkedin.com/company/abra',
-      // 'https://twitter.com/abra_agency',
+      'https://linkedin.com/company/abra',
+      'https://instagram.com/abra',
     ],
     contactPoint: {
       '@type': 'ContactPoint',
@@ -153,14 +152,6 @@ export function generateWebSiteSchema() {
     url: siteUrl,
     description: defaultDescription.en,
     inLanguage: ['en', 'es'],
-    potentialAction: {
-      '@type': 'SearchAction',
-      target: {
-        '@type': 'EntryPoint',
-        urlTemplate: `${siteUrl}/search?q={search_term_string}`,
-      },
-      'query-input': 'required name=search_term_string',
-    },
   };
 }
 
@@ -239,6 +230,72 @@ export function generateArticleSchema(config: {
       '@id': pageUrl,
     },
   };
+}
+
+/**
+ * Genera schemas JSON-LD para las oficinas LocalBusiness (Bogotá y Buenos Aires)
+ */
+export function generateLocalBusinessSchemas() {
+  const shared = {
+    '@context': 'https://schema.org',
+    '@type': 'LocalBusiness',
+    name: 'A:BRA',
+    url: siteUrl,
+    image: `${siteUrl}/abra.png`,
+    description: defaultDescription.es,
+    priceRange: '$$',
+    areaServed: ['Colombia', 'Argentina', 'Latinoamérica'],
+    availableLanguage: ['Spanish', 'English'],
+    sameAs: [siteUrl],
+  };
+
+  return [
+    {
+      ...shared,
+      '@id': `${siteUrl}/#bogota`,
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Bogotá',
+        addressRegion: 'Cundinamarca',
+        addressCountry: 'CO',
+      },
+      geo: {
+        '@type': 'GeoCoordinates',
+        latitude: 4.6097,
+        longitude: -74.0817,
+      },
+    },
+    {
+      ...shared,
+      '@id': `${siteUrl}/#buenos-aires`,
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Buenos Aires',
+        addressRegion: 'Ciudad Autónoma de Buenos Aires',
+        addressCountry: 'AR',
+      },
+      geo: {
+        '@type': 'GeoCoordinates',
+        latitude: -34.6037,
+        longitude: -58.3816,
+      },
+    },
+    {
+      ...shared,
+      '@id': `${siteUrl}/#tucuman`,
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'San Miguel de Tucumán',
+        addressRegion: 'Tucumán',
+        addressCountry: 'AR',
+      },
+      geo: {
+        '@type': 'GeoCoordinates',
+        latitude: -26.8083,
+        longitude: -65.2176,
+      },
+    },
+  ];
 }
 
 /**
