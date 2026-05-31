@@ -78,9 +78,17 @@ export default function Hero() {
 
             <motion.h1
               variants={itemVariants}
-              className="text-[2.75rem] sm:text-6xl md:text-7xl lg:text-[5.25rem] font-light leading-[0.95] tracking-[-0.03em] text-text-primary mb-8"
+              className="mb-8"
             >
-              <span className="block">{t('title')}</span>
+              <span className="block text-[2.75rem] sm:text-6xl md:text-7xl lg:text-[5.25rem] font-light leading-[0.95] tracking-[-0.03em] text-text-primary mb-5">
+                {t('titleLine1')}
+              </span>
+              <span className="flex items-center gap-3">
+                <span className="h-px w-6 bg-white/20 shrink-0" />
+                <span className="text-sm md:text-base font-mono tracking-[0.06em] text-text-muted uppercase">
+                  {t('titleLine2')}
+                </span>
+              </span>
             </motion.h1>
 
             <motion.p
