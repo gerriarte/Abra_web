@@ -34,13 +34,6 @@ const nextConfig: NextConfig = {
         ],
       },
       {
-        // Archivos JS/CSS generados por Next.js (ya tienen hash en nombre)
-        source: '/_next/static/(.*)',
-        headers: [
-          { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
-        ],
-      },
-      {
         // Sitemap y robots — revalidar semanal
         source: '/(sitemap.xml|robots.txt)',
         headers: [

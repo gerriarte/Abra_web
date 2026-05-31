@@ -4,22 +4,11 @@ import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import useOnScreen from '@/hooks/useOnScreen';
 import { SectionFlowLine } from '@/components/ui/SectionFlowLine';
+import { itemVariants } from '@/lib/animations/variants';
 
 export default function Result() {
   const t = useTranslations('result');
   const [ref, isVisible] = useOnScreen({ threshold: 0.1 });
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.8,
-        ease: [0.21, 0.47, 0.32, 0.98] as const,
-      },
-    },
-  };
 
   return (
     <section id="result" className="py-32 relative overflow-hidden border-t border-white/5">
@@ -49,12 +38,20 @@ export default function Result() {
             <SectionFlowLine variant="short" />
           </motion.div>
 
-          <motion.div variants={itemVariants} className="flex justify-center">
+          <motion.div variants={itemVariants} className="flex flex-col sm:flex-row justify-center items-center gap-4">
             <a
               href="#contact"
               className="inline-flex items-center justify-center px-10 py-5 bg-white text-background text-sm font-medium tracking-wide rounded-sm transition-all duration-300 hover:bg-white/90 hover:scale-[1.02] active:scale-[0.98]"
             >
               {t('ctaPrimary')}
+            </a>
+            <a
+              href="/A-BRA-Loop.pdf"
+              target="_blank"
+              className="inline-flex items-center justify-center px-10 py-5 border border-white/15 text-text-primary text-sm font-light tracking-wide rounded-sm transition-all duration-300 hover:bg-white/5 active:scale-[0.98]"
+            >
+              {t('ctaSecondary')}
+              <span className="ml-2 text-text-muted">↓</span>
             </a>
           </motion.div>
         </motion.div>
