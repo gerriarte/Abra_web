@@ -4,6 +4,7 @@ import { useTranslations } from 'next-intl';
 import useOnScreen from '@/hooks/useOnScreen';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowUpRight } from 'lucide-react';
 
 interface Project {
@@ -74,11 +75,15 @@ export default function Projects() {
               {/* Background Image / Fallback */}
               <div className="absolute inset-0 bg-primary-darkest">
                 {project.image ? (
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-[1.5s] ease-out group-hover:scale-110"
-                  />
+                  <div className="relative w-full h-full">
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      fill
+                      className="object-cover transition-transform duration-[1.5s] ease-out group-hover:scale-110"
+                      sizes="(max-width: 768px) 100vw, 20vw"
+                    />
+                  </div>
                 ) : (
                   <div className="w-full h-full bg-gradient-to-br from-primary-darkest to-[#0A3D6B]" />
                 )}

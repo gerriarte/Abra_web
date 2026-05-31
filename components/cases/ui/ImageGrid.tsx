@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useRef, useState, useEffect } from 'react';
+import Image from 'next/image';
 import { motion, useScroll, useTransform, useSpring, AnimatePresence } from 'framer-motion';
 import { X, ChevronLeft, ChevronRight, Maximize2 } from 'lucide-react';
 
@@ -39,11 +40,15 @@ const ParallaxImage = ({
       className={`relative overflow-hidden rounded-[2.5rem] bg-surface/10 border border-white/5 cursor-zoom-in group ${className}`}
     >
       <motion.div style={{ y: springY }} className="h-[120%] w-full -top-[10%] absolute">
-        <img 
-          src={src} 
-          alt={alt} 
-          className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110"
-        />
+        <div className="relative w-full h-full">
+          <Image
+            src={src}
+            alt={alt}
+            fill
+            className="object-cover transition-all duration-700 group-hover:scale-110"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 66vw, 800px"
+          />
+        </div>
       </motion.div>
       
       {/* Hover Overlay */}
@@ -240,11 +245,15 @@ export const ImageGrid: React.FC<ImageGridProps> = ({
               className="relative max-w-7xl w-full max-h-full flex items-center justify-center"
               onClick={(e) => e.stopPropagation()}
             >
-              <img 
-                src={displayImages[selectedIndex]} 
-                alt="Project Full View" 
-                className="max-w-full max-h-[85vh] object-contain rounded-xl shadow-[0_40px_120px_rgba(0,0,0,0.8)]"
-              />
+              <div className="relative w-full h-[85vh]">
+                <Image
+                  src={displayImages[selectedIndex]}
+                  alt="Project Full View"
+                  fill
+                  className="object-contain rounded-xl shadow-[0_40px_120px_rgba(0,0,0,0.8)]"
+                  sizes="100vw"
+                />
+              </div>
               
               {/* Image Caption / Counter */}
               <div className="absolute -bottom-16 left-1/2 -translate-x-1/2 text-center">

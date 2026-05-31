@@ -1,11 +1,18 @@
 import "./globals.css";
 import type { Metadata, Viewport } from "next";
 import Script from "next/script";
+import { Inter } from "next/font/google";
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+});
 import { GoogleTagManagerNoscript } from "@/components/analytics/GoogleTagManager";
 import GTMDebug from "@/components/analytics/GTMDebug";
 import { generateSEOMetadata } from "@/lib/utils/seo";
 import JsonLd from "@/components/seo/JsonLd";
-import { generateOrganizationSchema, generateWebSiteSchema } from "@/lib/utils/seo";
+import { generateOrganizationSchema, generateWebSiteSchema, generateLocalBusinessSchemas } from "@/lib/utils/seo";
 
 export const metadata: Metadata = {
   ...generateSEOMetadata({
@@ -36,9 +43,9 @@ export default function RootLayout({
   const gtmId = process.env.NEXT_PUBLIC_GTM_ID || 'GTM-56J4SKMV';
 
   return (
-    <html lang="en" suppressHydrationWarning className="overflow-x-hidden">
+    <html lang="en" suppressHydrationWarning className={`overflow-x-hidden ${inter.variable}`}>
       <body className="antialiased overflow-x-hidden" suppressHydrationWarning>
-        <JsonLd data={[generateOrganizationSchema(), generateWebSiteSchema()]} />
+        <JsonLd data={[generateOrganizationSchema(), generateWebSiteSchema(), ...generateLocalBusinessSchemas()]} />
         {/* Google Tag Manager (noscript) - Debe estar inmediatamente después del body */}
         <GoogleTagManagerNoscript gtmId={gtmId} />
         {/* Inicializar dataLayer antes de GTM */}

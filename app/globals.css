@@ -19,8 +19,8 @@
   --color-border-bright: rgba(255, 255, 255, 0.1);
 
   /* Typography - Refined */
-  --font-display: "General Sans", "Inter", sans-serif;
-  --font-body: "Inter", sans-serif;
+  --font-display: var(--font-inter), sans-serif;
+  --font-body: var(--font-inter), sans-serif;
   --font-mono: "JetBrains Mono", "Geist Mono", monospace;
 }
 
@@ -246,17 +246,6 @@
     pointer-events: none;
   }
 
-  /* Cloud animations */
-  @keyframes drift {
-    0% {
-      transform: translateX(-100vw) translateY(0);
-    }
-
-    100% {
-      transform: translateX(100vw) translateY(20px);
-    }
-  }
-
   /* Scroll animations */
   @keyframes fadeInUp {
     from {
@@ -352,92 +341,5 @@
   @keyframes shimmer {
     0%, 100% { opacity: 0.5; }
     50%      { opacity: 0.72; }
-  }
-
-  @keyframes atmosphere-cloud-float {
-    from { transform: translateX(-350px); }
-    to   { transform: translateX(calc(100vw + 350px)); }
-  }
-
-  @keyframes atmosphere-bubble-rise {
-    0%   { transform: translateY(0)     translateX(0);    opacity: 0.5; }
-    50%  { transform: translateY(-50vh) translateX(12px); opacity: 0.3; }
-    100% { transform: translateY(-110vh) translateX(-8px); opacity: 0; }
-  }
-
-  @keyframes atmosphere-biolum-pulse {
-    0%, 100% { opacity: 0.85; transform: scale(1); }
-    50%      { opacity: 0.12; transform: scale(0.55); }
-  }
-
-  @keyframes atmosphere-biolum-drift {
-    0%, 100% { margin-left: 0; }
-    50%      { margin-left: 22px; }
-  }
-
-  /* ═══ Creature Animation Keyframes ═══ */
-
-  @keyframes creature-traverse-ltr {
-    from { transform: translateX(-25vw); }
-    to   { transform: translateX(115vw); }
-  }
-
-  @keyframes creature-traverse-rtl {
-    from { transform: translateX(115vw); }
-    to   { transform: translateX(-25vw); }
-  }
-
-  @keyframes creature-float-drift {
-    0%   { transform: translate(0px, 0px); }
-    25%  { transform: translate(var(--drift-x, 20px), calc(var(--drift-y, 15px) * 0.5)); }
-    50%  { transform: translate(0px, var(--drift-y, 15px)); }
-    75%  { transform: translate(calc(var(--drift-x, 20px) * -0.6), calc(var(--drift-y, 15px) * 0.3)); }
-    100% { transform: translate(0px, 0px); }
-  }
-
-  @keyframes creature-wing-flap {
-    0%   { d: path("M-12 0 Q-6 -8 0 -2 Q6 -8 12 0"); }
-    100% { d: path("M-12 0 Q-6 -3 0 -2 Q6 -3 12 0"); }
-  }
-
-  @keyframes creature-jellyfish-pulse {
-    0%, 100% { rx: 35; ry: 30; }
-    50%      { rx: 32; ry: 34; }
-  }
-
-  @keyframes creature-tentacle-sway {
-    0%   { transform: translateX(0px) rotate(0deg); }
-    100% { transform: translateX(6px) rotate(3deg); }
-  }
-
-  @keyframes creature-flipper {
-    0%, 100% { transform: rotate(0deg); }
-    50%      { transform: rotate(-15deg); }
-  }
-
-  @keyframes creature-tail-sway {
-    0%, 100% { transform: rotate(0deg); }
-    25%      { transform: rotate(5deg); }
-    75%      { transform: rotate(-5deg); }
-  }
-
-  @keyframes creature-manta-wing {
-    0%, 100% { transform: scaleY(1); }
-    50%      { transform: scaleY(0.92); }
-  }
-
-  @keyframes creature-lure-sway {
-    0%, 100% { transform: rotate(0deg); }
-    50%      { transform: rotate(8deg); }
-  }
-
-  @keyframes creature-ear-flap {
-    0%   { transform: rotate(0deg); }
-    100% { transform: rotate(-12deg); }
-  }
-
-  @keyframes creature-fish-wiggle {
-    0%   { transform: translateY(0) rotate(0deg); }
-    100% { transform: translateY(2px) rotate(3deg); }
   }
 }
