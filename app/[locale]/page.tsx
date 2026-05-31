@@ -1,21 +1,26 @@
+import dynamic from 'next/dynamic';
 import Hero from '@/components/sections/Hero';
 import Problem from '@/components/sections/Problem';
 import Method from '@/components/sections/Method';
 import Services from '@/components/sections/Services';
-import Laboratory from '@/components/sections/Laboratory';
-import ClientCases from '@/components/sections/ClientCases';
-import Process from '@/components/sections/Process';
-import Founder from '@/components/sections/Founder';
-import Result from '@/components/sections/Result';
-import { PartnerShowcase } from '@/components/sections/PartnerShowcase';
-import Contact from '@/components/sections/Contact';
 import JsonLd from '@/components/seo/JsonLd';
-import { generateServiceSchema } from '@/lib/utils/seo';
-import { getLocale } from 'next-intl/server';
 
-export default async function HomePage() {
+const Laboratory = dynamic(() => import('@/components/sections/Laboratory'));
+const ClientCases = dynamic(() => import('@/components/sections/ClientCases'));
+const Process = dynamic(() => import('@/components/sections/Process'));
+const Founder = dynamic(() => import('@/components/sections/Founder'));
+const PartnerShowcase = dynamic(() =>
+  import('@/components/sections/PartnerShowcase').then(m => ({ default: m.PartnerShowcase }))
+);
+const Result = dynamic(() => import('@/components/sections/Result'));
+const Contact = dynamic(() => import('@/components/sections/Contact'));
+import { generateServiceSchema } from '@/lib/utils/seo';
+import { setRequestLocale } from 'next-intl/server';
+
+export default async function HomePage({ params }: { params: Promise<{ locale: string }> }) {
   try {
-    const locale = await getLocale();
+    const { locale } = await params;
+    setRequestLocale(locale);
     const isEnglish = locale === 'en';
 
     const servicesData = isEnglish

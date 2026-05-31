@@ -1,8 +1,9 @@
 {
   "hero": {
     "eyebrow": "Agencia · Studio · Laboratorio de IA",
-    "title": "Construimos sistemas de crecimiento. Y los productos que los hacen posibles.",
-    "subtitle": "A:BRA no es una agencia más. Somos un studio híbrido donde el growth está potenciado por capacidad técnica real, y donde cada desarrollo nace con visión de marketing. La estrategia que te recomendamos es la misma que usamos para construir nuestros propios productos —como Nougram— y validarla con datos antes de aplicarla a tu negocio.",
+    "titleLine1": "Construimos sistemas de crecimiento.",
+    "titleLine2": "Y los productos que los hacen posibles.",
+    "subtitle": "Studio híbrido de growth e ingeniería. Lo que recomendamos, primero lo validamos en nuestros propios productos.",
     "ctaPrimary": "Agendar diagnóstico gratuito →",
     "ctaSecondary": "Conocer el método",
     "statusLabel": "Sistema activo",
@@ -64,8 +65,9 @@
 
   "result": {
     "title": "¿Listo para dejar de operar a ciegas?",
-    "description": "Conectamos marketing, producto y tecnología en un solo sistema. El mismo framework que aplicamos en Nougram y en cada cliente, ahora para tu operación.",
-    "ctaPrimary": "Agendar diagnóstico gratuito →"
+    "description": "Descargá el A:BRA Loop completo en PDF. Es el mismo framework que aplicamos a nuestros productos y a clientes. Te muestra cómo conectar marketing, producto y tecnología en un sistema único.",
+    "ctaPrimary": "Agendar diagnóstico gratuito →",
+    "ctaSecondary": "Descargar A:BRA Loop PDF"
   },
 
   "contact": {
@@ -195,6 +197,19 @@
           "01": "Asegurá tu ganancia neta antes de firmar cada propuesta.",
           "02": "Dejá la matemática a la IA y recuperá foco en crear valor.",
           "03": "Pensado para consultores, diseñadores, marketers y agencias."
+        }
+      },
+      "agent-x": {
+        "eyebrow": "En incubación",
+        "title": "Agent-X",
+        "headline": "Tu equipo de growth asistido por agentes autónomos.",
+        "description": "Orquestador de agentes de IA especializados en pauta, SEO y análisis de datos. Escalabilidad técnica para operaciones de marketing complejas.",
+        "status": "Beta",
+        "cta": "Lista de espera",
+        "highlights": {
+          "01": "Automatización de bidding y segmentación en tiempo real.",
+          "02": "Generación de reportes ejecutivos con insights predictivos.",
+          "03": "Integración nativa con los principales CRMs del mercado."
         }
       }
     }

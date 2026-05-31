@@ -1,9 +1,9 @@
-﻿'use client';
+'use client';
 
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import useOnScreen from '@/hooks/useOnScreen';
-import { SectionFlowLine } from '@/components/ui/SectionFlowLine';
+import { heroContainerVariants, itemVariants } from '@/lib/animations/variants';
 
 const LOOP_PHASES = ['metric01', 'metric02', 'metric03', 'metric04'] as const;
 
@@ -11,34 +11,11 @@ export default function Hero() {
   const t = useTranslations('hero');
   const [ref, isVisible] = useOnScreen({ threshold: 0.1 });
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.12,
-        delayChildren: 0.35,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 28 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.9,
-        ease: [0.21, 0.47, 0.32, 0.98] as const,
-      },
-    },
-  };
-
   return (
     <section
       id="hero"
       ref={ref}
-      className="relative min-h-[100svh] flex items-center pt-28 pb-16 md:pt-32 md:pb-24 overflow-hidden"
+      className="relative min-h-[100svh] flex items-center pt-24 pb-16 md:pt-28 md:pb-20 overflow-hidden"
     >
       <div className="absolute inset-0 z-0 pointer-events-none" aria-hidden>
         <div className="hero-tech-grid absolute inset-0 opacity-[0.35]" />
@@ -53,12 +30,13 @@ export default function Hero() {
       <div className="container mx-auto px-4 lg:px-8 relative z-10 max-w-7xl">
         <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-16 lg:gap-12 items-center">
           <motion.div
-            variants={containerVariants}
+            variants={heroContainerVariants}
             initial="hidden"
             animate={isVisible ? 'visible' : 'hidden'}
             className="max-w-3xl"
           >
-            <motion.div variants={itemVariants} className="mb-8 flex flex-wrap items-center gap-4">
+            {/* Eyebrow */}
+            <motion.div variants={itemVariants} className="mb-6 flex flex-wrap items-center gap-4">
               <span className="inline-flex items-center gap-2.5 text-[10px] font-mono uppercase tracking-[0.45em] text-text-muted">
                 <span className="relative flex h-1.5 w-1.5">
                   <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400/40 opacity-75" />
@@ -72,53 +50,51 @@ export default function Hero() {
               </span>
             </motion.div>
 
-            <motion.div variants={itemVariants} className="mb-10">
-              <SectionFlowLine className="mb-8" variant="short" />
-            </motion.div>
-
-            <motion.h1
-              variants={itemVariants}
-              className="text-[2.75rem] sm:text-6xl md:text-7xl lg:text-[5.25rem] font-light leading-[0.95] tracking-[-0.03em] text-text-primary mb-8"
-            >
-              <span className="block">{t('title')}</span>
+            {/* Headline */}
+            <motion.h1 variants={itemVariants} className="mb-6">
+              <span className="block text-[2.75rem] sm:text-6xl md:text-7xl lg:text-[5.25rem] font-light leading-[0.95] tracking-[-0.03em] text-text-primary mb-4">
+                {t('titleLine1')}
+              </span>
+              <span className="flex items-center gap-3">
+                <span className="h-px w-6 bg-white/20 shrink-0" />
+                <span className="text-sm md:text-base font-mono tracking-[0.06em] text-text-muted uppercase">
+                  {t('titleLine2')}
+                </span>
+              </span>
             </motion.h1>
 
+            {/* Subtitle — short, no border treatment */}
             <motion.p
               variants={itemVariants}
-              className="text-base md:text-lg font-light leading-relaxed text-text-secondary max-w-xl mb-10 border-l border-white/10 pl-5"
+              className="text-base md:text-lg font-light leading-relaxed text-text-secondary max-w-md mb-8"
             >
               {t('subtitle')}
             </motion.p>
 
-            <motion.div
-              variants={itemVariants}
-              className="flex flex-wrap gap-2 mb-12"
-            >
+            {/* Loop phases — solo mobile, en desktop están en el diagrama */}
+            <motion.div variants={itemVariants} className="flex flex-wrap gap-x-5 gap-y-2 mb-8 lg:hidden">
               {LOOP_PHASES.map((key, index) => (
-                <span
-                  key={key}
-                  className="inline-flex items-center gap-2 rounded-full border border-white/[0.08] bg-white/[0.02] px-3 py-1.5 text-[10px] font-mono uppercase tracking-[0.2em] text-text-muted"
-                >
-                  <span className="text-white/25">{String(index + 1).padStart(2, '0')}</span>
+                <span key={key} className="inline-flex items-center gap-1.5 text-[10px] font-mono uppercase tracking-[0.2em] text-text-muted/60">
+                  <span className="text-white/20">{String(index + 1).padStart(2, '0')}</span>
                   {t(key)}
                 </span>
               ))}
             </motion.div>
 
+            {/* CTAs */}
             <motion.div
               variants={itemVariants}
-              className="flex flex-col sm:flex-row gap-4 items-stretch sm:items-center"
+              className="flex flex-col sm:flex-row gap-3 items-stretch sm:items-center"
             >
               <a
                 href="#contact"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-background text-sm font-medium tracking-wide rounded-sm transition-all duration-300 hover:bg-white/90 active:scale-[0.98]"
+                className="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-white text-background text-sm font-medium tracking-wide rounded-sm transition-all duration-300 hover:bg-white/90 active:scale-[0.98]"
               >
                 {t('ctaPrimary')}
               </a>
-
               <a
                 href="#method"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 text-sm font-light text-text-primary rounded-sm border border-white/15 hover:border-white/30 hover:bg-white/[0.03] transition-all duration-300"
+                className="inline-flex items-center justify-center gap-2 px-8 py-3.5 text-sm font-light text-text-primary rounded-sm border border-white/15 hover:border-white/30 hover:bg-white/[0.03] transition-all duration-300"
               >
                 {t('ctaSecondary')}
                 <span className="text-text-muted">→</span>
@@ -126,6 +102,7 @@ export default function Hero() {
             </motion.div>
           </motion.div>
 
+          {/* Diagrama derecho */}
           <motion.div
             initial={{ opacity: 0, scale: 0.96 }}
             animate={isVisible ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.96 }}

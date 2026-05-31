@@ -1,8 +1,9 @@
 {
   "hero": {
     "eyebrow": "Agency · Studio · AI Laboratory",
-    "title": "We build growth systems. And the products that make them possible.",
-    "subtitle": "A:BRA is not just another agency. We are a hybrid studio where growth is powered by real technical capability, and where every development is born with a marketing vision. The strategy we recommend is the same one we use to build our own products —like Nougram— and validate it with data before applying it to your business.",
+    "titleLine1": "We build growth systems.",
+    "titleLine2": "And the products that make them possible.",
+    "subtitle": "A hybrid growth and engineering studio. What we recommend, we first validate in our own products.",
     "ctaPrimary": "Schedule a free diagnosis →",
     "ctaSecondary": "Meet the method",
     "statusLabel": "System online",
@@ -64,8 +65,9 @@
 
   "result": {
     "title": "Ready to stop operating blindly?",
-    "description": "We connect marketing, product, and technology into one system. The same framework we use at Nougram and with every client, now for your operation.",
-    "ctaPrimary": "Schedule a free diagnosis →"
+    "description": "Download the complete A:BRA Loop in PDF. It's the same framework we use for our products and clients. It shows you how to connect marketing, product, and technology into a single system.",
+    "ctaPrimary": "Schedule a free diagnosis →",
+    "ctaSecondary": "Download A:BRA Loop PDF"
   },
 
   "contact": {
@@ -195,6 +197,19 @@
           "01": "Secure your net profit before signing each deal.",
           "02": "Let AI handle the math and regain focus on creating value.",
           "03": "Built for consultants, designers, marketers, and agencies."
+        }
+      },
+      "agent-x": {
+        "eyebrow": "In incubation",
+        "title": "Agent-X",
+        "headline": "Your growth team assisted by autonomous agents.",
+        "description": "Orchestrator of AI agents specialized in ads, SEO, and data analysis. Technical scalability for complex marketing operations.",
+        "status": "Beta",
+        "cta": "Waitlist",
+        "highlights": {
+          "01": "Real-time bidding and segmentation automation.",
+          "02": "Executive report generation with predictive insights.",
+          "03": "Native integration with major market CRMs."
         }
       }
     }

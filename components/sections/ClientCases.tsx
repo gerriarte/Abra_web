@@ -3,6 +3,7 @@
 import { useLocale, useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import useOnScreen from '@/hooks/useOnScreen';
+import { sectionContainerVariants, itemVariants } from '@/lib/animations/variants';
 import Image from 'next/image';
 import Link from 'next/link';
 import { SectionFlowLine } from '@/components/ui/SectionFlowLine';
@@ -14,6 +15,8 @@ const FEATURED_SLUGS: { slug: string; size: CaseSize }[] = [
   { slug: 'ruta-teatro', size: 'large' },
   { slug: 'monyte', size: 'medium' },
   { slug: 'securitas', size: 'medium' },
+  { slug: 'different-coffee', size: 'medium' },
+  { slug: 'bestune', size: 'medium' },
 ];
 
 function formatMetricValue(metric: Metric): string {
@@ -68,25 +71,6 @@ export default function ClientCases() {
     (item): item is NonNullable<ReturnType<typeof buildFeaturedCase>> => item !== null
   );
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.1 },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 1,
-        ease: [0.21, 0.47, 0.32, 0.98] as const,
-      },
-    },
-  };
 
   const sizeClasses: Record<CaseSize, string> = {
     large: 'md:col-span-8 md:row-span-2 min-h-[320px] md:min-h-0',
@@ -105,7 +89,7 @@ export default function ClientCases() {
       <div className="container mx-auto px-4 lg:px-8 relative z-10 max-w-7xl">
         <motion.div
           ref={ref}
-          variants={containerVariants}
+          variants={sectionContainerVariants}
           initial="hidden"
           animate={isVisible ? 'visible' : 'hidden'}
           className="max-w-6xl mx-auto"
