@@ -5,7 +5,7 @@
       "title": "Ruta Teatro Bogotá",
       "category": "Estrategia & Web",
       "description": "Ecosistema digital integrado para la escena teatral de Bogotá, centralizando la oferta cultural y optimizando la conversión.",
-      "image": "/cases/Ruta Teatro Bogotá/rutateatro-home.png",
+      "image": "/cases/Ruta Teatro Bogotá/rutateatro-home.webp",
       "url": "https://rutateatro.com",
       "cases": [
         {
@@ -40,7 +40,7 @@
       "title": "Monyte",
       "category": "Branding & Desarrollo",
       "description": "Plataforma unificada para arbitraje de criptoactivos en LATAM con dashboard integral para operaciones crypto y fiat.",
-      "image": "/monyte/Monyte Banner.png",
+      "image": "/monyte/Monyte Banner.webp",
       "cases": [
         {
           "id": "monyte-case-001",
@@ -75,7 +75,7 @@
       "title": "Securitas",
       "category": "UX/UI & Desarrollo",
       "description": "Transformación digital para seguridad aeroportuaria con dashboard integral para optimización de procesos operativos.",
-      "image": "/Securitas/Mockup dashboard.png",
+      "image": "/Securitas/Mockup dashboard.webp",
       "cases": [
         {
           "id": "securitas-case-001",
@@ -110,7 +110,7 @@
       "title": "RealArt Crypto",
       "category": "UX/UI & Blockchain",
       "description": "Plataforma de inversión en arte con Blockchain y Web3 para democratizar el acceso a piezas de arte curadas.",
-      "image": "/RAC/Mockup Website.png",
+      "image": "/RAC/Mockup Website.webp",
       "cases": [
         {
           "id": "rac-case-001",
@@ -145,7 +145,7 @@
       "title": "Invia 1912",
       "category": "E-commerce & Desarrollo",
       "description": "E-commerce para maquinaria industrial de bebidas y alimentos con más de 1500 productos, atendiendo múltiples países europeos.",
-      "image": "/Invia/Hero - Tienda Invia.png",
+      "image": "/Invia/Hero - Tienda Invia.webp",
       "cases": [
         {
           "id": "invia-case-001",
@@ -180,7 +180,7 @@
       "title": "Bestune",
       "category": "Producción Audiovisual",
       "description": "Campaña publicitaria cinematográfica para el lanzamiento de la línea de vehículos eléctricos Bestune en LATAM.",
-      "image": "/Bestune/Bestune-01.jpg",
+      "image": "/Bestune/Bestune-01.webp",
       "cases": [
         {
           "id": "bestune-case-001",
@@ -199,7 +199,7 @@
       "title": "Differente Coffee",
       "category": "Growth & Web Design",
       "description": "Rediseño web y estrategia de growth marketing que logró un crecimiento mensual del 15% con optimización de pauta digital.",
-      "image": "/differente-coffee/Differente-mock.png",
+      "image": "/differente-coffee/Differente-mock.webp",
       "cases": [
         {
           "id": "different-coffee-001",
@@ -234,7 +234,7 @@
       "title": "A:BRA Latam",
       "category": "Algunos Proyectos",
       "description": "Ecosistemas visuales inteligentes y narrativa en movimiento diseñados para maximizar el impacto y la retención en entornos digitales críticos.",
-      "image": "/abra.png",
+      "image": "/abra.webp",
       "cases": []
     }
   ]

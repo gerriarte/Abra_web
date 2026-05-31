@@ -7,7 +7,7 @@ export default function GerardoRiarteLandingPage() {
         <section className="flex min-h-[72vh] flex-col items-center justify-center text-center sm:min-h-[78vh]">
           <div className="mb-6 rounded-full border border-white/10 bg-white/5 p-1.5">
             <Image
-              src="/Gerardo Riarte.jpeg"
+              src="/Gerardo Riarte.webp"
               alt="Gerardo Riarte"
               width={176}
               height={176}

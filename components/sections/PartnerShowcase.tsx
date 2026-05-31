@@ -16,7 +16,7 @@ interface Partner {
 const PARTNERS: Partner[] = [
     {
         name: 'MTM Marca tu Marca',
-        logo: '/Bestune/MTM-Marca-tu-marca-brand.jpeg',
+        logo: '/Bestune/MTM-Marca-tu-marca-brand.webp',
         url: 'https://mtmmarcatumarca.com',
         description: 'Expertos en producción audiovisual de alto impacto y narrativa visual cinematográfica.',
         descriptionEn: 'Experts in high-impact audiovisual production and cinematic visual storytelling.'

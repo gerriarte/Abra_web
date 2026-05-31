@@ -75,7 +75,7 @@ export default function Header() {
           {/* Logo */}
           <Link href={`/${locale}`} className="flex items-center flex-shrink-0 min-w-0">
             <Image
-              src="/abra-blanco.png"
+              src="/abra-blanco.webp"
               alt="A:BRA"
               width={90}
               height={28}

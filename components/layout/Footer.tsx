@@ -13,7 +13,7 @@ export default function Footer() {
           {/* Logo & Info */}
           <div className="col-span-1 md:col-span-2 space-y-6">
             <Image
-              src="/abra-blanco.png"
+              src="/abra-blanco.webp"
               alt="A:BRA Logo"
               width={100}
               height={32}

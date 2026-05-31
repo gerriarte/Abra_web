@@ -86,13 +86,13 @@ export const CASES_DATA: Record<string, CaseStudy> = {
         { role: 'Lead Designer', name: 'Abra Team' }
       ]
     },
-    heroImage: '/differente-coffee/Differente-mock.png',
+    heroImage: '/differente-coffee/Differente-mock.webp',
     images: [
-      '/differente-coffee/Differente Home.jpg',
-      '/differente-coffee/Differente Tienda.jpg',
-      '/differente-coffee/Differente Producto.jpg',
-      '/differente-coffee/Differente Coffee negocios.jpg',
-      '/differente-coffee/Differente Coffee nosotros.jpg'
+      '/differente-coffee/Differente Home.webp',
+      '/differente-coffee/Differente Tienda.webp',
+      '/differente-coffee/Differente Producto.webp',
+      '/differente-coffee/Differente Coffee negocios.webp',
+      '/differente-coffee/Differente Coffee nosotros.webp'
     ]
   },
   'monyte': {
@@ -129,11 +129,11 @@ export const CASES_DATA: Record<string, CaseStudy> = {
       services: ['Branding', 'User Experience Design', 'Web Design', 'User Interface Design', 'Front-end and Back-end Development', 'Development and Integration', 'Crypto Consulting', 'Training and Support'],
       team: []
     },
-    heroImage: '/monyte/Monyte Banner.png',
+    heroImage: '/monyte/Monyte Banner.webp',
     images: [
-      '/monyte/monyte-mobile-1.png',
-      '/monyte/mobile-2.png',
-      '/monyte/mobile-3.png'
+      '/monyte/monyte-mobile-1.webp',
+      '/monyte/mobile-2.webp',
+      '/monyte/mobile-3.webp'
     ]
   },
   'securitas': {
@@ -170,9 +170,9 @@ export const CASES_DATA: Record<string, CaseStudy> = {
       services: ['User Experience Re-design', 'User Interface Design', 'Web Design', 'Front-end Development', 'Back-end Development', 'User Testing', 'Training', 'Support'],
       team: []
     },
-    heroImage: '/Securitas/Mockup dashboard.png',
+    heroImage: '/Securitas/Mockup dashboard.webp',
     images: [
-      '/Securitas/Mobile pantallas.png'
+      '/Securitas/Mobile pantallas.webp'
     ]
   },
   'rac': {
@@ -209,10 +209,10 @@ export const CASES_DATA: Record<string, CaseStudy> = {
       services: ['Discovery', 'User Experience Design', 'User Interface Design', 'Blockchain Consulting', 'Crypto Consulting', 'Web3 Consulting'],
       team: []
     },
-    heroImage: '/RAC/Mockup Website.png',
+    heroImage: '/RAC/Mockup Website.webp',
     images: [
-      '/RAC/Pantallas 1.png',
-      '/RAC/Pantallas 2.png'
+      '/RAC/Pantallas 1.webp',
+      '/RAC/Pantallas 2.webp'
     ]
   },
   'invia': {
@@ -230,7 +230,7 @@ export const CASES_DATA: Record<string, CaseStudy> = {
       { label: 'Satisfacción del Cliente', value: '9.1', suffix: '/10' },
     ],
     projectDetails: {
-      logo: '/Invia/Logo- tienda invia.png',
+      logo: '/Invia/Logo- tienda invia.webp',
       services: ['Diseño de Experiencia de Usuario', 'Diseño Web', 'Diseño de Interfaz de Usuario', 'Desarrollo en WordPress', 'Desarrollo e Integración'],
       team: []
     },
@@ -247,13 +247,13 @@ export const CASES_DATA: Record<string, CaseStudy> = {
       { label: 'Client Satisfaction', value: '9.1', suffix: '/10' },
     ],
     projectDetailsEn: {
-      logo: '/Invia/Logo- tienda invia.png',
+      logo: '/Invia/Logo- tienda invia.webp',
       services: ['User Experience Design', 'Web Design', 'User Interface Design', 'WordPress Development', 'Development and Integration'],
       team: []
     },
-    heroImage: '/Invia/Hero - Tienda Invia.png',
+    heroImage: '/Invia/Hero - Tienda Invia.webp',
     images: [
-      '/Invia/visuales del proyecto - Tienda invia.png'
+      '/Invia/visuales del proyecto - Tienda invia.webp'
     ]
   },
   'bestune': {
@@ -262,7 +262,7 @@ export const CASES_DATA: Record<string, CaseStudy> = {
     template: 'audiovisual',
     partner: {
       name: 'MTM Marca tu Marca',
-      logo: '/Bestune/MTM-Marca-tu-marca-brand.jpeg'
+      logo: '/Bestune/MTM-Marca-tu-marca-brand.webp'
     },
     title: 'Electrificando el Futuro: Producción Publicitaria para Bestune',
     brandDescription: 'Bestune es una marca automotriz de vanguardia enfocada en la movilidad eléctrica sostenible. Con un diseño audaz y tecnología de punta.',
@@ -275,8 +275,8 @@ export const CASES_DATA: Record<string, CaseStudy> = {
       { label: 'Retención de Video', value: '85', suffix: '%' },
       { label: 'Satisfacción de Marca', value: '9.8', suffix: '/10' },
     ],
-    heroImage: '/Bestune/Bestune-01.jpg',
-    images: ['/Bestune/Bestune-02.jpg', '/Bestune/Bestune-03.jpg', '/Bestune/Bestune-04.jpg'],
+    heroImage: '/Bestune/Bestune-01.webp',
+    images: ['/Bestune/Bestune-02.webp', '/Bestune/Bestune-03.webp', '/Bestune/Bestune-04.webp'],
     projectDetails: { year: '2025', services: ['Producción Audiovisual', 'Estrategia de Marca'], team: [] }
   },
   'ruta-teatro': {
@@ -293,14 +293,14 @@ export const CASES_DATA: Record<string, CaseStudy> = {
       { label: 'Usuarios Activos', value: '15', suffix: 'k+' },
       { label: 'Visibilidad Teatros', value: 'Alta', suffix: '' },
     ],
-    heroImage: '/cases/Ruta Teatro Bogotá/rutateatro-home.png',
+    heroImage: '/cases/Ruta Teatro Bogotá/rutateatro-home.webp',
     images: [
-      '/cases/Ruta Teatro Bogotá/rutateatro-home.png',
-      '/cases/Ruta Teatro Bogotá/Rutateatro-cartelera.png',
-      '/cases/Ruta Teatro Bogotá/rutateatro-mapa.png',
-      '/cases/Ruta Teatro Bogotá/Rutateatro-obra.png',
-      '/cases/Ruta Teatro Bogotá/rutateatro-loquesevivio.png',
-      '/cases/Ruta Teatro Bogotá/rutateatro-grupoteatral.png'
+      '/cases/Ruta Teatro Bogotá/rutateatro-home.webp',
+      '/cases/Ruta Teatro Bogotá/Rutateatro-cartelera.webp',
+      '/cases/Ruta Teatro Bogotá/rutateatro-mapa.webp',
+      '/cases/Ruta Teatro Bogotá/Rutateatro-obra.webp',
+      '/cases/Ruta Teatro Bogotá/rutateatro-loquesevivio.webp',
+      '/cases/Ruta Teatro Bogotá/rutateatro-grupoteatral.webp'
     ],
     projectDetails: { year: '2025', services: ['Estrategia Digital', 'Desarrollo Web'], team: [] },
     titleEn: 'Digitalizing Bogotá\'s Theater Scene',
@@ -329,8 +329,8 @@ export const CASES_DATA: Record<string, CaseStudy> = {
       { label: 'Conversión Web', value: '+55', suffix: '%' },
       { label: 'Recurrencia', value: 'High', suffix: '' },
     ],
-    heroImage: '/cases/duvyclass.png',
-    images: ['/cases/duvyclass.png'],
+    heroImage: '/cases/duvyclass.webp',
+    images: ['/cases/duvyclass.webp'],
     projectDetails: { year: '2024', services: ['Data Engineering', 'Growth Marketing'], team: [] }
   },
   'gea-beauty': {
@@ -347,8 +347,8 @@ export const CASES_DATA: Record<string, CaseStudy> = {
       { label: 'Autoridad Marca', value: 'Elite', suffix: '' },
       { label: 'Retención', value: '95', suffix: '%' },
     ],
-    heroImage: '/cases/gea-beauty.png',
-    images: ['/cases/gea-beauty.png'],
+    heroImage: '/cases/gea-beauty.webp',
+    images: ['/cases/gea-beauty.webp'],
     projectDetails: { year: '2025', services: ['UI/UX Design', 'Lead Generation'], team: [] }
   },
   'praxis-school': {
@@ -365,8 +365,8 @@ export const CASES_DATA: Record<string, CaseStudy> = {
       { label: 'Conversión Móvil', value: '+70', suffix: '%' },
       { label: 'Ventas Orgánicas', value: '+25', suffix: '%' },
     ],
-    heroImage: '/cases/praxis-school.png',
-    images: ['/cases/praxis-school.png'],
+    heroImage: '/cases/praxis-school.webp',
+    images: ['/cases/praxis-school.webp'],
     projectDetails: { year: '2024', services: ['EdTech Engineering', 'Conversion Optimization'], team: [] }
   },
   'message-boutique': {
@@ -383,8 +383,8 @@ export const CASES_DATA: Record<string, CaseStudy> = {
       { label: 'Ventas Mensuales', value: '+45', suffix: '%' },
       { label: 'Satisfacción', value: '4.9', suffix: '/5' },
     ],
-    heroImage: '/cases/message-boutique.png',
-    images: ['/cases/message-boutique.png'],
+    heroImage: '/cases/message-boutique.webp',
+    images: ['/cases/message-boutique.webp'],
     projectDetails: { year: '2025', services: ['E-commerce', 'Visual Strategy'], team: [] }
   }
 };
