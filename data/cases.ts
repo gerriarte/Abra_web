@@ -386,6 +386,49 @@ export const CASES_DATA: Record<string, CaseStudy> = {
     heroImage: '/cases/message-boutique.webp',
     images: ['/cases/message-boutique.webp'],
     projectDetails: { year: '2025', services: ['E-commerce', 'Visual Strategy'], team: [] }
+  },
+  'incap': {
+    id: 'incap-case-001',
+    client: 'Grupo INCAP',
+    title: 'Modernización de Marca y Estrategia Comercial para Grupo INCAP',
+    brandDescription: 'Grupo INCAP es una compañía colombiana que desde 1969 fabrica adhesivos industriales de alto rendimiento para los sectores de madera y muebles, colchones y espumas, calzado y marroquinería. Más de 56 años de maestría técnica al servicio de la industria, con asesoría especializada directamente en la planta del cliente y un compromiso real con la seguridad de los operarios.',
+    situation: 'Una marca con más de medio siglo de trayectoria técnica necesitaba que su identidad, su comunicación y su narrativa comercial estuvieran a la altura del liderazgo que ya ejercía en planta. La percepción de marca no reflejaba la profundidad de su conocimiento ni la solidez de su propuesta de valor.',
+    task: 'Modernizar y rediseñar la identidad de marca, ordenar la comunicación y construir una estrategia comercial que conectara la maestría técnica de INCAP con el lenguaje y las necesidades de sus clientes industriales.',
+    action: 'Junto a MTM Marca tu Marca abordamos el proyecto de punta a punta: rediseño de identidad de marca, sistema de comunicación coherente y una estrategia comercial alineada al negocio. Un trabajo conjunto que recoge la trayectoria de INCAP y la proyecta hacia su próxima etapa de crecimiento.',
+    results: [
+      { label: 'Trayectoria', value: '56', suffix: '+ años' },
+      { label: 'Identidad', value: 'Renovada' },
+      { label: 'Comunicación', value: '360°' },
+      { label: 'Estrategia Comercial', value: 'Activada' },
+    ],
+    partner: {
+      name: 'MTM Marca tu Marca',
+      logo: '/Bestune/MTM-Marca-tu-marca-brand.webp',
+    },
+    projectDetails: {
+      year: '2025',
+      services: ['Branding', 'Estrategia de Marca', 'Comunicación', 'Estrategia Comercial'],
+      team: [],
+    },
+    // English translations
+    titleEn: 'Brand Modernization and Commercial Strategy for Grupo INCAP',
+    brandDescriptionEn: 'Grupo INCAP is a Colombian company that since 1969 has manufactured high-performance industrial adhesives for the wood and furniture, mattress and foam, footwear and leather goods sectors. Over 56 years of technical mastery serving the industry, with specialized advisory directly on the client\'s factory floor and a real commitment to operator safety.',
+    situationEn: 'A brand with more than half a century of technical expertise needed its identity, communication, and commercial narrative to match the leadership it already exercised on the factory floor. Brand perception did not reflect the depth of its knowledge nor the strength of its value proposition.',
+    taskEn: 'Modernize and redesign the brand identity, structure communication, and build a commercial strategy that connected INCAP\'s technical mastery with the language and needs of its industrial clients.',
+    actionEn: 'Together with MTM Marca tu Marca, we approached the project end to end: brand identity redesign, a coherent communication system, and a commercial strategy aligned with the business. A joint effort that captures INCAP\'s legacy and projects it toward its next stage of growth.',
+    resultsEn: [
+      { label: 'Track Record', value: '56', suffix: '+ years' },
+      { label: 'Identity', value: 'Renewed' },
+      { label: 'Communication', value: '360°' },
+      { label: 'Commercial Strategy', value: 'Activated' },
+    ],
+    projectDetailsEn: {
+      year: '2025',
+      services: ['Branding', 'Brand Strategy', 'Communication', 'Commercial Strategy'],
+      team: [],
+    },
+    heroImage: '/cases/incap.webp',
+    images: ['/cases/incap.webp'],
   }
 };
 
