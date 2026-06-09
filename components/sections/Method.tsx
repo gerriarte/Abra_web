@@ -3,8 +3,39 @@
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import useOnScreen from '@/hooks/useOnScreen';
+import useSpotlight from '@/hooks/useSpotlight';
 import { SectionFlowLine } from '@/components/ui/SectionFlowLine';
 import { sectionContainerVariants, itemVariants } from '@/lib/animations/variants';
+
+function MethodCard({ keyId }: { keyId: string }) {
+  const t = useTranslations('method');
+  const { onMouseMove, background } = useSpotlight(360, 'rgba(0,122,255,0.08)');
+  return (
+    <motion.div variants={itemVariants} className="group" onMouseMove={onMouseMove}>
+      <div className="relative h-full overflow-hidden p-8 rounded-3xl bg-background border border-white/5 hover:border-primary/50 transition-all duration-500 flex flex-col items-center text-center">
+        <motion.span
+          aria-hidden
+          style={{ background }}
+          className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+        />
+        <div className="relative mb-6">
+          <div className="w-16 h-16 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center text-primary font-mono text-xl group-hover:bg-primary group-hover:text-background transition-all duration-500 shadow-[0_0_20px_rgba(0,122,255,0.1)]">
+            {keyId}
+          </div>
+          <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 px-2 py-0.5 bg-background border border-white/10 rounded text-[10px] font-mono uppercase tracking-widest text-text-muted">
+            {t(`phases.${keyId}.name`)}
+          </div>
+        </div>
+        <h3 className="relative text-xl font-medium text-text-primary mb-4 group-hover:text-primary transition-colors duration-300">
+          {t(`phases.${keyId}.title`)}
+        </h3>
+        <p className="relative text-sm text-text-secondary font-light leading-relaxed">
+          {t(`phases.${keyId}.description`)}
+        </p>
+      </div>
+    </motion.div>
+  );
+}
 
 export default function Method() {
   const t = useTranslations('method');
@@ -53,32 +84,8 @@ export default function Method() {
             <div className="hidden lg:block absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent -translate-y-1/2" />
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10">
-              {phases.map((key, index) => (
-                <motion.div
-                  key={key}
-                  variants={itemVariants}
-                  className="group"
-                >
-                  <div className="h-full p-8 rounded-3xl bg-background border border-white/5 hover:border-primary/50 transition-all duration-500 flex flex-col items-center text-center">
-                    {/* Phase Number & Name */}
-                    <div className="mb-6 relative">
-                       <div className="w-16 h-16 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center text-primary font-mono text-xl group-hover:bg-primary group-hover:text-background transition-all duration-500 shadow-[0_0_20px_rgba(0,122,255,0.1)]">
-                         {key}
-                       </div>
-                       <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 px-2 py-0.5 bg-background border border-white/10 rounded text-[10px] font-mono uppercase tracking-widest text-text-muted">
-                         {t(`phases.${key}.name`)}
-                       </div>
-                    </div>
-
-                    <h3 className="text-xl font-medium text-text-primary mb-4 group-hover:text-primary transition-colors duration-300">
-                      {t(`phases.${key}.title`)}
-                    </h3>
-                    
-                    <p className="text-sm text-text-secondary font-light leading-relaxed">
-                      {t(`phases.${key}.description`)}
-                    </p>
-                  </div>
-                </motion.div>
+              {phases.map((key) => (
+                <MethodCard key={key} keyId={key} />
               ))}
             </div>
           </div>

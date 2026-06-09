@@ -3,6 +3,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import useOnScreen from '@/hooks/useOnScreen';
+import AnimatedNumber from '@/components/motion/AnimatedNumber';
 
 interface Metric {
   label: string;
@@ -45,8 +46,8 @@ export const MetricsLuxury: React.FC<MetricsLuxuryProps> = ({ metrics, title = "
               <span className="text-[10px] font-mono uppercase tracking-[0.3em] text-text-muted mb-6 group-hover:text-primary transition-colors">
                 {metric.label}
               </span>
-              <div className="text-5xl md:text-6xl font-light text-text-primary tracking-tighter flex items-baseline">
-                {metric.value}
+              <div className="text-5xl md:text-6xl font-light text-text-primary tracking-tighter flex items-baseline tabular-nums">
+                <AnimatedNumber value={metric.value} />
                 {metric.suffix && <span className="text-2xl ml-1 opacity-40">{metric.suffix}</span>}
               </div>
             </motion.div>

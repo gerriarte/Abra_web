@@ -5,6 +5,7 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import WhatsAppFloating from "@/components/ui/WhatsAppFloating";
 import HashScrollHandler from "@/components/layout/HashScrollHandler";
+import MotionProvider from "@/components/motion/MotionProvider";
 
 type LocaleChromeProps = {
   children: React.ReactNode;
@@ -16,7 +17,7 @@ export default function LocaleChrome({ children, locale }: LocaleChromeProps) {
   const isQrLanding = pathname === `/${locale}/gerardo-riarte` || pathname === `/${locale}/gerardo-riarte/`;
 
   return (
-    <>
+    <MotionProvider>
       {!isQrLanding && <div className="nebula-glow opacity-30 fixed inset-0 z-0" />}
       {!isQrLanding && <div className="spatial-grid opacity-[0.03] fixed inset-0 z-0" />}
       {!isQrLanding && <div className="grain-overlay" />}
@@ -27,6 +28,6 @@ export default function LocaleChrome({ children, locale }: LocaleChromeProps) {
 
       {!isQrLanding && <Footer />}
       {!isQrLanding && <WhatsAppFloating />}
-    </>
+    </MotionProvider>
   );
 }

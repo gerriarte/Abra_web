@@ -27,14 +27,12 @@ const nextConfig: NextConfig = {
         ],
       },
       {
-        // Imágenes, fuentes y assets estáticos — caché agresiva 1 año
         source: '/(.*)\\.(png|jpg|jpeg|webp|avif|svg|ico|woff|woff2|ttf|otf)',
         headers: [
           { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
         ],
       },
       {
-        // Sitemap y robots — revalidar semanal
         source: '/(sitemap.xml|robots.txt)',
         headers: [
           { key: 'Cache-Control', value: 'public, max-age=604800, stale-while-revalidate=86400' },

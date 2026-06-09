@@ -3,6 +3,8 @@
 import { motion } from 'framer-motion';
 import useOnScreen from '@/hooks/useOnScreen';
 import { heroContainerVariants, itemVariants } from '@/lib/animations/variants';
+import WordReveal from './WordReveal';
+import HeroRadar from './HeroRadar';
 import { WHATSAPP_HREF } from './cta';
 
 const LOOP_PHASES = ['Insight', 'Build', 'Launch', 'Learn'] as const;
@@ -51,17 +53,18 @@ export default function LandingHero() {
             </motion.div>
 
             {/* Headline */}
-            <motion.h1 variants={itemVariants} className="mb-7">
-              <span className="block text-[2.75rem] sm:text-6xl md:text-7xl lg:text-[4.75rem] font-light leading-[0.98] tracking-[-0.03em] text-text-primary">
-                Construimos el crecimiento de tu marca.
-              </span>
-              <span className="mt-5 flex items-center gap-3">
+            <h1 className="mb-7">
+              <WordReveal
+                text="Construimos el crecimiento de tu marca."
+                className="block text-[2.75rem] sm:text-6xl md:text-7xl lg:text-[4.75rem] font-light leading-[0.98] tracking-[-0.03em] text-text-primary"
+              />
+              <motion.span variants={itemVariants} className="mt-5 flex items-center gap-3">
                 <span className="h-px w-6 bg-white/20 shrink-0" />
                 <span className="text-sm md:text-base font-mono tracking-[0.06em] text-text-muted uppercase">
                   Estrategia, ejecución e IA en un solo equipo
                 </span>
-              </span>
-            </motion.h1>
+              </motion.span>
+            </h1>
 
             {/* Subhead */}
             <motion.p
@@ -94,21 +97,21 @@ export default function LandingHero() {
                 href={WHATSAPP_HREF}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-white text-background text-sm font-medium tracking-wide rounded-sm transition-all duration-300 hover:bg-white/90 active:scale-[0.98]"
+                className="cta-primary inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-white text-background text-sm font-medium tracking-wide rounded-sm hover:bg-white/90"
               >
                 Hablemos
               </a>
               <a
                 href="#loop"
-                className="inline-flex items-center justify-center gap-2 px-8 py-3.5 text-sm font-light text-text-primary rounded-sm border border-white/15 hover:border-white/30 hover:bg-white/[0.03] transition-all duration-300"
+                className="cta-ghost group inline-flex items-center justify-center gap-2 px-8 py-3.5 text-sm font-light text-text-primary rounded-sm border border-white/15 hover:border-white/30 hover:bg-white/[0.03]"
               >
                 Cómo trabajamos
-                <span className="text-text-muted">→</span>
+                <span className="text-text-muted transition-transform duration-300 group-hover:translate-x-1">→</span>
               </a>
             </motion.div>
           </motion.div>
 
-          {/* Diagrama A:BRA Loop */}
+          {/* Radar de captación */}
           <motion.div
             initial={{ opacity: 0, scale: 0.96 }}
             animate={isVisible ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.96 }}
@@ -116,40 +119,7 @@ export default function LandingHero() {
             className="relative hidden lg:flex items-center justify-center min-h-[420px]"
             aria-hidden
           >
-            <div className="relative w-full max-w-md aspect-square">
-              <div className="absolute inset-0 rounded-full border border-white/[0.06]" />
-              <div className="absolute inset-[12%] rounded-full border border-dashed border-white/[0.08]" />
-              <div className="absolute inset-[24%] rounded-full border border-white/[0.04]" />
-
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-center space-y-2">
-                  <p className="text-[10px] font-mono uppercase tracking-[0.5em] text-text-muted">A:BRA Loop</p>
-                  <p className="text-4xl font-light tracking-tight text-text-primary/90">∞</p>
-                  <p className="text-[10px] font-mono text-text-muted/70">un sistema que itera</p>
-                </div>
-              </div>
-
-              {LOOP_PHASES.map((phase, i) => {
-                const angle = (i * 90 - 90) * (Math.PI / 180);
-                const radius = 46;
-                const x = 50 + radius * Math.cos(angle);
-                const y = 50 + radius * Math.sin(angle);
-                return (
-                  <div
-                    key={phase}
-                    className="absolute -translate-x-1/2 -translate-y-1/2 flex items-center justify-center"
-                    style={{ left: `${x}%`, top: `${y}%` }}
-                  >
-                    <div className="rounded-full border border-white/10 bg-background/80 backdrop-blur-sm px-3 py-1.5 text-[9px] font-mono uppercase tracking-wider text-text-secondary whitespace-nowrap">
-                      {phase}
-                    </div>
-                  </div>
-                );
-              })}
-
-              <div className="absolute top-1/2 left-0 right-0 h-px bg-white/[0.06]" />
-              <div className="absolute left-1/2 top-0 bottom-0 w-px bg-white/[0.06]" />
-            </div>
+            <HeroRadar />
           </motion.div>
         </div>
       </div>

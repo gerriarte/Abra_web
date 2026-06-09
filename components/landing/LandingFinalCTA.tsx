@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import useOnScreen from '@/hooks/useOnScreen';
 import { sectionContainerVariants, itemVariants } from '@/lib/animations/variants';
+import WordReveal from './WordReveal';
 import { WHATSAPP_HREF, WHATSAPP_NUMBER } from './cta';
 
 export default function LandingFinalCTA() {
@@ -29,12 +30,9 @@ export default function LandingFinalCTA() {
           El siguiente paso
         </motion.span>
 
-        <motion.h2
-          variants={itemVariants}
-          className="text-balance text-4xl md:text-6xl font-light leading-[1.05] tracking-[-0.03em] text-text-primary mb-10"
-        >
-          ¿Hablamos de cómo hacer crecer tu marca?
-        </motion.h2>
+        <h2 className="text-balance text-4xl md:text-6xl font-light leading-[1.05] tracking-[-0.03em] text-text-primary mb-10">
+          <WordReveal text="¿Hablamos de cómo hacer crecer tu marca?" />
+        </h2>
 
         <motion.div
           variants={itemVariants}
@@ -44,7 +42,7 @@ export default function LandingFinalCTA() {
             href={WHATSAPP_HREF}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 px-10 py-4 bg-white text-background text-sm font-medium tracking-wide rounded-sm transition-all duration-300 hover:bg-white/90 active:scale-[0.98]"
+            className="cta-primary inline-flex items-center justify-center gap-2 px-10 py-4 bg-white text-background text-sm font-medium tracking-wide rounded-sm hover:bg-white/90"
           >
             Hablemos por WhatsApp
           </a>

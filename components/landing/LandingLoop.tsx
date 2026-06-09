@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import useOnScreen from '@/hooks/useOnScreen';
 import { sectionContainerVariants, itemVariants } from '@/lib/animations/variants';
+import WordReveal from './WordReveal';
 
 const PHASES = [
   {
@@ -48,12 +49,9 @@ export default function LandingLoop() {
             >
               El método · A:BRA Loop
             </motion.span>
-            <motion.h2
-              variants={itemVariants}
-              className="text-balance text-3xl md:text-5xl font-light leading-[1.1] tracking-[-0.02em] text-text-primary mb-6"
-            >
-              Contratás un sistema que itera, no servicios sueltos.
-            </motion.h2>
+            <h2 className="text-balance text-3xl md:text-5xl font-light leading-[1.1] tracking-[-0.02em] text-text-primary mb-6">
+              <WordReveal text="Contratás un sistema que itera, no servicios sueltos." />
+            </h2>
             <motion.p
               variants={itemVariants}
               className="text-lg text-text-secondary font-light leading-relaxed"

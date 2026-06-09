@@ -4,6 +4,7 @@ import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import useOnScreen from '@/hooks/useOnScreen';
 import { SectionFlowLine } from '@/components/ui/SectionFlowLine';
+import WordReveal from '@/components/motion/WordReveal';
 
 const steps = ['01', '02', '03', '04'] as const;
 
@@ -36,7 +37,7 @@ export default function Process() {
             <span className="text-[9px] font-mono tracking-[0.5em] uppercase text-text-muted mb-6 block">
               {t('eyebrow')}
             </span>
-            <h2 className="text-4xl md:text-6xl font-light tracking-tight">{t('title')}</h2>
+            <h2 className="text-4xl md:text-6xl font-light tracking-tight"><WordReveal text={t('title')} /></h2>
             <div className="mt-10">
               <SectionFlowLine />
             </div>

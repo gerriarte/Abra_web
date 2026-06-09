@@ -140,7 +140,7 @@ export default function Header() {
 
             <Link
               href={`/${locale}#contact`}
-              className="hidden md:block text-[10px] font-medium px-6 py-2.5 rounded-full border border-white/10 transition-all duration-500 text-text-primary hover:bg-white hover:text-background"
+              className="cta-ghost hidden md:block text-[10px] font-medium px-6 py-2.5 rounded-full border border-white/10 text-text-primary hover:bg-white hover:text-background"
             >
               {t('contact')}
             </Link>

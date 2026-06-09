@@ -98,9 +98,9 @@ export default function Laboratory() {
                   href={productId === 'nougram' ? NOUGRAM_URL : '#contact'}
                   target={productId === 'nougram' ? "_blank" : "_self"}
                   rel={productId === 'nougram' ? "noopener noreferrer" : ""}
-                  className={`inline-flex items-center gap-2 rounded-full px-8 py-3.5 text-sm font-semibold text-white transition ${
-                    productId === 'nougram' 
-                    ? 'bg-[#E54D00] hover:bg-[#f05f18]' 
+                  className={`cta-primary inline-flex items-center gap-2 rounded-full px-8 py-3.5 text-sm font-semibold text-white ${
+                    productId === 'nougram'
+                    ? 'bg-[#E54D00] hover:bg-[#f05f18]'
                     : 'bg-primary hover:bg-primary/90'
                   }`}
                 >

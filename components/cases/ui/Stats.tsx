@@ -3,6 +3,7 @@
 import React from 'react';
 import { Metric } from '@/data/cases';
 import { FadeIn } from './FadeIn';
+import AnimatedNumber from '@/components/motion/AnimatedNumber';
 
 interface StatsProps {
   stats: Metric[];
@@ -27,8 +28,8 @@ export const Stats: React.FC<StatsProps> = ({ stats }) => {
           {stats.map((stat, index) => (
             <FadeIn key={index} delay={index * 150}>
               <div className="text-center group cursor-default">
-                <div className="text-6xl md:text-7xl font-light mb-4 tracking-tight text-white group-hover:text-gray-300 transition-colors">
-                  {stat.prefix}{stat.value}<span className="text-4xl text-gray-500 ml-1">{stat.suffix}</span>
+                <div className="text-6xl md:text-7xl font-light mb-4 tracking-tight text-white tabular-nums group-hover:text-gray-300 transition-colors">
+                  {stat.prefix}<AnimatedNumber value={stat.value} /><span className="text-4xl text-gray-500 ml-1">{stat.suffix}</span>
                 </div>
                 <p className="text-sm font-medium tracking-widest uppercase text-gray-400 group-hover:text-white transition-colors">
                   {stat.label}

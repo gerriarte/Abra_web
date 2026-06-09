@@ -4,6 +4,9 @@ import { motion } from 'framer-motion';
 import useOnScreen from '@/hooks/useOnScreen';
 import { sectionContainerVariants, itemVariants } from '@/lib/animations/variants';
 import { CASES_DATA } from '@/data/cases';
+import WordReveal from './WordReveal';
+import CountUp from './CountUp';
+import useSpotlight from '@/hooks/useSpotlight';
 
 // Casos del brief. Métricas tomadas de data/cases.ts (fuente del equipo) — no inventadas.
 // Cada caso referencia un slug de cases.ts (metric = primer resultado) o trae datos inline.
@@ -48,6 +51,65 @@ const cases = CASE_ENTRIES.map((entry) => {
   return { key: entry.client, ...entry };
 });
 
+// Métrica que cuenta hacia arriba si es un entero (con prefijo/sufijo tipo +340%, 5x).
+// Valores no numéricos (p. ej. "Rebrand") se muestran tal cual.
+function AnimatedMetric({ raw, className }: { raw: string; className?: string }) {
+  const m = raw.match(/^(\D*)(\d+)(\D*)$/);
+  if (!m) return <span className={className}>{raw}</span>;
+  const [, prefix, num, suffix] = m;
+  return (
+    <span className={className}>
+      {prefix}
+      <CountUp value={Number(num)} format={(n) => Math.round(n).toLocaleString('es-CO')} />
+      {suffix}
+    </span>
+  );
+}
+
+function CaseCard({ c }: { c: (typeof cases)[number] }) {
+  const { onMouseMove, background } = useSpotlight(460, 'rgba(255,255,255,0.06)');
+  const external = c.href?.startsWith('http');
+  return (
+    <motion.article
+      variants={itemVariants}
+      onMouseMove={onMouseMove}
+      className="group relative p-8 md:p-10 rounded-3xl bg-surface/40 border border-white/5 hover:border-white/20 transition-colors duration-500 backdrop-blur-sm flex flex-col overflow-hidden"
+    >
+      <motion.span
+        aria-hidden
+        style={{ background }}
+        className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+      />
+      <h3 className="relative text-xl font-medium text-text-primary tracking-tight mb-3">
+        {c.href ? (
+          <a
+            href={c.href}
+            {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+            className="link-underline inline-flex items-center gap-2 hover:text-white transition-colors duration-300"
+          >
+            {c.client}
+            <span className="text-text-muted text-sm">{external ? '↗' : '→'}</span>
+          </a>
+        ) : (
+          c.client
+        )}
+      </h3>
+      <p className="relative text-sm text-text-secondary font-light leading-relaxed mb-8 flex-1">
+        {c.action}
+      </p>
+      <div className="relative flex items-end gap-3 pt-6 border-t border-white/[0.06]">
+        <AnimatedMetric
+          raw={c.metricValue}
+          className="text-4xl md:text-5xl font-light tracking-tight text-text-primary tabular-nums"
+        />
+        <span className="text-xs font-mono uppercase tracking-widest text-text-muted pb-2">
+          {c.metricLabel}
+        </span>
+      </div>
+    </motion.article>
+  );
+}
+
 export default function LandingCases() {
   const [ref, isVisible] = useOnScreen({ threshold: 0.1 });
 
@@ -70,12 +132,9 @@ export default function LandingCases() {
             >
               La prueba
             </motion.span>
-            <motion.h2
-              variants={itemVariants}
-              className="text-balance text-3xl md:text-5xl font-light leading-[1.1] tracking-[-0.02em] text-text-primary mb-6"
-            >
-              Marcas que ya están creciendo con el Loop.
-            </motion.h2>
+            <h2 className="text-balance text-3xl md:text-5xl font-light leading-[1.1] tracking-[-0.02em] text-text-primary mb-6">
+              <WordReveal text="Marcas que ya están creciendo con el Loop." />
+            </h2>
             <motion.p
               variants={itemVariants}
               className="text-lg text-text-secondary font-light leading-relaxed"
@@ -87,42 +146,7 @@ export default function LandingCases() {
           {/* Grid de casos */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {cases.map((c) => (
-              <motion.article
-                key={c.key}
-                variants={itemVariants}
-                className="group relative p-8 md:p-10 rounded-3xl bg-surface/40 border border-white/5 hover:border-white/20 transition-all duration-500 backdrop-blur-sm flex flex-col"
-              >
-                <h3 className="text-xl font-medium text-text-primary tracking-tight mb-3">
-                  {c.href ? (
-                    (() => {
-                      const external = c.href.startsWith('http');
-                      return (
-                        <a
-                          href={c.href}
-                          {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-                          className="inline-flex items-center gap-2 hover:text-white transition-colors duration-300"
-                        >
-                          {c.client}
-                          <span className="text-text-muted text-sm">{external ? '↗' : '→'}</span>
-                        </a>
-                      );
-                    })()
-                  ) : (
-                    c.client
-                  )}
-                </h3>
-                <p className="text-sm text-text-secondary font-light leading-relaxed mb-8 flex-1">
-                  {c.action}
-                </p>
-                <div className="flex items-end gap-3 pt-6 border-t border-white/[0.06]">
-                  <span className="text-4xl md:text-5xl font-light tracking-tight text-text-primary tabular-nums">
-                    {c.metricValue}
-                  </span>
-                  <span className="text-xs font-mono uppercase tracking-widest text-text-muted pb-2">
-                    {c.metricLabel}
-                  </span>
-                </div>
-              </motion.article>
+              <CaseCard key={c.key} c={c} />
             ))}
           </div>
 

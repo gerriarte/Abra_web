@@ -1,11 +1,14 @@
 import type { Metadata } from 'next';
 import { generateSEOMetadata } from '@/lib/utils/seo';
+import LandingMotion from '@/components/landing/LandingMotion';
 import LandingHeader from '@/components/landing/LandingHeader';
 import LandingHero from '@/components/landing/LandingHero';
 import LandingThesis from '@/components/landing/LandingThesis';
 import LandingLoop from '@/components/landing/LandingLoop';
 import LandingCapabilities from '@/components/landing/LandingCapabilities';
+import LandingPanel from '@/components/landing/LandingPanel';
 import LandingCases from '@/components/landing/LandingCases';
+import LandingFAQ from '@/components/landing/LandingFAQ';
 import LandingFinalCTA from '@/components/landing/LandingFinalCTA';
 
 export const metadata: Metadata = generateSEOMetadata({
@@ -30,16 +33,18 @@ export const metadata: Metadata = generateSEOMetadata({
 
 export default function LandingPage() {
   return (
-    <>
+    <LandingMotion>
       <LandingHeader />
       <main className="relative z-10">
         <LandingHero />
         <LandingThesis />
         <LandingLoop />
         <LandingCapabilities />
+        <LandingPanel />
         <LandingCases />
+        <LandingFAQ />
         <LandingFinalCTA />
       </main>
-    </>
+    </LandingMotion>
   );
 }

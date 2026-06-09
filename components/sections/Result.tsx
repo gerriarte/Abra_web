@@ -41,17 +41,17 @@ export default function Result() {
           <motion.div variants={itemVariants} className="flex flex-col sm:flex-row justify-center items-center gap-4">
             <a
               href="#contact"
-              className="inline-flex items-center justify-center px-10 py-5 bg-white text-background text-sm font-medium tracking-wide rounded-sm transition-all duration-300 hover:bg-white/90 hover:scale-[1.02] active:scale-[0.98]"
+              className="cta-primary inline-flex items-center justify-center px-10 py-5 bg-white text-background text-sm font-medium tracking-wide rounded-sm hover:bg-white/90"
             >
               {t('ctaPrimary')}
             </a>
             <a
               href="/A-BRA-Loop.pdf"
               target="_blank"
-              className="inline-flex items-center justify-center px-10 py-5 border border-white/15 text-text-primary text-sm font-light tracking-wide rounded-sm transition-all duration-300 hover:bg-white/5 active:scale-[0.98]"
+              className="cta-ghost group inline-flex items-center justify-center px-10 py-5 border border-white/15 text-text-primary text-sm font-light tracking-wide rounded-sm hover:bg-white/5"
             >
               {t('ctaSecondary')}
-              <span className="ml-2 text-text-muted">↓</span>
+              <span className="ml-2 text-text-muted transition-transform duration-300 group-hover:translate-y-0.5">↓</span>
             </a>
           </motion.div>
         </motion.div>

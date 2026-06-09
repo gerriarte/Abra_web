@@ -25,7 +25,7 @@ export default function GerardoRiarteLandingPage() {
               href="https://www.linkedin.com/in/gerardoriarte/"
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-full bg-white px-6 py-3.5 text-base font-semibold text-[#020C17] transition hover:bg-white/90"
+              className="cta-primary rounded-full bg-white px-6 py-3.5 text-base font-semibold text-[#020C17] hover:bg-white/90"
             >
               -&gt; Conectar en LinkedIn
             </a>
@@ -33,7 +33,7 @@ export default function GerardoRiarteLandingPage() {
               href="https://nougram.co"
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-full border border-white/30 bg-white/5 px-6 py-3.5 text-base font-semibold text-white transition hover:bg-white/10"
+              className="cta-ghost rounded-full border border-white/30 bg-white/5 px-6 py-3.5 text-base font-semibold text-white hover:bg-white/10"
             >
               -&gt; Conocé Nougram
             </a>
@@ -69,7 +69,7 @@ export default function GerardoRiarteLandingPage() {
             href="https://abralatam.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-7 inline-block rounded-full bg-white px-6 py-3.5 text-base font-semibold text-[#020C17] transition hover:bg-white/90"
+            className="cta-primary mt-7 inline-block rounded-full bg-white px-6 py-3.5 text-base font-semibold text-[#020C17] hover:bg-white/90"
           >
             -&gt; Ver agencia
           </a>
@@ -88,7 +88,7 @@ export default function GerardoRiarteLandingPage() {
             href="https://nougram.co"
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-7 inline-block rounded-full bg-[#E54D00] px-6 py-3.5 text-base font-semibold text-white transition hover:bg-[#f05f18]"
+            className="cta-primary mt-7 inline-block rounded-full bg-[#E54D00] px-6 py-3.5 text-base font-semibold text-white hover:bg-[#f05f18]"
           >
             -&gt; Quiero saber más
           </a>
@@ -101,13 +101,13 @@ export default function GerardoRiarteLandingPage() {
               href="https://www.linkedin.com/in/gerardoriarte/"
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-full border border-white/20 bg-white/[0.03] px-4 py-2.5 font-medium text-white/90 transition hover:bg-white/[0.08]"
+              className="cta-ghost rounded-full border border-white/20 bg-white/[0.03] px-4 py-2.5 font-medium text-white/90 hover:bg-white/[0.08]"
             >
               LinkedIn
             </a>
             <a
               href="mailto:business@abralatam.com"
-              className="rounded-full border border-white/20 bg-white/[0.03] px-4 py-2.5 font-medium text-white/90 transition hover:bg-white/[0.08]"
+              className="cta-ghost rounded-full border border-white/20 bg-white/[0.03] px-4 py-2.5 font-medium text-white/90 hover:bg-white/[0.08]"
             >
               business@abralatam.com
             </a>
@@ -115,7 +115,7 @@ export default function GerardoRiarteLandingPage() {
               href="https://wa.me/573214444727"
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-full border border-white/20 bg-white/[0.03] px-4 py-2.5 font-medium text-white/90 transition hover:bg-white/[0.08]"
+              className="cta-ghost rounded-full border border-white/20 bg-white/[0.03] px-4 py-2.5 font-medium text-white/90 hover:bg-white/[0.08]"
             >
               WhatsApp Business (+573214444727)
             </a>

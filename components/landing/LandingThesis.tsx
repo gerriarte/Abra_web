@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import useOnScreen from '@/hooks/useOnScreen';
 import { sectionContainerVariants, itemVariants } from '@/lib/animations/variants';
+import WordReveal from './WordReveal';
 
 export default function LandingThesis() {
   const [ref, isVisible] = useOnScreen({ threshold: 0.2 });
@@ -25,12 +26,9 @@ export default function LandingThesis() {
           Nuestra tesis
         </motion.span>
 
-        <motion.h2
-          variants={itemVariants}
-          className="text-balance text-3xl md:text-5xl font-light leading-[1.1] tracking-[-0.02em] text-text-primary mb-8"
-        >
-          Creemos que el crecimiento se construye.
-        </motion.h2>
+        <h2 className="text-balance text-3xl md:text-5xl font-light leading-[1.1] tracking-[-0.02em] text-text-primary mb-8">
+          <WordReveal text="Creemos que el crecimiento se construye." />
+        </h2>
 
         <motion.p
           variants={itemVariants}

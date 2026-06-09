@@ -4,6 +4,8 @@ import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import useOnScreen from '@/hooks/useOnScreen';
 import { heroContainerVariants, itemVariants } from '@/lib/animations/variants';
+import WordReveal from '@/components/motion/WordReveal';
+import CountUp from '@/components/motion/CountUp';
 
 const LOOP_PHASES = ['metric01', 'metric02', 'metric03', 'metric04'] as const;
 
@@ -51,17 +53,18 @@ export default function Hero() {
             </motion.div>
 
             {/* Headline */}
-            <motion.h1 variants={itemVariants} className="mb-6">
-              <span className="block text-[2.75rem] sm:text-6xl md:text-7xl lg:text-[5.25rem] font-light leading-[0.95] tracking-[-0.03em] text-text-primary mb-4">
-                {t('titleLine1')}
-              </span>
-              <span className="flex items-center gap-3">
+            <h1 className="mb-6">
+              <WordReveal
+                text={t('titleLine1')}
+                className="block text-[2.75rem] sm:text-6xl md:text-7xl lg:text-[5.25rem] font-light leading-[0.95] tracking-[-0.03em] text-text-primary mb-4"
+              />
+              <motion.span variants={itemVariants} className="flex items-center gap-3">
                 <span className="h-px w-6 bg-white/20 shrink-0" />
                 <span className="text-sm md:text-base font-mono tracking-[0.06em] text-text-muted uppercase">
                   {t('titleLine2')}
                 </span>
-              </span>
-            </motion.h1>
+              </motion.span>
+            </h1>
 
             {/* Subtitle — short, no border treatment */}
             <motion.p
@@ -88,16 +91,16 @@ export default function Hero() {
             >
               <a
                 href="#contact"
-                className="inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-white text-background text-sm font-medium tracking-wide rounded-sm transition-all duration-300 hover:bg-white/90 active:scale-[0.98]"
+                className="cta-primary inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-white text-background text-sm font-medium tracking-wide rounded-sm hover:bg-white/90"
               >
                 {t('ctaPrimary')}
               </a>
               <a
                 href="#method"
-                className="inline-flex items-center justify-center gap-2 px-8 py-3.5 text-sm font-light text-text-primary rounded-sm border border-white/15 hover:border-white/30 hover:bg-white/[0.03] transition-all duration-300"
+                className="cta-ghost group inline-flex items-center justify-center gap-2 px-8 py-3.5 text-sm font-light text-text-primary rounded-sm border border-white/15 hover:border-white/30 hover:bg-white/[0.03]"
               >
                 {t('ctaSecondary')}
-                <span className="text-text-muted">→</span>
+                <span className="text-text-muted transition-transform duration-300 group-hover:translate-x-1">→</span>
               </a>
             </motion.div>
           </motion.div>
@@ -112,13 +115,28 @@ export default function Hero() {
           >
             <div className="relative w-full max-w-md aspect-square">
               <div className="absolute inset-0 rounded-full border border-white/[0.06]" />
-              <div className="absolute inset-[12%] rounded-full border border-dashed border-white/[0.08]" />
+              <div className="loop-ring-spin absolute inset-[12%] rounded-full border border-dashed border-white/[0.12]" />
               <div className="absolute inset-[24%] rounded-full border border-white/[0.04]" />
+
+              {/* Dot orbitando sobre el anillo exterior */}
+              <motion.div
+                className="absolute inset-0"
+                animate={{ rotate: 360 }}
+                transition={{ duration: 18, repeat: Infinity, ease: 'linear' }}
+                aria-hidden
+              >
+                <span className="absolute left-1/2 top-0 -translate-x-1/2 h-2 w-2 rounded-full bg-white/80 shadow-[0_0_12px_2px_rgba(255,255,255,0.4)]" />
+              </motion.div>
 
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="text-center space-y-2">
                   <p className="text-[10px] font-mono uppercase tracking-[0.5em] text-text-muted">A:BRA Loop</p>
-                  <p className="text-4xl font-light tracking-tight text-text-primary/90">360°</p>
+                  <CountUp
+                    value={360}
+                    duration={1.4}
+                    format={(n) => `${Math.round(n)}°`}
+                    className="block text-4xl font-light tracking-tight text-text-primary/90 tabular-nums"
+                  />
                   <p className="text-[10px] font-mono text-text-muted/70">growth × engineering</p>
                 </div>
               </div>
@@ -129,15 +147,17 @@ export default function Hero() {
                 const x = 50 + radius * Math.cos(angle);
                 const y = 50 + radius * Math.sin(angle);
                 return (
-                  <div
+                  <motion.div
                     key={key}
                     className="absolute -translate-x-1/2 -translate-y-1/2 flex items-center justify-center"
                     style={{ left: `${x}%`, top: `${y}%` }}
+                    animate={{ opacity: [0.5, 1, 0.5] }}
+                    transition={{ duration: 3.6, repeat: Infinity, ease: 'easeInOut', delay: i * 0.9 }}
                   >
                     <div className="rounded-full border border-white/10 bg-background/80 backdrop-blur-sm px-3 py-1.5 text-[9px] font-mono uppercase tracking-wider text-text-secondary whitespace-nowrap">
                       {t(key)}
                     </div>
-                  </div>
+                  </motion.div>
                 );
               })}
 

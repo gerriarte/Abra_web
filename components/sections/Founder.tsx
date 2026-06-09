@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import useOnScreen from '@/hooks/useOnScreen';
 import Link from 'next/link';
 import { SectionFlowLine } from '@/components/ui/SectionFlowLine';
+import WordReveal from '@/components/motion/WordReveal';
 
 export default function Founder() {
   const t = useTranslations('founder');
@@ -39,9 +40,9 @@ export default function Founder() {
             {t('eyebrow')}
           </motion.span>
 
-          <motion.h2 variants={itemVariants} className="text-4xl md:text-5xl font-light tracking-tight mb-8">
-            {t('title')}
-          </motion.h2>
+          <h2 className="text-4xl md:text-5xl font-light tracking-tight mb-8">
+            <WordReveal text={t('title')} />
+          </h2>
 
           <motion.div variants={itemVariants} className="mb-8">
             <SectionFlowLine variant="short" />
@@ -57,7 +58,7 @@ export default function Founder() {
           <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Link
               href={`/${locale}/gerardo-riarte`}
-              className="rounded-full bg-white px-8 py-3.5 text-sm font-semibold text-background transition hover:bg-white/90"
+              className="cta-primary rounded-full bg-white px-8 py-3.5 text-sm font-semibold text-background hover:bg-white/90"
             >
               {t('ctaPersonal')}
             </Link>
@@ -65,7 +66,7 @@ export default function Founder() {
               href="https://www.linkedin.com/in/gerardoriarte/"
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-full border border-white/20 px-8 py-3.5 text-sm font-medium text-white/90 transition hover:bg-white/10"
+              className="cta-ghost rounded-full border border-white/20 px-8 py-3.5 text-sm font-medium text-white/90 hover:bg-white/10"
             >
               {t('ctaLinkedin')}
             </a>
@@ -73,7 +74,7 @@ export default function Founder() {
               href="https://instagram.com/gerardoriarte"
               target="_blank"
               rel="noopener noreferrer"
-              className="rounded-full border border-white/20 px-8 py-3.5 text-sm font-medium text-white/90 transition hover:bg-white/10"
+              className="cta-ghost rounded-full border border-white/20 px-8 py-3.5 text-sm font-medium text-white/90 hover:bg-white/10"
             >
               {t('ctaInstagram')}
             </a>

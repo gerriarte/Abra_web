@@ -3,8 +3,40 @@
 import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import useOnScreen from '@/hooks/useOnScreen';
+import useSpotlight from '@/hooks/useSpotlight';
 import { SectionFlowLine } from '@/components/ui/SectionFlowLine';
 import { sectionContainerVariants, itemVariants } from '@/lib/animations/variants';
+
+function ProblemCard({ keyId }: { keyId: string }) {
+  const t = useTranslations('problem');
+  const { onMouseMove, background } = useSpotlight(360, 'rgba(255,255,255,0.06)');
+  return (
+    <motion.div
+      variants={itemVariants}
+      onMouseMove={onMouseMove}
+      className="group relative overflow-hidden p-8 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/[0.08] hover:border-primary/30 transition-all duration-500"
+    >
+      <motion.span
+        aria-hidden
+        style={{ background }}
+        className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+      />
+      <div className="relative flex items-center gap-2 mb-6">
+        <div className="w-2 h-2 rounded-full bg-warning animate-pulse" />
+        <span className="text-[10px] font-mono uppercase tracking-widest text-warning/80">Pain Point</span>
+      </div>
+      <h3 className="relative text-xl font-medium text-text-primary mb-4 group-hover:text-primary transition-colors duration-300">
+        {t(`cards.${keyId}.title`)}
+      </h3>
+      <p className="relative text-sm text-text-secondary font-light leading-relaxed">
+        {t(`cards.${keyId}.description`)}
+      </p>
+      <span className="absolute bottom-4 right-6 text-6xl font-bold text-white/[0.02] select-none group-hover:text-primary/10 transition-colors duration-500">
+        {keyId}
+      </span>
+    </motion.div>
+  );
+}
 
 export default function Problem() {
   const t = useTranslations('problem');
@@ -55,30 +87,7 @@ export default function Problem() {
             <div className="hidden md:block absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/15 to-transparent -translate-y-1/2" />
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
             {cards.map((key) => (
-              <motion.div
-                key={key}
-                variants={itemVariants}
-                className="group relative p-8 rounded-2xl bg-white/5 border border-white/10 hover:bg-white/[0.08] hover:border-primary/30 transition-all duration-500"
-              >
-                {/* Status Indicator */}
-                <div className="flex items-center gap-2 mb-6">
-                  <div className="w-2 h-2 rounded-full bg-warning animate-pulse" />
-                  <span className="text-[10px] font-mono uppercase tracking-widest text-warning/80">Pain Point</span>
-                </div>
-
-                <h3 className="text-xl font-medium text-text-primary mb-4 group-hover:text-primary transition-colors duration-300">
-                  {t(`cards.${key}.title`)}
-                </h3>
-                
-                <p className="text-sm text-text-secondary font-light leading-relaxed">
-                  {t(`cards.${key}.description`)}
-                </p>
-
-                {/* Decorative background number */}
-                <span className="absolute bottom-4 right-6 text-6xl font-bold text-white/[0.02] select-none group-hover:text-primary/10 transition-colors duration-500">
-                  {key}
-                </span>
-              </motion.div>
+              <ProblemCard key={key} keyId={key} />
             ))}
             </div>
           </div>

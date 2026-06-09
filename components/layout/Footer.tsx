@@ -23,19 +23,19 @@ export default function Footer() {
               Strategic Digital Engineering. Construimos sistemas de crecimiento y los productos que los hacen posibles.
             </p>
             <div className="flex gap-4 pt-4">
-               <a 
-                href="https://linkedin.com/company/abra" 
-                target="_blank" 
+               <a
+                href="https://linkedin.com/company/abra"
+                target="_blank"
                 rel="noopener noreferrer"
-                className="text-xs text-text-muted hover:text-primary transition-colors uppercase tracking-widest font-medium"
+                className="link-underline text-xs text-text-muted hover:text-primary transition-colors uppercase tracking-widest font-medium"
               >
                 LinkedIn
               </a>
-              <a 
-                href="https://instagram.com/abra" 
-                target="_blank" 
+              <a
+                href="https://instagram.com/abra"
+                target="_blank"
                 rel="noopener noreferrer"
-                className="text-xs text-text-muted hover:text-primary transition-colors uppercase tracking-widest font-medium"
+                className="link-underline text-xs text-text-muted hover:text-primary transition-colors uppercase tracking-widest font-medium"
               >
                 Instagram
               </a>

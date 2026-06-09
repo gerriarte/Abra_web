@@ -7,6 +7,7 @@ import { sectionContainerVariants, itemVariants } from '@/lib/animations/variant
 import Image from 'next/image';
 import Link from 'next/link';
 import { SectionFlowLine } from '@/components/ui/SectionFlowLine';
+import WordReveal from '@/components/motion/WordReveal';
 import { CASES_DATA, type Metric } from '@/data/cases';
 
 type CaseSize = 'large' | 'medium' | 'small';
@@ -102,9 +103,9 @@ export default function ClientCases() {
               {t('eyebrow')}
             </motion.span>
 
-            <motion.h2 variants={itemVariants} className="text-5xl md:text-7xl font-light mb-8 tracking-tight">
-              {t('title')}
-            </motion.h2>
+            <h2 className="text-5xl md:text-7xl font-light mb-8 tracking-tight">
+              <WordReveal text={t('title')} />
+            </h2>
             <motion.p variants={itemVariants} className="text-lg text-text-secondary font-light leading-relaxed">
               {t('subtitle')}
             </motion.p>
