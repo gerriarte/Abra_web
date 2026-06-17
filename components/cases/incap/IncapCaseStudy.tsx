@@ -77,7 +77,11 @@ const CONTENT = {
       contact: 'Agenda un diagnóstico',
     },
     labNote: 'Auditoría de marca y análisis competitivo potenciados con herramientas de IA del A:BRA Lab.',
-    partnerNote: 'En alianza con',
+    partner: {
+      eyebrow: 'Proyecto en alianza',
+      title: 'Realizado junto a MTM Marca tu Marca',
+      text: 'Este proyecto se desarrolló en conjunto con MTM Marca tu Marca, responsables de todo el desarrollo de branding e identidad de marca. A:BRA lideró la estrategia digital, la arquitectura web y el sistema de conversión.',
+    },
   },
   en: {
     category: 'BRANDING · DIGITAL STRATEGY · WEB DEVELOPMENT',
@@ -146,7 +150,11 @@ const CONTENT = {
       contact: 'Book a diagnosis',
     },
     labNote: 'Brand audit and competitive analysis powered by A:BRA Lab AI tooling.',
-    partnerNote: 'In partnership with',
+    partner: {
+      eyebrow: 'A partnered project',
+      title: 'Delivered together with MTM Marca tu Marca',
+      text: 'This project was carried out together with MTM Marca tu Marca, who led the entire branding and brand-identity development. A:BRA drove the digital strategy, web architecture and conversion system.',
+    },
   },
 } as const;
 
@@ -429,9 +437,27 @@ export default function IncapCaseStudy({ locale }: { locale: string }) {
             </Link>
           </motion.div>
 
-          <motion.p {...fadeUp} transition={{ ...fadeUp.transition, delay: 0.25 }} className="mt-14 text-[11px] font-light leading-relaxed text-text-muted">
-            {t.partnerNote} <span className="text-text-secondary">MTM Marca tu Marca</span> · {t.labNote}
-          </motion.p>
+        </div>
+      </section>
+
+      {/* ---------- PARTNER CREDIT ---------- */}
+      <section className="border-t border-white/5 pb-28 pt-4 md:pb-40">
+        <div className="container mx-auto max-w-4xl px-6">
+          <motion.div
+            {...fadeUp}
+            className="flex flex-col items-center gap-8 rounded-[2.5rem] border border-white/10 bg-background-off p-10 text-center md:p-14"
+          >
+            <span className="font-mono text-[9px] uppercase tracking-[0.5em] text-text-muted">{t.partner.eyebrow}</span>
+            <img
+              src="/Bestune/MTM-Marca-tu-marca-brand.webp"
+              alt="MTM Marca tu Marca"
+              loading="lazy"
+              className="h-12 w-auto opacity-90"
+            />
+            <h3 className="text-2xl font-light tracking-tight text-white md:text-3xl">{t.partner.title}</h3>
+            <p className="max-w-2xl text-base font-light leading-relaxed text-text-secondary">{t.partner.text}</p>
+            <p className="text-[11px] font-light leading-relaxed text-text-muted">{t.labNote}</p>
+          </motion.div>
         </div>
       </section>
     </div>
