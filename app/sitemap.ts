@@ -32,6 +32,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly' as const,
       priority: 0.8,
     },
+    {
+      url: `${siteUrl}/${locale}/privacy`,
+      lastModified: DEPLOY_DATE,
+      changeFrequency: 'yearly' as const,
+      priority: 0.3,
+    },
+    {
+      url: `${siteUrl}/${locale}/terms`,
+      lastModified: DEPLOY_DATE,
+      changeFrequency: 'yearly' as const,
+      priority: 0.3,
+    },
   ]);
 
   const caseStudyRoutes = Object.keys(CASES_DATA).flatMap((slug) =>

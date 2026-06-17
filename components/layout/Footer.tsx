@@ -1,10 +1,13 @@
 'use client';
 
 import Image from 'next/image';
-import { useTranslations } from 'next-intl';
+import Link from 'next/link';
+import { useLocale, useTranslations } from 'next-intl';
 
 export default function Footer() {
   const t = useTranslations('contact.form');
+  const locale = useLocale();
+  const isEnglish = locale === 'en';
 
   return (
     <footer className="bg-background border-t border-white/5 py-12 md:py-20 relative z-10">
@@ -83,9 +86,20 @@ export default function Footer() {
           <p className="text-[10px] text-text-muted font-light uppercase tracking-widest">
             © {new Date().getFullYear()} A:BRA — Strategic Digital Engineering
           </p>
-          <p className="text-[10px] text-text-muted font-light uppercase tracking-widest">
-            Handcrafted with Vibe Coding
-          </p>
+          <div className="flex items-center gap-5">
+            <Link
+              href={`/${locale}/privacy`}
+              className="link-underline text-[10px] text-text-muted hover:text-primary transition-colors uppercase tracking-widest font-light"
+            >
+              {isEnglish ? 'Privacy Policy' : 'Política de Privacidad'}
+            </Link>
+            <Link
+              href={`/${locale}/terms`}
+              className="link-underline text-[10px] text-text-muted hover:text-primary transition-colors uppercase tracking-widest font-light"
+            >
+              {isEnglish ? 'Terms of Service' : 'Términos de Servicio'}
+            </Link>
+          </div>
         </div>
       </div>
     </footer>
