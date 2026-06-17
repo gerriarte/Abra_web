@@ -1,6 +1,6 @@
 import { MetadataRoute } from 'next';
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://abralatam.com';
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.abralatam.com';
 
 export default function robots(): MetadataRoute.Robots {
   return {

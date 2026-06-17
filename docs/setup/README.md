@@ -29,7 +29,7 @@ CONTACT_RECIPIENT_EMAIL=contacto@abralatam.com
 
 ```env
 NEXT_PUBLIC_GTM_ID=GTM-XXXXXXX
-NEXT_PUBLIC_SITE_URL=https://abralatam.com
+NEXT_PUBLIC_SITE_URL=https://www.abralatam.com
 ```
 
 ### Configuración en Vercel

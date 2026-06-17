@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next';
 import { locales } from '@/lib/i18n/config';
 import { CASES_DATA } from '@/data/cases';
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://abralatam.com';
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.abralatam.com';
 
 // Usa la fecha del último commit en Vercel; si no, la fecha del build
 const DEPLOY_DATE = process.env.VERCEL_GIT_COMMIT_DATE

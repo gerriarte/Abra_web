@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { locales } from '@/lib/i18n/config';
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://abralatam.com';
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.abralatam.com';
 const siteName = 'A:BRA';
 const defaultDescription = {
   en: 'Hybrid studio combining growth, AI, and product development. We build growth systems and the products that make them possible. Discover the A:BRA Loop.',

@@ -23,7 +23,7 @@ CONTACT_FROM_EMAIL=noreply@abralatam.com
 #### Opcionales:
 ```
 NEXT_PUBLIC_GTM_ID=GTM-XXXXXXX
-NEXT_PUBLIC_SITE_URL=https://abralatam.com
+NEXT_PUBLIC_SITE_URL=https://www.abralatam.com
 ```
 
 ### 2. Configuración de Node.js
