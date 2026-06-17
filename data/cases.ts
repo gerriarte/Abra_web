@@ -432,8 +432,8 @@ export const CASES_DATA: Record<string, CaseStudy> = {
       services: ['Branding', 'Brand Strategy', 'Communication', 'Commercial Strategy'],
       team: [],
     },
-    heroImage: '/cases/incap-placeholder.svg',
-    images: ['/cases/incap-placeholder.svg'],
+    heroImage: '/incap/incap-hero.webp',
+    images: ['/incap/incap-despues.webp', '/incap/incap-antes.webp'],
   }
 };
 

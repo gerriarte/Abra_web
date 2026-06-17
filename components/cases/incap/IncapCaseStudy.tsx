@@ -45,7 +45,7 @@ const CONTENT = {
       eyebrow: 'El Sistema',
       title: 'Lo que construimos',
       shots: [
-        { tag: 'Narrative system', note: 'Mensajería problem-aware en el hero del nuevo grupoincap.com.co.' },
+        { tag: 'Narrative system', note: 'Mensajería problem-aware en el hero del nuevo www.grupoincap.com.co.' },
         { tag: 'Conversion architecture', note: 'Segmentación por caso de uso: una sección por industria.' },
         { tag: 'Growth trigger', note: 'CTA de diagnóstico sin fricción integrado a WhatsApp.' },
       ],
@@ -114,7 +114,7 @@ const CONTENT = {
       eyebrow: 'The System',
       title: 'What we built',
       shots: [
-        { tag: 'Narrative system', note: 'Problem-aware messaging on the new grupoincap.com.co hero.' },
+        { tag: 'Narrative system', note: 'Problem-aware messaging on the new www.grupoincap.com.co hero.' },
         { tag: 'Conversion architecture', note: 'Use-case segmentation: one section per industry.' },
         { tag: 'Growth trigger', note: 'Friction-less diagnosis CTA wired into WhatsApp.' },
       ],
@@ -159,43 +159,25 @@ const fadeUp = {
   transition: { duration: 0.8, ease: [0.21, 0.47, 0.32, 0.98] as const },
 };
 
-/** Placeholder de mockup mientras no haya assets reales del sitio de INCAP. */
-function Mockup({ label, variant = 'after' }: { label: string; variant?: 'before' | 'after' }) {
-  const before = variant === 'before';
+/** Marco que muestra una captura real del sitio de INCAP. */
+function Frame({
+  src,
+  alt,
+  objectPosition = 'top',
+}: {
+  src: string;
+  alt: string;
+  objectPosition?: string;
+}) {
   return (
-    <div
-      className="relative flex h-full w-full items-center justify-center overflow-hidden"
-      style={{
-        background: before
-          ? 'linear-gradient(135deg,#1a1a1a,#2b2b2b)'
-          : 'linear-gradient(135deg,#031525,#020C17 55%,#01080F)',
-      }}
-    >
-      <div
-        className="absolute inset-0 opacity-[0.06]"
-        style={{
-          backgroundImage:
-            'linear-gradient(#fff 1px,transparent 1px),linear-gradient(90deg,#fff 1px,transparent 1px)',
-          backgroundSize: '48px 48px',
-        }}
+    <div className="relative h-full w-full overflow-hidden bg-background-off">
+      <img
+        src={src}
+        alt={alt}
+        loading="lazy"
+        className="h-full w-full object-cover"
+        style={{ objectPosition }}
       />
-      {!before && (
-        <div
-          className="absolute left-1/2 top-1/3 h-72 w-72 -translate-x-1/2 rounded-full blur-3xl"
-          style={{ background: `${GREEN}22` }}
-        />
-      )}
-      <div className="relative px-8 text-center">
-        <p
-          className="font-mono text-[10px] uppercase tracking-[0.4em]"
-          style={{ color: before ? 'rgba(255,255,255,0.35)' : GREEN }}
-        >
-          {before ? '1990 · legacy' : 'grupoincap.com.co'}
-        </p>
-        <p className={`mt-3 text-2xl font-light tracking-tight ${before ? 'text-white/40' : 'text-white'}`}>
-          {label}
-        </p>
-      </div>
     </div>
   );
 }
@@ -253,6 +235,18 @@ export default function IncapCaseStudy({ locale }: { locale: string }) {
                 <p className="mt-3 text-xs font-light leading-relaxed text-text-secondary">{m.label}</p>
               </div>
             ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ---------- HERO VISUAL ---------- */}
+      <section className="relative -mt-8 pb-8">
+        <div className="container mx-auto max-w-7xl px-6">
+          <motion.div
+            {...fadeUp}
+            className="aspect-[16/9] overflow-hidden rounded-[2.5rem] border border-white/10 shadow-[0_40px_120px_rgba(0,0,0,0.55)]"
+          >
+            <Frame src="/incap/incap-hero.webp" alt="Grupo INCAP — nuevo sistema de marca y web" objectPosition="center" />
           </motion.div>
         </div>
       </section>
@@ -339,12 +333,16 @@ export default function IncapCaseStudy({ locale }: { locale: string }) {
             {t.system.title}
           </motion.h2>
 
-          {/* annotated mockups */}
+          {/* annotated views of the new site (top / middle / bottom of the full page) */}
           <div className="mt-16 grid grid-cols-1 gap-8 lg:grid-cols-3">
             {t.system.shots.map((s, i) => (
               <motion.div key={s.tag} {...fadeUp} transition={{ ...fadeUp.transition, delay: 0.08 * i }} className="group">
                 <div className="aspect-[4/3] overflow-hidden rounded-[2rem] border border-white/10">
-                  <Mockup label={s.tag} />
+                  <Frame
+                    src="/incap/incap-despues.webp"
+                    alt={`www.grupoincap.com.co — ${s.tag}`}
+                    objectPosition={i === 0 ? 'top' : i === 1 ? 'center' : 'bottom'}
+                  />
                 </div>
                 <div className="mt-5 px-1">
                   <span className="font-mono text-[10px] uppercase tracking-[0.3em]" style={{ color: GREEN }}>{s.tag}</span>
@@ -363,8 +361,8 @@ export default function IncapCaseStudy({ locale }: { locale: string }) {
             <BeforeAfterSlider
               beforeLabel={t.system.beforeLabel}
               afterLabel={t.system.afterLabel}
-              before={<Mockup label={t.system.beforeNote} variant="before" />}
-              after={<Mockup label={t.system.afterNote} variant="after" />}
+              before={<Frame src="/incap/incap-antes.webp" alt={t.system.beforeNote} objectPosition="top" />}
+              after={<Frame src="/incap/incap-despues.webp" alt={t.system.afterNote} objectPosition="top" />}
             />
           </motion.div>
         </div>
@@ -416,7 +414,7 @@ export default function IncapCaseStudy({ locale }: { locale: string }) {
           </motion.h2>
           <motion.div {...fadeUp} transition={{ ...fadeUp.transition, delay: 0.15 }} className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <a
-              href="https://grupoincap.com.co"
+              href="https://www.grupoincap.com.co"
               target="_blank"
               rel="noopener noreferrer"
               className="cta-primary rounded-full bg-white px-8 py-4 text-sm font-medium tracking-tight text-background transition-colors hover:bg-white/90"
