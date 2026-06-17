@@ -17,6 +17,7 @@ export default function CasesPage() {
     { id: 'Branding', label: 'Branding' },
     { id: 'UX/UI', label: 'Engineering' },
     { id: 'Crypto', label: 'Web3' },
+    { id: 'Manufactura', label: locale === 'es' ? 'Industria' : 'Industry' },
   ];
 
   const allCases = Object.entries(CASES_DATA)
@@ -28,9 +29,10 @@ export default function CasesPage() {
 
   const filteredCases = filter === 'all' 
     ? allCases 
-    : allCases.filter(c => 
+    : allCases.filter(c =>
         c.projectDetails.services.some(s => s.toLowerCase().includes(filter.toLowerCase())) ||
-        c.client.toLowerCase().includes(filter.toLowerCase())
+        c.client.toLowerCase().includes(filter.toLowerCase()) ||
+        (c.sector || '').toLowerCase().includes(filter.toLowerCase())
       );
 
   return (
@@ -114,9 +116,16 @@ export default function CasesPage() {
                       {/* Overlays */}
                       <div className="absolute inset-0 p-10 flex flex-col justify-between z-10">
                          <div className="flex justify-between items-start">
-                            <span className="text-[10px] font-mono uppercase tracking-[0.3em] text-white/40 group-hover:text-white transition-colors">
-                              {project.projectDetails?.services[0]}
-                            </span>
+                            <div className="flex flex-col gap-2">
+                              <span className="text-[10px] font-mono uppercase tracking-[0.3em] text-white/40 group-hover:text-white transition-colors">
+                                {project.projectDetails?.services[0]}
+                              </span>
+                              {project.sector && (
+                                <span className="text-[9px] font-mono uppercase tracking-[0.3em] text-[#1FA37A]/90">
+                                  {locale === 'es' ? project.sector : (project.sectorEn || project.sector)}
+                                </span>
+                              )}
+                            </div>
                             <div className="w-12 h-12 rounded-full bg-white/10 backdrop-blur-xl border border-white/10 flex items-center justify-center opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-500">
                                <span className="text-white text-xl">→</span>
                             </div>

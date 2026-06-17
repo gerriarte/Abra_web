@@ -7,6 +7,7 @@ import { MetricsLuxury } from '@/components/cases/luxury/MetricsLuxury';
 import { ImageGrid } from '@/components/cases/ui/ImageGrid';
 import { ProjectDetails } from '@/components/cases/ui/ProjectDetails';
 import { NextProjectNavigation } from '@/components/cases/ui/NextProjectNavigation';
+import IncapCaseStudy from '@/components/cases/incap/IncapCaseStudy';
 import JsonLd from '@/components/seo/JsonLd';
 import { generateSEOMetadata, generateArticleSchema, generateBreadcrumbSchema } from '@/lib/utils/seo';
 import type { Metadata } from 'next';
@@ -80,6 +81,10 @@ export default async function CaseStudyPage({ params }: PageProps) {
         ])
       ]} />
 
+      {caseStudy.template === 'bespoke' ? (
+        <IncapCaseStudy locale={locale} />
+      ) : (
+       <>
       {/* Block 1: Hero Luxury */}
       <CaseHeroLuxury
         title={title}
@@ -157,6 +162,8 @@ export default async function CaseStudyPage({ params }: PageProps) {
         details={caseStudy.projectDetails}
         clientName={client}
       />
+       </>
+      )}
 
       {/* Navigation */}
       <NextProjectNavigation

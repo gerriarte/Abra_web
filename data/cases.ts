@@ -21,6 +21,8 @@ export interface ProjectDetailsType {
 export interface CaseStudy {
   id: string;
   client: string;
+  sector?: string;
+  sectorEn?: string;
   title: string;
   brandDescription: string;
   situation: string;
@@ -28,7 +30,7 @@ export interface CaseStudy {
   action: string;
   results: Metric[];
   videos?: { url: string; title: string; titleEn: string }[];
-  template?: 'standard' | 'audiovisual';
+  template?: 'standard' | 'audiovisual' | 'bespoke';
   partner?: { name: string; logo: string };
   projectDetails: ProjectDetailsType;
   images?: string[];
@@ -390,6 +392,9 @@ export const CASES_DATA: Record<string, CaseStudy> = {
   'incap': {
     id: 'incap-case-001',
     client: 'Grupo INCAP',
+    sector: 'MANUFACTURA · COLOMBIA',
+    sectorEn: 'MANUFACTURING · COLOMBIA',
+    template: 'bespoke',
     title: 'Modernización de Marca y Estrategia Comercial para Grupo INCAP',
     brandDescription: 'Grupo INCAP es una compañía colombiana que desde 1969 fabrica adhesivos industriales de alto rendimiento para los sectores de madera y muebles, colchones y espumas, calzado y marroquinería. Más de 56 años de maestría técnica al servicio de la industria, con asesoría especializada directamente en la planta del cliente y un compromiso real con la seguridad de los operarios.',
     situation: 'Una marca con más de medio siglo de trayectoria técnica necesitaba que su identidad, su comunicación y su narrativa comercial estuvieran a la altura del liderazgo que ya ejercía en planta. La percepción de marca no reflejaba la profundidad de su conocimiento ni la solidez de su propuesta de valor.',
@@ -427,8 +432,8 @@ export const CASES_DATA: Record<string, CaseStudy> = {
       services: ['Branding', 'Brand Strategy', 'Communication', 'Commercial Strategy'],
       team: [],
     },
-    heroImage: '/cases/incap.webp',
-    images: ['/cases/incap.webp'],
+    heroImage: '/cases/incap-placeholder.svg',
+    images: ['/cases/incap-placeholder.svg'],
   }
 };
 
