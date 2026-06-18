@@ -5,6 +5,7 @@ import useOnScreen from '@/hooks/useOnScreen';
 import { sectionContainerVariants, itemVariants } from '@/lib/animations/variants';
 import WordReveal from './WordReveal';
 import { WHATSAPP_HREF, WHATSAPP_NUMBER } from './cta';
+import { CAL_BOOKING_URL } from '@/lib/links';
 
 export default function LandingFinalCTA() {
   const [ref, isVisible] = useOnScreen({ threshold: 0.25 });
@@ -45,6 +46,15 @@ export default function LandingFinalCTA() {
             className="cta-primary inline-flex items-center justify-center gap-2 px-10 py-4 bg-white text-background text-sm font-medium tracking-wide rounded-sm hover:bg-white/90"
           >
             Hablemos por WhatsApp
+          </a>
+          <a
+            href={CAL_BOOKING_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="cta-ghost group inline-flex items-center justify-center gap-2 px-10 py-4 text-sm font-light text-text-primary rounded-sm border border-white/15 hover:border-white/30 hover:bg-white/[0.03]"
+          >
+            Agendá una reunión
+            <span className="text-text-muted transition-transform duration-300 group-hover:translate-x-1">→</span>
           </a>
         </motion.div>
 

@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import useOnScreen from '@/hooks/useOnScreen';
 import { SectionFlowLine } from '@/components/ui/SectionFlowLine';
 import { itemVariants } from '@/lib/animations/variants';
+import { CAL_BOOKING_URL } from '@/lib/links';
 
 export default function Result() {
   const t = useTranslations('result');
@@ -40,7 +41,9 @@ export default function Result() {
 
           <motion.div variants={itemVariants} className="flex flex-col sm:flex-row justify-center items-center gap-4">
             <a
-              href="#contact"
+              href={CAL_BOOKING_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="cta-primary inline-flex items-center justify-center px-10 py-5 bg-white text-background text-sm font-medium tracking-wide rounded-sm hover:bg-white/90"
             >
               {t('ctaPrimary')}

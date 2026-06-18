@@ -6,6 +6,7 @@ import useOnScreen from '@/hooks/useOnScreen';
 import { heroContainerVariants, itemVariants } from '@/lib/animations/variants';
 import WordReveal from '@/components/motion/WordReveal';
 import CountUp from '@/components/motion/CountUp';
+import { CAL_BOOKING_URL } from '@/lib/links';
 
 const LOOP_PHASES = ['metric01', 'metric02', 'metric03', 'metric04'] as const;
 
@@ -90,7 +91,9 @@ export default function Hero() {
               className="flex flex-col sm:flex-row gap-3 items-stretch sm:items-center"
             >
               <a
-                href="#contact"
+                href={CAL_BOOKING_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="cta-primary inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-white text-background text-sm font-medium tracking-wide rounded-sm hover:bg-white/90"
               >
                 {t('ctaPrimary')}

@@ -73,6 +73,8 @@
   "contact": {
     "title": "Iniciemos tu Proyecto",
     "subtitle": "Agenda una sesión de consultoría estratégica",
+    "scheduleDirect": "Agendá una reunión de 30 min",
+    "scheduleOrForm": "o dejanos tus datos en el formulario",
     "form": {
       "fullName": "Nombre Completo",
       "fullNamePlaceholder": "Juan Pérez",
@@ -153,6 +155,7 @@
   "home": "Inicio",
   "about": "Acerca de",
   "contact": "Contacto",
+  "schedule": "Agendar",
   "problem": "Problema",
   "method": "Método",
   "services": "Servicios",

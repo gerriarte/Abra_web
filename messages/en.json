@@ -73,6 +73,8 @@
   "contact": {
     "title": "Let's Start Your Project",
     "subtitle": "Schedule a strategic consultation session",
+    "scheduleDirect": "Book a 30-min meeting",
+    "scheduleOrForm": "or leave your details in the form below",
     "form": {
       "fullName": "Full Name",
       "fullNamePlaceholder": "John Doe",
@@ -153,6 +155,7 @@
     "home": "Home",
     "about": "About",
     "contact": "Contact",
+    "schedule": "Book a call",
     "problem": "Problem",
     "method": "Method",
     "services": "Services",

@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useLocale, useTranslations } from 'next-intl';
+import { CAL_BOOKING_URL } from '@/lib/links';
 
 export default function Footer() {
   const t = useTranslations('contact.form');
@@ -71,13 +72,22 @@ export default function Footer() {
               Insights sobre Growth, IA e Ingeniería.
             </p>
             <div className="flex border-b border-white/10 pb-2">
-              <input 
-                type="email" 
-                placeholder="tu@email.com" 
+              <input
+                type="email"
+                placeholder="tu@email.com"
                 className="bg-transparent border-none text-xs text-text-primary focus:outline-none w-full font-light"
               />
               <button className="text-primary text-xs font-medium">→</button>
             </div>
+
+            <a
+              href={CAL_BOOKING_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="cta-primary mt-6 inline-flex items-center justify-center rounded-full bg-white px-5 py-2.5 text-[10px] font-medium uppercase tracking-widest text-background hover:bg-white/90"
+            >
+              {isEnglish ? 'Book a meeting' : 'Agendá una reunión'}
+            </a>
           </div>
         </div>
 

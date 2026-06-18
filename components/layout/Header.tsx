@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useLocale, useTranslations } from 'next-intl';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import { CAL_BOOKING_URL } from '@/lib/links';
 
 export default function Header() {
   const locale = useLocale();
@@ -140,10 +141,19 @@ export default function Header() {
 
             <Link
               href={`/${locale}#contact`}
-              className="cta-ghost hidden md:block text-[10px] font-medium px-6 py-2.5 rounded-full border border-white/10 text-text-primary hover:bg-white hover:text-background"
+              className="cta-ghost hidden lg:block text-[10px] font-medium px-6 py-2.5 rounded-full border border-white/10 text-text-primary hover:bg-white hover:text-background"
             >
               {t('contact')}
             </Link>
+
+            <a
+              href={CAL_BOOKING_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="cta-primary hidden md:inline-flex items-center text-[10px] font-medium px-6 py-2.5 rounded-full bg-white text-background hover:bg-white/90"
+            >
+              {t('schedule')}
+            </a>
           </div>
         </div>
       </nav>

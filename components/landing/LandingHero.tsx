@@ -6,6 +6,7 @@ import { heroContainerVariants, itemVariants } from '@/lib/animations/variants';
 import WordReveal from './WordReveal';
 import HeroRadar from './HeroRadar';
 import { WHATSAPP_HREF } from './cta';
+import { CAL_BOOKING_URL } from '@/lib/links';
 
 const LOOP_PHASES = ['Insight', 'Build', 'Launch', 'Learn'] as const;
 
@@ -102,10 +103,12 @@ export default function LandingHero() {
                 Hablemos
               </a>
               <a
-                href="#loop"
+                href={CAL_BOOKING_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="cta-ghost group inline-flex items-center justify-center gap-2 px-8 py-3.5 text-sm font-light text-text-primary rounded-sm border border-white/15 hover:border-white/30 hover:bg-white/[0.03]"
               >
-                Cómo trabajamos
+                Agendá una reunión
                 <span className="text-text-muted transition-transform duration-300 group-hover:translate-x-1">→</span>
               </a>
             </motion.div>

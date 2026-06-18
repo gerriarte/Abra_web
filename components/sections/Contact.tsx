@@ -4,8 +4,9 @@ import { useState } from 'react';
 import { useLocale, useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import useOnScreen from '@/hooks/useOnScreen';
-import { ArrowRight, ArrowLeft, CheckCircle2 } from 'lucide-react';
+import { ArrowRight, ArrowLeft, CheckCircle2, CalendarClock } from 'lucide-react';
 import { SectionFlowLine } from '@/components/ui/SectionFlowLine';
+import { CAL_BOOKING_URL } from '@/lib/links';
 
 export default function Contact() {
   const t = useTranslations('contact');
@@ -78,6 +79,20 @@ export default function Contact() {
             <h2 className="text-balance mb-6">{t('title')}</h2>
             <p className="text-text-secondary font-light max-w-2xl mx-auto">
               {t('subtitle')}
+            </p>
+            <div className="mt-8 flex justify-center">
+              <a
+                href={CAL_BOOKING_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="cta-primary inline-flex items-center gap-2.5 rounded-full bg-white px-7 py-3.5 text-sm font-medium text-background hover:bg-white/90"
+              >
+                <CalendarClock size={16} />
+                {t('scheduleDirect')}
+              </a>
+            </div>
+            <p className="mt-4 text-[10px] font-mono uppercase tracking-[0.2em] text-text-muted">
+              {t('scheduleOrForm')}
             </p>
             <SectionFlowLine className="mt-10" variant="short" />
           </div>

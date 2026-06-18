@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import { WHATSAPP_HREF } from './cta';
+import { CAL_BOOKING_URL } from '@/lib/links';
 
 export default function LandingHeader() {
   return (
@@ -19,14 +20,24 @@ export default function LandingHeader() {
               className="h-7 w-auto md:h-8 transition-opacity duration-300 hover:opacity-80"
             />
           </a>
-          <a
-            href={WHATSAPP_HREF}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="cta-primary inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-white text-background text-xs md:text-sm font-medium tracking-wide rounded-sm hover:bg-white/90"
-          >
-            Hablemos
-          </a>
+          <div className="flex items-center gap-2 md:gap-3">
+            <a
+              href={CAL_BOOKING_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="cta-ghost hidden sm:inline-flex items-center justify-center gap-2 px-5 py-2.5 text-xs md:text-sm font-light text-text-primary rounded-sm border border-white/15 hover:border-white/30 hover:bg-white/[0.03]"
+            >
+              Agendar
+            </a>
+            <a
+              href={WHATSAPP_HREF}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="cta-primary inline-flex items-center justify-center gap-2 px-5 py-2.5 bg-white text-background text-xs md:text-sm font-medium tracking-wide rounded-sm hover:bg-white/90"
+            >
+              Hablemos
+            </a>
+          </div>
         </div>
       </div>
     </header>

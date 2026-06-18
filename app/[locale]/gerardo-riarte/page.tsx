@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { CAL_BOOKING_URL } from "@/lib/links";
 
 export default function GerardoRiarteLandingPage() {
   return (
@@ -97,6 +98,14 @@ export default function GerardoRiarteLandingPage() {
         <section className="py-12 text-center">
           <p className="text-2xl font-semibold text-white sm:text-3xl">¿Charlamos?</p>
           <div className="mt-5 flex flex-col gap-2.5 text-base text-white/85">
+            <a
+              href={CAL_BOOKING_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="cta-primary rounded-full bg-white px-4 py-2.5 font-semibold text-[#020C17] hover:bg-white/90"
+            >
+              Agendar una reunión
+            </a>
             <a
               href="https://www.linkedin.com/in/gerardoriarte/"
               target="_blank"
