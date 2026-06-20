@@ -13,7 +13,8 @@ import { CASES_DATA, type Metric } from '@/data/cases';
 type CaseSize = 'large' | 'medium' | 'small';
 
 const FEATURED_SLUGS: { slug: string; size: CaseSize }[] = [
-  { slug: 'ruta-teatro', size: 'large' },
+  { slug: 'nougram', size: 'large' },
+  { slug: 'ruta-teatro', size: 'medium' },
   { slug: 'monyte', size: 'medium' },
   { slug: 'securitas', size: 'medium' },
   { slug: 'different-coffee', size: 'medium' },

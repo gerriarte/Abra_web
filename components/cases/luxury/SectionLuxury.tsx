@@ -122,6 +122,16 @@ export const SectionLuxury: React.FC<SectionLuxuryProps> = ({
               <div className="prose prose-invert prose-lg">
                 <p className="text-text-secondary font-light leading-relaxed whitespace-pre-wrap">{description}</p>
               </div>
+              {points && points.length > 0 && (
+                <ul className="mt-10 space-y-4">
+                  {points.map((point, i) => (
+                    <li key={i} className="flex items-start gap-4">
+                      <span className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-warning/70" />
+                      <span className="text-base text-text-secondary font-light leading-relaxed">{point}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
             </div>
           </motion.div>
 
