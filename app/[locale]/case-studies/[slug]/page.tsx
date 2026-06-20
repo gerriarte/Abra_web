@@ -24,10 +24,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   const isEnglish = locale === 'en';
   const title = isEnglish && caseStudy.titleEn ? caseStudy.titleEn : caseStudy.title;
-  
+  const metaDescription =
+    (isEnglish ? caseStudy.metaDescriptionEn : caseStudy.metaDescription) ||
+    (isEnglish ? caseStudy.brandDescriptionEn : caseStudy.brandDescription)?.substring(0, 160);
+
   return generateSEOMetadata({
     title: `${title} | A:BRA`,
-    description: (isEnglish ? caseStudy.brandDescriptionEn : caseStudy.brandDescription)?.substring(0, 160),
+    description: metaDescription,
     image: caseStudy.heroImage || '/abra.png',
     url: `/${locale}/case-studies/${slug}`,
     type: 'article',
@@ -53,7 +56,16 @@ export default async function CaseStudyPage({ params }: PageProps) {
   const task = isEnglish && caseStudy.taskEn ? caseStudy.taskEn : caseStudy.task;
   const action = isEnglish && caseStudy.actionEn ? caseStudy.actionEn : caseStudy.action;
   const metrics = (isEnglish && caseStudy.resultsEn ? caseStudy.resultsEn : caseStudy.results) || [];
-  
+
+  const sector = (isEnglish && caseStudy.sectorEn ? caseStudy.sectorEn : caseStudy.sector) || caseStudy.projectDetails?.services[0];
+  const role = (isEnglish && caseStudy.roleEn ? caseStudy.roleEn : caseStudy.role) || (isEnglish ? 'Digital Strategy & Dev' : 'Estrategia Digital y Dev');
+  const industry = isEnglish && caseStudy.industryEn ? caseStudy.industryEn : caseStudy.industry;
+  const painTag = (isEnglish && caseStudy.painTagEn ? caseStudy.painTagEn : caseStudy.painTag) || (isEnglish ? 'Pain: Operational Inefficiency' : 'Dolor: Ineficiencia Operativa');
+  const painPoints = isEnglish && caseStudy.painPointsEn ? caseStudy.painPointsEn : caseStudy.painPoints;
+  const strategyPillars = isEnglish && caseStudy.strategyPillarsEn ? caseStudy.strategyPillarsEn : caseStudy.strategyPillars;
+  const galleryDescription = isEnglish && caseStudy.galleryDescriptionEn ? caseStudy.galleryDescriptionEn : caseStudy.galleryDescription;
+  const schemaDescription = (isEnglish && caseStudy.schemaDescriptionEn ? caseStudy.schemaDescriptionEn : caseStudy.schemaDescription) || description;
+
   const labels = {
     context: isEnglish ? 'Context' : 'Contexto',
     challenge: isEnglish ? 'The Challenge' : 'El Desafío',
@@ -73,7 +85,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
   return (
     <div className="min-h-screen bg-background text-text-primary overflow-x-hidden selection:bg-white selection:text-background">
       <JsonLd data={[
-        generateArticleSchema({ title, description, image: caseStudy.heroImage || '', url: `/${locale}/case-studies/${slug}` }),
+        generateArticleSchema({ title, description: schemaDescription, image: caseStudy.heroImage || '', url: `/${locale}/case-studies/${slug}` }),
         generateBreadcrumbSchema([
           { name: isEnglish ? 'Home' : 'Inicio', url: `/${locale}` },
           { name: isEnglish ? 'Cases' : 'Casos', url: `/${locale}/cases` },
@@ -100,11 +112,11 @@ export default async function CaseStudyPage({ params }: PageProps) {
            <div className="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-8">
               <div className="space-y-4">
                  <span className="text-[9px] font-mono uppercase tracking-[0.4em] text-text-muted">{isEnglish ? 'Sector' : 'Sector'}</span>
-                 <p className="text-lg font-light tracking-tight">{caseStudy.projectDetails?.services[0]}</p>
+                 <p className="text-lg font-light tracking-tight">{sector}</p>
               </div>
               <div className="space-y-4">
                  <span className="text-[9px] font-mono uppercase tracking-[0.4em] text-text-muted">{isEnglish ? 'Role' : 'Rol'}</span>
-                 <p className="text-lg font-light tracking-tight">{isEnglish ? 'Digital Strategy & Dev' : 'Estrategia Digital y Dev'}</p>
+                 <p className="text-lg font-light tracking-tight">{role}</p>
               </div>
               <div className="space-y-4">
                  <span className="text-[9px] font-mono uppercase tracking-[0.4em] text-text-muted">{isEnglish ? 'Year' : 'Año'}</span>
@@ -121,7 +133,8 @@ export default async function CaseStudyPage({ params }: PageProps) {
         description={situation}
         image={caseStudy.images?.[0]}
         align="full-image"
-        painPoint={isEnglish ? 'Operational Inefficiency' : 'Ineficiencia Operativa'}
+        painPoint={painTag}
+        points={painPoints}
       />
 
       {/* Block 4: The Strategy (Task) - Direct */}
@@ -130,6 +143,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
         title={isEnglish ? 'Tactical Engineering' : 'Ingeniería Táctica'}
         description={task}
         theme="deep"
+        pillars={strategyPillars}
       />
 
 
@@ -151,9 +165,10 @@ export default async function CaseStudyPage({ params }: PageProps) {
 
       {/* Block 7: Gallery */}
       <div className="py-32 bg-background">
-        <ImageGrid 
-          images={caseStudy.images || []} 
+        <ImageGrid
+          images={caseStudy.images || []}
           title={labels.visuals}
+          description={galleryDescription}
         />
       </div>
 
@@ -161,6 +176,8 @@ export default async function CaseStudyPage({ params }: PageProps) {
       <ProjectDetails
         details={caseStudy.projectDetails}
         clientName={client}
+        clientUrl={caseStudy.clientUrl}
+        industry={industry}
       />
        </>
       )}

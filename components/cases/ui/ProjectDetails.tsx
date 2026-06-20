@@ -7,18 +7,22 @@ import { ProjectDetailsType } from '@/data/cases';
 interface ProjectDetailsProps {
   details: ProjectDetailsType;
   clientName: string;
+  clientUrl?: string;
+  industry?: string;
 }
 
-export const ProjectDetails: React.FC<ProjectDetailsProps> = ({ details, clientName }) => {
+export const ProjectDetails: React.FC<ProjectDetailsProps> = ({ details, clientName, clientUrl, industry }) => {
   const locale = useLocale();
   const isEnglish = locale === 'en';
-  
+
   const labels = {
     client: isEnglish ? 'Client' : 'Cliente',
     year: isEnglish ? 'Year' : 'Año',
     duration: isEnglish ? 'Duration' : 'Duración',
     team: isEnglish ? 'Team' : 'Equipo',
-    services: isEnglish ? 'Services' : 'Servicios'
+    services: isEnglish ? 'Services' : 'Servicios',
+    industry: isEnglish ? 'Industry' : 'Industria',
+    visitSite: isEnglish ? 'Visit site' : 'Visitar sitio'
   };
   
   return (
@@ -40,6 +44,25 @@ export const ProjectDetails: React.FC<ProjectDetailsProps> = ({ details, clientN
                 )}
                 
                 <h3 className="text-4xl font-light tracking-tight text-text-primary">{clientName}</h3>
+
+                {clientUrl && (
+                  <a
+                    href={clientUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-5 inline-flex items-center gap-2 text-[10px] font-mono uppercase tracking-[0.3em] text-text-muted hover:text-text-primary transition-colors"
+                  >
+                    {labels.visitSite}
+                    <span aria-hidden="true">↗</span>
+                  </a>
+                )}
+
+                {industry && (
+                  <div className="mt-10">
+                    <span className="text-[10px] font-mono tracking-[0.3em] uppercase text-text-muted mb-3 block">{labels.industry}</span>
+                    <p className="text-lg font-light tracking-tight text-text-primary">{industry}</p>
+                  </div>
+                )}
              </div>
 
              {/* Info Grid */}

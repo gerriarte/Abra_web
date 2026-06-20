@@ -3,6 +3,7 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 import useOnScreen from '@/hooks/useOnScreen';
+import type { StrategyPillar } from '@/data/cases';
 
 interface SectionLuxuryProps {
   id?: string;
@@ -13,6 +14,8 @@ interface SectionLuxuryProps {
   align?: 'left' | 'right' | 'full-image';
   theme?: 'dark' | 'deep';
   painPoint?: string;
+  points?: string[];
+  pillars?: StrategyPillar[];
   imagePosition?: string;
 }
 
@@ -25,6 +28,8 @@ export const SectionLuxury: React.FC<SectionLuxuryProps> = ({
   align = 'left',
   theme = 'dark',
   painPoint,
+  points,
+  pillars,
   imagePosition = 'center',
 }) => {
   const [ref, isVisible] = useOnScreen({ threshold: 0.1 });
@@ -70,12 +75,22 @@ export const SectionLuxury: React.FC<SectionLuxuryProps> = ({
             {painPoint && (
               <div className="mb-6">
                 <span className="text-warning text-[10px] font-mono uppercase tracking-widest px-3 py-1 border border-warning/30 rounded-full bg-warning/5">
-                  Dolor: {painPoint}
+                  {painPoint}
                 </span>
               </div>
             )}
             <h2 className="text-5xl md:text-8xl font-light tracking-tight mb-8 leading-[0.85]">{title}</h2>
             <p className="text-xl text-text-secondary font-light leading-relaxed max-w-xl">{description}</p>
+            {points && points.length > 0 && (
+              <ul className="mt-10 space-y-4 max-w-xl">
+                {points.map((point, i) => (
+                  <li key={i} className="flex items-start gap-4">
+                    <span className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-warning/70" />
+                    <span className="text-base md:text-lg text-text-secondary font-light leading-relaxed">{point}</span>
+                  </li>
+                ))}
+              </ul>
+            )}
           </motion.div>
         </div>
       </section>
@@ -146,6 +161,29 @@ export const SectionLuxury: React.FC<SectionLuxuryProps> = ({
             </motion.div>
           )}
         </div>
+
+        {pillars && pillars.length > 0 && (
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1 }}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px bg-white/5 border border-white/5 rounded-[2.5rem] overflow-hidden mt-20 lg:mt-28"
+          >
+            {pillars.map((pillar) => (
+              <div
+                key={pillar.number}
+                className={`p-10 flex flex-col group transition-colors duration-500 hover:bg-surface/20 ${theme === 'deep' ? 'bg-background' : 'bg-background-off'}`}
+              >
+                <span className="text-3xl font-light tracking-tighter text-text-muted group-hover:text-accent transition-colors mb-6">
+                  {pillar.number}
+                </span>
+                <h3 className="text-xl font-light tracking-tight text-text-primary mb-4">{pillar.title}</h3>
+                <p className="text-sm text-text-secondary font-light leading-relaxed">{pillar.description}</p>
+              </div>
+            ))}
+          </motion.div>
+        )}
       </div>
     </section>
   );

@@ -8,6 +8,7 @@ import { X, ChevronLeft, ChevronRight, Maximize2 } from 'lucide-react';
 interface ImageGridProps {
   images?: string[];
   title?: string;
+  description?: string;
   imageLink?: string;
 }
 
@@ -59,9 +60,10 @@ const ParallaxImage = ({
   );
 };
 
-export const ImageGrid: React.FC<ImageGridProps> = ({ 
+export const ImageGrid: React.FC<ImageGridProps> = ({
   images = [],
   title = 'Visuales de Campaña',
+  description,
 }) => {
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   
@@ -144,7 +146,7 @@ export const ImageGrid: React.FC<ImageGridProps> = ({
               className="mt-8 pl-4 border-l border-white/10"
             >
               <p className="text-sm font-light text-text-secondary leading-relaxed italic">
-                {images.length > 0 ? "Exploración visual del ecosistema digital diseñado para maximizar la conversión y el impacto." : "Detailed view of the interface components and design system."}
+                {description || (images.length > 0 ? "Exploración visual del ecosistema digital diseñado para maximizar la conversión y el impacto." : "Detailed view of the interface components and design system.")}
               </p>
             </motion.div>
           </div>

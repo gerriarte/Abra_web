@@ -10,6 +10,12 @@ export interface TeamMember {
   name: string;
 }
 
+export interface StrategyPillar {
+  number: string;
+  title: string;
+  description: string;
+}
+
 export interface ProjectDetailsType {
   logo?: string;
   year?: string;
@@ -21,14 +27,31 @@ export interface ProjectDetailsType {
 export interface CaseStudy {
   id: string;
   client: string;
+  clientUrl?: string;
   sector?: string;
   sectorEn?: string;
+  industry?: string;
+  industryEn?: string;
+  role?: string;
+  roleEn?: string;
   title: string;
   brandDescription: string;
   situation: string;
+  painTag?: string;
+  painTagEn?: string;
+  painPoints?: string[];
+  painPointsEn?: string[];
   task: string;
+  strategyPillars?: StrategyPillar[];
+  strategyPillarsEn?: StrategyPillar[];
   action: string;
   results: Metric[];
+  galleryDescription?: string;
+  galleryDescriptionEn?: string;
+  metaDescription?: string;
+  metaDescriptionEn?: string;
+  schemaDescription?: string;
+  schemaDescriptionEn?: string;
   videos?: { url: string; title: string; titleEn: string }[];
   template?: 'standard' | 'audiovisual' | 'bespoke';
   partner?: { name: string; logo: string };
@@ -48,49 +71,92 @@ export const CASES_DATA: Record<string, CaseStudy> = {
   'different-coffee': {
     id: 'different-coffee-001',
     client: 'Differente Coffee',
+    clientUrl: 'https://differentecoffee.com',
+    sector: 'Web Redesign + E-commerce',
+    sectorEn: 'Web Redesign + E-commerce',
+    industry: 'Café de Especialidad',
+    industryEn: 'Specialty Coffee',
+    role: 'Estrategia Digital, Dev & Ads',
+    roleEn: 'Digital Strategy, Dev & Ads',
     title: 'Rediseño Web y Estrategia de Growth para Differente Coffee',
-    brandDescription: 'Differente Coffee es una marca de café de especialidad que busca ofrecer una experiencia única y de alta calidad a sus clientes, enfocándose en la excelencia del grano y la sofisticación de su preparación.',
-    situation: 'La marca contaba con una presencia digital que no reflejaba la calidad premium de sus productos, con campañas poco optimizadas y un crecimiento estancado.',
-    task: 'Rediseñar el sitio web para mejorar la experiencia de usuario y la tasa de conversión, optimizar las campañas de pauta digital y aplicar estrategias de growth marketing para impulsar el crecimiento mensual.',
-    action: 'Realizamos un rediseño integral del sitio web, enfocándonos en una estética premium y minimalista. Optimizamos las campañas de Meta y Google Ads con inversiones bajas pero altamente segmentadas, e implementamos diversas tácticas de growth marketing para fidelizar clientes y aumentar la recurrencia.',
+    brandDescription: 'Differente Coffee es una marca de café de especialidad colombiana con logros competitivos internacionales, enfocada en la excelencia del grano y en una experiencia premium de principio a fin.',
+    situation: 'Differente Coffee es una marca de café de especialidad colombiana con logros competitivos internacionales, pero su presencia digital no estaba a la altura: un sitio que no transmitía la calidad premium del producto, campañas de pauta con baja segmentación y un canal de e-commerce con una tasa de conversión por debajo del potencial de la marca.',
+    painTag: 'Brecha de Posicionamiento',
+    painTagEn: 'Positioning Gap',
+    painPoints: [
+      'Sitio web con estética genérica que no comunicaba el posicionamiento premium',
+      'Campañas de Meta y Google Ads sin segmentación estratégica por perfil de cliente',
+      'Funnel de conversión desconectado: tráfico pagado sin retargeting ni flujo de retención',
+      'Crecimiento mensual estancado sin un sistema escalable',
+    ],
+    task: 'Diseñamos un sistema de crecimiento completo aplicando el A:BRA Loop: comenzamos desde el insight de marca y audiencia, construimos una nueva identidad web orientada a conversión, y lanzamos campañas de pauta altamente segmentadas con loops de retención integrados.',
+    strategyPillars: [
+      { number: '01', title: 'Posicionamiento Premium', description: 'Redefinir la propuesta de valor visual y narrativa para reflejar la calidad de competición internacional del producto.' },
+      { number: '02', title: 'Conversión Web', description: 'Rediseño del sitio con arquitectura orientada a la compra: jerarquía clara, fichas de producto con storytelling y checkout optimizado.' },
+      { number: '03', title: 'Pauta Segmentada', description: 'Campañas de Meta y Google Ads con audiencias definidas por perfil de barista, aficionado y canal B2B, con inversiones bajas pero de alta precisión.' },
+      { number: '04', title: 'Loops de Retención', description: 'Email marketing post-compra, contenido educativo y programa de recurrencia para aumentar el LTV del cliente.' },
+    ],
+    action: 'Ejecutamos en fases siguiendo el Loop: primero el insight de marca y benchmarking competitivo, luego el rediseño integral del sitio con estética premium y minimalista enfocada en la narrativa del producto. Simultáneamente lanzamos campañas de Meta y Google Ads con segmentación por perfil (baristas, aficionados, canal negocios) y activamos flujos de email post-compra para construir recurrencia.',
     results: [
       { label: 'Crecimiento Mensual', value: '15', suffix: '%' },
       { label: 'Optimización de Pauta', value: 'Alta', suffix: '' },
       { label: 'Experiencia de Usuario', value: 'Premium', suffix: '' },
       { label: 'Retorno de Inversión', value: 'Máximo', suffix: '' },
+      { label: 'Campañas Activas', value: 'Meta + Google', suffix: '' },
     ],
+    galleryDescription: 'Sistema visual diseñado para comunicar calidad de competición internacional. Cada pieza construye el posicionamiento premium de la marca y está optimizada para conversión.',
+    galleryDescriptionEn: 'A visual system designed to communicate international competition-grade quality. Each piece builds the brand\'s premium positioning and is optimized for conversion.',
+    metaDescription: 'Cómo A:BRA rediseñó el sitio web de Differente Coffee y construyó un sistema de growth marketing que logró 15% de crecimiento mensual para una marca de café de especialidad colombiana.',
+    metaDescriptionEn: 'How A:BRA redesigned Differente Coffee\'s website and built a growth marketing system that achieved 15% monthly growth for a Colombian specialty coffee brand.',
+    schemaDescription: 'Caso de estudio: A:BRA implementó el A:BRA Loop para Differente Coffee — rediseño web premium, campañas de pauta segmentada y estrategia de e-commerce que generó crecimiento mensual sostenido para la marca de café de especialidad.',
+    schemaDescriptionEn: 'Case study: A:BRA implemented the A:BRA Loop for Differente Coffee — premium web redesign, segmented ad campaigns, and an e-commerce strategy that drove sustained monthly growth for the specialty coffee brand.',
     projectDetails: {
       year: '2025/2026',
       duration: 'Continuo',
-      services: ['Web Redesign', 'Growth Marketing', 'Ads Optimization', 'E-commerce'],
+      services: ['Web Redesign', 'Growth Marketing', 'Ads Optimization', 'E-commerce', 'Email Marketing'],
       team: [
         { role: 'Growth Strategist', name: 'Abra Team' },
-        { role: 'Lead Designer', name: 'Abra Team' }
+        { role: 'Lead Designer', name: 'Abra Team' },
+        { role: 'Ads Manager', name: 'Abra Team' }
       ]
     },
     // English translations
     titleEn: 'Web Redesign and Growth Strategy for Differente Coffee',
-    brandDescriptionEn: 'Differente Coffee is a specialty coffee brand that seeks to offer a unique and high-quality experience to its customers, focusing on grain excellence and the sophistication of its preparation.',
-    situationEn: 'The brand had a digital presence that did not reflect the premium quality of its products, with poorly optimized campaigns and stagnant growth.',
-    taskEn: 'Redesign the website to improve user experience and conversion rate, optimize digital advertising campaigns, and apply growth marketing strategies to boost monthly growth.',
-    actionEn: 'We carried out a comprehensive redesign of the website, focusing on a premium and minimalist aesthetic. We optimized Meta and Google Ads campaigns with low but highly segmented investments, and implemented various growth marketing tactics to build customer loyalty and increase recurrence.',
+    brandDescriptionEn: 'Differente Coffee is a Colombian specialty coffee brand with international competition awards, focused on grain excellence and a premium end-to-end experience.',
+    situationEn: 'Differente Coffee is a Colombian specialty coffee brand with international competition awards, but its digital presence did not match: a site that failed to convey the product\'s premium quality, poorly segmented ad campaigns, and an e-commerce channel converting below the brand\'s potential.',
+    painPointsEn: [
+      'A generic-looking website that failed to communicate the premium positioning',
+      'Meta and Google Ads campaigns without strategic segmentation by customer profile',
+      'A disconnected conversion funnel: paid traffic with no retargeting or retention flow',
+      'Stagnant monthly growth with no scalable system',
+    ],
+    taskEn: 'We designed a complete growth system applying the A:BRA Loop: starting from brand and audience insight, building a new conversion-oriented web identity, and launching highly segmented ad campaigns with integrated retention loops.',
+    strategyPillarsEn: [
+      { number: '01', title: 'Premium Positioning', description: 'Redefine the visual and narrative value proposition to reflect the product\'s international competition-grade quality.' },
+      { number: '02', title: 'Web Conversion', description: 'Website redesign with a purchase-oriented architecture: clear hierarchy, product pages with storytelling, and an optimized checkout.' },
+      { number: '03', title: 'Segmented Advertising', description: 'Meta and Google Ads campaigns with audiences defined by barista, enthusiast, and B2B profiles — low spend, high precision.' },
+      { number: '04', title: 'Retention Loops', description: 'Post-purchase email marketing, educational content, and a recurrence program to increase customer LTV.' },
+    ],
+    actionEn: 'We executed in phases following the Loop: first brand insight and competitive benchmarking, then a comprehensive site redesign with a premium, minimalist aesthetic focused on the product narrative. Simultaneously, we launched Meta and Google Ads campaigns segmented by profile (baristas, enthusiasts, business channel) and activated post-purchase email flows to build recurrence.',
     resultsEn: [
       { label: 'Monthly Growth', value: '15', suffix: '%' },
       { label: 'Ad Optimization', value: 'High', suffix: '' },
       { label: 'User Experience', value: 'Premium', suffix: '' },
       { label: 'ROI', value: 'Maximum', suffix: '' },
+      { label: 'Active Campaigns', value: 'Meta + Google', suffix: '' },
     ],
     projectDetailsEn: {
       year: '2025/2026',
-      services: ['Web Redesign', 'Growth Marketing', 'Ads Optimization', 'E-commerce'],
+      services: ['Web Redesign', 'Growth Marketing', 'Ads Optimization', 'E-commerce', 'Email Marketing'],
       team: [
         { role: 'Growth Strategist', name: 'Abra Team' },
-        { role: 'Lead Designer', name: 'Abra Team' }
+        { role: 'Lead Designer', name: 'Abra Team' },
+        { role: 'Ads Manager', name: 'Abra Team' }
       ]
     },
     heroImage: '/differente-coffee/Differente-mock.webp',
     images: [
-      '/differente-coffee/Differente Home.webp',
+      '/differente-coffee/Differente-Home.webp',
       '/differente-coffee/Differente Tienda.webp',
       '/differente-coffee/Differente Producto.webp',
       '/differente-coffee/Differente Coffee negocios.webp',
