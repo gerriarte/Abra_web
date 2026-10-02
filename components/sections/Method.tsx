@@ -10,8 +10,8 @@ type Step = { period: string; phase: string; body: string };
 /** Insight = node network, Build = layers, Launch = converging paths, Learn = growing bars. */
 const PHASE_ICONS: ReactElement[] = [METHOD_ICONS.expose, METHOD_ICONS.prepare, METHOD_ICONS.decide, METHOD_ICONS.prioritize];
 
-/** Weeks per stretch of the 90-day process: 1 + 3 + 4 + 4 = 12. */
-const STEP_WEEKS = [1, 3, 4, 4];
+/** Weeks per stretch of the 30-day process: one week each. */
+const STEP_WEEKS = [1, 1, 1, 1];
 
 export default function Method() {
   const t = useTranslations('home.method');
@@ -55,11 +55,11 @@ export default function Method() {
           &ldquo;{t('quote')}&rdquo;
         </blockquote>
 
-        {/* 90-day process */}
+        {/* 30-day process */}
         <div className="mt-24 border-t border-white/[0.08] pt-16">
           <h3 className="abra-h2 abra-reveal mb-12 text-[clamp(1.6rem,3vw,2.4rem)]">{t.rich('process.title', mutedTag)}</h3>
 
-          {/* 12-week bar split into the four stretches; each fills in sequence. */}
+          {/* 4-week bar split into the four stretches; each fills in sequence. */}
           <div
             className="abra-reveal mb-10 grid gap-2"
             style={{ gridTemplateColumns: STEP_WEEKS.map((w) => `${w}fr`).join(' ') }}

@@ -543,8 +543,8 @@
       "auditLink": "Learn about the Judgment Audit",
       "quote": "It's not a funnel. It's a flywheel: every turn of the Loop increases knowledge, lowers cost and accelerates growth.",
       "process": {
-        "title": "From diagnosis to a running system. <muted>In 90 days.</muted>",
-        "timelineLabel": "12-week timeline",
+        "title": "From diagnosis to a running system. <muted>In 30 days.</muted>",
+        "timelineLabel": "4-week timeline",
         "steps": [
           {
             "period": "Week 1",
@@ -552,19 +552,19 @@
             "body": "Judgment Audit: the area's decisions, data and priorities."
           },
           {
-            "period": "Weeks 2 to 4",
+            "period": "Week 2",
             "phase": "System design",
             "body": "Pillars, KPIs and the technical architecture for growth."
           },
           {
-            "period": "Weeks 5 to 8",
+            "period": "Week 3",
             "phase": "Build & Launch",
             "body": "Campaigns, website, automations and AI models up and running."
           },
           {
-            "period": "Weeks 9 to 12",
+            "period": "Week 4",
             "phase": "Learn & optimize",
-            "body": "Data-driven iteration and biweekly executive reports."
+            "body": "Data-driven iteration and a closing executive report."
           }
         ]
       }
@@ -643,19 +643,6 @@
             "Built for consultants, designers, marketers and agencies."
           ],
           "cta": "Discover Nougram"
-        },
-        "agent-x": {
-          "eyebrow": "In incubation",
-          "title": "Agent-X",
-          "headline": "Your growth team, assisted by AI agents.",
-          "description": "AI agents specialized in ads, SEO and data analysis, coordinated to run growth end to end.",
-          "status": "Beta",
-          "highlightsLabel": "In development",
-          "highlights": [
-            "Bid and segmentation adjustments with agents.",
-            "Executive reports generated from your data."
-          ],
-          "cta": "Join the waitlist"
         }
       }
     },

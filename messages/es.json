@@ -543,8 +543,8 @@
       "auditLink": "Conocer el Judgment Audit",
       "quote": "No es un funnel. Es un flywheel: cada vuelta del Loop aumenta el conocimiento, reduce el costo y acelera el crecimiento.",
       "process": {
-        "title": "Del diagnóstico al sistema en marcha. <muted>En 90 días.</muted>",
-        "timelineLabel": "Línea de tiempo de 12 semanas",
+        "title": "Del diagnóstico al sistema en marcha. <muted>En 30 días.</muted>",
+        "timelineLabel": "Línea de tiempo de 4 semanas",
         "steps": [
           {
             "period": "Semana 1",
@@ -552,19 +552,19 @@
             "body": "Judgment Audit: decisiones, datos y prioridades del área."
           },
           {
-            "period": "Semanas 2 a 4",
+            "period": "Semana 2",
             "phase": "Diseño del sistema",
             "body": "Pilares, KPIs y arquitectura técnica del crecimiento."
           },
           {
-            "period": "Semanas 5 a 8",
+            "period": "Semana 3",
             "phase": "Build & Launch",
             "body": "Campañas, web, automatizaciones y modelos de IA en marcha."
           },
           {
-            "period": "Semanas 9 a 12",
+            "period": "Semana 4",
             "phase": "Learn & optimizar",
-            "body": "Iteración con datos y reportes ejecutivos quincenales."
+            "body": "Iteración con datos y un reporte ejecutivo de cierre."
           }
         ]
       }
@@ -643,19 +643,6 @@
             "Pensado para consultores, diseñadores, marketers y agencias."
           ],
           "cta": "Conocer Nougram"
-        },
-        "agent-x": {
-          "eyebrow": "En incubación",
-          "title": "Agent-X",
-          "headline": "Tu equipo de growth asistido por agentes de IA.",
-          "description": "Agentes de IA especializados en pauta, SEO y análisis de datos, coordinados para operar el growth de punta a punta.",
-          "status": "Beta",
-          "highlightsLabel": "En desarrollo",
-          "highlights": [
-            "Ajuste de pujas y segmentación con agentes.",
-            "Reportes ejecutivos generados a partir de tus datos."
-          ],
-          "cta": "Sumarme a la lista de espera"
         }
       }
     },

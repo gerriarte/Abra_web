@@ -1,5 +1,5 @@
 import { useTranslations } from 'next-intl';
-import { ButtonLink, Label, SectionHead, mutedTag } from '@/components/shared/motion';
+import { Label, SectionHead, mutedTag } from '@/components/shared/motion';
 
 const NOUGRAM_URL = 'https://nougram.co';
 
@@ -17,7 +17,6 @@ type Product = {
 export default function Laboratory() {
   const t = useTranslations('home.lab');
   const nougram = t.raw('products.nougram') as Product;
-  const agentX = t.raw('products.agent-x') as Product;
 
   return (
     <section id="laboratory" className="relative border-t border-white/5 py-24 md:py-32">
@@ -38,13 +37,6 @@ export default function Laboratory() {
               {nougram.cta}
               <span aria-hidden="true">↗</span>
             </a>
-          </article>
-
-          {/* TODO(ger): validar el estado real de Agent-X (incubación / beta) y sus funciones en desarrollo. */}
-          <article className="abra-lift abra-reveal rounded-[2rem] border border-aqua/20 bg-white/[0.02] p-8 shadow-[0_20px_60px_rgba(0,0,0,0.35)] md:p-12">
-            <ProductHeader product={agentX} badgeClass="border-aqua/40 bg-aqua/10 text-aqua" />
-            <ProductBody product={agentX} />
-            <ButtonLink href="#contact">{agentX.cta}</ButtonLink>
           </article>
         </div>
 
