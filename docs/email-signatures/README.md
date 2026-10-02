@@ -91,7 +91,7 @@ Templates de firmas de correo HTML para el equipo de A:BRA.
 - **Nombre:** Gerardo Riarte
 - **Cargo:** CEO | A:BRA
 - **Email:** gerriarte@abralatam.com
-- **Teléfono:** +57 321 444 4727
+- **Teléfono:** +57 324 211 0636
 - **Sitio web:** abralatam.com
 - **Ubicación:** LATAM
 

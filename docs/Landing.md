@@ -30,7 +30,7 @@ Lo primero que se ve. Que en 5 segundos se entienda qué hace a:bra **distinta**
   - "Marketing que crece, ejecutado con IA y rigor de ingeniería."
   - "Construimos el crecimiento de tu marca: estrategia, ejecución e IA en un solo equipo."
 - **Subhead:** a:bra une estrategia, ejecución técnica e IA en un mismo equipo — el mismo que diseña la estrategia escribe el código y lee los datos.
-- **CTA primario:** "Hablemos" → WhatsApp (+57 321 444 4727) / café.
+- **CTA primario:** "Hablemos" → WhatsApp (+57 324 211 0636) / café.
 
 ### 2. Tesis — en positivo
 Afirmar en qué cree a:bra y la oportunidad que abre. Sin nombrar a nadie más.
@@ -66,7 +66,7 @@ Credibilidad por encima de capacidades. Cada caso con un resultado concreto.
 Mismo CTA que el hero (café / WhatsApp / diagnóstico), para que todo el sistema apunte al mismo lugar.
 
 - Texto sugerido: "¿Hablamos de cómo hacer crecer tu marca?"
-- Botón: WhatsApp (+57 321 444 4727).
+- Botón: WhatsApp (+57 324 211 0636).
 
 ---
 

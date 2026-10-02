@@ -13,15 +13,9 @@ interface WhatsAppOption {
 const whatsappOptions: WhatsAppOption[] = [
   {
     country: 'Colombia',
-    number: '573214444727',
+    number: '573242110636',
     code: '+57',
     flag: '🇨🇴',
-  },
-  {
-    country: 'Argentina',
-    number: '5493815231323',
-    code: '+54',
-    flag: '🇦🇷',
   },
   {
     country: 'España',

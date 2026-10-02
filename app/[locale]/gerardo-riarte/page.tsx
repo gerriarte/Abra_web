@@ -121,12 +121,12 @@ export default function GerardoRiarteLandingPage() {
               business@abralatam.com
             </a>
             <a
-              href="https://wa.me/573214444727"
+              href="https://wa.me/573242110636"
               target="_blank"
               rel="noopener noreferrer"
               className="cta-ghost rounded-full border border-white/20 bg-white/[0.03] px-4 py-2.5 font-medium text-white/90 hover:bg-white/[0.08]"
             >
-              WhatsApp Business (+573214444727)
+              WhatsApp Business (+573242110636)
             </a>
           </div>
         </section>
