@@ -13,12 +13,12 @@ export function Deliverables() {
       <SectionHead eyebrow={t('eyebrow')} title={t.rich('title', { muted: (c) => <Muted>{c}</Muted> })} />
       <Grid min={320}>
         {items.map((item, i) => (
-          <article key={item.name} className="ja-card ja-reveal">
+          <article key={item.name} className="abra-card abra-reveal">
             <div className="ja-graphic">{DELIVERABLE_GRAPHICS[i]}</div>
-            <h3 className="ja-h3">{item.name}</h3>
-            <p className="ja-text ja-text--strong">{item.what}</p>
+            <h3 className="abra-h3">{item.name}</h3>
+            <p className="abra-text abra-text--strong">{item.what}</p>
             <Label>{t('helpLabel')}</Label>
-            <p className="ja-text">{item.help}</p>
+            <p className="abra-text">{item.help}</p>
           </article>
         ))}
       </Grid>

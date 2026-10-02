@@ -19,15 +19,15 @@ export function Method() {
       />
       <Grid min={210}>
         {phases.map((phase, i) => (
-          <article key={phase.name} className="ja-card ja-card--flush ja-reveal">
+          <article key={phase.name} className="abra-card abra-card--flush abra-reveal">
             <div className="ja-phase__body">
               {PHASE_ICONS[i]}
               <Label muted>{phase.when}</Label>
-              <h3 className="ja-h3">{phase.name}</h3>
-              <p className="ja-text">{phase.body}</p>
+              <h3 className="abra-h3">{phase.name}</h3>
+              <p className="abra-text">{phase.body}</p>
             </div>
             <div className="ja-phase__gate">
-              <span className="ja-dot ja-dot--sm" aria-hidden="true" />
+              <span className="abra-dot abra-dot--sm" aria-hidden="true" />
               <Label>
                 {t('gatePrefix')} {phase.gate}
               </Label>
@@ -38,12 +38,12 @@ export function Method() {
       <div className="ja-week" aria-hidden="true">
         {week.map((d, i) => (
           <div key={`${d.day}-${i}`} className="ja-week__day">
-            <div className="ja-week__track">
-              <div className="ja-week__fill" style={{ animationDelay: `${i * 0.7}s` }} />
+            <div className="abra-track">
+              <div className="abra-fill" style={{ animationDelay: `${i * 0.7}s` }} />
             </div>
             <div className="ja-week__labels">
-              <p className="ja-label" style={{ color: '#fff' }}>{d.day}</p>
-              <p className="ja-label ja-label--muted">{d.phase}</p>
+              <p className="abra-label" style={{ color: '#fff' }}>{d.day}</p>
+              <p className="abra-label abra-label--muted">{d.phase}</p>
             </div>
           </div>
         ))}

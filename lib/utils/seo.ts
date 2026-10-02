@@ -102,6 +102,7 @@ export function generateSEOMetadata(config: SEOConfig): Metadata {
       title: fullTitle,
       description: metaDescription,
       images: [imageUrl],
+      // TODO(ger): confirmar el handle real de X/Twitter; @abra_agency parece un placeholder.
       creator: '@abra_agency',
       site: '@abra_agency',
     },

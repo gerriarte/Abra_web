@@ -1,85 +1,27 @@
-'use client';
-
 import { useLocale, useTranslations } from 'next-intl';
-import { motion } from 'framer-motion';
-import useOnScreen from '@/hooks/useOnScreen';
-import Link from 'next/link';
-import { SectionFlowLine } from '@/components/ui/SectionFlowLine';
-import WordReveal from '@/components/motion/WordReveal';
+import { ButtonLink, SectionHead, mutedTag } from '@/components/shared/motion';
 
 export default function Founder() {
-  const t = useTranslations('founder');
+  const t = useTranslations('home.founder');
   const locale = useLocale();
-  const [ref, isVisible] = useOnScreen({ threshold: 0.1 });
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 24 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.8,
-        ease: [0.21, 0.47, 0.32, 0.98] as const,
-      },
-    },
-  };
 
   return (
-    <section id="founder" className="py-32 relative overflow-hidden">
-      <div className="container mx-auto px-4 lg:px-8 relative z-10 max-w-7xl">
-        <motion.div
-          ref={ref}
-          initial="hidden"
-          animate={isVisible ? 'visible' : 'hidden'}
-          className="max-w-4xl mx-auto text-center"
-        >
-          <motion.span
-            variants={itemVariants}
-            className="text-[9px] font-mono tracking-[0.5em] uppercase text-text-muted mb-6 block"
-          >
-            {t('eyebrow')}
-          </motion.span>
-
-          <h2 className="text-4xl md:text-5xl font-light tracking-tight mb-8">
-            <WordReveal text={t('title')} />
-          </h2>
-
-          <motion.div variants={itemVariants} className="mb-8">
-            <SectionFlowLine variant="short" />
-          </motion.div>
-
-          <motion.p
-            variants={itemVariants}
-            className="text-lg text-text-secondary font-light leading-relaxed mb-10"
-          >
-            {t('body')}
-          </motion.p>
-
-          <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Link
-              href={`/${locale}/gerardo-riarte`}
-              className="cta-primary rounded-full bg-white px-8 py-3.5 text-sm font-semibold text-background hover:bg-white/90"
-            >
-              {t('ctaPersonal')}
-            </Link>
-            <a
-              href="https://www.linkedin.com/in/gerardoriarte/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="cta-ghost rounded-full border border-white/20 px-8 py-3.5 text-sm font-medium text-white/90 hover:bg-white/10"
-            >
+    <section id="founder" className="relative border-t border-white/5 py-24 md:py-32">
+      <div className="container mx-auto max-w-7xl px-4 lg:px-8">
+        <SectionHead eyebrow={t('eyebrow')} title={t.rich('title', mutedTag)} />
+        <div className="abra-reveal flex max-w-3xl flex-col gap-10">
+          {/* TODO(ger): confirmar "más de una década" en el texto del fundador. */}
+          <p className="abra-lead abra-lead--lg max-w-none">{t('body')}</p>
+          <div className="abra-actions">
+            <ButtonLink href={`/${locale}/gerardo-riarte`}>{t('ctaPersonal')}</ButtonLink>
+            <ButtonLink href="https://www.linkedin.com/in/gerardoriarte/" variant="ghost" arrow="↗" external>
               {t('ctaLinkedin')}
-            </a>
-            <a
-              href="https://instagram.com/gerardoriarte"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="cta-ghost rounded-full border border-white/20 px-8 py-3.5 text-sm font-medium text-white/90 hover:bg-white/10"
-            >
+            </ButtonLink>
+            <ButtonLink href="https://instagram.com/gerardoriarte" variant="ghost" arrow="↗" external>
               {t('ctaInstagram')}
-            </a>
-          </motion.div>
-        </motion.div>
+            </ButtonLink>
+          </div>
+        </div>
       </div>
     </section>
   );

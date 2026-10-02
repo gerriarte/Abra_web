@@ -87,40 +87,16 @@ export default function Header() {
             />
           </Link>
 
-          {/* Navigation Links */}
+          {/* Navigation Links (same order as the home sections) */}
           <div className="hidden md:flex items-center gap-8">
-            {[
-              { id: 'problem', label: t('problem') },
-              { id: 'method', label: t('method') },
-            ].map(({ id, label }) => {
-              const isActive = activeSection === id;
-
-              return (
-                <Link
-                  key={id}
-                  href={`/${locale}#${id}`}
-                  className={`group relative text-[11px] font-light tracking-[0.2em] uppercase transition-all duration-300 ${
-                    isActive ? 'text-text-primary' : 'text-text-muted hover:text-text-primary'
-                  }`}
-                >
-                  <span className="relative z-[1]">{label}</span>
-                  <span
-                    className={`absolute inset-x-0 -bottom-2 h-px origin-left transform rounded-full transition-transform duration-500 ease-out bg-primary ${
-                      isActive ? 'scale-x-100 opacity-50' : 'scale-x-0 opacity-0 group-hover:scale-x-50 group-hover:opacity-30'
-                    }`}
-                  />
-                </Link>
-              );
-            })}
+            <NavLink href={`/${locale}#problem`} label={t('problem')} active={activeSection === 'problem'} />
 
             {/* Services Dropdown */}
             <div className="group/services relative">
               <Link
                 href={`/${locale}#services`}
                 aria-haspopup="true"
-                className={`group relative inline-flex items-center gap-1.5 text-[11px] font-light tracking-[0.2em] uppercase transition-all duration-300 ${
-                  isServicesActive ? 'text-text-primary' : 'text-text-muted hover:text-text-primary'
-                }`}
+                className={`group relative inline-flex items-center gap-1.5 ${NAV_TEXT} ${isServicesActive ? 'text-text-primary' : NAV_IDLE}`}
               >
                 <span className="relative z-[1]">{t('services')}</span>
                 <svg
@@ -133,11 +109,7 @@ export default function Header() {
                 >
                   <path d="M1 1l4 4 4-4" />
                 </svg>
-                <span
-                  className={`absolute inset-x-0 -bottom-2 h-px origin-left transform rounded-full transition-transform duration-500 ease-out bg-primary ${
-                    isServicesActive ? 'scale-x-100 opacity-50' : 'scale-x-0 opacity-0 group-hover:scale-x-50 group-hover:opacity-30'
-                  }`}
-                />
+                <NavUnderline active={isServicesActive} />
               </Link>
 
               {/* pt-5 bridges the gap so the menu stays open while the cursor moves down */}
@@ -145,8 +117,8 @@ export default function Header() {
                 <div className="min-w-[220px] rounded-xl border border-white/10 bg-background/95 p-2 shadow-[0_12px_40px_rgba(0,0,0,0.5)] backdrop-blur-xl">
                   <Link
                     href={`/${locale}/judgment-audit`}
-                    className={`block rounded-lg px-4 py-3 text-[11px] font-light tracking-[0.2em] uppercase transition-colors duration-300 hover:bg-white/[0.04] hover:text-text-primary ${
-                      pathname === `/${locale}/judgment-audit` ? 'text-text-primary' : 'text-text-muted'
+                    className={`block rounded-lg px-4 py-3 ${NAV_TEXT} hover:bg-white/[0.04] hover:text-aqua ${
+                      pathname === `/${locale}/judgment-audit` ? 'text-aqua' : NAV_IDLE
                     }`}
                   >
                     {t('judgmentAudit')}
@@ -155,20 +127,8 @@ export default function Header() {
               </div>
             </div>
 
-            {/* Cases Link */}
-            <Link
-              href={`/${locale}/cases`}
-              className={`group relative text-[11px] font-light tracking-[0.2em] uppercase transition-all duration-300 ${
-                pathname === `/${locale}/cases` ? 'text-text-primary' : 'text-text-muted hover:text-text-primary'
-              }`}
-            >
-              <span className="relative z-[1]">{t('cases')}</span>
-              <span
-                className={`absolute inset-x-0 -bottom-2 h-px origin-left transform rounded-full transition-transform duration-500 ease-out bg-primary ${
-                  pathname === `/${locale}/cases` ? 'scale-x-100 opacity-50' : 'scale-x-0 opacity-0 group-hover:scale-x-50 group-hover:opacity-30'
-                }`}
-              />
-            </Link>
+            <NavLink href={`/${locale}#method`} label={t('method')} active={activeSection === 'method'} />
+            <NavLink href={`/${locale}/cases`} label={t('cases')} active={pathname === `/${locale}/cases`} />
           </div>
 
           {/* Language Toggle & CTA */}
@@ -202,5 +162,29 @@ export default function Header() {
       </nav>
     </header>
 
+  );
+}
+
+const NAV_TEXT = 'text-[11px] font-light tracking-[0.2em] uppercase transition-colors duration-300';
+const NAV_IDLE = 'text-white/60 hover:text-text-primary';
+
+/** Aqua line drawn under the link on hover (scaleX 0 → 1); stays drawn while active. */
+function NavUnderline({ active }: { active: boolean }) {
+  return (
+    <span
+      aria-hidden="true"
+      className={`absolute inset-x-0 -bottom-2 h-px origin-left rounded-full bg-aqua transition-transform duration-500 ease-out motion-reduce:transition-none ${
+        active ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
+      }`}
+    />
+  );
+}
+
+function NavLink({ href, label, active }: { href: string; label: string; active: boolean }) {
+  return (
+    <Link href={href} className={`group relative ${NAV_TEXT} ${active ? 'text-text-primary' : NAV_IDLE}`}>
+      <span className="relative z-[1]">{label}</span>
+      <NavUnderline active={active} />
+    </Link>
   );
 }

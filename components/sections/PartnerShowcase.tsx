@@ -1,102 +1,56 @@
-'use client';
+import Image from 'next/image';
+import { useTranslations } from 'next-intl';
+import { SectionHead, mutedTag } from '@/components/shared/motion';
 
-import React from 'react';
-import { FadeIn } from '../cases/ui/FadeIn';
-import { ExternalLink } from 'lucide-react';
-import { SectionFlowLine } from '@/components/ui/SectionFlowLine';
-
-interface Partner {
-    name: string;
-    logo: string;
-    url: string;
-    description: string;
-    descriptionEn: string;
-}
-
-const PARTNERS: Partner[] = [
-    {
-        name: 'MTM Marca tu Marca',
-        logo: '/Bestune/MTM-Marca-tu-marca-brand.webp',
-        url: 'https://mtmmarcatumarca.com',
-        description: 'Expertos en producción audiovisual de alto impacto y narrativa visual cinematográfica.',
-        descriptionEn: 'Experts in high-impact audiovisual production and cinematic visual storytelling.'
-    }
-    // Add more partners here in the future
+/** Description copy lives in messages: home.partners.items.<key>. */
+const PARTNERS = [
+  {
+    key: 'mtm',
+    name: 'MTM Marca tu Marca',
+    logo: '/Bestune/MTM-Marca-tu-marca-brand.webp',
+    url: 'https://mtmmarcatumarca.com',
+  },
 ];
 
-interface PartnerShowcaseProps {
-    locale: string;
+export function PartnerShowcase() {
+  const t = useTranslations('home.partners');
+
+  return (
+    <section id="partners" className="relative border-t border-white/5 py-24 md:py-32">
+      <div className="container mx-auto max-w-7xl px-4 lg:px-8">
+        <SectionHead eyebrow={t('eyebrow')} title={t.rich('title', mutedTag)} />
+        <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+          {PARTNERS.map((partner) => (
+            <a
+              key={partner.key}
+              href={partner.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="abra-card abra-reveal group gap-6 p-8"
+            >
+              <div className="flex h-20 items-center">
+                <Image
+                  src={partner.logo}
+                  alt=""
+                  width={180}
+                  height={80}
+                  className="h-full w-auto max-w-[180px] rounded-lg object-contain grayscale transition-all duration-500 group-hover:grayscale-0"
+                />
+              </div>
+              <div className="flex flex-col gap-3">
+                <h3 className="abra-h3 flex items-center gap-2">
+                  {partner.name}
+                  <span aria-hidden="true" className="text-sm text-aqua opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                    ↗
+                  </span>
+                  <span className="sr-only">({t('visit')})</span>
+                </h3>
+                <p className="abra-text">{t(`items.${partner.key}`)}</p>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
 }
-
-export const PartnerShowcase: React.FC<PartnerShowcaseProps> = ({ locale }) => {
-    const isEn = locale === 'en';
-
-    return (
-        <section id="partners" className="bg-transparent py-24 md:py-32 px-6 border-y border-white/5 relative overflow-hidden">
-            {/* 3D Spatial Grid Background */}
-            <div className="absolute inset-x-0 bottom-0 top-0 z-0 pointer-events-none overflow-hidden mask-spatial-grid opacity-15">
-                <div className="spatial-grid" />
-            </div>
-
-            <div className="max-w-7xl mx-auto relative z-10">
-                {/* Header */}
-                <div className="max-w-3xl mb-16">
-                    <FadeIn>
-                        <div className="flex items-center gap-4 mb-6">
-                            <span className="h-px w-12 bg-primary"></span>
-                            <span className="text-xs font-bold tracking-[0.2em] uppercase text-text-muted">
-                                {isEn ? 'Strategic Ecosystem' : 'Aliados'}
-                            </span>
-                        </div>
-                        <h2 className="text-4xl md:text-6xl font-light leading-tight text-text-primary tracking-tight">
-                            {isEn ? "We don't work alone. But we curate who we add." : "No trabajamos solos. Pero curamos a quién sumamos."}
-                        </h2>
-                        <p className="mt-6 text-lg text-text-secondary font-light leading-relaxed">
-                            {isEn
-                                ? 'We collaborate with industry leaders to integrate specialized capabilities into every project, ensuring excellence at every touchpoint.'
-                                : 'Colaboramos con líderes de la industria para integrar capacidades especializadas en cada proyecto.'}
-                        </p>
-                        <SectionFlowLine className="mt-10" />
-                    </FadeIn>
-                </div>
-
-                {/* Partners Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {PARTNERS.map((partner, index) => (
-                        <FadeIn key={partner.name} delay={index * 100}>
-                            <a
-                                href={partner.url}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="group relative block bg-white/[0.02] p-8 rounded-3xl border border-white/5 transition-all duration-500 hover:bg-white/[0.05] hover:border-primary/20 hover:-translate-y-1 h-full"
-                            >
-                                <div className="flex flex-col h-full gap-8">
-                                    {/* Logo Container */}
-                                    <div className="h-20 flex items-center justify-start transition-all duration-500">
-                                        <img
-                                            src={partner.logo}
-                                            alt={partner.name}
-                                            className="h-full w-auto object-contain max-w-[180px] rounded-lg grayscale group-hover:grayscale-0 transition-all"
-                                        />
-                                    </div>
-
-                                    {/* Info */}
-                                    <div className="space-y-4 flex-1">
-                                        <h3 className="text-xl font-medium text-text-primary group-hover:text-primary transition-colors flex items-center gap-2">
-                                            {partner.name}
-                                            <ExternalLink size={14} className="opacity-0 group-hover:opacity-100 transition-all -translate-y-1" />
-                                        </h3>
-                                        <p className="text-sm text-text-secondary font-light leading-relaxed">
-                                            {isEn ? partner.descriptionEn : partner.description}
-                                        </p>
-                                    </div>
-                                </div>
-                            </a>
-                        </FadeIn>
-                    ))}
-                </div>
-
-            </div>
-        </section>
-    );
-};

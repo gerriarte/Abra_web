@@ -5,7 +5,7 @@ export function Thesis() {
   const t = useTranslations('JudgmentAudit.thesis');
   return (
     <section className="ja-thesis">
-      <div className="ja-wrap ja-thesis__inner ja-reveal">
+      <div className="ja-wrap ja-thesis__inner abra-reveal">
         <Eyebrow tone="deep">{t('eyebrow')}</Eyebrow>
         <p className="ja-thesis__title">
           {t('line1')}

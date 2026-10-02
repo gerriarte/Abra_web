@@ -1,76 +1,5 @@
 {
-  "hero": {
-    "eyebrow": "Agency · Studio · AI Laboratory",
-    "titleLine1": "We build growth systems.",
-    "titleLine2": "And the products that make them possible.",
-    "subtitle": "A hybrid growth and engineering studio. What we recommend, we first validate in our own products.",
-    "ctaPrimary": "Schedule a free diagnosis →",
-    "ctaSecondary": "Get a Judgment Audit",
-    "statusLabel": "System online",
-    "statusValue": "A:BRA Loop · v2.0",
-    "metric01": "Insight",
-    "metric02": "Build",
-    "metric03": "Launch",
-    "metric04": "Learn"
-  },
-  "problem": {
-    "eyebrow": "The cost of disconnected marketing",
-    "title": "The problem is not a lack of data. It's that marketing, product, and technology work as islands.",
-    "body": "You invest in ads, hire agencies, install dashboards. And yet you feel like you're operating blindly. The reason is structural: your brand, your website, your product, and your ads were built at different times, with different providers, without a system to coordinate them.",
-    "cards": {
-      "01": {
-        "title": "01 — Brand that doesn't scale",
-        "description": "Your message changes with every campaign. The sales team says one thing, the website another, the ads another."
-      },
-      "02": {
-        "title": "02 — Ads that burn money",
-        "description": "High volume, low quality, confused attribution. The CAC goes up, nobody knows why."
-      },
-      "03": {
-        "title": "03 — Technology that slows down",
-        "description": "Your stack is a collection of tools, not a system. Every new integration breaks something."
-      }
-    }
-  },
-  "method": {
-    "eyebrow": "Our framework",
-    "title": "A:BRA Loop: the system where growth and engineering feed each other.",
-    "subtitle": "Most agencies sell you strategy. Product studios sell you code. We operate at the intersection: every marketing decision is validated by building, and every product is built with growth logic from day one.",
-    "phases": {
-      "01": {
-        "name": "Insight",
-        "title": "360° Audit",
-        "description": "Brand, data, attribution, stack, market. AI applied to perception and competitive analysis."
-      },
-      "02": {
-        "name": "Build",
-        "title": "Growth Systems",
-        "description": "Brand, web, landings, automations, micro-products. Vibe coding with technical rigor: AI-assisted prototyping."
-      },
-      "03": {
-        "name": "Launch",
-        "title": "Integrated Launch",
-        "description": "Ads, SEO, content. Predictive models for bidding, segmentation, and attribution."
-      },
-      "04": {
-        "name": "Learn",
-        "title": "Analytics & Iteration",
-        "description": "Dashboards, continuous iteration. Learning feeds back into Insight. The system improves with each cycle."
-      }
-    },
-    "footer": "It's not a funnel. It's a Flywheel: each turn of the Loop increases knowledge, reduces cost, and accelerates growth."
-  },
-  "result": {
-    "title": "Ready to stop operating blindly?",
-    "description": "Download the complete A:BRA Loop in PDF. It's the same framework we use for our products and clients. It shows you how to connect marketing, product, and technology into a single system.",
-    "ctaPrimary": "Schedule a free diagnosis →",
-    "ctaSecondary": "Download A:BRA Loop PDF"
-  },
   "contact": {
-    "title": "Let's Start Your Project",
-    "subtitle": "Schedule a strategic consultation session",
-    "scheduleDirect": "Book a 30-min meeting",
-    "scheduleOrForm": "or leave your details in the form below",
     "form": {
       "fullName": "Full Name",
       "fullNamePlaceholder": "John Doe",
@@ -108,7 +37,16 @@
       "note": "We respect your privacy and will never share your information.",
       "locations": "Locations",
       "connect": "Connect",
-      "whatsappMessage": "Hello, I would like to get more information about your services."
+      "whatsappMessage": "Hello, I would like to get more information about your services.",
+      "back": "Back",
+      "next": "Next",
+      "send": "Send",
+      "sending": "Sending",
+      "required": "This field is required.",
+      "invalidEmail": "Check the email format.",
+      "servicesTitle": "How can we help?",
+      "availabilityTitle": "When is a good time to talk?",
+      "step": "Step {current} of {total}"
     }
   },
   "projects": {
@@ -158,103 +96,10 @@
     "cases": "Cases",
     "judgmentAudit": "Judgment Audit"
   },
-  "services": {
-    "eyebrow": "Services",
-    "title": "Four capabilities. One integrated system.",
-    "list": {
-      "01": {
-        "title": "Data-Driven Branding",
-        "description": "Identity and value proposition built on real perception analysis, not focus group intuitions."
-      },
-      "02": {
-        "title": "Conversion-Focused Communication",
-        "description": "Institutional narrative calibrated by the topics and messages that your data says convert."
-      },
-      "03": {
-        "title": "Growth Marketing with applied AI",
-        "description": "Paid media, SEO, automation, and advanced analytics. CAC down, LTV up, clear attribution."
-      },
-      "04": {
-        "title": "Product and Web Development",
-        "description": "Web, landings, and micro-products designed as conversion systems. Built fast, without breaking."
-      }
-    }
-  },
-  "lab": {
-    "eyebrow": "Our Laboratory",
-    "title": "We build our own products. That's why we know what works.",
-    "body": "Most agencies sell strategy they never executed with their own money. We do: we validate the A:BRA Loop on real products before applying it to clients.",
-    "microcopy": "Nougram was born in our lab to solve a real market pain: quoting knowledge with predictable net profitability.",
-    "products": {
-      "nougram": {
-        "eyebrow": "Lab product",
-        "title": "Nougram",
-        "headline": "How much do you really earn on every proposal you send?",
-        "description": "An AI-powered quoter for agencies and professionals who sell knowledge. It turns your expertise into precise, profitable proposals with a focus on net margin—without guessing.",
-        "status": "Live",
-        "cta": "→ Discover Nougram",
-        "highlights": {
-          "01": "Secure your net profit before signing each deal.",
-          "02": "Let AI handle the math and regain focus on creating value.",
-          "03": "Built for consultants, designers, marketers, and agencies."
-        }
-      },
-      "agent-x": {
-        "eyebrow": "In incubation",
-        "title": "Agent-X",
-        "headline": "Your growth team assisted by autonomous agents.",
-        "description": "Orchestrator of AI agents specialized in ads, SEO, and data analysis. Technical scalability for complex marketing operations.",
-        "status": "Beta",
-        "cta": "Waitlist",
-        "highlights": {
-          "01": "Real-time bidding and segmentation automation.",
-          "02": "Executive report generation with predictive insights.",
-          "03": "Native integration with major market CRMs."
-        }
-      }
-    }
-  },
   "cases": {
     "eyebrow": "Cases",
     "title": "The Loop, applied to real clients.",
-    "subtitle": "Growth, branding, and product systems implemented with the same framework we use in our laboratory.",
-    "cardNote": "A:BRA Loop implementation to scale operations and maximize retention.",
-    "ctaAll": "Explore all systems",
-    "loading": "Loading systems..."
-  },
-  "process": {
-    "eyebrow": "The process",
-    "title": "From audit to a running system. In 90 days.",
-    "steps": {
-      "01": {
-        "period": "Wk 1-2",
-        "title": "Insight",
-        "description": "360° audit: brand, data, attribution, stack, and market."
-      },
-      "02": {
-        "period": "Wk 3-4",
-        "title": "System design",
-        "description": "We define pillars, KPIs, and the technical growth architecture."
-      },
-      "03": {
-        "period": "Wk 5-8",
-        "title": "Build & Launch",
-        "description": "We launch campaigns, web, automations, and AI models."
-      },
-      "04": {
-        "period": "Wk 9-12",
-        "title": "Learn & Optimize",
-        "description": "Data-driven iteration with biweekly executive reporting."
-      }
-    }
-  },
-  "founder": {
-    "eyebrow": "About the founder",
-    "title": "Gerardo Riarte. Growth, AI, and product in one profile.",
-    "body": "A:BRA was born from a personal obsession: combining digital marketing with real technical development at a time when AI finally makes it possible. I am Gerardo Riarte, Argentine based in Bogotá. Over a decade designing growth strategies for LATAM brands, building web products and SaaS platforms, and applying AI to marketing before it was mainstream.",
-    "ctaPersonal": "See my personal work →",
-    "ctaLinkedin": "LinkedIn",
-    "ctaInstagram": "Instagram"
+    "subtitle": "Growth, branding, and product systems implemented with the same framework we use in our laboratory."
   },
   "JudgmentAudit": {
     "meta": {
@@ -574,6 +419,262 @@
         "errorEmail": "Enter a valid email, for example name@company.com.",
         "whatsapp": "Hi A:BRA, I’d like to book a Judgment Audit.\nName: {name}\nEmail: {email}\nCompany: {company}\nArea to audit: {area}"
       }
+    }
+  },
+  "home": {
+    "meta": {
+      "title": "A:BRA — Strategy, development and data with applied AI",
+      "description": "Strategy, development and data with applied AI. A hybrid growth and engineering studio: what we recommend, we first validate in our own products."
+    },
+    "hero": {
+      "eyebrow": "Agency · Studio · AI Lab",
+      "title": "We build growth systems. <muted>And the products that make them possible.</muted>",
+      "lead": "Strategy, development and data with applied AI, for companies that want to grow with judgment, not intuition.",
+      "ctaPrimary": "Let's talk about your project",
+      "ctaSecondary": "Start with a Judgment Audit",
+      "capabilities": [
+        "Strategy",
+        "Development",
+        "Data & AI",
+        "Growth"
+      ],
+      "capabilitiesLabel": "Capabilities"
+    },
+    "problem": {
+      "eyebrow": "The cost of disconnected marketing",
+      "title": "The problem isn't a lack of data. <muted>It's that marketing, product and technology work as islands.</muted>",
+      "body": "You invest in ads, hire agencies, install dashboards. And you still feel like you're operating blind. The reason is structural: your brand, your website, your product and your ads were built at different times, by different vendors, with no system to coordinate them.",
+      "signals": [
+        {
+          "title": "A brand that doesn't scale",
+          "body": "Your message changes with every campaign. Sales says one thing, the website another, the ads another."
+        },
+        {
+          "title": "Ads that burn money",
+          "body": "High volume, low quality, unclear attribution. CAC goes up and nobody knows why."
+        },
+        {
+          "title": "Technology that slows you down",
+          "body": "Your stack is a collection of tools, not a system. Every new integration breaks something."
+        },
+        {
+          "title": "AI that answers generically",
+          "body": "You use AI, but the results look like any other company's. It lacks your business's judgment."
+        }
+      ]
+    },
+    "services": {
+      "eyebrow": "Services",
+      "title": "Four capabilities. <muted>One integrated system.</muted>",
+      "lead": "Each capability works on its own, but performs better connected: strategy defines what to measure, data shows what works and development turns it into a system.",
+      "includesLabel": "Includes",
+      "items": [
+        {
+          "title": "Strategy",
+          "body": "We decide what to say, to whom and how to grow, with data instead of intuition.",
+          "includes": [
+            "Positioning and value proposition",
+            "Data-driven branding",
+            "Conversion-focused narrative",
+            "Growth plans"
+          ]
+        },
+        {
+          "title": "Development",
+          "body": "We build the pieces that make the system work, fast and without breaking.",
+          "includes": [
+            "Conversion websites and landing pages",
+            "Digital products and SaaS",
+            "Automations and integrations",
+            "AI agents and copilots"
+          ]
+        },
+        {
+          "title": "Data & AI",
+          "body": "We turn data into decisions: what to measure, how to read it and what to automate.",
+          "includes": [
+            "Measurement and attribution",
+            "Executive dashboards",
+            "Media and reputation monitoring",
+            "Brand value metrics",
+            "AI applied to decisions"
+          ]
+        },
+        {
+          "title": "Growth",
+          "body": "We take the system to market and improve it every cycle.",
+          "includes": [
+            "Meta and Google ads",
+            "SEO",
+            "Content and social media, with MTM",
+            "Conversion optimization"
+          ]
+        }
+      ]
+    },
+    "method": {
+      "eyebrow": "Our framework",
+      "title": "A:BRA Loop. <muted>The system where growth and engineering feed each other.</muted>",
+      "lead": "Most agencies sell strategy. Product studios sell code. We operate at the intersection: every marketing decision is validated by building, and every product is built with growth logic from day one.",
+      "loopLabel": "A:BRA Loop",
+      "loopCaption": "growth × engineering",
+      "phases": [
+        {
+          "name": "Insight",
+          "title": "Diagnosis with judgment",
+          "body": "We understand how your business decides before recommending tools. It can start with a one-week Judgment Audit."
+        },
+        {
+          "name": "Build",
+          "title": "Growth systems",
+          "body": "Brand, website, landing pages, automations and digital products, prototyped with AI and built with technical rigor."
+        },
+        {
+          "name": "Launch",
+          "title": "Integrated launch",
+          "body": "Ads, SEO and content, with predictive models to segment, bid and attribute."
+        },
+        {
+          "name": "Learn",
+          "title": "Analytics and iteration",
+          "body": "Dashboards and continuous iteration. Learning flows back into Insight, and the system improves with every cycle."
+        }
+      ],
+      "auditLink": "Learn about the Judgment Audit",
+      "quote": "It's not a funnel. It's a flywheel: every turn of the Loop increases knowledge, lowers cost and accelerates growth.",
+      "process": {
+        "title": "From diagnosis to a running system. <muted>In 90 days.</muted>",
+        "timelineLabel": "12-week timeline",
+        "steps": [
+          {
+            "period": "Week 1",
+            "phase": "Insight",
+            "body": "Judgment Audit: the area's decisions, data and priorities."
+          },
+          {
+            "period": "Weeks 2 to 4",
+            "phase": "System design",
+            "body": "Pillars, KPIs and the technical architecture for growth."
+          },
+          {
+            "period": "Weeks 5 to 8",
+            "phase": "Build & Launch",
+            "body": "Campaigns, website, automations and AI models up and running."
+          },
+          {
+            "period": "Weeks 9 to 12",
+            "phase": "Learn & optimize",
+            "body": "Data-driven iteration and biweekly executive reports."
+          }
+        ]
+      }
+    },
+    "cases": {
+      "eyebrow": "Cases",
+      "title": "The Loop, <muted>applied to real clients.</muted>",
+      "lead": "Growth, branding and product systems implemented with the same framework we use in our lab.",
+      "metricLabel": "Result",
+      "items": {
+        "ruta-teatro": {
+          "tags": "Digital strategy · Web development",
+          "body": "A platform to discover Bogotá's theater listings, built to attract organic audiences.",
+          "metric": "+200% web traffic"
+        },
+        "incap": {
+          "tags": "Industrial · Digital strategy · Web development",
+          "body": "Digital strategy, a website organized by industry and a technical diagnosis channel on WhatsApp for a Colombian industrial adhesives manufacturer with 56 years of history. Brand work in partnership with MTM.",
+          "metric": "3 industries · website segmented by sector"
+        },
+        "different-coffee": {
+          "tags": "Web · Growth",
+          "body": "Website redesign and growth for an internationally recognized Colombian specialty coffee brand.",
+          "metric": "+15% monthly growth"
+        },
+        "bestune": {
+          "tags": "Brand strategy · Audiovisual production",
+          "body": "Brand strategy and audiovisual production for an electric mobility automotive brand.",
+          "metric": ""
+        }
+      },
+      "cta": "Explore all cases"
+    },
+    "start": {
+      "eyebrow": "How to start",
+      "title": "Two ways to get started. <muted>Pick the one that fits where you are.</muted>",
+      "options": [
+        {
+          "label": "30 minutes",
+          "title": "A 30-minute conversation",
+          "body": "For when you already know what you need. Tell us about the project and we'll tell you how we would approach it.",
+          "cta": "Book a conversation"
+        },
+        {
+          "label": "1 week",
+          "title": "Judgment Audit",
+          "body": "For when you need to decide where to invest in AI, data or development. In one week you get a prioritized plan and your team's judgment codified.",
+          "cta": "Learn about the Judgment Audit"
+        }
+      ]
+    },
+    "founder": {
+      "eyebrow": "About the founder",
+      "title": "Gerardo Riarte. <muted>Growth, AI and product in one profile.</muted>",
+      "body": "A:BRA was born from a simple idea: marketing works better when the person who designs the strategy also knows how to build. I'm Argentinian and live in Bogotá. I've spent more than a decade designing growth strategies for brands in Latin America, developing digital products and applying AI to business decisions. That combination is what I bring to every project: understand the problem, decide with data and build the solution.",
+      "ctaPersonal": "See my personal work",
+      "ctaLinkedin": "LinkedIn",
+      "ctaInstagram": "Instagram"
+    },
+    "lab": {
+      "eyebrow": "Our lab",
+      "title": "We build our own products. <muted>That's how we know what works.</muted>",
+      "lead": "Most agencies sell strategies they never executed with their own money. We validate the A:BRA Loop on real products before applying it to clients.",
+      "microcopy": "Nougram was born in our lab to solve a concrete market pain: pricing knowledge work with predictable net profit.",
+      "products": {
+        "nougram": {
+          "eyebrow": "Lab product",
+          "title": "Nougram",
+          "headline": "How much do you really earn on every proposal you send?",
+          "description": "An AI-powered quoting tool for agencies and professionals who sell knowledge. It turns your expertise into precise, profitable proposals, focused on net margin and without guesswork.",
+          "status": "Live",
+          "highlightsLabel": "",
+          "highlights": [
+            "Lock in your net profit before signing each proposal.",
+            "Leave the math to AI and refocus on creating value.",
+            "Built for consultants, designers, marketers and agencies."
+          ],
+          "cta": "Discover Nougram"
+        },
+        "agent-x": {
+          "eyebrow": "In incubation",
+          "title": "Agent-X",
+          "headline": "Your growth team, assisted by AI agents.",
+          "description": "AI agents specialized in ads, SEO and data analysis, coordinated to run growth end to end.",
+          "status": "Beta",
+          "highlightsLabel": "In development",
+          "highlights": [
+            "Bid and segmentation adjustments with agents.",
+            "Executive reports generated from your data."
+          ],
+          "cta": "Join the waitlist"
+        }
+      }
+    },
+    "partners": {
+      "eyebrow": "Partners",
+      "title": "We don't work alone. <muted>But we curate who we add.</muted>",
+      "visit": "Visit website",
+      "items": {
+        "mtm": "Audiovisual production, content and social media. They execute the communication for the systems we design."
+      }
+    },
+    "closing": {
+      "eyebrow": "Next step",
+      "title": "Ready to stop operating blind?",
+      "body": "Tell us what you want to build or what decision you need to make. We reply within 24 business hours.",
+      "ctaPrimary": "Book a conversation",
+      "ctaPdf": "Download the A:BRA Loop (PDF)",
+      "formTitle": "Let's start your project",
+      "formLead": "If you'd rather write to us, leave your details and we'll get in touch."
     }
   }
 }

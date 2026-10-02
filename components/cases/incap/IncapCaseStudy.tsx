@@ -62,7 +62,7 @@ const CONTENT = {
       items: [
         { value: '56+ años', desc: 'Identidad renovada sin perder autoridad histórica.' },
         { value: '3 industrias', desc: 'Arquitectura de contenido especializada por sector.' },
-        { value: '+200% potencial', desc: 'Estructura lista para escalar tráfico orgánico.' },
+        // TODO(ger): métrica real de tráfico orgánico (se quitó "+200% potencial": era una proyección, no un resultado).
         { value: '1 sistema', desc: 'Loop completo: marca + web + conversión integrados.' },
       ],
     },
@@ -74,7 +74,7 @@ const CONTENT = {
     cta: {
       title: '¿Tu empresa industrial es mejor en la planta que en pantalla?',
       live: 'Ver el sitio en vivo',
-      contact: 'Agenda un diagnóstico',
+      contact: 'Conversemos tu proyecto',
     },
     labNote: 'Auditoría de marca y análisis competitivo potenciados con herramientas de IA del A:BRA Lab.',
     partner: {
@@ -135,7 +135,7 @@ const CONTENT = {
       items: [
         { value: '56+ years', desc: 'Renewed identity without losing historical authority.' },
         { value: '3 industries', desc: 'Content architecture specialized by sector.' },
-        { value: '+200% potential', desc: 'Structure ready to scale organic traffic.' },
+        // TODO(ger): métrica real de tráfico orgánico (se quitó "+200% potencial": era una proyección, no un resultado).
         { value: '1 system', desc: 'Full Loop: brand + web + conversion, integrated.' },
       ],
     },
@@ -147,7 +147,7 @@ const CONTENT = {
     cta: {
       title: 'Is your industrial company better on the floor than on screen?',
       live: 'View the live site',
-      contact: 'Book a diagnosis',
+      contact: "Let's talk about your project",
     },
     labNote: 'Brand audit and competitive analysis powered by A:BRA Lab AI tooling.',
     partner: {
@@ -386,7 +386,7 @@ export default function IncapCaseStudy({ locale }: { locale: string }) {
             {t.results.title}
           </motion.h2>
 
-          <div className="mt-16 grid grid-cols-1 gap-px overflow-hidden rounded-[2.5rem] border border-white/5 bg-white/5 md:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-16 grid grid-cols-1 gap-px overflow-hidden rounded-[2.5rem] border border-white/5 bg-white/5 md:grid-cols-3">
             {t.results.items.map((r, i) => (
               <motion.div key={i} {...fadeUp} transition={{ ...fadeUp.transition, delay: 0.08 * i }} className="bg-background p-10">
                 <p className="text-3xl font-light tracking-tighter text-white md:text-4xl">{r.value}</p>

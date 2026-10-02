@@ -1,199 +1,92 @@
-﻿'use client';
-
-import { useLocale, useTranslations } from 'next-intl';
-import { motion } from 'framer-motion';
-import useOnScreen from '@/hooks/useOnScreen';
-import { sectionContainerVariants, itemVariants } from '@/lib/animations/variants';
 import Image from 'next/image';
 import Link from 'next/link';
-import { SectionFlowLine } from '@/components/ui/SectionFlowLine';
-import WordReveal from '@/components/motion/WordReveal';
-import { CASES_DATA, type Metric } from '@/data/cases';
+import { useLocale, useTranslations } from 'next-intl';
+import { ButtonLink, Label, SectionHead, mutedTag } from '@/components/shared/motion';
+import { CASES_DATA } from '@/data/cases';
 
-type CaseSize = 'large' | 'medium' | 'small';
+type CaseCopy = { tags: string; body: string; metric: string };
 
-const FEATURED_SLUGS: { slug: string; size: CaseSize }[] = [
-  { slug: 'nougram', size: 'large' },
-  { slug: 'ruta-teatro', size: 'medium' },
-  { slug: 'monyte', size: 'medium' },
-  { slug: 'securitas', size: 'medium' },
-  { slug: 'different-coffee', size: 'medium' },
-  { slug: 'bestune', size: 'medium' },
+// The image optimizer rejects paths with non-ASCII characters ("Bogotá"); those are served as-is.
+const NON_ASCII = /[^\x20-\x7E]/;
+
+/** Home 2×2 grid. Copy lives in messages (home.cases.items.<slug>); images come from data/cases. */
+const HOME_CASES: { slug: string; image?: string; position?: string }[] = [
+  // TODO(ger): validar el período del "+200% tráfico web" de Ruta Teatro.
+  // La captura es una página completa (1920×4410): se muestra desde arriba.
+  { slug: 'ruta-teatro', position: 'object-top' },
+  // /incap/incap-hero.webp (heroImage en data/cases) no existe en /public; usamos la captura del sitio nuevo.
+  { slug: 'incap', image: '/incap/incap-despues.webp' },
+  // TODO(ger): el "+15% crecimiento mensual" de Differente, ¿es de ventas o de tráfico?
+  { slug: 'different-coffee' },
+  // TODO(ger): definir la métrica de Bestune (hoy la tarjeta va sin métrica).
+  { slug: 'bestune' },
 ];
 
-function formatMetricValue(metric: Metric): string {
-  const value = metric.value.trim();
-  const suffix = metric.suffix ?? '';
-  const prefix = metric.prefix ?? '';
-  if (value.startsWith('+') || value.startsWith('-')) {
-    return `${prefix}${value}${suffix}`;
-  }
-  const numeric = Number.parseFloat(value);
-  if (!Number.isNaN(numeric) && numeric > 0 && suffix === '%') {
-    return `${prefix}+${value}${suffix}`;
-  }
-  return `${prefix}${value}${suffix}`;
-}
-
-function buildFeaturedCase(slug: string, size: CaseSize, locale: string) {
-  const data = CASES_DATA[slug];
-  if (!data?.heroImage) return null;
-
-  const isEnglish = locale === 'en';
-  const results = (isEnglish && data.resultsEn?.length ? data.resultsEn : data.results) ?? [];
-  const primaryMetric = results[0];
-  const services = data.projectDetails?.services ?? [];
-
-  const excerptSource = isEnglish
-    ? data.brandDescriptionEn ?? data.brandDescription
-    : data.brandDescription;
-
-  return {
-    slug,
-    size,
-    title: data.client,
-    category: services.slice(0, 2).join(' · ') || (isEnglish ? 'Case study' : 'Caso de estudio'),
-    metric: primaryMetric
-      ? {
-          label: primaryMetric.label,
-          value: formatMetricValue(primaryMetric),
-        }
-      : undefined,
-    excerpt: excerptSource?.slice(0, 140).trim(),
-    image: data.heroImage,
-  };
-}
-
 export default function ClientCases() {
-  const t = useTranslations('cases');
+  const t = useTranslations('home.cases');
   const locale = useLocale();
-  const [ref, isVisible] = useOnScreen({ threshold: 0.05 });
-
-  const cases = FEATURED_SLUGS.map(({ slug, size }) => buildFeaturedCase(slug, size, locale)).filter(
-    (item): item is NonNullable<ReturnType<typeof buildFeaturedCase>> => item !== null
-  );
-
-
-  const sizeClasses: Record<CaseSize, string> = {
-    large: 'md:col-span-8 md:row-span-2 min-h-[320px] md:min-h-0',
-    medium: 'md:col-span-4 md:row-span-2 min-h-[280px] md:min-h-0',
-    small: 'md:col-span-4 md:row-span-1 min-h-[240px]',
-  };
-
-  const imageSizes: Record<CaseSize, string> = {
-    large: '(max-width: 768px) 100vw, 66vw',
-    medium: '(max-width: 768px) 100vw, 33vw',
-    small: '(max-width: 768px) 100vw, 33vw',
-  };
 
   return (
-    <section id="cases" className="py-40 relative overflow-hidden">
-      <div className="container mx-auto px-4 lg:px-8 relative z-10 max-w-7xl">
-        <motion.div
-          ref={ref}
-          variants={sectionContainerVariants}
-          initial="hidden"
-          animate={isVisible ? 'visible' : 'hidden'}
-          className="max-w-6xl mx-auto"
-        >
-          <div className="mb-32 text-center max-w-3xl mx-auto">
-            <motion.span
-              variants={itemVariants}
-              className="text-[9px] font-mono tracking-[0.5em] uppercase text-text-muted mb-6 block"
-            >
-              {t('eyebrow')}
-            </motion.span>
+    <section id="cases" className="relative border-t border-white/5 py-24 md:py-32">
+      <div className="container mx-auto max-w-7xl px-4 lg:px-8">
+        <SectionHead eyebrow={t('eyebrow')} title={t.rich('title', mutedTag)} lead={t('lead')} />
 
-            <h2 className="text-5xl md:text-7xl font-light mb-8 tracking-tight">
-              <WordReveal text={t('title')} />
-            </h2>
-            <motion.p variants={itemVariants} className="text-lg text-text-secondary font-light leading-relaxed">
-              {t('subtitle')}
-            </motion.p>
-            <motion.div variants={itemVariants} className="mt-10">
-              <SectionFlowLine />
-            </motion.div>
-          </div>
+        <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
+          {HOME_CASES.map(({ slug, image, position = 'object-center' }) => {
+            const data = CASES_DATA[slug];
+            if (!data) return null;
+            const copy = t.raw(`items.${slug}`) as CaseCopy;
+            const src = image ?? data.heroImage;
 
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-8 auto-rows-[280px]">
-            {cases.map((c, index) => (
-              <motion.div key={c.slug} variants={itemVariants} className={sizeClasses[c.size]}>
-                <Link
-                  href={`/${locale}/case-studies/${c.slug}`}
-                  className={`group relative flex h-full w-full rounded-[2.5rem] overflow-hidden border border-white/10 bg-surface/20 shadow-[0_24px_80px_rgba(0,0,0,0.35)] transition-all duration-700 hover:border-white/25 hover:shadow-[0_32px_100px_rgba(0,0,0,0.45)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white/40`}
-                >
-                  <div className="absolute inset-0 z-0">
+            return (
+              <Link
+                key={slug}
+                href={`/${locale}/case-studies/${slug}`}
+                className="abra-card abra-card--flush abra-reveal group"
+              >
+                <div className="relative aspect-[16/9] overflow-hidden bg-surface">
+                  {src ? (
                     <Image
-                      src={c.image}
-                      alt={c.title}
+                      src={src}
+                      alt={data.client}
                       fill
-                      sizes={imageSizes[c.size]}
-                      priority={index === 0}
-                      className="object-cover object-center transition-transform duration-[1.2s] ease-out group-hover:scale-[1.04]"
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      unoptimized={NON_ASCII.test(src)}
+                      className={`abra-zoom object-cover ${position}`}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-background via-background/55 to-background/10 transition-opacity duration-700 group-hover:via-background/45" />
-                    <div className="absolute inset-0 ring-1 ring-inset ring-white/5" />
-                  </div>
-
-                  <div className="relative z-10 flex h-full w-full flex-col justify-between p-8 md:p-10">
-                    <div className="flex justify-between items-start gap-4">
-                      <div className="flex flex-col gap-2">
-                        <span className="text-[9px] font-mono uppercase tracking-[0.4em] text-text-muted/90">
-                          {c.category}
-                        </span>
-                        <h3
-                          className={`${c.size === 'large' ? 'text-3xl md:text-4xl' : 'text-xl md:text-2xl'} font-light text-text-primary tracking-tight`}
-                        >
-                          {c.title}
-                        </h3>
+                  ) : null}
+                </div>
+                <div className="flex flex-1 flex-col gap-3 p-7 md:p-8">
+                  <Label muted>{copy.tags}</Label>
+                  <h3 className="abra-h3 text-2xl">{data.client}</h3>
+                  <p className="abra-text">{copy.body}</p>
+                  <div className="mt-auto flex items-end justify-between gap-4 pt-4">
+                    {copy.metric ? (
+                      <div className="flex flex-col gap-1.5">
+                        <Label muted>{t('metricLabel')}</Label>
+                        <p className="text-base font-medium text-aqua">{copy.metric}</p>
                       </div>
-                      {c.metric && (
-                        <div className="shrink-0 rounded-2xl border border-white/15 bg-background/50 px-4 py-2 text-right backdrop-blur-md">
-                          <p className="text-sm font-light text-text-primary">{c.metric.value}</p>
-                          <p className="text-[8px] font-mono uppercase tracking-[0.25em] text-text-muted mt-0.5 max-w-[88px] leading-tight">
-                            {c.metric.label}
-                          </p>
-                        </div>
-                      )}
-                    </div>
-
-                    <div className="space-y-4">
-                      {c.excerpt && (
-                        <p
-                          className={`text-sm font-light leading-relaxed text-text-secondary/90 ${
-                            c.size === 'small' ? 'line-clamp-2' : 'line-clamp-3'
-                          }`}
-                        >
-                          {c.excerpt}
-                          {c.excerpt.length >= 140 ? '…' : ''}
-                        </p>
-                      )}
-                      <div className="flex items-center justify-between gap-4">
-                        <p className="text-[11px] text-text-muted font-light max-w-[260px]">{t('cardNote')}</p>
-                        <span
-                          className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-white text-background transition-transform duration-500 group-hover:scale-110 shadow-[0_0_30px_rgba(255,255,255,0.15)]"
-                          aria-hidden
-                        >
-                          →
-                        </span>
-                      </div>
-                    </div>
+                    ) : (
+                      <span />
+                    )}
+                    <span
+                      aria-hidden="true"
+                      className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-white/15 text-white transition-colors duration-300 group-hover:border-aqua group-hover:text-aqua"
+                    >
+                      →
+                    </span>
                   </div>
-                </Link>
-              </motion.div>
-            ))}
-          </div>
+                </div>
+              </Link>
+            );
+          })}
+        </div>
 
-          <motion.div variants={itemVariants} className="mt-32 text-center">
-            <Link
-              href={`/${locale}/cases`}
-              className="inline-flex items-center gap-4 px-12 py-6 rounded-full border border-white/10 text-text-primary hover:bg-white/5 transition-all group font-light tracking-widest text-xs uppercase"
-            >
-              {t('ctaAll')}
-              <span className="group-hover:translate-x-2 transition-transform duration-500">→</span>
-            </Link>
-          </motion.div>
-        </motion.div>
+        <div className="abra-reveal mt-12 flex justify-center">
+          <ButtonLink href={`/${locale}/cases`} variant="ghost">
+            {t('cta')}
+          </ButtonLink>
+        </div>
       </div>
     </section>
   );

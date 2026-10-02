@@ -1,108 +1,91 @@
-﻿'use client';
+import Link from 'next/link';
+import type { ReactElement } from 'react';
+import { useLocale, useTranslations } from 'next-intl';
+import { Label, METHOD_ICONS, SectionHead, mutedTag } from '@/components/shared/motion';
+import LoopDiagram from './LoopDiagram';
 
-import { useTranslations } from 'next-intl';
-import { motion } from 'framer-motion';
-import useOnScreen from '@/hooks/useOnScreen';
-import useSpotlight from '@/hooks/useSpotlight';
-import { SectionFlowLine } from '@/components/ui/SectionFlowLine';
-import { sectionContainerVariants, itemVariants } from '@/lib/animations/variants';
+type Phase = { name: string; title: string; body: string };
+type Step = { period: string; phase: string; body: string };
 
-function MethodCard({ keyId }: { keyId: string }) {
-  const t = useTranslations('method');
-  const { onMouseMove, background } = useSpotlight(360, 'rgba(0,122,255,0.08)');
-  return (
-    <motion.div variants={itemVariants} className="group" onMouseMove={onMouseMove}>
-      <div className="relative h-full overflow-hidden p-8 rounded-3xl bg-background border border-white/5 hover:border-primary/50 transition-all duration-500 flex flex-col items-center text-center">
-        <motion.span
-          aria-hidden
-          style={{ background }}
-          className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-500 group-hover:opacity-100"
-        />
-        <div className="relative mb-6">
-          <div className="w-16 h-16 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center text-primary font-mono text-xl group-hover:bg-primary group-hover:text-background transition-all duration-500 shadow-[0_0_20px_rgba(0,122,255,0.1)]">
-            {keyId}
-          </div>
-          <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 px-2 py-0.5 bg-background border border-white/10 rounded text-[10px] font-mono uppercase tracking-widest text-text-muted">
-            {t(`phases.${keyId}.name`)}
-          </div>
-        </div>
-        <h3 className="relative text-xl font-medium text-text-primary mb-4 group-hover:text-primary transition-colors duration-300">
-          {t(`phases.${keyId}.title`)}
-        </h3>
-        <p className="relative text-sm text-text-secondary font-light leading-relaxed">
-          {t(`phases.${keyId}.description`)}
-        </p>
-      </div>
-    </motion.div>
-  );
-}
+/** Insight = node network, Build = layers, Launch = converging paths, Learn = growing bars. */
+const PHASE_ICONS: ReactElement[] = [METHOD_ICONS.expose, METHOD_ICONS.prepare, METHOD_ICONS.decide, METHOD_ICONS.prioritize];
+
+/** Weeks per stretch of the 90-day process: 1 + 3 + 4 + 4 = 12. */
+const STEP_WEEKS = [1, 3, 4, 4];
 
 export default function Method() {
-  const t = useTranslations('method');
-  const [ref, isVisible] = useOnScreen({ threshold: 0.1 });
-
-  const phases = ['01', '02', '03', '04'];
+  const t = useTranslations('home.method');
+  const locale = useLocale();
+  const phases = t.raw('phases') as Phase[];
+  const steps = t.raw('process.steps') as Step[];
 
   return (
-    <section id="method" className="py-32 relative overflow-hidden">
-      <div className="container mx-auto px-4 lg:px-8 relative z-10 max-w-7xl">
-        <motion.div
-          ref={ref}
-          variants={sectionContainerVariants}
-          initial="hidden"
-          animate={isVisible ? "visible" : "hidden"}
-          className="max-w-6xl mx-auto"
-        >
-          {/* Header */}
-          <div className="text-center max-w-4xl mx-auto mb-24">
-            <motion.span 
-              variants={itemVariants}
-              className="text-xs font-mono tracking-[0.3em] uppercase text-primary mb-4 block"
-            >
-              {t('eyebrow')}
-            </motion.span>
-            <motion.h2 
-              variants={itemVariants}
-              className="text-balance mb-8"
-            >
-              {t('title')}
-            </motion.h2>
-            <motion.p 
-              variants={itemVariants}
-              className="text-lg text-text-secondary font-light leading-relaxed"
-            >
-              {t('subtitle')}
-            </motion.p>
-            <motion.div variants={itemVariants} className="mt-10">
-              <SectionFlowLine />
-            </motion.div>
+    <section id="method" className="relative border-t border-white/5 py-24 md:py-32">
+      <div className="container mx-auto max-w-7xl px-4 lg:px-8">
+        <SectionHead eyebrow={t('eyebrow')} title={t.rich('title', mutedTag)} lead={t('lead')} />
+
+        <div className="grid items-center gap-12 lg:grid-cols-[0.85fr_1.15fr]">
+          <div className="abra-reveal hidden lg:block">
+            <LoopDiagram phases={phases.map((p) => p.name)} label={t('loopLabel')} caption={t('loopCaption')} />
           </div>
 
-          {/* The Loop Flow */}
-          <div className="relative">
-            {/* Desktop Connector Line */}
-            <div className="hidden lg:block absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent -translate-y-1/2" />
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+            {phases.map((phase, i) => (
+              <article key={phase.name} className="abra-card abra-reveal">
+                {PHASE_ICONS[i]}
+                <Label>
+                  {String(i + 1).padStart(2, '0')} · {phase.name}
+                </Label>
+                <h3 className="abra-h3">{phase.title}</h3>
+                <p className="abra-text">{phase.body}</p>
+                {i === 0 ? (
+                  <Link href={`/${locale}/judgment-audit`} className="abra-link mt-auto pt-2">
+                    {t('auditLink')}
+                    <span className="abra-btn__arrow" aria-hidden="true">
+                      →
+                    </span>
+                  </Link>
+                ) : null}
+              </article>
+            ))}
+          </div>
+        </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10">
-              {phases.map((key) => (
-                <MethodCard key={key} keyId={key} />
-              ))}
-            </div>
+        <blockquote className="abra-reveal mx-auto mt-16 max-w-2xl text-center text-base font-light italic leading-relaxed text-white/60 md:text-lg">
+          &ldquo;{t('quote')}&rdquo;
+        </blockquote>
+
+        {/* 90-day process */}
+        <div className="mt-24 border-t border-white/[0.08] pt-16">
+          <h3 className="abra-h2 abra-reveal mb-12 text-[clamp(1.6rem,3vw,2.4rem)]">{t.rich('process.title', mutedTag)}</h3>
+
+          {/* 12-week bar split into the four stretches; each fills in sequence. */}
+          <div
+            className="abra-reveal mb-10 grid gap-2"
+            style={{ gridTemplateColumns: STEP_WEEKS.map((w) => `${w}fr`).join(' ') }}
+            aria-hidden="true"
+          >
+            {steps.map((step, i) => (
+              <div key={step.period} className="flex min-w-0 flex-col gap-3">
+                <div className="abra-track">
+                  <div className="abra-fill" style={{ animationDelay: `${i * 0.7}s` }} />
+                </div>
+                <p className="abra-label abra-label--muted hidden truncate md:block">{step.period}</p>
+              </div>
+            ))}
           </div>
 
-          <motion.div variants={itemVariants} className="mt-24 text-center">
-            <div className="max-w-2xl mx-auto">
-              <p className="text-sm text-text-muted italic font-light leading-relaxed">
-                &ldquo;{t('footer')}&rdquo;
-              </p>
-            </div>
-          </motion.div>
-        </motion.div>
+          <ol className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-4" aria-label={t('process.timelineLabel')}>
+            {steps.map((step) => (
+              <li key={step.period} className="abra-card abra-reveal">
+                <Label>{step.period}</Label>
+                <h4 className="abra-h3 text-lg">{step.phase}</h4>
+                <p className="abra-text">{step.body}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
       </div>
-
-      {/* Decorative background circle */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] border border-primary/5 rounded-full pointer-events-none" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-primary/5 rounded-full pointer-events-none" />
     </section>
   );
 }

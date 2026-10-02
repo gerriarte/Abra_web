@@ -13,11 +13,11 @@ export function Hero() {
       <div className="ja-wrap ja-hero__grid">
         <div className="ja-hero__copy">
           <Eyebrow>{t('eyebrow')}</Eyebrow>
-          <h1 className="ja-h1">
-            {t.rich('title', { muted: (chunks) => <span className="ja-muted-text">{chunks}</span> })}
+          <h1 className="abra-h1">
+            {t.rich('title', { muted: (chunks) => <span className="abra-muted-text">{chunks}</span> })}
           </h1>
-          <p className="ja-lead ja-lead--lg">{t('lead')}</p>
-          <div className="ja-actions">
+          <p className="abra-lead abra-lead--lg">{t('lead')}</p>
+          <div className="abra-actions">
             <ButtonLink href="#agendar">{t('ctaPrimary')}</ButtonLink>
             <ButtonLink href="#metodo" variant="ghost" arrow={false}>
               {t('ctaSecondary')}
@@ -27,7 +27,7 @@ export function Hero() {
             {stats.map((stat, i) => (
               <div key={stat.label} className="ja-stat">
                 <p className={`ja-stat__value${i === 0 ? ' ja-stat__value--accent' : ''}`}>{stat.value}</p>
-                <p className="ja-label ja-label--muted">{stat.label}</p>
+                <p className="abra-label abra-label--muted">{stat.label}</p>
               </div>
             ))}
           </div>
@@ -40,7 +40,7 @@ export function Hero() {
             height={1024}
             priority
             sizes="(max-width: 900px) 90vw, 560px"
-            className="ja-hero__img ja-float"
+            className="ja-hero__img abra-float"
           />
         </div>
       </div>

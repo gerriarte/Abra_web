@@ -25,13 +25,13 @@ export function Areas() {
       />
       <Grid min={240}>
         {items.map((area, i) => (
-          <article key={area.name} className="ja-card ja-card--flush ja-reveal">
+          <article key={area.name} className="abra-card abra-card--flush abra-reveal">
             <div className="ja-area__media">
-              <Image src={AREA_IMAGES[i]} alt={area.imageAlt} fill sizes="(max-width: 640px) 100vw, 320px" className="ja-area__img" />
+              <Image src={AREA_IMAGES[i]} alt={area.imageAlt} fill sizes="(max-width: 640px) 100vw, 320px" className="ja-area__img abra-zoom" />
             </div>
             <div className="ja-area__body">
-              <h3 className="ja-h3 ja-area__name">{area.name}</h3>
-              <p className="ja-text">{area.body}</p>
+              <h3 className="abra-h3 ja-area__name">{area.name}</h3>
+              <p className="abra-text">{area.body}</p>
             </div>
           </article>
         ))}
@@ -39,7 +39,7 @@ export function Areas() {
       <div className="ja-also">
         <Label muted>{t('alsoLabel')}</Label>
         {also.map((item) => (
-          <span key={item} className="ja-pill">
+          <span key={item} className="abra-pill">
             {item}
           </span>
         ))}

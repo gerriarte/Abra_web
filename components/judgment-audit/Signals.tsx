@@ -16,11 +16,11 @@ export function Signals() {
       />
       <Grid min={240}>
         {items.map((item, i) => (
-          <article key={item.title} className="ja-card ja-reveal">
+          <article key={item.title} className="abra-card abra-reveal">
             <p className="ja-signal__num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</p>
-            <span className="ja-dot" aria-hidden="true" />
-            <h3 className="ja-h3">{item.title}</h3>
-            <p className="ja-text">{item.body}</p>
+            <span className="abra-dot" aria-hidden="true" />
+            <h3 className="abra-h3">{item.title}</h3>
+            <p className="abra-text">{item.body}</p>
           </article>
         ))}
       </Grid>

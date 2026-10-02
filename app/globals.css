@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "../components/shared/motion/abra.css";
 
 @theme {
   /* A:BRA Luxury System - Deep Night */
@@ -10,6 +11,12 @@
   --color-primary-dark: #A0A0A8; /* Plateado/Gris seda */
   --color-accent: #0A2D4D; /* Azul profundo sutil */
   --color-warning: #FFB547;
+
+  /* Acento aqua del sistema A:BRA (landing + home) */
+  --color-aqua: #00C6BA;
+  --color-aqua-bright: #2EE8DC;
+  --color-aqua-deep: #008C84;
+  --color-profundo: #04213B;
 
   --color-text-primary: #FFFFFF;
   --color-text-secondary: rgba(255, 255, 255, 0.6);

@@ -10,12 +10,12 @@ export function Cta() {
   return (
     <section id="agendar" className="ja-cta">
       <div className="ja-wrap ja-cta__grid">
-        <div className="ja-stack ja-reveal" style={{ ['--ja-gap' as string]: '24px' }}>
+        <div className="ja-stack abra-reveal" style={{ ['--ja-gap' as string]: '24px' }}>
           <Eyebrow>{t('eyebrow')}</Eyebrow>
           <p className="ja-cta__title">
             {t.rich('title', { accent: (c) => <span className="ja-cta__accent">{c}</span> })}
           </p>
-          <p className="ja-lead">{t('lead')}</p>
+          <p className="abra-lead">{t('lead')}</p>
         </div>
         <CtaForm copy={copy} />
       </div>

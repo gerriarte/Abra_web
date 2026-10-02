@@ -12,10 +12,10 @@ export function Paths() {
       <SectionHead eyebrow={t('eyebrow')} title={t.rich('title', { muted: (c) => <Muted>{c}</Muted> })} />
       <Grid min={280}>
         {items.map((p, i) => (
-          <article key={p.label} className={`ja-card ja-reveal${i === 0 ? ' ja-card--accent' : ''}`}>
+          <article key={p.label} className={`abra-card abra-reveal${i === 0 ? ' abra-card--accent' : ''}`}>
             <Label muted={i !== 0}>{p.label}</Label>
-            <h3 className="ja-h3">{p.name}</h3>
-            <p className="ja-text">{p.body}</p>
+            <h3 className="abra-h3">{p.name}</h3>
+            <p className="abra-text">{p.body}</p>
           </article>
         ))}
       </Grid>

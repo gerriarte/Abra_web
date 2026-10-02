@@ -64,7 +64,7 @@ export function CtaForm({ copy }: { copy: CtaFormCopy }) {
     const error = errors[key];
     return (
       <div className="ja-field">
-        <label htmlFor={id} className="ja-field__label">
+        <label htmlFor={id} className="abra-field__label">
           {label}
         </label>
         <input
@@ -80,10 +80,10 @@ export function CtaForm({ copy }: { copy: CtaFormCopy }) {
           }}
           aria-invalid={error ? true : undefined}
           aria-describedby={error ? `${id}-error` : undefined}
-          className="ja-input"
+          className="abra-input"
         />
         {error ? (
-          <p id={`${id}-error`} className="ja-field__error">
+          <p id={`${id}-error`} className="abra-field__error">
             {error}
           </p>
         ) : null}
@@ -92,19 +92,19 @@ export function CtaForm({ copy }: { copy: CtaFormCopy }) {
   };
 
   return (
-    <form className="ja-form ja-reveal" aria-label={copy.label} onSubmit={onSubmit} noValidate>
+    <form className="ja-form abra-reveal" aria-label={copy.label} onSubmit={onSubmit} noValidate>
       <div className="ja-form__grid">
         {field('name', copy.name, copy.namePlaceholder, 'text', 'name')}
         {field('email', copy.email, copy.emailPlaceholder, 'email', 'email')}
         {field('company', copy.company, copy.companyPlaceholder, 'text', 'organization')}
         <div className="ja-field">
-          <label htmlFor={`${uid}-area`} className="ja-field__label">
+          <label htmlFor={`${uid}-area`} className="abra-field__label">
             {copy.area}
           </label>
           <select
             id={`${uid}-area`}
             name="area"
-            className="ja-input"
+            className="abra-input"
             value={values.area}
             onChange={(e) => setValues((v) => ({ ...v, area: e.target.value }))}
           >
@@ -114,9 +114,9 @@ export function CtaForm({ copy }: { copy: CtaFormCopy }) {
           </select>
         </div>
       </div>
-      <button type="submit" className="ja-btn">
+      <button type="submit" className="abra-btn">
         <span>{copy.submit}</span>
-        <span className="ja-btn__arrow" aria-hidden="true">
+        <span className="abra-btn__arrow" aria-hidden="true">
           →
         </span>
       </button>

@@ -27,11 +27,12 @@ export default function Footer() {
               Strategic Digital Engineering. Construimos sistemas de crecimiento y los productos que los hacen posibles.
             </p>
             <div className="flex gap-4 pt-4">
-               <a
+              {/* TODO(ger): confirmar las URLs reales; linkedin.com/company/abra e instagram.com/abra parecen placeholders. */}
+              <a
                 href="https://linkedin.com/company/abra"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="link-underline text-xs text-text-muted hover:text-primary transition-colors uppercase tracking-widest font-medium"
+                className="link-underline text-xs text-white/60 hover:text-primary transition-colors uppercase tracking-widest font-medium"
               >
                 LinkedIn
               </a>
@@ -39,7 +40,7 @@ export default function Footer() {
                 href="https://instagram.com/abra"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="link-underline text-xs text-text-muted hover:text-primary transition-colors uppercase tracking-widest font-medium"
+                className="link-underline text-xs text-white/60 hover:text-primary transition-colors uppercase tracking-widest font-medium"
               >
                 Instagram
               </a>
@@ -68,16 +69,17 @@ export default function Footer() {
             <h3 className="text-[10px] font-bold text-text-primary mb-6 tracking-[0.3em] uppercase">
               Newsletter
             </h3>
-            <p className="text-xs text-text-muted font-light mb-4">
+            <p className="text-xs text-white/60 font-light mb-4">
               Insights sobre Growth, IA e Ingeniería.
             </p>
             <div className="flex border-b border-white/10 pb-2">
               <input
                 type="email"
                 placeholder="tu@email.com"
+                aria-label={isEnglish ? "Email" : "Correo electrónico"}
                 className="bg-transparent border-none text-xs text-text-primary focus:outline-none w-full font-light"
               />
-              <button className="text-primary text-xs font-medium">→</button>
+              <button type="button" aria-label={isEnglish ? "Subscribe" : "Suscribirme"} className="min-h-6 min-w-6 text-primary text-xs font-medium">→</button>
             </div>
 
             <a
@@ -93,19 +95,19 @@ export default function Footer() {
 
         {/* Copyright */}
         <div className="mt-20 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-[10px] text-text-muted font-light uppercase tracking-widest">
+          <p className="text-[10px] text-white/60 font-light uppercase tracking-widest">
             © {new Date().getFullYear()} A:BRA — Strategic Digital Engineering
           </p>
           <div className="flex items-center gap-5">
             <Link
               href={`/${locale}/privacy`}
-              className="link-underline text-[10px] text-text-muted hover:text-primary transition-colors uppercase tracking-widest font-light"
+              className="link-underline text-[10px] text-white/60 hover:text-primary transition-colors uppercase tracking-widest font-light"
             >
               {isEnglish ? 'Privacy Policy' : 'Política de Privacidad'}
             </Link>
             <Link
               href={`/${locale}/terms`}
-              className="link-underline text-[10px] text-text-muted hover:text-primary transition-colors uppercase tracking-widest font-light"
+              className="link-underline text-[10px] text-white/60 hover:text-primary transition-colors uppercase tracking-widest font-light"
             >
               {isEnglish ? 'Terms of Service' : 'Términos de Servicio'}
             </Link>

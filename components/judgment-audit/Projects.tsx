@@ -21,16 +21,16 @@ export function Projects() {
       <SectionHead eyebrow={t('eyebrow')} title={t.rich('title', { muted: (c) => <Muted>{c}</Muted> })} />
       <Grid min={320}>
         {items.map((p) => (
-          <article key={p.name} className="ja-card ja-reveal" style={{ gap: 16 }}>
+          <article key={p.name} className="abra-card abra-reveal" style={{ gap: 16 }}>
             <Label>{p.area}</Label>
-            <h3 className="ja-h3">{p.name}</h3>
+            <h3 className="abra-h3">{p.name}</h3>
             <div className="ja-project__block">
               <Label muted>{t('whatLabel')}</Label>
-              <p className="ja-text">{p.what}</p>
+              <p className="abra-text">{p.what}</p>
             </div>
             <div className="ja-project__block ja-project__block--help">
               <Label>{t('helpLabel')}</Label>
-              <p className="ja-text ja-text--strong">{p.help}</p>
+              <p className="abra-text abra-text--strong">{p.help}</p>
             </div>
           </article>
         ))}

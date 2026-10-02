@@ -6,11 +6,11 @@ export function Objective() {
   return (
     <section id="objetivo" className="ja-section ja-section--surface">
       <div className="ja-wrap">
-        <div className="ja-card ja-objective ja-reveal">
+        <div className="abra-card ja-objective abra-reveal">
           <div className="ja-stack" style={{ maxWidth: 720 }}>
             <Eyebrow>{t('eyebrow')}</Eyebrow>
             <p className="ja-objective__title">{t.rich('title', { strong: (c) => <strong>{c}</strong> })}</p>
-            <p className="ja-lead">{t('lead')}</p>
+            <p className="abra-lead">{t('lead')}</p>
           </div>
           <ButtonLink href="#agendar">{t('cta')}</ButtonLink>
         </div>

@@ -1,80 +1,38 @@
-﻿'use client';
-
 import { useTranslations } from 'next-intl';
-import { motion } from 'framer-motion';
-import useOnScreen from '@/hooks/useOnScreen';
-import { SectionFlowLine } from '@/components/ui/SectionFlowLine';
-import { sectionContainerVariants, itemVariants } from '@/lib/animations/variants';
+import { Label, SERVICE_ICONS, SectionHead, mutedTag } from '@/components/shared/motion';
+
+type Service = { title: string; body: string; includes: string[] };
 
 export default function Services() {
-  const t = useTranslations('services');
-  const [ref, isVisible] = useOnScreen({ threshold: 0.1 });
-
-  const services = ['01', '02', '03', '04'];
+  const t = useTranslations('home.services');
+  const services = t.raw('items') as Service[];
 
   return (
-    <section id="services" className="py-32 relative overflow-hidden">
-      <div className="container mx-auto px-4 lg:px-8 relative z-10 max-w-7xl">
-        <motion.div
-          ref={ref}
-          variants={sectionContainerVariants}
-          initial="hidden"
-          animate={isVisible ? "visible" : "hidden"}
-          className="max-w-6xl mx-auto"
-        >
-          {/* Header */}
-          <div className="mb-24">
-            <motion.span 
-              variants={itemVariants}
-              className="text-xs font-mono tracking-[0.3em] uppercase text-text-muted mb-4 block"
-            >
-              {t('eyebrow')}
-            </motion.span>
-            <motion.h2 
-              variants={itemVariants}
-              className="text-balance mb-8"
-            >
-              {t('title')}
-            </motion.h2>
-            <motion.div variants={itemVariants}>
-              <SectionFlowLine />
-            </motion.div>
-          </div>
-
-          {/* Services Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-white/5 border border-white/5 rounded-3xl overflow-hidden">
-            {services.map((key) => (
-              <motion.div
-                key={key}
-                variants={itemVariants}
-                className="group p-12 bg-background hover:bg-white/[0.02] transition-all duration-500 relative overflow-hidden"
-              >
-                {/* Decorative background element */}
-                <div className="absolute top-0 right-0 p-8 opacity-[0.03] group-hover:opacity-[0.07] transition-opacity duration-500 font-mono text-8xl font-bold select-none pointer-events-none">
-                  {key}
-                </div>
-
-                <div className="relative z-10 space-y-6">
-                  <div className="flex items-center gap-4">
-                     <div className="w-1.5 h-10 bg-primary group-hover:h-12 transition-all duration-500 shadow-[0_0_15px_rgba(0,122,255,0.5)]" />
-                     <h3 className="text-2xl md:text-3xl font-medium text-text-primary tracking-tight">
-                        {t(`list.${key}.title`)}
-                     </h3>
-                  </div>
-                  
-                  <p className="text-lg text-text-secondary font-light leading-relaxed max-w-md">
-                    {t(`list.${key}.description`)}
-                  </p>
-                  
-                  <div className="pt-4 flex items-center gap-2 text-primary font-mono text-[10px] uppercase tracking-widest opacity-0 group-hover:opacity-100 translate-x-[-10px] group-hover:translate-x-0 transition-all duration-500">
-                    <span>A:BRA System Ready</span>
-                    <div className="w-1 h-1 rounded-full bg-primary animate-pulse" />
-                  </div>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
+    <section id="services" className="relative border-t border-white/5 py-24 md:py-32">
+      <div className="container mx-auto max-w-7xl px-4 lg:px-8">
+        <SectionHead eyebrow={t('eyebrow')} title={t.rich('title', mutedTag)} lead={t('lead')} />
+        <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
+          {services.map((service, i) => (
+            <article key={service.title} className="abra-card abra-reveal gap-5 p-8 md:p-10">
+              <div className="flex items-start justify-between gap-4">
+                {SERVICE_ICONS[i]}
+                <Label muted>{String(i + 1).padStart(2, '0')}</Label>
+              </div>
+              <h3 className="abra-h3 text-2xl md:text-[28px]">{service.title}</h3>
+              <p className="abra-text abra-text--strong">{service.body}</p>
+              <div className="mt-auto flex flex-col gap-3 border-t border-white/[0.08] pt-5">
+                <Label muted>{t('includesLabel')}</Label>
+                <ul className="flex flex-wrap gap-2">
+                  {service.includes.map((item) => (
+                    <li key={item} className="abra-pill">
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </article>
+          ))}
+        </div>
       </div>
     </section>
   );

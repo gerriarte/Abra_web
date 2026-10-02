@@ -1,76 +1,5 @@
 {
-  "hero": {
-    "eyebrow": "Agencia · Studio · Laboratorio de IA",
-    "titleLine1": "Construimos sistemas de crecimiento.",
-    "titleLine2": "Y los productos que los hacen posibles.",
-    "subtitle": "Studio híbrido de growth e ingeniería. Lo que recomendamos, primero lo validamos en nuestros propios productos.",
-    "ctaPrimary": "Agendar diagnóstico gratuito →",
-    "ctaSecondary": "Hacer un Judgment Audit",
-    "statusLabel": "Sistema activo",
-    "statusValue": "A:BRA Loop · v2.0",
-    "metric01": "Insight",
-    "metric02": "Build",
-    "metric03": "Launch",
-    "metric04": "Learn"
-  },
-  "problem": {
-    "eyebrow": "El costo del marketing desconectado",
-    "title": "El problema no es la falta de datos. Es que marketing, producto y tecnología trabajan como islas.",
-    "body": "Invertís en pauta, contratás agencias, instalás dashboards. Y aún así sentís que estás operando a ciegas. La razón es estructural: tu marca, tu web, tu producto y tu pauta se construyeron en momentos distintos, con proveedores distintos, sin un sistema que los coordine.",
-    "cards": {
-      "01": {
-        "title": "01 — Marca que no escala",
-        "description": "Tu mensaje cambia con cada campaña. El equipo comercial dice una cosa, la web otra, los anuncios otra."
-      },
-      "02": {
-        "title": "02 — Pauta que quema plata",
-        "description": "Volumen alto, calidad baja, atribución confusa. El CAC sube, nadie sabe por qué."
-      },
-      "03": {
-        "title": "03 — Tecnología que frena",
-        "description": "Tu stack es una colección de herramientas, no un sistema. Cada nueva integración rompe algo."
-      }
-    }
-  },
-  "method": {
-    "eyebrow": "Nuestro framework",
-    "title": "A:BRA Loop: el sistema donde el growth y la ingeniería se retroalimentan.",
-    "subtitle": "La mayoría de las agencias te venden estrategia. Los studios de producto te venden código. Nosotros operamos en la intersección: cada decisión de marketing se valida construyendo, y cada producto se construye con lógica de growth desde el día uno.",
-    "phases": {
-      "01": {
-        "name": "Insight",
-        "title": "Auditoría 360°",
-        "description": "Marca, datos, atribución, stack, mercado. IA aplicada al análisis de percepción y competencia."
-      },
-      "02": {
-        "name": "Build",
-        "title": "Sistemas de crecimiento",
-        "description": "Marca, web, landings, automatizaciones, micro-productos. Vibe coding con rigor técnico: prototipado asistido por IA."
-      },
-      "03": {
-        "name": "Launch",
-        "title": "Lanzamiento integrado",
-        "description": "Pauta, SEO, contenido. Modelos predictivos para bidding, segmentación y atribución."
-      },
-      "04": {
-        "name": "Learn",
-        "title": "Analítica e iteración",
-        "description": "Dashboards, iteración continua. El aprendizaje vuelve al Insight. El sistema mejora con cada ciclo."
-      }
-    },
-    "footer": "No es un funnel. Es un Flywheel: cada vuelta del Loop aumenta el conocimiento, reduce el costo y acelera el crecimiento."
-  },
-  "result": {
-    "title": "¿Listo para dejar de operar a ciegas?",
-    "description": "Descargá el A:BRA Loop completo en PDF. Es el mismo framework que aplicamos a nuestros productos y a clientes. Te muestra cómo conectar marketing, producto y tecnología en un sistema único.",
-    "ctaPrimary": "Agendar diagnóstico gratuito →",
-    "ctaSecondary": "Descargar A:BRA Loop PDF"
-  },
   "contact": {
-    "title": "Iniciemos tu Proyecto",
-    "subtitle": "Agenda una sesión de consultoría estratégica",
-    "scheduleDirect": "Agendá una reunión de 30 min",
-    "scheduleOrForm": "o dejanos tus datos en el formulario",
     "form": {
       "fullName": "Nombre Completo",
       "fullNamePlaceholder": "Juan Pérez",
@@ -108,7 +37,16 @@
       "note": "Respetamos tu privacidad y nunca compartiremos tu información.",
       "locations": "Ubicaciones",
       "connect": "Conecta",
-      "whatsappMessage": "Hola, me gustaría obtener más información sobre sus servicios."
+      "whatsappMessage": "Hola, me gustaría obtener más información sobre sus servicios.",
+      "back": "Atrás",
+      "next": "Siguiente",
+      "send": "Enviar",
+      "sending": "Enviando",
+      "required": "Este campo es obligatorio.",
+      "invalidEmail": "Revisá el formato del correo.",
+      "servicesTitle": "¿En qué te podemos ayudar?",
+      "availabilityTitle": "¿Cuándo te viene bien hablar?",
+      "step": "Paso {current} de {total}"
     }
   },
   "projects": {
@@ -158,103 +96,10 @@
     "cases": "Casos",
     "judgmentAudit": "Auditor de criterio"
   },
-  "services": {
-    "eyebrow": "Servicios",
-    "title": "Cuatro capacidades. Un sistema integrado.",
-    "list": {
-      "01": {
-        "title": "Branding con base en datos",
-        "description": "Identidad y propuesta de valor construidas sobre análisis de percepción real, no intuiciones de focus group."
-      },
-      "02": {
-        "title": "Comunicación con foco en conversión",
-        "description": "Narrativa institucional calibrada por los temas y mensajes que tus datos dicen que convierten."
-      },
-      "03": {
-        "title": "Growth Marketing con IA aplicada",
-        "description": "Pauta, SEO, automatización y analítica avanzada. CAC en baja, LTV en alza, atribución clara."
-      },
-      "04": {
-        "title": "Producto y desarrollo web",
-        "description": "Web, landings y micro-productos diseñados como sistemas de conversión. Construidos rápido, sin romperse."
-      }
-    }
-  },
-  "lab": {
-    "eyebrow": "Nuestro laboratorio",
-    "title": "Construimos productos propios. Por eso sabemos lo que funciona.",
-    "body": "La mayoría de las agencias venden estrategia que nunca ejecutaron con su propio dinero. Nosotros sí: validamos el A:BRA Loop en productos reales antes de aplicarlo a clientes.",
-    "microcopy": "Nougram nació en nuestro laboratorio para resolver un dolor concreto del mercado: cotizar conocimiento con ganancia neta predecible.",
-    "products": {
-      "nougram": {
-        "eyebrow": "Producto del laboratorio",
-        "title": "Nougram",
-        "headline": "¿Cuánto ganás realmente en cada propuesta que mandás?",
-        "description": "Cotizador con IA para agencias y profesionales que venden conocimiento. Convierte tu experiencia en propuestas precisas y rentables, con foco en margen neto y sin adivinar.",
-        "status": "Live",
-        "cta": "→ Conocer Nougram",
-        "highlights": {
-          "01": "Asegurá tu ganancia neta antes de firmar cada propuesta.",
-          "02": "Dejá la matemática a la IA y recuperá foco en crear valor.",
-          "03": "Pensado para consultores, diseñadores, marketers y agencias."
-        }
-      },
-      "agent-x": {
-        "eyebrow": "En incubación",
-        "title": "Agent-X",
-        "headline": "Tu equipo de growth asistido por agentes autónomos.",
-        "description": "Orquestador de agentes de IA especializados en pauta, SEO y análisis de datos. Escalabilidad técnica para operaciones de marketing complejas.",
-        "status": "Beta",
-        "cta": "Lista de espera",
-        "highlights": {
-          "01": "Automatización de bidding y segmentación en tiempo real.",
-          "02": "Generación de reportes ejecutivos con insights predictivos.",
-          "03": "Integración nativa con los principales CRMs del mercado."
-        }
-      }
-    }
-  },
   "cases": {
     "eyebrow": "Casos",
     "title": "El Loop, aplicado a clientes reales.",
-    "subtitle": "Sistemas de growth, branding y producto implementados con el mismo framework que usamos en nuestro laboratorio.",
-    "cardNote": "Implementación del A:BRA Loop para escalar operaciones y maximizar retención.",
-    "ctaAll": "Explorar todos los sistemas",
-    "loading": "Cargando sistemas..."
-  },
-  "process": {
-    "eyebrow": "El proceso",
-    "title": "De la auditoría al sistema en marcha. En 90 días.",
-    "steps": {
-      "01": {
-        "period": "Sem 1-2",
-        "title": "Insight",
-        "description": "Auditoría 360°: marca, datos, atribución, stack y mercado."
-      },
-      "02": {
-        "period": "Sem 3-4",
-        "title": "Diseño del sistema",
-        "description": "Definimos pilares, KPIs y arquitectura técnica del crecimiento."
-      },
-      "03": {
-        "period": "Sem 5-8",
-        "title": "Build & Launch",
-        "description": "Lanzamos campañas, web, automatizaciones y modelos de IA."
-      },
-      "04": {
-        "period": "Sem 9-12",
-        "title": "Learn & Optimizar",
-        "description": "Iteración basada en datos con reportes ejecutivos quincenales."
-      }
-    }
-  },
-  "founder": {
-    "eyebrow": "Sobre el fundador",
-    "title": "Gerardo Riarte. Growth, IA y producto en un mismo perfil.",
-    "body": "A:BRA nació de una obsesión personal: combinar marketing digital con desarrollo técnico real, en una época donde la IA finalmente lo hace posible. Soy Gerardo Riarte, argentino radicado en Bogotá. Más de una década diseñando estrategias de growth para marcas en Latinoamérica, desarrollando productos web y plataformas SaaS, y aplicando IA al marketing antes de que fuera tendencia.",
-    "ctaPersonal": "Conocer mi trabajo personal →",
-    "ctaLinkedin": "LinkedIn",
-    "ctaInstagram": "Instagram"
+    "subtitle": "Sistemas de growth, branding y producto implementados con el mismo framework que usamos en nuestro laboratorio."
   },
   "JudgmentAudit": {
     "meta": {
@@ -574,6 +419,262 @@
         "errorEmail": "Escribe un email válido, por ejemplo nombre@empresa.com.",
         "whatsapp": "Hola A:BRA, quiero agendar un Judgment Audit.\nNombre: {name}\nEmail: {email}\nEmpresa: {company}\nÁrea a auditar: {area}"
       }
+    }
+  },
+  "home": {
+    "meta": {
+      "title": "A:BRA — Estrategia, desarrollo y data con IA aplicada",
+      "description": "Estrategia, desarrollo y data con IA aplicada. Studio híbrido de growth e ingeniería: lo que recomendamos, primero lo validamos en nuestros propios productos."
+    },
+    "hero": {
+      "eyebrow": "Agencia · Studio · Laboratorio de IA",
+      "title": "Construimos sistemas de crecimiento. <muted>Y los productos que los hacen posibles.</muted>",
+      "lead": "Estrategia, desarrollo y data con IA aplicada, para empresas que quieren crecer con criterio y no por intuición.",
+      "ctaPrimary": "Conversemos tu proyecto",
+      "ctaSecondary": "Empezá con un Judgment Audit",
+      "capabilities": [
+        "Estrategia",
+        "Desarrollo",
+        "Data e IA",
+        "Growth"
+      ],
+      "capabilitiesLabel": "Capacidades"
+    },
+    "problem": {
+      "eyebrow": "El costo del marketing desconectado",
+      "title": "El problema no es la falta de datos. <muted>Es que marketing, producto y tecnología trabajan como islas.</muted>",
+      "body": "Invertís en pauta, contratás agencias, instalás dashboards. Y aún así sentís que estás operando a ciegas. La razón es estructural: tu marca, tu web, tu producto y tu pauta se construyeron en momentos distintos, con proveedores distintos, sin un sistema que los coordine.",
+      "signals": [
+        {
+          "title": "Marca que no escala",
+          "body": "Tu mensaje cambia con cada campaña. El equipo comercial dice una cosa, la web otra, los anuncios otra."
+        },
+        {
+          "title": "Pauta que quema plata",
+          "body": "Volumen alto, calidad baja, atribución confusa. El CAC sube y nadie sabe por qué."
+        },
+        {
+          "title": "Tecnología que frena",
+          "body": "Tu stack es una colección de herramientas, no un sistema. Cada integración nueva rompe algo."
+        },
+        {
+          "title": "IA que responde en genérico",
+          "body": "Usás IA, pero los resultados se parecen a los de cualquier empresa. Le falta el criterio de tu negocio."
+        }
+      ]
+    },
+    "services": {
+      "eyebrow": "Servicios",
+      "title": "Cuatro capacidades. <muted>Un sistema integrado.</muted>",
+      "lead": "Cada capacidad funciona sola, pero rinde más conectada: la estrategia define qué medir, la data muestra qué funciona y el desarrollo lo convierte en sistema.",
+      "includesLabel": "Incluye",
+      "items": [
+        {
+          "title": "Estrategia",
+          "body": "Decidimos qué decir, a quién y cómo crecer, con datos y no con intuición.",
+          "includes": [
+            "Posicionamiento y propuesta de valor",
+            "Branding con base en datos",
+            "Narrativa orientada a conversión",
+            "Planes de crecimiento"
+          ]
+        },
+        {
+          "title": "Desarrollo",
+          "body": "Construimos las piezas que hacen funcionar el sistema, rápido y sin que se rompan.",
+          "includes": [
+            "Webs y landings de conversión",
+            "Productos digitales y SaaS",
+            "Automatizaciones e integraciones",
+            "Agentes y copilotos de IA"
+          ]
+        },
+        {
+          "title": "Data e IA",
+          "body": "Convertimos datos en decisiones: qué medir, cómo leerlo y qué automatizar.",
+          "includes": [
+            "Medición y atribución",
+            "Dashboards ejecutivos",
+            "Monitoreo de medios y reputación",
+            "Métricas de valor de marca",
+            "IA aplicada a decisiones"
+          ]
+        },
+        {
+          "title": "Growth",
+          "body": "Llevamos el sistema al mercado y lo mejoramos en cada ciclo.",
+          "includes": [
+            "Pauta en Meta y Google",
+            "SEO",
+            "Contenido y redes, con MTM",
+            "Optimización de conversión"
+          ]
+        }
+      ]
+    },
+    "method": {
+      "eyebrow": "Nuestro framework",
+      "title": "A:BRA Loop. <muted>El sistema donde el growth y la ingeniería se retroalimentan.</muted>",
+      "lead": "La mayoría de las agencias venden estrategia. Los studios de producto venden código. Nosotros operamos en la intersección: cada decisión de marketing se valida construyendo, y cada producto se construye con lógica de growth desde el día uno.",
+      "loopLabel": "A:BRA Loop",
+      "loopCaption": "growth × ingeniería",
+      "phases": [
+        {
+          "name": "Insight",
+          "title": "Diagnóstico con criterio",
+          "body": "Entendemos cómo decide tu negocio antes de recomendar herramientas. Puede empezar con un Judgment Audit de una semana."
+        },
+        {
+          "name": "Build",
+          "title": "Sistemas de crecimiento",
+          "body": "Marca, web, landings, automatizaciones y productos digitales, prototipados con IA y construidos con rigor técnico."
+        },
+        {
+          "name": "Launch",
+          "title": "Lanzamiento integrado",
+          "body": "Pauta, SEO y contenido, con modelos predictivos para segmentar, pujar y atribuir."
+        },
+        {
+          "name": "Learn",
+          "title": "Analítica e iteración",
+          "body": "Dashboards e iteración continua. El aprendizaje vuelve al Insight, y el sistema mejora con cada ciclo."
+        }
+      ],
+      "auditLink": "Conocer el Judgment Audit",
+      "quote": "No es un funnel. Es un flywheel: cada vuelta del Loop aumenta el conocimiento, reduce el costo y acelera el crecimiento.",
+      "process": {
+        "title": "Del diagnóstico al sistema en marcha. <muted>En 90 días.</muted>",
+        "timelineLabel": "Línea de tiempo de 12 semanas",
+        "steps": [
+          {
+            "period": "Semana 1",
+            "phase": "Insight",
+            "body": "Judgment Audit: decisiones, datos y prioridades del área."
+          },
+          {
+            "period": "Semanas 2 a 4",
+            "phase": "Diseño del sistema",
+            "body": "Pilares, KPIs y arquitectura técnica del crecimiento."
+          },
+          {
+            "period": "Semanas 5 a 8",
+            "phase": "Build & Launch",
+            "body": "Campañas, web, automatizaciones y modelos de IA en marcha."
+          },
+          {
+            "period": "Semanas 9 a 12",
+            "phase": "Learn & optimizar",
+            "body": "Iteración con datos y reportes ejecutivos quincenales."
+          }
+        ]
+      }
+    },
+    "cases": {
+      "eyebrow": "Casos",
+      "title": "El Loop, <muted>aplicado a clientes reales.</muted>",
+      "lead": "Sistemas de growth, branding y producto implementados con el mismo framework que usamos en nuestro laboratorio.",
+      "metricLabel": "Resultado",
+      "items": {
+        "ruta-teatro": {
+          "tags": "Estrategia digital · Desarrollo web",
+          "body": "Plataforma para descubrir la cartelera teatral de Bogotá, construida para atraer audiencia orgánica.",
+          "metric": "+200% tráfico web"
+        },
+        "incap": {
+          "tags": "Industrial · Estrategia digital · Desarrollo web",
+          "body": "Estrategia digital, web organizada por industria y canal de diagnóstico técnico por WhatsApp para un fabricante colombiano de adhesivos industriales con 56 años de trayectoria. Marca en alianza con MTM.",
+          "metric": "3 industrias · web segmentada por sector"
+        },
+        "different-coffee": {
+          "tags": "Web · Growth",
+          "body": "Rediseño web y growth para una marca colombiana de café de especialidad con reconocimiento internacional.",
+          "metric": "+15% crecimiento mensual"
+        },
+        "bestune": {
+          "tags": "Estrategia de marca · Producción audiovisual",
+          "body": "Estrategia de marca y producción audiovisual para una marca automotriz de movilidad eléctrica.",
+          "metric": ""
+        }
+      },
+      "cta": "Explorar todos los casos"
+    },
+    "start": {
+      "eyebrow": "Cómo empezar",
+      "title": "Dos formas de arrancar. <muted>Elegí la que se ajusta a tu momento.</muted>",
+      "options": [
+        {
+          "label": "30 minutos",
+          "title": "Conversación de 30 minutos",
+          "body": "Para cuando ya sabés qué necesitás. Nos contás el proyecto y te decimos cómo lo abordaríamos.",
+          "cta": "Agendar conversación"
+        },
+        {
+          "label": "1 semana",
+          "title": "Judgment Audit",
+          "body": "Para cuando hay que decidir dónde invertir en IA, data o desarrollo. En una semana tenés un plan priorizado y el criterio de tu equipo codificado.",
+          "cta": "Conocer el Judgment Audit"
+        }
+      ]
+    },
+    "founder": {
+      "eyebrow": "Sobre el fundador",
+      "title": "Gerardo Riarte. <muted>Growth, IA y producto en un mismo perfil.</muted>",
+      "body": "A:BRA nació de una idea simple: el marketing funciona mejor cuando quien diseña la estrategia también sabe construir. Soy argentino y vivo en Bogotá. Llevo más de una década diseñando estrategias de growth para marcas en Latinoamérica, desarrollando productos digitales y aplicando IA a decisiones de negocio. Esa combinación es la que pongo en cada proyecto: entender el problema, decidir con datos y construir la solución.",
+      "ctaPersonal": "Conocer mi trabajo personal",
+      "ctaLinkedin": "LinkedIn",
+      "ctaInstagram": "Instagram"
+    },
+    "lab": {
+      "eyebrow": "Nuestro laboratorio",
+      "title": "Construimos productos propios. <muted>Por eso sabemos lo que funciona.</muted>",
+      "lead": "La mayoría de las agencias venden estrategias que nunca ejecutaron con su propio dinero. Nosotros validamos el A:BRA Loop en productos reales antes de aplicarlo a clientes.",
+      "microcopy": "Nougram nació en nuestro laboratorio para resolver un dolor concreto del mercado: cotizar conocimiento con ganancia neta predecible.",
+      "products": {
+        "nougram": {
+          "eyebrow": "Producto del laboratorio",
+          "title": "Nougram",
+          "headline": "¿Cuánto ganás realmente en cada propuesta que mandás?",
+          "description": "Cotizador con IA para agencias y profesionales que venden conocimiento. Convierte tu experiencia en propuestas precisas y rentables, con foco en margen neto y sin adivinar.",
+          "status": "Live",
+          "highlightsLabel": "",
+          "highlights": [
+            "Asegurá tu ganancia neta antes de firmar cada propuesta.",
+            "Dejá la matemática a la IA y recuperá foco en crear valor.",
+            "Pensado para consultores, diseñadores, marketers y agencias."
+          ],
+          "cta": "Conocer Nougram"
+        },
+        "agent-x": {
+          "eyebrow": "En incubación",
+          "title": "Agent-X",
+          "headline": "Tu equipo de growth asistido por agentes de IA.",
+          "description": "Agentes de IA especializados en pauta, SEO y análisis de datos, coordinados para operar el growth de punta a punta.",
+          "status": "Beta",
+          "highlightsLabel": "En desarrollo",
+          "highlights": [
+            "Ajuste de pujas y segmentación con agentes.",
+            "Reportes ejecutivos generados a partir de tus datos."
+          ],
+          "cta": "Sumarme a la lista de espera"
+        }
+      }
+    },
+    "partners": {
+      "eyebrow": "Aliados",
+      "title": "No trabajamos solos. <muted>Pero curamos a quién sumamos.</muted>",
+      "visit": "Visitar sitio",
+      "items": {
+        "mtm": "Producción audiovisual, contenido y redes. Ejecutan la comunicación de los sistemas que diseñamos."
+      }
+    },
+    "closing": {
+      "eyebrow": "Siguiente paso",
+      "title": "¿Listo para dejar de operar a ciegas?",
+      "body": "Contanos qué querés construir o qué decisión necesitás tomar. Te respondemos en menos de 24 horas hábiles.",
+      "ctaPrimary": "Agendar conversación",
+      "ctaPdf": "Descargá el A:BRA Loop (PDF)",
+      "formTitle": "Iniciemos tu proyecto",
+      "formLead": "Otra opción es completar el formulario y te contactamos."
     }
   }
 }

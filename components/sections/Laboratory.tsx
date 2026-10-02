@@ -1,122 +1,96 @@
-﻿'use client';
-
 import { useTranslations } from 'next-intl';
-import { motion } from 'framer-motion';
-import useOnScreen from '@/hooks/useOnScreen';
-import { SectionFlowLine } from '@/components/ui/SectionFlowLine';
-import { sectionContainerVariants, itemVariants } from '@/lib/animations/variants';
+import { ButtonLink, Label, SectionHead, mutedTag } from '@/components/shared/motion';
 
 const NOUGRAM_URL = 'https://nougram.co';
 
-export default function Laboratory() {
-  const t = useTranslations('lab');
-  const [ref, isVisible] = useOnScreen({ threshold: 0.1 });
+type Product = {
+  eyebrow: string;
+  title: string;
+  headline: string;
+  description: string;
+  status: string;
+  highlightsLabel: string;
+  highlights: string[];
+  cta: string;
+};
 
-  const highlights = ['01', '02', '03'] as const;
+export default function Laboratory() {
+  const t = useTranslations('home.lab');
+  const nougram = t.raw('products.nougram') as Product;
+  const agentX = t.raw('products.agent-x') as Product;
 
   return (
-    <section id="laboratory" className="py-32 relative overflow-hidden">
-      <div className="container mx-auto px-4 lg:px-8 relative z-10 max-w-7xl">
-        <motion.div
-          ref={ref}
-          variants={sectionContainerVariants}
-          initial="hidden"
-          animate={isVisible ? 'visible' : 'hidden'}
-          className="max-w-6xl mx-auto"
-        >
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16 items-end">
-            <div>
-              <motion.span
-                variants={itemVariants}
-                className="text-xs font-mono tracking-[0.3em] uppercase text-text-muted mb-4 block"
-              >
-                {t('eyebrow')}
-              </motion.span>
-              <motion.h2 variants={itemVariants} className="text-balance">
-                {t('title')}
-              </motion.h2>
-            </div>
-            <motion.div variants={itemVariants}>
-              <p className="text-lg text-text-secondary font-light leading-relaxed max-w-xl">
-                {t('body')}
-              </p>
-            </motion.div>
-          </div>
+    <section id="laboratory" className="relative border-t border-white/5 py-24 md:py-32">
+      <div className="container mx-auto max-w-7xl px-4 lg:px-8">
+        <SectionHead eyebrow={t('eyebrow')} title={t.rich('title', mutedTag)} lead={t('lead')} />
 
-          <motion.div variants={itemVariants} className="mb-12">
-            <SectionFlowLine />
-          </motion.div>
+        <div className="flex flex-col gap-8">
+          {/* Nougram keeps its own brand colors. */}
+          <article className="abra-lift abra-reveal rounded-[2rem] border border-[#E54D00]/25 bg-[#262537] p-8 shadow-[0_20px_60px_rgba(0,0,0,0.35)] md:p-12">
+            <ProductHeader product={nougram} dotColor="#FFB48A" badgeClass="border-[#E54D00]/40 bg-[#E54D00]/10 text-[#FFB48A]" />
+            <ProductBody product={nougram} />
+            <a
+              href={NOUGRAM_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="cta-primary inline-flex items-center gap-2 rounded-full bg-[#E54D00] px-8 py-3.5 text-sm font-semibold text-white hover:bg-[#f05f18]"
+            >
+              {nougram.cta}
+              <span aria-hidden="true">↗</span>
+            </a>
+          </article>
 
-          <div className="space-y-12">
-            {['nougram', 'agent-x'].map((productId) => (
-              <motion.div
-                key={productId}
-                variants={itemVariants}
-                className={`rounded-[2rem] border p-8 md:p-12 shadow-[0_20px_60px_rgba(0,0,0,0.35)] ${
-                  productId === 'nougram' 
-                  ? 'border-[#E54D00]/25 bg-[#262537]' 
-                  : 'border-primary/20 bg-background/50 backdrop-blur-sm'
-                }`}
-              >
-                <div className="flex flex-wrap items-center justify-between gap-4 mb-8">
-                  <div>
-                    <p className="text-[10px] font-mono uppercase tracking-[0.35em] text-white/50 mb-3">
-                      {t(`products.${productId}.eyebrow`)}
-                    </p>
-                    <h3 className="text-3xl md:text-4xl font-semibold text-white tracking-tight">
-                      {t(`products.${productId}.title`)}
-                    </h3>
-                  </div>
-                  <span className={`text-[10px] font-mono uppercase tracking-widest px-3 py-1 rounded-full border ${
-                    productId === 'nougram'
-                    ? 'border-[#E54D00]/40 bg-[#E54D00]/10 text-[#FFB48A]'
-                    : 'border-primary/40 bg-primary/10 text-primary'
-                  }`}>
-                    {t(`products.${productId}.status`)}
-                  </span>
-                </div>
+          {/* TODO(ger): validar el estado real de Agent-X (incubación / beta) y sus funciones en desarrollo. */}
+          <article className="abra-lift abra-reveal rounded-[2rem] border border-aqua/20 bg-white/[0.02] p-8 shadow-[0_20px_60px_rgba(0,0,0,0.35)] md:p-12">
+            <ProductHeader product={agentX} badgeClass="border-aqua/40 bg-aqua/10 text-aqua" />
+            <ProductBody product={agentX} />
+            <ButtonLink href="#contact">{agentX.cta}</ButtonLink>
+          </article>
+        </div>
 
-                <p className="text-xl md:text-2xl font-medium leading-snug text-white mb-4">
-                  {t(`products.${productId}.headline`)}
-                </p>
-                <p className="text-base text-white/75 font-light leading-relaxed max-w-3xl mb-8">
-                  {t(`products.${productId}.description`)}
-                </p>
-
-                <ul className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
-                  {highlights.map((key) => (
-                    <li
-                      key={key}
-                      className="rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-4 text-sm text-white/80 font-light leading-relaxed"
-                    >
-                      {t(`products.${productId}.highlights.${key}`)}
-                    </li>
-                  ))}
-                </ul>
-
-                <a
-                  href={productId === 'nougram' ? NOUGRAM_URL : '#contact'}
-                  target={productId === 'nougram' ? "_blank" : "_self"}
-                  rel={productId === 'nougram' ? "noopener noreferrer" : ""}
-                  className={`cta-primary inline-flex items-center gap-2 rounded-full px-8 py-3.5 text-sm font-semibold text-white ${
-                    productId === 'nougram'
-                    ? 'bg-[#E54D00] hover:bg-[#f05f18]'
-                    : 'bg-primary hover:bg-primary/90'
-                  }`}
-                >
-                  {t(`products.${productId}.cta`)}
-                </a>
-              </motion.div>
-            ))}
-          </div>
-
-          <motion.div variants={itemVariants} className="mt-12 pt-8 border-t border-white/5">
-            <p className="text-xs text-text-muted italic max-w-3xl font-light leading-relaxed">
-              {t('microcopy')}
-            </p>
-          </motion.div>
-        </motion.div>
+        <p className="abra-reveal mt-12 max-w-3xl border-t border-white/5 pt-8 text-sm font-light italic leading-relaxed text-white/55">
+          {t('microcopy')}
+        </p>
       </div>
     </section>
+  );
+}
+
+function ProductHeader({ product, badgeClass, dotColor }: { product: Product; badgeClass: string; dotColor?: string }) {
+  return (
+    <div className="mb-8 flex flex-wrap items-center justify-between gap-4">
+      <div>
+        <p className="mb-3 font-mono text-[10px] uppercase tracking-[0.35em] text-white/60">{product.eyebrow}</p>
+        <h3 className="abra-h3 text-3xl font-semibold md:text-4xl">{product.title}</h3>
+      </div>
+      <span className={`inline-flex items-center gap-2 rounded-full border px-3 py-1 font-mono text-[10px] uppercase tracking-widest ${badgeClass}`}>
+        <span
+          className="abra-dot abra-dot--sm"
+          style={dotColor ? { background: dotColor } : undefined}
+          aria-hidden="true"
+        />
+        {product.status}
+      </span>
+    </div>
+  );
+}
+
+function ProductBody({ product }: { product: Product }) {
+  return (
+    <>
+      <p className="mb-4 text-xl font-medium leading-snug text-white md:text-2xl">{product.headline}</p>
+      <p className="mb-8 max-w-3xl text-base font-light leading-relaxed text-white/75">{product.description}</p>
+      {product.highlightsLabel ? <Label muted className="mb-3">{product.highlightsLabel}</Label> : null}
+      <ul className={`mb-10 grid grid-cols-1 gap-4 ${product.highlights.length > 2 ? 'md:grid-cols-3' : 'md:grid-cols-2'}`}>
+        {product.highlights.map((item) => (
+          <li
+            key={item}
+            className="rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-4 text-sm font-light leading-relaxed text-white/80"
+          >
+            {item}
+          </li>
+        ))}
+      </ul>
+    </>
   );
 }

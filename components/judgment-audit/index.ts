@@ -9,4 +9,4 @@ export { Projects } from './Projects';
 export { Paths } from './Paths';
 export { Objective } from './Objective';
 export { Cta } from './Cta';
-export { RevealObserver } from './RevealObserver';
+export { RevealObserver } from '@/components/shared/motion';
