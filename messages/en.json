@@ -5,7 +5,7 @@
     "titleLine2": "And the products that make them possible.",
     "subtitle": "A hybrid growth and engineering studio. What we recommend, we first validate in our own products.",
     "ctaPrimary": "Schedule a free diagnosis →",
-    "ctaSecondary": "Meet the method",
+    "ctaSecondary": "Get a Judgment Audit",
     "statusLabel": "System online",
     "statusValue": "A:BRA Loop · v2.0",
     "metric01": "Insight",
@@ -13,7 +13,6 @@
     "metric03": "Launch",
     "metric04": "Learn"
   },
-
   "problem": {
     "eyebrow": "The cost of disconnected marketing",
     "title": "The problem is not a lack of data. It's that marketing, product, and technology work as islands.",
@@ -33,7 +32,6 @@
       }
     }
   },
-
   "method": {
     "eyebrow": "Our framework",
     "title": "A:BRA Loop: the system where growth and engineering feed each other.",
@@ -62,14 +60,12 @@
     },
     "footer": "It's not a funnel. It's a Flywheel: each turn of the Loop increases knowledge, reduces cost, and accelerates growth."
   },
-
   "result": {
     "title": "Ready to stop operating blindly?",
     "description": "Download the complete A:BRA Loop in PDF. It's the same framework we use for our products and clients. It shows you how to connect marketing, product, and technology into a single system.",
     "ctaPrimary": "Schedule a free diagnosis →",
     "ctaSecondary": "Download A:BRA Loop PDF"
   },
-
   "contact": {
     "title": "Let's Start Your Project",
     "subtitle": "Schedule a strategic consultation session",
@@ -159,7 +155,8 @@
     "problem": "Problem",
     "method": "Method",
     "services": "Services",
-    "cases": "Cases"
+    "cases": "Cases",
+    "judgmentAudit": "Judgment Audit"
   },
   "services": {
     "eyebrow": "Services",
@@ -258,5 +255,325 @@
     "ctaPersonal": "See my personal work →",
     "ctaLinkedin": "LinkedIn",
     "ctaInstagram": "Instagram"
+  },
+  "JudgmentAudit": {
+    "meta": {
+      "title": "Judgment Audit · Judgment diagnostic for implementing AI | A:BRA",
+      "description": "In one week we audit how one area of your business makes decisions, codify the judgment of the people who decide and deliver a prioritized plan to implement AI where it moves results."
+    },
+    "nav": {
+      "brand": "Judgment Audit",
+      "cta": "Book"
+    },
+    "hero": {
+      "eyebrow": "Judgment Audit · Judgment diagnostic",
+      "title": "Your company is going to implement AI. <muted>The question is where, how and with what judgment.</muted>",
+      "lead": "In one week we audit how one area of your business makes decisions, codify the judgment of the people who decide and deliver a prioritized plan to implement AI where it actually moves results.",
+      "ctaPrimary": "Book the diagnostic",
+      "ctaSecondary": "See how it works",
+      "stats": [
+        {
+          "value": "5 days",
+          "label": "business days"
+        },
+        {
+          "value": "1 area",
+          "label": "of the business"
+        },
+        {
+          "value": "7–9 h",
+          "label": "of your team’s time"
+        }
+      ],
+      "imageAlt": "Whale drawn in aqua lines descending into the deep"
+    },
+    "signals": {
+      "eyebrow": "Where value gets lost",
+      "title": "Four signs your decisions <muted>don’t run on a system.</muted>",
+      "lead": "Before choosing tools you need to know which processes gain from AI, which need data or order first, and which of your company’s rules AI has to respect.",
+      "items": [
+        {
+          "title": "Blind decisions",
+          "body": "Decisions made on experience or gut feeling, with no data behind them."
+        },
+        {
+          "title": "Data that doesn’t decide",
+          "body": "There are reports and dashboards, but they don’t change any decision."
+        },
+        {
+          "title": "Routine that drains",
+          "body": "Repetitive decisions with clear rules that a person still makes by hand."
+        },
+        {
+          "title": "Judgment in one person",
+          "body": "When that person is out, the process stops."
+        }
+      ]
+    },
+    "thesis": {
+      "eyebrow": "Our thesis · The Judgment Layer",
+      "line1": "AI executes.",
+      "line2": "Judgment decides.",
+      "lead": "Before implementing any tool, you need to understand and codify how your company decides. That layer of judgment is what turns AI into an advantage of your own."
+    },
+    "method": {
+      "eyebrow": "How it works",
+      "title": "Five moments. <muted>One condition to move forward in each.</muted>",
+      "lead": "The week starts when we have the complete material, not when the contract is signed. That’s how we protect the promise: a plan in five business days.",
+      "gatePrefix": "To move on:",
+      "phases": [
+        {
+          "when": "Before day 1",
+          "name": "Prepare",
+          "body": "Questionnaire, 40 to 60 real cases and read-only access.",
+          "gate": "Material complete"
+        },
+        {
+          "when": "Days 1 and 2",
+          "name": "Expose",
+          "body": "Interviews and a map of every decision in the area.",
+          "gate": "Critical decisions identified"
+        },
+        {
+          "when": "Day 3",
+          "name": "Codify",
+          "body": "Workshop with your expert: labeled cases, rules and exceptions.",
+          "gate": "The expert validates the judgment"
+        },
+        {
+          "when": "Day 4",
+          "name": "Prioritize",
+          "body": "Initiatives scored by impact, feasibility and time to value.",
+          "gate": "Each initiative has a metric and an owner"
+        },
+        {
+          "when": "Day 5",
+          "name": "Decide",
+          "body": "Session with whoever owns the budget.",
+          "gate": "Decision recorded"
+        }
+      ],
+      "week": [
+        {
+          "day": "Mon",
+          "phase": "Expose"
+        },
+        {
+          "day": "Tue",
+          "phase": "Expose"
+        },
+        {
+          "day": "Wed",
+          "phase": "Codify"
+        },
+        {
+          "day": "Thu",
+          "phase": "Prioritize"
+        },
+        {
+          "day": "Fri",
+          "phase": "Decide"
+        }
+      ]
+    },
+    "deliverables": {
+      "eyebrow": "What you take away",
+      "title": "Six deliverables that stay with your company, <muted>whether or not you keep working with us.</muted>",
+      "helpLabel": "It helps you",
+      "items": [
+        {
+          "name": "Decision Map",
+          "what": "A map of every decision in the area, sorted into four types.",
+          "help": "See at a glance what’s decided blind, what depends on one person and what can be automated."
+        },
+        {
+          "name": "Golden Set",
+          "what": "20 to 30 real cases labeled with your best expert’s judgment.",
+          "help": "Train and evaluate any AI against your standards, not generic answers."
+        },
+        {
+          "name": "Judgment document",
+          "what": "The rules, exceptions and limits your expert decides with, in writing.",
+          "help": "Make sure that knowledge doesn’t depend on one person and can be taught or automated."
+        },
+        {
+          "name": "Comparative demo",
+          "what": "AI solving your cases with and without your judgment, with its accuracy rate.",
+          "help": "Measure what codifying your judgment is worth before investing in implementation."
+        },
+        {
+          "name": "Judgment Blueprint",
+          "what": "3 to 5 prioritized initiatives, each with a metric, owner, scope and risks.",
+          "help": "Know what to do first and justify the investment to leadership."
+        },
+        {
+          "name": "Next-step proposal",
+          "what": "Three possible paths forward, with scope and timing.",
+          "help": "Decide how to move on with all the information on the table."
+        }
+      ]
+    },
+    "example": {
+      "eyebrow": "The proof",
+      "title": "One case, <muted>three answers.</muted>",
+      "tag": "Illustrative example · Marketing",
+      "count": "1 of the 20 to 30 cases in the audit",
+      "question": "Should a product piece with the price shown large be approved for an awareness campaign?",
+      "answers": [
+        {
+          "who": "AI without your judgment",
+          "decision": "Approve",
+          "why": "It follows the brand guidelines: correct colors, logo and typography.",
+          "correct": false
+        },
+        {
+          "who": "AI with your judgment",
+          "decision": "Reject",
+          "why": "It applies your expert’s rule: in awareness, price doesn’t lead the piece.",
+          "correct": true
+        },
+        {
+          "who": "Your expert",
+          "decision": "Reject",
+          "why": "The reference answer the AI is measured against.",
+          "correct": true
+        }
+      ],
+      "verdictCorrect": "Correct",
+      "verdictWrong": "Wrong",
+      "note": "In the audit this is repeated with 20 to 30 real cases and we measure the accuracy rate of each version."
+    },
+    "areas": {
+      "eyebrow": "Where to apply it",
+      "title": "One method, <muted>four entry points.</muted>",
+      "lead": "Each area has its own questionnaire, cases and data sources. The method stays the same.",
+      "items": [
+        {
+          "name": "Sales",
+          "body": "Which lead to prioritize, which discount to approve, when to let an opportunity go.",
+          "imageAlt": "Abstract illustration of light lines converging"
+        },
+        {
+          "name": "Marketing",
+          "body": "Where to invest, which campaign to scale or cut, how to read attribution.",
+          "imageAlt": "Abstract illustration of signal waves"
+        },
+        {
+          "name": "Operations",
+          "body": "What to assign to whom, which exception to approve, when to escalate a problem.",
+          "imageAlt": "Abstract illustration of wireframe gears"
+        },
+        {
+          "name": "Reputation",
+          "body": "Which mention to answer, when to escalate to a crisis, what to say as a spokesperson.",
+          "imageAlt": "Abstract illustration of the water surface seen from below"
+        }
+      ],
+      "alsoLabel": "Also applies to",
+      "also": [
+        "Data and measurement",
+        "Strategy",
+        "Customer service"
+      ]
+    },
+    "projects": {
+      "eyebrow": "Projects",
+      "title": "The method comes from <muted>projects we’ve already built.</muted>",
+      "whatLabel": "What it does",
+      "helpLabel": "How it helps",
+      "clientsLabel": "Brands we’ve worked with",
+      "items": [
+        {
+          "area": "Reputation",
+          "name": "Longitudinal media monitoring",
+          "what": "Tracks what the media publishes about an organization over time and classifies each mention with AI, using 14 rules that never break and 40 hand-labeled cases.",
+          "help": "The communications team stops reading everything and focuses on the mentions that call for a decision: respond, escalate or let it go."
+        },
+        {
+          "area": "Marketing",
+          "name": "Brand value metric",
+          "what": "Net Build Rate, a proprietary metric that measures whether a brand is building or losing value, developed with a global sportswear brand in Mexico.",
+          "help": "Turns brand value into a number you can track over time and defend to leadership, beyond reach and impressions."
+        },
+        {
+          "area": "Sales",
+          "name": "Sales copilot on WhatsApp",
+          "what": "Takes in the leads that arrive on WhatsApp, scores them with AI and suggests a priority and a reply to the salesperson.",
+          "help": "The team serves the highest-potential leads first, and a person always makes the final call before replying."
+        },
+        {
+          "area": "Data",
+          "name": "DataOps platform with a voice layer",
+          "what": "Connects business data to dashboards and to a voice layer for asking questions in natural language. Licensed to a creative group.",
+          "help": "Leadership checks its indicators whenever it needs them, without waiting for an analyst to build the report."
+        },
+        {
+          "area": "Teams",
+          "name": "AI adoption at a creative agency",
+          "what": "Role-based training with skill templates and a prompt library for content, creative, strategy and operations.",
+          "help": "Each team leaves with tools set up for its daily work, not general theory about AI."
+        },
+        {
+          "area": "Teams",
+          "name": "AI training for mass transit",
+          "what": "A 10-session, 20-hour program for the teams of a transit company.",
+          "help": "Designed so each team decides which tasks to delegate to AI and how to validate what it produces."
+        }
+      ]
+    },
+    "paths": {
+      "eyebrow": "After the audit",
+      "title": "You decide <muted>the next step.</muted>",
+      "items": [
+        {
+          "label": "Path A",
+          "name": "Execute with A:BRA",
+          "body": "We implement the prioritized initiatives. Content and social, with our partner MTM."
+        },
+        {
+          "label": "Path B",
+          "name": "Execute with your team",
+          "body": "We support you and transfer the judgment so your team can run it."
+        },
+        {
+          "label": "Path C",
+          "name": "Wait",
+          "body": "We review the plan again with your team after 30 days."
+        }
+      ]
+    },
+    "objective": {
+      "eyebrow": "Why do it",
+      "title": "One week to stop implementing AI <strong>blind.</strong>",
+      "lead": "You come out knowing where AI moves results, what to automate first and with what judgment, before committing budget to tools.",
+      "cta": "Book the diagnostic"
+    },
+    "cta": {
+      "eyebrow": "Next step",
+      "title": "AI is now within everyone’s reach. <accent>Your judgment is what no one can copy.</accent>",
+      "lead": "Pick the area you want to start with and we’ll schedule the kickoff. One week later, you have the plan.",
+      "form": {
+        "label": "Book a Judgment Audit",
+        "name": "Full name",
+        "namePlaceholder": "Jane Smith",
+        "email": "Email",
+        "emailPlaceholder": "jane@company.com",
+        "company": "Company",
+        "companyPlaceholder": "Your company",
+        "area": "Area to audit",
+        "areas": [
+          "Sales",
+          "Marketing",
+          "Operations",
+          "Reputation",
+          "Not sure yet"
+        ],
+        "submit": "Book via WhatsApp",
+        "note": "WhatsApp opens with your message ready to send. We reply within 24 business hours.",
+        "errorRequired": "Fill in this field.",
+        "errorEmail": "Enter a valid email, for example name@company.com.",
+        "whatsapp": "Hi A:BRA, I’d like to book a Judgment Audit.\nName: {name}\nEmail: {email}\nCompany: {company}\nArea to audit: {area}"
+      }
+    }
   }
 }

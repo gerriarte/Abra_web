@@ -126,6 +126,21 @@ export default function Header() {
                 }`}
               />
             </Link>
+
+            {/* Judgment Audit Link */}
+            <Link
+              href={`/${locale}/judgment-audit`}
+              className={`group relative text-[11px] font-light tracking-[0.2em] uppercase transition-all duration-300 ${
+                pathname === `/${locale}/judgment-audit` ? 'text-text-primary' : 'text-text-muted hover:text-text-primary'
+              }`}
+            >
+              <span className="relative z-[1]">{t('judgmentAudit')}</span>
+              <span
+                className={`absolute inset-x-0 -bottom-2 h-px origin-left transform rounded-full transition-transform duration-500 ease-out bg-primary ${
+                  pathname === `/${locale}/judgment-audit` ? 'scale-x-100 opacity-50' : 'scale-x-0 opacity-0 group-hover:scale-x-50 group-hover:opacity-30'
+                }`}
+              />
+            </Link>
           </div>
 
           {/* Language Toggle & CTA */}

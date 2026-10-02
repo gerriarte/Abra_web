@@ -1,6 +1,6 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import useOnScreen from '@/hooks/useOnScreen';
 import { heroContainerVariants, itemVariants } from '@/lib/animations/variants';
@@ -12,6 +12,7 @@ const LOOP_PHASES = ['metric01', 'metric02', 'metric03', 'metric04'] as const;
 
 export default function Hero() {
   const t = useTranslations('hero');
+  const locale = useLocale();
   const [ref, isVisible] = useOnScreen({ threshold: 0.1 });
 
   return (
@@ -99,7 +100,7 @@ export default function Hero() {
                 {t('ctaPrimary')}
               </a>
               <a
-                href="#method"
+                href={`/${locale}/judgment-audit`}
                 className="cta-ghost group inline-flex items-center justify-center gap-2 px-8 py-3.5 text-sm font-light text-text-primary rounded-sm border border-white/15 hover:border-white/30 hover:bg-white/[0.03]"
               >
                 {t('ctaSecondary')}
