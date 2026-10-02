@@ -4,8 +4,8 @@ import { useCallback } from 'react';
 
 declare global {
   interface Window {
-    dataLayer: any[];
-    gtag?: (...args: any[]) => void;
+    dataLayer: unknown[];
+    gtag?: (...args: unknown[]) => void;
   }
 }
 
@@ -29,7 +29,7 @@ export function useGTM() {
    * @param eventName - Nombre del evento (ej: 'button_click', 'form_submit')
    * @param eventData - Datos adicionales del evento
    */
-  const pushEvent = useCallback((eventName: string, eventData?: Record<string, any>) => {
+  const pushEvent = useCallback((eventName: string, eventData?: Record<string, unknown>) => {
     if (typeof window !== 'undefined' && window.dataLayer) {
       window.dataLayer.push({
         event: eventName,
@@ -44,7 +44,7 @@ export function useGTM() {
    * 
    * @param data - Datos a enviar a la dataLayer
    */
-  const pushData = useCallback((data: Record<string, any>) => {
+  const pushData = useCallback((data: Record<string, unknown>) => {
     if (typeof window !== 'undefined' && window.dataLayer) {
       window.dataLayer.push(data);
     }

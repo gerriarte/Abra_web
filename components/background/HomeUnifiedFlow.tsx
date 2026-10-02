@@ -48,10 +48,11 @@ export function HomeUnifiedFlow({ children }: { children: React.ReactNode }) {
   }, []);
 
   useEffect(() => {
-    updateGraph();
+    // First measurement on the next frame, so the effect never sets state synchronously.
+    const initFrame = requestAnimationFrame(updateGraph);
 
     const root = rootRef.current;
-    if (!root) return;
+    if (!root) return () => cancelAnimationFrame(initFrame);
 
     const observer = new ResizeObserver(() => updateGraph());
     observer.observe(root);
@@ -60,6 +61,7 @@ export function HomeUnifiedFlow({ children }: { children: React.ReactNode }) {
     window.addEventListener('scroll', updateGraph, { passive: true });
 
     return () => {
+      cancelAnimationFrame(initFrame);
       observer.disconnect();
       window.removeEventListener('resize', updateGraph);
       window.removeEventListener('scroll', updateGraph);

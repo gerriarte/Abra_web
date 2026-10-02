@@ -29,8 +29,12 @@ export function useScrollRatio(): number {
       }
     };
     window.addEventListener('scroll', onScroll, { passive: true });
-    handleScroll(); // init
-    return () => window.removeEventListener('scroll', onScroll);
+    // Initial read on the next frame, so the effect never sets state synchronously.
+    const initFrame = requestAnimationFrame(handleScroll);
+    return () => {
+      cancelAnimationFrame(initFrame);
+      window.removeEventListener('scroll', onScroll);
+    };
   }, [handleScroll]);
 
   return ratio;

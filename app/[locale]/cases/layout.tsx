@@ -7,7 +7,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const messages = await getMessages({ locale });
   
   const isEnglish = locale === 'en';
-  const cases = messages.cases as any;
+  const cases = messages.cases as { subtitle?: string } | undefined;
   
   const title = isEnglish 
     ? 'Case Studies - A:BRA'

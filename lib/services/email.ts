@@ -67,9 +67,10 @@ export async function sendContactEmail(payload: ContactFormData) {
         messageId: result.messageId
       },
     });
-  } catch (sendError: any) {
-    const errorMsg = sendError?.message || 'Unknown error';
-    const errorCode = sendError?.code || 'NO_CODE';
+  } catch (sendError) {
+    const { message, code } = (sendError ?? {}) as { message?: string; code?: string };
+    const errorMsg = message || 'Unknown error';
+    const errorCode = code || 'NO_CODE';
 
     logEvent({
       level: 'error',

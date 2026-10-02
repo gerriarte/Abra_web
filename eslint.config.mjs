@@ -12,7 +12,15 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Standalone prototypes and throwaway scripts, not part of the app build:
+    "Background scroll/**",
+    "scratch/**",
   ]),
+  // Node scripts run with plain `node` (CommonJS).
+  {
+    files: ["scripts/**/*.js"],
+    rules: { "@typescript-eslint/no-require-imports": "off" },
+  },
 ]);
 
 export default eslintConfig;

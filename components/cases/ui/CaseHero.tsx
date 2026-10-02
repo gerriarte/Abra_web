@@ -15,7 +15,7 @@ interface HeroProps {
 export const CaseHero: React.FC<HeroProps> = ({ title, subtitle, category, backgroundImage, imageScale = 1, imageLink }) => {
   const scale = imageScale !== 1 ? imageScale : 1;
   
-  const ImageContent = () => (
+  const imageContent = (
     <img 
       src={backgroundImage} 
       alt="Case Study Hero" 
@@ -42,10 +42,10 @@ export const CaseHero: React.FC<HeroProps> = ({ title, subtitle, category, backg
             rel="noopener noreferrer"
             className="w-full h-full cursor-pointer"
           >
-            <ImageContent />
+            {imageContent}
           </a>
         ) : (
-          <ImageContent />
+          imageContent
         )}
         <div className="absolute inset-0 bg-gradient-to-b from-[#04213B]/80 via-[#04213B]/70 to-[#04213B]/90" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_transparent_0%,_#04213B/50_100%)]" />

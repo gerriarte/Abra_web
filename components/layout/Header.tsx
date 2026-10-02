@@ -4,20 +4,21 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useLocale, useTranslations } from 'next-intl';
 import { usePathname } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useSyncExternalStore } from 'react';
 import { CAL_BOOKING_URL } from '@/lib/links';
+
+const subscribeNoop = () => () => {};
 
 export default function Header() {
   const locale = useLocale();
   const t = useTranslations('nav');
   const pathname = usePathname();
-  const [mounted, setMounted] = useState(false);
+  // false during SSR and hydration, true afterwards (replaces a setMounted effect).
+  const mounted = useSyncExternalStore(subscribeNoop, () => true, () => false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState<string | null>(null);
 
   useEffect(() => {
-    setMounted(true);
-
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
     };

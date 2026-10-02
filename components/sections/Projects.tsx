@@ -14,7 +14,7 @@ interface Project {
   category: string;
   image?: string;
   url?: string;
-  cases?: any[];
+  cases?: { link?: string }[];
 }
 
 export default function Projects() {
