@@ -64,6 +64,8 @@ export default function Header() {
     return null;
   }
 
+  const isServicesActive = activeSection === 'services' || pathname === `/${locale}/judgment-audit`;
+
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${scrolled
@@ -90,7 +92,6 @@ export default function Header() {
             {[
               { id: 'problem', label: t('problem') },
               { id: 'method', label: t('method') },
-              { id: 'services', label: t('services') },
             ].map(({ id, label }) => {
               const isActive = activeSection === id;
 
@@ -112,6 +113,48 @@ export default function Header() {
               );
             })}
 
+            {/* Services Dropdown */}
+            <div className="group/services relative">
+              <Link
+                href={`/${locale}#services`}
+                aria-haspopup="true"
+                className={`group relative inline-flex items-center gap-1.5 text-[11px] font-light tracking-[0.2em] uppercase transition-all duration-300 ${
+                  isServicesActive ? 'text-text-primary' : 'text-text-muted hover:text-text-primary'
+                }`}
+              >
+                <span className="relative z-[1]">{t('services')}</span>
+                <svg
+                  aria-hidden="true"
+                  viewBox="0 0 10 6"
+                  className="h-1.5 w-2.5 transition-transform duration-300 group-hover/services:rotate-180 group-focus-within/services:rotate-180"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth={1.2}
+                >
+                  <path d="M1 1l4 4 4-4" />
+                </svg>
+                <span
+                  className={`absolute inset-x-0 -bottom-2 h-px origin-left transform rounded-full transition-transform duration-500 ease-out bg-primary ${
+                    isServicesActive ? 'scale-x-100 opacity-50' : 'scale-x-0 opacity-0 group-hover:scale-x-50 group-hover:opacity-30'
+                  }`}
+                />
+              </Link>
+
+              {/* pt-5 bridges the gap so the menu stays open while the cursor moves down */}
+              <div className="invisible absolute left-1/2 top-full -translate-x-1/2 pt-5 opacity-0 transition-all duration-300 group-hover/services:visible group-hover/services:opacity-100 group-focus-within/services:visible group-focus-within/services:opacity-100">
+                <div className="min-w-[220px] rounded-xl border border-white/10 bg-background/95 p-2 shadow-[0_12px_40px_rgba(0,0,0,0.5)] backdrop-blur-xl">
+                  <Link
+                    href={`/${locale}/judgment-audit`}
+                    className={`block rounded-lg px-4 py-3 text-[11px] font-light tracking-[0.2em] uppercase transition-colors duration-300 hover:bg-white/[0.04] hover:text-text-primary ${
+                      pathname === `/${locale}/judgment-audit` ? 'text-text-primary' : 'text-text-muted'
+                    }`}
+                  >
+                    {t('judgmentAudit')}
+                  </Link>
+                </div>
+              </div>
+            </div>
+
             {/* Cases Link */}
             <Link
               href={`/${locale}/cases`}
@@ -123,21 +166,6 @@ export default function Header() {
               <span
                 className={`absolute inset-x-0 -bottom-2 h-px origin-left transform rounded-full transition-transform duration-500 ease-out bg-primary ${
                   pathname === `/${locale}/cases` ? 'scale-x-100 opacity-50' : 'scale-x-0 opacity-0 group-hover:scale-x-50 group-hover:opacity-30'
-                }`}
-              />
-            </Link>
-
-            {/* Judgment Audit Link */}
-            <Link
-              href={`/${locale}/judgment-audit`}
-              className={`group relative text-[11px] font-light tracking-[0.2em] uppercase transition-all duration-300 ${
-                pathname === `/${locale}/judgment-audit` ? 'text-text-primary' : 'text-text-muted hover:text-text-primary'
-              }`}
-            >
-              <span className="relative z-[1]">{t('judgmentAudit')}</span>
-              <span
-                className={`absolute inset-x-0 -bottom-2 h-px origin-left transform rounded-full transition-transform duration-500 ease-out bg-primary ${
-                  pathname === `/${locale}/judgment-audit` ? 'scale-x-100 opacity-50' : 'scale-x-0 opacity-0 group-hover:scale-x-50 group-hover:opacity-30'
                 }`}
               />
             </Link>
