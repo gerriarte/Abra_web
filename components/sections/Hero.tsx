@@ -1,37 +1,27 @@
-import Image from 'next/image';
 import { useLocale, useTranslations } from 'next-intl';
 import { ButtonLink, Eyebrow, mutedTag } from '@/components/shared/motion';
 import { CAL_BOOKING_URL } from '@/lib/links';
-
-// TODO(ger): reemplazar el placeholder por la imagen final (1536×864, WebP calidad ~82).
-const HERO_IMAGE = '/home/hero-loop.webp';
+import HeroLoop from './HeroLoop';
 
 export default function Hero() {
   const t = useTranslations('home.hero');
   const locale = useLocale();
   const capabilities = t.raw('capabilities') as string[];
+  const phases = (useTranslations('home.method').raw('phases') as { name: string }[]).map((p) => p.name);
 
   return (
     <section
       id="hero"
       className="relative flex min-h-[100svh] items-end overflow-hidden pt-28 pb-14 lg:items-center lg:pb-24"
     >
-      {/* Full-bleed banner. Absolutely positioned, so it can't shift layout. */}
+      {/* Loop spiral on the right (desktop only: on mobile the copy fills the screen).
+          Absolutely positioned, so it can't shift layout. */}
       <div className="pointer-events-none absolute inset-0" aria-hidden="true">
-        {/* Extra height leaves room for the float without uncovering the edges. */}
-        <div className="abra-float absolute inset-x-0 -top-4 -bottom-4">
-          <Image
-            src={HERO_IMAGE}
-            alt=""
-            fill
-            priority
-            sizes="100vw"
-            className="object-cover object-[right_center]"
-          />
+        <div className="abra-float absolute right-[2%] top-1/2 hidden w-[min(46vw,640px)] -translate-y-1/2 lg:block">
+          <HeroLoop phases={phases} />
         </div>
         {/* Mobile: dark from the bottom, where the copy sits. Desktop: dark from the left. */}
-        <div className="absolute inset-0 bg-[linear-gradient(0deg,#020C17_38%,rgba(2,12,23,0.7)_62%,rgba(2,12,23,0)_88%)] lg:bg-[linear-gradient(90deg,#020C17_0%,rgba(2,12,23,0.85)_30%,rgba(2,12,23,0)_60%)]" />
-        <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-background to-transparent" />
+        <div className="absolute inset-0 bg-[linear-gradient(0deg,#020C17_42%,rgba(2,12,23,0.6)_64%,rgba(2,12,23,0)_85%)] lg:bg-[linear-gradient(90deg,#020C17_0%,rgba(2,12,23,0.7)_32%,rgba(2,12,23,0)_55%)]" />
       </div>
 
       <div className="container relative z-10 mx-auto max-w-7xl px-4 lg:px-8">

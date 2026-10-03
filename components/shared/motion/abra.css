@@ -265,6 +265,9 @@
   .abra-pop { animation: abra-pop 6s var(--abra-lux) infinite; }
   .abra-float { animation: abra-float 9s ease-in-out infinite; }
   .abra-spin { animation: abra-orbit 18s linear infinite; }
+  /* Hero loop: the spiral draws in once; nodes flash as the travelling dot passes. */
+  .abra-draw-once { stroke-dasharray: 1; stroke-dashoffset: 1; animation: abra-draw-once 2.4s var(--abra-ease) 0.2s forwards; }
+  .abra-ping { transform-box: fill-box; transform-origin: center; opacity: 0.55; animation: abra-ping 12s ease-out infinite; }
   /* Gira alrededor del centro del SVG (no del elemento) para recorrer un arco. */
   .abra-svg .abra-orbit { transform-box: view-box; transform-origin: 24px 24px; animation: abra-orbit 6s linear infinite; }
 
@@ -281,6 +284,8 @@
   @keyframes abra-dot { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.45; transform: scale(0.85); } }
   @keyframes abra-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
   @keyframes abra-orbit { to { transform: rotate(360deg); } }
+  @keyframes abra-draw-once { to { stroke-dashoffset: 0; } }
+  @keyframes abra-ping { 0% { opacity: 1; transform: scale(1.6); } 6% { opacity: 1; transform: scale(1); } 14%, 100% { opacity: 0.55; transform: scale(1); } }
 
   /* ─── Reduced motion: sin animación, todo visible, gráficos en su estado final ── */
   @media (prefers-reduced-motion: reduce) {
@@ -294,6 +299,11 @@
     .abra-node,
     .abra-svg .abra-orbit { animation: none !important; }
     .abra-draw { stroke-dashoffset: 0; opacity: 1; }
+    .abra-draw-once,
+    .abra-ping { animation: none !important; }
+    .abra-draw-once { stroke-dashoffset: 0; }
+    .abra-ping { opacity: 1; }
+    .abra-hero-dot { display: none; }
     .abra-fill { transform: scaleX(1); }
     .abra-card,
     .abra-lift,
