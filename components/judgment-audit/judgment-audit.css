@@ -76,17 +76,17 @@
 .ja-answer__verdict--wrong { color: var(--abra-amber); }
 .ja-note { margin: 24px 0 0; max-width: 720px; font-size: 15px; font-weight: 300; color: var(--abra-muted); }
 
-.ja-book { display: grid; grid-template-columns: minmax(160px, 240px) 1fr; gap: 56px; align-items: center; margin-top: 64px; padding-top: 56px; border-top: 1px solid var(--abra-border); }
-.ja-book__cover { position: relative; aspect-ratio: 6 / 9; border-radius: 6px; overflow: hidden; box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(255, 255, 255, 0.06); }
+.ja-book { display: grid; grid-template-columns: minmax(150px, 220px) 1fr; gap: 48px; align-items: center; margin-top: 48px; padding: 40px; }
+.ja-book__cover { position: relative; aspect-ratio: 6 / 9; border-radius: 6px; overflow: hidden; box-shadow: 0 24px 50px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.08); }
 .ja-book__img { object-fit: cover; }
-.ja-book__placeholder { display: flex; align-items: flex-start; height: 100%; padding: 22px 18px; background: radial-gradient(circle at 50% 70%, var(--abra-apertura) 0%, var(--abra-night) 70%); }
-.ja-book__placeholder span { font-family: var(--abra-display); font-size: 20px; font-weight: 600; line-height: 1.15; letter-spacing: -0.02em; color: var(--abra-fg); }
+.ja-book__placeholder { display: flex; align-items: flex-start; height: 100%; padding: 20px 18px; background: radial-gradient(circle at 50% 70%, var(--abra-apertura) 0%, var(--abra-night) 75%); }
+.ja-book__placeholder span { font-family: var(--abra-display); font-size: 19px; font-weight: 600; line-height: 1.15; letter-spacing: -0.02em; color: var(--abra-fg); }
 .ja-book__copy { max-width: 640px; }
-.ja-book__title { margin: 0; font-family: var(--abra-display); font-size: clamp(1.75rem, 3.2vw, 2.5rem); font-weight: 500; line-height: 1.1; letter-spacing: -0.035em; color: var(--abra-fg); }
+.ja-book__title { margin: 0; font-family: var(--abra-display); font-size: clamp(1.6rem, 3vw, 2.3rem); font-weight: 500; line-height: 1.1; letter-spacing: -0.035em; color: var(--abra-fg); }
 .ja-book__byline { line-height: 1.8; }
 @media (max-width: 640px) {
-  .ja-book { grid-template-columns: 1fr; gap: 32px; }
-  .ja-book__cover { width: min(220px, 60%); }
+  .ja-book { grid-template-columns: 1fr; gap: 28px; padding: 28px 22px; }
+  .ja-book__cover { width: min(200px, 60%); }
 }
 
 /* ─── Areas ──────────────────────────────────────────── */

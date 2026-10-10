@@ -60,6 +60,7 @@ export default async function JudgmentAuditPage({ params }: Props) {
         <Hero secondaryHref="#ejemplo" />
         <Signals />
         <Example />
+        <Thesis />
         <Method />
         <Deliverables />
         <Areas />
