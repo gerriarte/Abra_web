@@ -8,10 +8,13 @@ import {
   Cta,
   Deliverables,
   Example,
+  Faq,
+  Fit,
   Hero,
   Method,
   Objective,
   Paths,
+  Pricing,
   Projects,
   RevealObserver,
   Signals,
@@ -49,6 +52,28 @@ export default async function JudgmentAuditPage({ params }: Props) {
   setRequestLocale(locale);
 
   // LocaleChrome already renders <main>; this is the page's scoped root.
+  // The Spanish page follows the new brief (example first, fit, pricing, FAQ);
+  // English keeps the original structure until its copy is rewritten.
+  if (locale === 'es') {
+    return (
+      <div className="ja-root">
+        <Hero secondaryHref="#ejemplo" />
+        <Signals />
+        <Example />
+        <Method />
+        <Deliverables />
+        <Areas />
+        <Projects />
+        <Fit />
+        <Pricing />
+        <Paths />
+        <Faq />
+        <Cta />
+        <RevealObserver />
+      </div>
+    );
+  }
+
   return (
     <div className="ja-root">
       <Hero />

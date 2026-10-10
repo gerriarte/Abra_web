@@ -15,11 +15,14 @@ export type CtaFormCopy = {
   companyPlaceholder: string;
   area: string;
   areas: string[];
+  /** Optional plan select; when present, {plan} is filled in the message. */
+  plan?: string;
+  plans?: string[];
   submit: string;
   note: string;
   errorRequired: string;
   errorEmail: string;
-  /** Message template with {name} {email} {company} {area} placeholders. */
+  /** Message template with {name} {email} {company} {area} {plan} placeholders. */
   whatsapp: string;
 };
 
@@ -28,7 +31,13 @@ const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export function CtaForm({ copy }: { copy: CtaFormCopy }) {
   const uid = useId();
-  const [values, setValues] = useState({ name: '', email: '', company: '', area: copy.areas[0] ?? '' });
+  const [values, setValues] = useState({
+    name: '',
+    email: '',
+    company: '',
+    area: copy.areas[0] ?? '',
+    plan: copy.plans?.[0] ?? '',
+  });
   const [errors, setErrors] = useState<Partial<Record<Field, string>>>({});
 
   const validate = () => {
@@ -53,7 +62,8 @@ export function CtaForm({ copy }: { copy: CtaFormCopy }) {
       .replace('{name}', values.name.trim())
       .replace('{email}', values.email.trim())
       .replace('{company}', values.company.trim())
-      .replace('{area}', values.area);
+      .replace('{area}', values.area)
+      .replace('{plan}', values.plan);
     const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
     // Hook for analytics later, e.g. window.gtag?.('event', 'judgment_audit_whatsapp')
     window.open(url, '_blank', 'noopener,noreferrer');
@@ -91,28 +101,33 @@ export function CtaForm({ copy }: { copy: CtaFormCopy }) {
     );
   };
 
+  const select = (key: 'area' | 'plan', label: string, options: string[]) => (
+    <div className="ja-field">
+      <label htmlFor={`${uid}-${key}`} className="abra-field__label">
+        {label}
+      </label>
+      <select
+        id={`${uid}-${key}`}
+        name={key}
+        className="abra-input"
+        value={values[key]}
+        onChange={(e) => setValues((v) => ({ ...v, [key]: e.target.value }))}
+      >
+        {options.map((o) => (
+          <option key={o}>{o}</option>
+        ))}
+      </select>
+    </div>
+  );
+
   return (
     <form className="ja-form abra-reveal" aria-label={copy.label} onSubmit={onSubmit} noValidate>
       <div className="ja-form__grid">
         {field('name', copy.name, copy.namePlaceholder, 'text', 'name')}
         {field('email', copy.email, copy.emailPlaceholder, 'email', 'email')}
         {field('company', copy.company, copy.companyPlaceholder, 'text', 'organization')}
-        <div className="ja-field">
-          <label htmlFor={`${uid}-area`} className="abra-field__label">
-            {copy.area}
-          </label>
-          <select
-            id={`${uid}-area`}
-            name="area"
-            className="abra-input"
-            value={values.area}
-            onChange={(e) => setValues((v) => ({ ...v, area: e.target.value }))}
-          >
-            {copy.areas.map((a) => (
-              <option key={a}>{a}</option>
-            ))}
-          </select>
-        </div>
+        {select('area', copy.area, copy.areas)}
+        {copy.plan && copy.plans ? select('plan', copy.plan, copy.plans) : null}
       </div>
       <button type="submit" className="abra-btn">
         <span>{copy.submit}</span>

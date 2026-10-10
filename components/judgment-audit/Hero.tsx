@@ -4,7 +4,8 @@ import { ButtonLink, Eyebrow } from './ui';
 
 type Stat = { value: string; label: string };
 
-export function Hero() {
+/** `secondaryHref`: anchor for the ghost CTA (the Spanish page points it at the example). */
+export function Hero({ secondaryHref = '#metodo' }: { secondaryHref?: string }) {
   const t = useTranslations('JudgmentAudit.hero');
   const stats = t.raw('stats') as Stat[];
 
@@ -19,10 +20,11 @@ export function Hero() {
           <p className="abra-lead abra-lead--lg">{t('lead')}</p>
           <div className="abra-actions">
             <ButtonLink href="#agendar">{t('ctaPrimary')}</ButtonLink>
-            <ButtonLink href="#metodo" variant="ghost" arrow={false}>
+            <ButtonLink href={secondaryHref} variant="ghost" arrow={false}>
               {t('ctaSecondary')}
             </ButtonLink>
           </div>
+          {t.has('note') ? <p className="ja-hero__note">{t('note')}</p> : null}
           <div className="ja-stats">
             {stats.map((stat, i) => (
               <div key={stat.label} className="ja-stat">

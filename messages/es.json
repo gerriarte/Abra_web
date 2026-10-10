@@ -103,8 +103,8 @@
   },
   "JudgmentAudit": {
     "meta": {
-      "title": "Judgment Audit · Diagnóstico de criterio para implementar IA | A:BRA",
-      "description": "En una semana auditamos cómo decide un área de tu negocio, codificamos el criterio de quien decide y entregamos un plan priorizado para implementar IA donde mueve resultados."
+      "title": "Judgment Audit · Diagnóstico para implementar IA con criterio | A:BRA",
+      "description": "En 5 días hábiles revisamos cómo decide un área de tu empresa, ponemos por escrito el criterio de tu mejor persona y te entregamos un plan para implementar IA donde da resultados."
     },
     "nav": {
       "brand": "Judgment Audit",
@@ -112,10 +112,11 @@
     },
     "hero": {
       "eyebrow": "Judgment Audit · Diagnóstico de criterio",
-      "title": "Tu empresa va a implementar IA. <muted>La pregunta es dónde, cómo y con qué criterio.</muted>",
-      "lead": "En una semana auditamos cómo decide un área de tu negocio, codificamos el criterio de quien decide y entregamos un plan priorizado para implementar IA donde de verdad mueve resultados.",
-      "ctaPrimary": "Agendar diagnóstico",
-      "ctaSecondary": "Ver cómo funciona",
+      "title": "Antes de invertir en IA, <muted>descubre dónde va a dar resultados en tu empresa.</muted>",
+      "lead": "En 5 días hábiles revisamos cómo toma decisiones un área de tu negocio, ponemos por escrito el criterio de tu mejor persona y te entregamos un plan con 3 a 5 iniciativas de IA priorizadas por impacto.",
+      "ctaPrimary": "Agendar el diagnóstico",
+      "ctaSecondary": "Ver un ejemplo",
+      "note": "Desde $4.500.000 COP · Los entregables quedan en tu empresa, sigas o no con nosotros.",
       "stats": [
         {
           "value": "5 días",
@@ -127,89 +128,116 @@
         },
         {
           "value": "7–9 h",
-          "label": "de tu equipo"
+          "label": "de tu equipo en toda la semana"
         }
       ],
       "imageAlt": "Ballena dibujada con líneas aqua descendiendo al abismo"
     },
     "signals": {
-      "eyebrow": "Dónde se pierde valor",
-      "title": "Cuatro señales de que las decisiones <muted>no tienen un sistema.</muted>",
-      "lead": "Antes de elegir herramientas hay que saber qué procesos ganan con IA, cuáles necesitan datos u orden primero y qué reglas de tu empresa la IA debe respetar.",
+      "eyebrow": "Dónde se pierde el valor",
+      "title": "Cuatro señales de que tu empresa decide <muted>sin un sistema.</muted>",
+      "lead": "Comprar herramientas de IA sin resolver esto es automatizar el desorden.",
       "items": [
         {
-          "title": "Decisiones ciegas",
-          "body": "Se decide por experiencia o intuición, sin dato que lo respalde."
+          "title": "Decisiones a ciegas",
+          "body": "Se decide por experiencia o intuición, sin datos detrás. Cuando la decisión falla, nadie sabe por qué."
         },
         {
-          "title": "Datos que no deciden",
-          "body": "Hay reportes y dashboards, pero no cambian ninguna decisión."
+          "title": "Datos que no cambian nada",
+          "body": "Hay reportes y dashboards, pero ninguna decisión cambia por lo que muestran. Pagas por información que no usas."
         },
         {
-          "title": "Rutina que consume",
-          "body": "Decisiones repetitivas, con reglas claras, que todavía hace una persona."
+          "title": "Rutina que consume horas",
+          "body": "Decisiones repetitivas, con reglas claras, que una persona sigue tomando a mano. Es tiempo caro haciendo trabajo que se puede automatizar."
         },
         {
-          "title": "Criterio en una persona",
-          "body": "Cuando esa persona falta, el proceso se frena."
+          "title": "El criterio vive en una sola persona",
+          "body": "Cuando esa persona falta o se va, el proceso se frena o se hace mal."
         }
       ]
     },
-    "thesis": {
-      "eyebrow": "Nuestra tesis · The Judgment Layer",
-      "line1": "La IA ejecuta.",
-      "line2": "El criterio decide.",
-      "lead": "Antes de implementar cualquier herramienta, hay que entender y codificar cómo decide tu empresa. Esa capa de criterio es lo que convierte a la IA en una ventaja propia."
+    "example": {
+      "eyebrow": "Qué significa \"criterio\"",
+      "title": "La misma pregunta, tres respuestas. <muted>Ahí está la diferencia.</muted>",
+      "lead": "Una IA genérica conoce las reglas que están escritas. Tu mejor persona conoce también las que no lo están. Mira un caso de marketing:",
+      "question": "¿Se aprueba una pieza con el precio en grande para una campaña de reconocimiento de marca?",
+      "answers": [
+        {
+          "who": "IA sin tu criterio",
+          "decision": "Aprobar",
+          "why": "Cumple el manual de marca: colores, logo y tipografía correctos.",
+          "correct": false
+        },
+        {
+          "who": "IA con tu criterio",
+          "decision": "Rechazar",
+          "why": "Aplica la regla de tu experta: en una campaña de reconocimiento, el precio no protagoniza la pieza.",
+          "correct": true
+        },
+        {
+          "who": "Tu experta",
+          "decision": "Rechazar",
+          "why": "Es la respuesta de referencia.",
+          "correct": true
+        }
+      ],
+      "verdictCorrect": "✓ Correcto",
+      "verdictWrong": "✗ Incorrecto",
+      "note": "En el diagnóstico hacemos esto con 20 a 30 decisiones reales de tu equipo y medimos cuántas acierta la IA con y sin tu criterio. Así sabes cuánto vale ese conocimiento antes de invertir en herramientas.",
+      "highlight": {
+        "line1": "La IA ejecuta.",
+        "line2": "El criterio decide."
+      }
     },
     "method": {
       "eyebrow": "Cómo funciona",
-      "title": "Cinco momentos. <muted>Una condición para avanzar en cada uno.</muted>",
-      "lead": "La semana arranca cuando tenemos el material completo, no cuando se firma. Así protegemos la promesa: un plan en cinco días hábiles.",
+      "title": "Cinco momentos. <muted>Cada uno se cierra antes de pasar al siguiente.</muted>",
+      "lead": "La semana empieza cuando tenemos el material completo, no cuando se firma el contrato. Así podemos garantizar el plan en 5 días hábiles.",
       "gatePrefix": "Para avanzar:",
       "phases": [
         {
-          "when": "Días previos",
+          "when": "Antes del día 1",
           "name": "Preparar",
-          "body": "Formulario, 40 a 60 casos reales y accesos de lectura.",
+          "body": "Nos envías el cuestionario del área, entre 40 y 60 ejemplos de decisiones que ya tomaron y acceso de lectura a las herramientas donde está la información.",
           "gate": "Material completo"
         },
         {
           "when": "Días 1 y 2",
-          "name": "Exponer",
-          "body": "Entrevistas y mapa de todas las decisiones del área.",
-          "gate": "Decisiones críticas identificadas"
+          "name": "Mapear",
+          "body": "Entrevistamos al equipo y armamos un mapa con todas las decisiones del área.",
+          "gate": "Identificamos las decisiones críticas"
         },
         {
           "when": "Día 3",
-          "name": "Codificar",
-          "body": "Taller con tu experto: casos etiquetados, reglas y excepciones.",
-          "gate": "El experto valida el criterio"
+          "name": "Poner el criterio por escrito",
+          "body": "Taller con tu experto: revisamos casos reales y escribimos sus reglas y excepciones.",
+          "gate": "Tu experto valida que eso es lo que él haría"
         },
         {
           "when": "Día 4",
           "name": "Priorizar",
-          "body": "Iniciativas puntuadas por impacto, factibilidad y tiempo a valor.",
-          "gate": "Cada iniciativa con métrica y dueño"
+          "body": "Evaluamos cada iniciativa posible según su impacto, lo fácil que es implementarla y cuánto tarda en dar resultados.",
+          "gate": "Cada iniciativa tiene una métrica y un responsable"
         },
         {
           "when": "Día 5",
           "name": "Decidir",
-          "body": "Sesión con quien decide el presupuesto.",
+          "body": "Sesión con quien aprueba el presupuesto para definir qué se hace primero.",
           "gate": "Decisión registrada"
         }
       ],
       "week": [
         {
           "day": "Lun",
-          "phase": "Exponer"
+          "phase": "Mapear"
         },
         {
           "day": "Mar",
-          "phase": "Exponer"
+          "phase": "Mapear"
         },
         {
           "day": "Mié",
-          "phase": "Codificar"
+          "phase": "Criterio"
         },
         {
           "day": "Jue",
@@ -227,197 +255,319 @@
       "helpLabel": "Te sirve para",
       "items": [
         {
-          "name": "Decision Map",
-          "what": "El mapa de todas las decisiones del área, clasificadas en cuatro tipos.",
-          "help": "Ver de un vistazo qué se decide a ciegas, qué depende de una persona y qué se puede automatizar."
+          "name": "Mapa de decisiones",
+          "what": "Todas las decisiones del área, clasificadas en cuatro tipos: se toman sin datos, tienen datos que no se usan, son rutinarias y automatizables, o dependen de una sola persona.",
+          "help": "Ver de un vistazo dónde está el riesgo y dónde la oportunidad."
         },
         {
-          "name": "Golden Set",
-          "what": "De 20 a 30 casos reales etiquetados con el criterio de tu mejor experto.",
-          "help": "Entrenar y evaluar cualquier IA con tus estándares, no con respuestas genéricas."
+          "name": "Casos de referencia (Golden Set)",
+          "what": "20 a 30 decisiones reales resueltas por tu mejor experto.",
+          "help": "Evaluar cualquier IA, hoy o en el futuro, contra tu estándar y no contra respuestas genéricas."
         },
         {
           "name": "Documento de criterio",
           "what": "Las reglas, excepciones y límites con los que decide tu experto, por escrito.",
-          "help": "Que ese conocimiento no dependa de una sola persona y pueda enseñarse o automatizarse."
+          "help": "Que ese conocimiento no dependa de una persona y se pueda enseñar o automatizar."
         },
         {
           "name": "Demo comparativa",
-          "what": "La IA resolviendo tus casos con y sin tu criterio, con su porcentaje de aciertos.",
-          "help": "Medir cuánto vale codificar tu criterio antes de invertir en implementación."
+          "what": "La IA resolviendo tus casos con y sin tu criterio, con el número de aciertos de cada versión.",
+          "help": "Medir cuánto vale tu criterio antes de invertir en implementación."
         },
         {
-          "name": "Judgment Blueprint",
-          "what": "De 3 a 5 iniciativas priorizadas, con métrica, responsable, alcance y riesgos.",
+          "name": "Plan de implementación (Judgment Blueprint)",
+          "what": "3 a 5 iniciativas priorizadas, cada una con su métrica, responsable, alcance y riesgos.",
           "help": "Saber qué hacer primero y justificar la inversión ante la dirección."
         },
         {
-          "name": "Propuesta de siguiente paso",
-          "what": "Tres caminos posibles para avanzar, con alcance y tiempos.",
-          "help": "Decidir cómo seguir con toda la información sobre la mesa."
+          "name": "Propuesta de próximos pasos",
+          "what": "Tres caminos posibles para seguir, con alcance y tiempos.",
+          "help": "Decidir con toda la información sobre la mesa."
         }
       ]
-    },
-    "example": {
-      "eyebrow": "La prueba",
-      "title": "Un caso, <muted>tres respuestas.</muted>",
-      "tag": "Ejemplo ilustrativo · Marketing",
-      "count": "1 de los 20 a 30 casos del audit",
-      "question": "¿Se aprueba una pieza de producto con el precio en grande para una campaña de awareness?",
-      "answers": [
-        {
-          "who": "IA sin tu criterio",
-          "decision": "Aprobar",
-          "why": "Cumple el manual de marca: colores, logo y tipografía correctos.",
-          "correct": false
-        },
-        {
-          "who": "IA con tu criterio",
-          "decision": "Rechazar",
-          "why": "Aplica la regla de tu experto: en awareness, el precio no protagoniza la pieza.",
-          "correct": true
-        },
-        {
-          "who": "Tu experto",
-          "decision": "Rechazar",
-          "why": "Es la respuesta de referencia contra la que se mide a la IA.",
-          "correct": true
-        }
-      ],
-      "verdictCorrect": "Acierto",
-      "verdictWrong": "Error",
-      "note": "En el audit esto se repite con 20 a 30 casos reales y se mide el porcentaje de aciertos de cada versión."
     },
     "areas": {
       "eyebrow": "Dónde aplicarlo",
       "title": "Un método, <muted>cuatro puntos de entrada.</muted>",
-      "lead": "Cada área tiene su propio formulario, sus casos y sus fuentes de datos. El método es el mismo.",
+      "lead": "Cada área tiene su propio cuestionario y sus propios casos. El método es el mismo.",
       "items": [
         {
-          "name": "Comercial",
-          "body": "Qué lead priorizar, qué descuento aprobar, cuándo soltar una oportunidad.",
+          "name": "Ventas",
+          "body": "Qué lead atender primero, qué descuento aprobar, cuándo soltar una oportunidad.",
           "imageAlt": "Ilustración abstracta de líneas de luz convergiendo"
         },
         {
           "name": "Marketing",
-          "body": "Dónde invertir, qué campaña escalar o cortar, cómo leer la atribución.",
+          "body": "Dónde invertir, qué campaña escalar o cortar, cómo saber qué canal trae ventas de verdad.",
           "imageAlt": "Ilustración abstracta de ondas de señal"
         },
         {
           "name": "Operaciones",
-          "body": "Qué asignar a quién, qué excepción aprobar, cuándo escalar un problema.",
+          "body": "A quién asignar cada tarea, qué excepción aprobar, cuándo escalar un problema.",
           "imageAlt": "Ilustración abstracta de engranajes de líneas"
         },
         {
           "name": "Reputación",
-          "body": "A qué mención responder, cuándo escalar a crisis, qué decir en vocería.",
+          "body": "Qué mención responder, cuándo tratar algo como crisis, qué decir como vocero.",
           "imageAlt": "Ilustración abstracta de la superficie del agua vista desde abajo"
         }
       ],
-      "alsoLabel": "También aplica en",
+      "alsoLabel": "También aplica a",
       "also": [
-        "Data y medición",
+        "Datos y medición",
         "Estrategia",
         "Servicio al cliente"
       ]
     },
     "projects": {
       "eyebrow": "Proyectos",
-      "title": "El método viene de <muted>proyectos que ya construimos.</muted>",
+      "title": "El método sale de <muted>proyectos que ya construimos.</muted>",
       "whatLabel": "Qué hace",
-      "helpLabel": "Cómo ayuda",
+      "helpLabel": "Resultado",
       "clientsLabel": "Marcas con las que hemos trabajado",
       "items": [
         {
           "area": "Reputación",
-          "name": "Monitoreo longitudinal de medios",
-          "what": "Sigue en el tiempo lo que publican los medios sobre una organización y clasifica cada mención con IA, usando 14 reglas que nunca se rompen y 40 casos etiquetados a mano.",
-          "help": "El equipo de comunicación deja de leerlo todo y se concentra en las menciones que piden una decisión: responder, escalar o dejar pasar."
+          "name": "Monitoreo de medios",
+          "what": "Una IA lee todo lo que los medios publican sobre una organización y clasifica cada mención con las mismas reglas que usaría el equipo de comunicaciones.",
+          "help": "El equipo deja de leerlo todo y se enfoca en las menciones que piden una decisión: responder, escalar o dejar pasar."
         },
         {
           "area": "Marketing",
           "name": "Métrica de valor de marca",
-          "what": "Net Build Rate, una métrica propia que mide si la marca construye o pierde valor, desarrollada con una marca deportiva global en México.",
-          "help": "Convierte el valor de marca en un número que se puede seguir en el tiempo y defender ante la dirección, más allá del alcance y las impresiones."
+          "what": "Net Build Rate, una métrica propia que mide si una marca gana o pierde valor, desarrollada con una marca global de ropa deportiva en México.",
+          "help": "El valor de marca se convierte en un número que se sigue en el tiempo y se puede defender ante la dirección, más allá del alcance y las impresiones."
         },
         {
-          "area": "Comercial",
+          "area": "Ventas",
           "name": "Copiloto comercial en WhatsApp",
-          "what": "Recibe los leads que llegan por WhatsApp, los califica con IA y le sugiere al vendedor la prioridad y la respuesta.",
-          "help": "El equipo atiende primero a quien tiene más potencial, y una persona siempre toma la decisión final antes de responder."
+          "what": "Recibe los leads que llegan por WhatsApp, los califica con IA y le sugiere al vendedor a quién atender primero y qué responder.",
+          "help": "El equipo atiende primero a los leads con más potencial, y una persona siempre decide antes de responder."
         },
         {
-          "area": "Data",
-          "name": "Plataforma DataOps con capa de voz",
-          "what": "Conecta los datos del negocio a dashboards y a una capa de voz para hacer preguntas en lenguaje natural. Licenciada a un grupo creativo.",
-          "help": "La dirección consulta sus indicadores cuando los necesita, sin esperar a que un analista arme el reporte."
+          "area": "Datos",
+          "name": "Plataforma de indicadores con consulta por voz",
+          "what": "Conecta los datos del negocio a dashboards y permite hacerles preguntas en voz alta. Licenciada a un grupo creativo.",
+          "help": "La dirección consulta sus indicadores cuando los necesita, sin esperar a que un analista arme el informe."
         },
         {
           "area": "Equipos",
           "name": "Adopción de IA en una agencia creativa",
-          "what": "Capacitaciones por rol con plantillas de skills y librería de prompts para contenido, creatividad, estrategia y operaciones.",
-          "help": "Cada equipo sale con herramientas configuradas para su trabajo diario, no con teoría general sobre IA."
+          "what": "Capacitación por rol, con plantillas e instrucciones listas para contenido, creatividad, estrategia y operaciones.",
+          "help": "Cada equipo sale con herramientas configuradas para su trabajo diario, no con teoría general."
         },
         {
           "area": "Equipos",
           "name": "Formación en IA para transporte masivo",
-          "what": "Programa de 10 sesiones y 20 horas para los equipos de una compañía de transporte.",
-          "help": "Pensado para que cada equipo decida qué tareas delegar a la IA y cómo validar lo que produce."
+          "what": "Programa de 10 sesiones (20 horas) para los equipos de una empresa de transporte.",
+          "help": "Cada equipo define qué tareas delegarle a la IA y cómo revisar lo que produce."
         }
       ]
     },
+    "fit": {
+      "eyebrow": "¿Es para ti?",
+      "title": "Para quién es <muted>este diagnóstico.</muted>",
+      "yes": {
+        "label": "Es para ti si…",
+        "items": [
+          "Vas a invertir en IA este año y quieres saber dónde rinde.",
+          "Tienes un área con decisiones repetitivas o que dependen de una persona.",
+          "Necesitas justificar la inversión ante la dirección con un plan concreto.",
+          "Puedes dedicar 7–9 horas de tu equipo en una semana."
+        ]
+      },
+      "no": {
+        "label": "No es para ti si…",
+        "items": [
+          "Ya sabes exactamente qué herramienta implementar y solo necesitas quien la instale.",
+          "Tu empresa todavía no tiene procesos definidos en el área.",
+          "Buscas una capacitación general sobre IA.",
+          "No hay nadie con criterio experto disponible para el taller."
+        ]
+      }
+    },
+    "pricing": {
+      "eyebrow": "Inversión",
+      "title": "Elige por cuántas áreas <muted>empezar.</muted>",
+      "plansCaption": "Planes del diagnóstico",
+      "plans": [
+        "Diagnóstico de 1 área",
+        "Diagnóstico ampliado"
+      ],
+      "planRows": [
+        {
+          "label": "Precio",
+          "values": [
+            "$4.500.000 COP",
+            "$6.500.000 COP"
+          ],
+          "highlight": true
+        },
+        {
+          "label": "Qué cubre",
+          "values": [
+            "1 área completa",
+            "1 área completa + 2 áreas en versión exprés"
+          ]
+        },
+        {
+          "label": "Plazo",
+          "values": [
+            "5 días hábiles",
+            "10 días hábiles"
+          ]
+        },
+        {
+          "label": "Tiempo de tu equipo",
+          "values": [
+            "7–9 h",
+            "7–9 h + 2 h por cada área exprés"
+          ]
+        }
+      ],
+      "deliverablesCaption": "Entregables por tipo de área",
+      "deliverablesHead": [
+        "Entregable",
+        "Área completa",
+        "Área exprés"
+      ],
+      "deliverables": [
+        {
+          "name": "Mapa de decisiones",
+          "full": true,
+          "express": true
+        },
+        {
+          "name": "Plan con 3 a 5 iniciativas priorizadas",
+          "full": true,
+          "express": true
+        },
+        {
+          "name": "Casos de referencia",
+          "full": true,
+          "express": false
+        },
+        {
+          "name": "Documento de criterio",
+          "full": true,
+          "express": false
+        },
+        {
+          "name": "Demo comparativa",
+          "full": true,
+          "express": false
+        },
+        {
+          "name": "Propuesta de próximos pasos",
+          "full": true,
+          "express": true
+        }
+      ],
+      "included": "Incluido",
+      "notIncluded": "No incluido",
+      "note": "El área exprés te dice qué conviene hacer con IA. El área completa te dice además cómo debe decidir la IA y te muestra cuánto acierta. Si después quieres llevar un área exprés a completa, se cotiza aparte.",
+      "guarantee": {
+        "label": "Garantía de plazo",
+        "body": "Si en 5 días hábiles (10 en el diagnóstico ampliado) desde que recibimos el material completo no tienes tu plan, no pagas nada: te devolvemos el anticipo y no cobramos el saldo."
+      },
+      "cta": "Agendar el diagnóstico"
+    },
     "paths": {
-      "eyebrow": "Después del audit",
-      "title": "Tú decides <muted>el siguiente paso.</muted>",
+      "eyebrow": "Después del diagnóstico",
+      "title": "Tú decides <muted>cómo seguir.</muted>",
       "items": [
         {
           "label": "Camino A",
-          "name": "Ejecutar con A:BRA",
-          "body": "Implementamos las iniciativas priorizadas. Contenido y redes, con nuestro aliado MTM."
+          "name": "Implementar con A:BRA",
+          "body": "Ejecutamos las iniciativas priorizadas. El contenido y las redes sociales, con nuestro aliado MTM."
         },
         {
           "label": "Camino B",
-          "name": "Ejecutar con tu equipo",
-          "body": "Te acompañamos y transferimos el criterio para que tu equipo lo opere."
+          "name": "Implementar con tu equipo",
+          "body": "Te acompañamos y le transferimos el criterio a tu equipo para que lo ejecute."
         },
         {
           "label": "Camino C",
           "name": "Esperar",
-          "body": "Volvemos a revisar el plan con tu equipo a los 30 días."
+          "body": "Revisamos el plan con tu equipo 30 días después."
         }
       ]
     },
-    "objective": {
-      "eyebrow": "Por qué hacerlo",
-      "title": "Una semana para dejar de implementar IA <strong>a ciegas.</strong>",
-      "lead": "Sales sabiendo dónde la IA mueve resultados, qué automatizar primero y con qué criterio, antes de comprometer presupuesto en herramientas.",
-      "cta": "Agendar diagnóstico"
+    "faq": {
+      "eyebrow": "Preguntas frecuentes",
+      "title": "Lo que suelen preguntarnos <muted>antes de empezar.</muted>",
+      "items": [
+        {
+          "q": "¿Qué es exactamente el \"material completo\"?",
+          "a": "Son tres cosas, y la semana empieza cuando tenemos las tres:",
+          "list": [
+            "El cuestionario del área respondido.",
+            "Entre 40 y 60 ejemplos de decisiones que tu equipo ya tomó (por ejemplo, leads aprobados y descartados, piezas aprobadas y rechazadas), en el formato que te indicamos.",
+            "Acceso para ver, no modificar, las herramientas donde está la información del área (CRM, Drive, plataformas de pauta, etc.)."
+          ],
+          "after": "Te confirmamos por escrito el día en que el material queda completo. Desde esa fecha corre el plazo de la garantía."
+        },
+        {
+          "q": "¿Necesito tener los datos ordenados o usar IA desde antes?",
+          "a": "No. El diagnóstico sirve justamente para saber qué ordenar primero y dónde conviene usar IA."
+        },
+        {
+          "q": "¿Cuánto tiempo le quita a mi equipo?",
+          "a": "Entre 7 y 9 horas en toda la semana, repartidas entre entrevistas, un taller con tu experto y la sesión final. En el diagnóstico ampliado se suman 2 horas por cada área exprés."
+        },
+        {
+          "q": "¿Quién de mi equipo tiene que participar?",
+          "a": "La persona que mejor decide en el área, alguien que conozca el día a día del proceso y quien aprueba el presupuesto (en la sesión final)."
+        },
+        {
+          "q": "¿Qué pasa con la confidencialidad de mi información?",
+          "a": "Firmamos un acuerdo de confidencialidad al iniciar, antes de recibir cualquier material. Además, solo pedimos acceso de lectura: podemos ver la información, pero no modificarla."
+        },
+        {
+          "q": "¿Por qué piden 40 a 60 ejemplos si trabajan con 20 a 30?",
+          "a": "De esos ejemplos elegimos los más representativos, incluidos los casos difíciles y las excepciones, que es donde más se nota el criterio de tu experto."
+        },
+        {
+          "q": "¿Cómo se paga?",
+          "a": "50% al iniciar y 50% cuando te entregamos el diagnóstico. Si no cumplimos el plazo, aplica la garantía: no pagas nada."
+        },
+        {
+          "q": "¿Y si no sé por qué área empezar?",
+          "a": "Elige \"No estoy seguro\" en el formulario. En una conversación de 30 minutos te ayudamos a decidir."
+        }
+      ]
     },
     "cta": {
       "eyebrow": "Siguiente paso",
       "title": "La IA ya está al alcance de todos. <accent>Tu criterio es lo que nadie puede copiar.</accent>",
-      "lead": "Elegí el área por la que querés empezar y agendamos el kick-off. Una semana después tenés el plan.",
+      "lead": "Elige el área por la que quieres empezar y agendamos el inicio. Una semana después de tener el material completo, tienes tu plan.",
       "form": {
-        "label": "Agendar Judgment Audit",
+        "label": "Agendar el Judgment Audit",
         "name": "Nombre completo",
         "namePlaceholder": "Juan Pérez",
-        "email": "Email",
+        "email": "Correo",
         "emailPlaceholder": "juan@empresa.com",
         "company": "Empresa",
         "companyPlaceholder": "Tu empresa",
-        "area": "Área a auditar",
+        "area": "Área a revisar",
         "areas": [
-          "Comercial",
+          "Ventas",
           "Marketing",
           "Operaciones",
           "Reputación",
-          "Todavía no lo sé"
+          "No estoy seguro"
+        ],
+        "plan": "Plan",
+        "plans": [
+          "1 área",
+          "Ampliado (3 áreas)",
+          "No estoy seguro"
         ],
         "submit": "Agendar por WhatsApp",
         "note": "Se abre WhatsApp con tu mensaje listo para enviar. Respondemos en menos de 24 horas hábiles.",
         "errorRequired": "Completa este campo.",
-        "errorEmail": "Escribe un email válido, por ejemplo nombre@empresa.com.",
-        "whatsapp": "Hola A:BRA, quiero agendar un Judgment Audit.\nNombre: {name}\nEmail: {email}\nEmpresa: {company}\nÁrea a auditar: {area}"
+        "errorEmail": "Escribe un correo válido, por ejemplo nombre@empresa.com.",
+        "whatsapp": "Hola, soy {name} de {company}. Me interesa el Judgment Audit para el área de {area}, plan {plan}. Mi correo es {email}."
       }
     }
   },

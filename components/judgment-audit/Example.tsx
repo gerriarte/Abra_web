@@ -6,15 +6,22 @@ type Answer = { who: string; decision: string; why: string; correct: boolean };
 export function Example() {
   const t = useTranslations('JudgmentAudit.example');
   const answers = t.raw('answers') as Answer[];
+  const hasMeta = t.has('tag');
 
   return (
     <Section id="ejemplo">
-      <SectionHead eyebrow={t('eyebrow')} title={t.rich('title', { muted: (c) => <Muted>{c}</Muted> })} />
+      <SectionHead
+        eyebrow={t('eyebrow')}
+        title={t.rich('title', { muted: (c) => <Muted>{c}</Muted> })}
+        lead={t.has('lead') ? t('lead') : undefined}
+      />
       <div className="abra-card ja-case abra-reveal">
-        <div className="ja-case__meta">
-          <Label>{t('tag')}</Label>
-          <Label muted>{t('count')}</Label>
-        </div>
+        {hasMeta ? (
+          <div className="ja-case__meta">
+            <Label>{t('tag')}</Label>
+            <Label muted>{t('count')}</Label>
+          </div>
+        ) : null}
         <h3 className="abra-h3 ja-case__question">{t('question')}</h3>
       </div>
       <Grid min={260}>
@@ -30,6 +37,11 @@ export function Example() {
         ))}
       </Grid>
       <p className="ja-note">{t('note')}</p>
+      {t.has('highlight') ? (
+        <p className="ja-highlight abra-reveal">
+          {t('highlight.line1')} <strong>{t('highlight.line2')}</strong>
+        </p>
+      ) : null}
     </Section>
   );
 }
