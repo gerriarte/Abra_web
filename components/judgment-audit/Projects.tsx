@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
+import { PROJECT_GRAPHICS } from './graphics';
 import { Eyebrow, Grid, Label, Muted, Section, SectionHead } from './ui';
 
 type Project = { area: string; name: string; what: string; help: string };
@@ -20,18 +21,18 @@ export function Projects() {
     <Section id="proyectos" surface>
       <SectionHead eyebrow={t('eyebrow')} title={t.rich('title', { muted: (c) => <Muted>{c}</Muted> })} />
       <Grid min={320}>
-        {items.map((p) => (
-          <article key={p.name} className="abra-card abra-reveal" style={{ gap: 16 }}>
-            <Label>{p.area}</Label>
-            <h3 className="abra-h3">{p.name}</h3>
-            <div className="ja-project__block">
-              <Label muted>{t('whatLabel')}</Label>
+        {items.map((p, i) => (
+          <article key={p.name} className="abra-card ja-project abra-reveal">
+            <div className="ja-graphic ja-project__graphic">{PROJECT_GRAPHICS[i]}</div>
+            <div className="ja-project__body">
+              <Label>{p.area}</Label>
+              <h3 className="abra-h3">{p.name}</h3>
               <p className="abra-text">{p.what}</p>
             </div>
-            <div className="ja-project__block ja-project__block--help">
-              <Label>{t('helpLabel')}</Label>
-              <p className="abra-text abra-text--strong">{p.help}</p>
-            </div>
+            <p className="ja-project__result">
+              <span className="sr-only">{t('helpLabel')}: </span>
+              {p.help}
+            </p>
           </article>
         ))}
       </Grid>

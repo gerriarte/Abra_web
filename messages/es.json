@@ -184,9 +184,17 @@
       "verdictCorrect": "✓ Correcto",
       "verdictWrong": "✗ Incorrecto",
       "note": "En el diagnóstico hacemos esto con 20 a 30 decisiones reales de tu equipo y medimos cuántas acierta la IA con y sin tu criterio. Así sabes cuánto vale ese conocimiento antes de invertir en herramientas.",
-      "highlight": {
-        "line1": "La IA ejecuta.",
-        "line2": "El criterio decide."
+      "book": {
+        "eyebrow": "El método, documentado",
+        "title": "La IA ejecuta, el criterio decide.",
+        "body": "Esta es la tesis detrás del Judgment Audit, y la desarrollamos en un libro: por qué la IA da respuestas genéricas cuando no conoce cómo decide tu empresa, y cómo poner ese criterio por escrito antes de invertir en herramientas.",
+        "byline": [
+          "Gerardo Riarte",
+          "Fundador de A:BRA",
+          "Edición 2026",
+          "Disponible en Amazon"
+        ],
+        "imageAlt": "Portada del libro \"La IA ejecuta, el criterio decide\", de Gerardo Riarte: una ballena en líneas aguamarina descendiendo sobre fondo azul oscuro."
       }
     },
     "method": {
