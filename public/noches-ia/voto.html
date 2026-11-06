@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
+<base href="/noches-ia/">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
 <meta name="theme-color" content="#030a14">
 <title>En vivo · La IA ejecuta. El criterio decide.</title>
@@ -86,7 +87,7 @@ p.mu{color:var(--mu);line-height:1.45}
 
   $('#tasks').innerHTML = TASKS.map(([k, t]) => `<div class="task"><b>${t}</b><div class="ab" data-k="${k}"><button data-v="ia" class="ia">⚡ La IA</button><button data-v="persona" class="persona">🧭 Persona</button></div></div>`).join('');
   $('#lM').href = C.linkedinMauricio; $('#lG').href = C.linkedinGerardo; $('#lW').href = C.web;
-  $('#lS').href = 'https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(location.origin + '/');
+  $('#lS').href = 'https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(location.origin + '/noches-ia');
 
   function mark() {
     $$('[data-q]').forEach(g => $$('button', g).forEach(b => b.classList.toggle('sel', mine[g.dataset.q] === b.dataset.v)));

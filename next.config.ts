@@ -16,6 +16,14 @@ const nextConfig: NextConfig = {
     ],
   },
 
+  // Presentación Noches de IA (estática en public/noches-ia) → abralatam.com/noches-ia
+  async rewrites() {
+    return [
+      { source: '/noches-ia', destination: '/noches-ia/index.html' },
+      { source: '/noches-ia/', destination: '/noches-ia/index.html' },
+    ];
+  },
+
   async headers() {
     return [
       {
