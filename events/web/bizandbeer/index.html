@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>La IA ejecuta. El criterio decide. · A:BRA · Noches de IA</title>
+<meta name="description" content="Gerardo Riarte y Mauricio Pardo · Cómo ayudamos a las empresas a entender qué construir con IA, y cómo, antes de construirlo.">
+<meta property="og:title" content="La IA ejecuta. El criterio decide.">
+<meta property="og:description" content="Noches de IA · Biz&Beer · Coffee Ads Coworking — A:BRA LATAM">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="app.css">
+</head>
+<body data-tone="blue">
+<div class="glow"></div><canvas id="fx"></canvas><div class="grain"></div>
+
+<header class="top">
+  <img src="assets/abra.png" alt="A:BRA">
+  <span class="evtop">Noches de IA <i>|</i> by Biz&amp;Beer</span>
+  <span class="mono live" id="live"><i></i><span id="liveTxt">sin conexión en vivo</span></span>
+</header>
+
+<main id="deck">
+
+<!-- 01 · INTRO CON FOTOS -->
+<section class="slide intro" data-title="Quiénes somos" data-sec="Inicio" data-tone="blue" data-steps="1">
+  <div class="duo">
+    <div class="who g"><div class="ini">GR</div><div class="ph" data-photo="gerardo"></div><div class="tint"></div>
+      <div class="tag"><span>A:BRA LATAM</span><b>Gerardo<br>Riarte</b></div></div>
+    <div class="who m"><div class="ini">MP</div><div class="ph" data-photo="mauricio"></div><div class="tint"></div>
+      <div class="tag"><span>Forward Deployed Engineer</span><b>Mauricio<br>Pardo</b></div></div>
+  </div>
+  <div class="title">
+    <div class="event"><b>Noches de IA <span>|</span> by Biz&amp;Beer</b><small>Viernes 6 nov · 5:00 p. m. · Coffee Ads Coworking · Bogotá</small></div>
+    <div class="kick">Construir con IA en empresas reales</div>
+    <h1><span>La IA ejecuta.</span><span class="l2">El criterio <em>decide.</em></span></h1>
+    <p class="lead">Cómo ayudamos a las empresas a entender <em>qué</em> construir con IA, y <em>cómo</em>, antes de construirlo.</p>
+    <div class="byline">
+      <div class="chip g"><div class="av" data-photo="gerardo"></div><div><b>Gerardo Riarte</b><small>A:BRA LATAM</small></div></div>
+      <div class="chip"><div class="av" data-photo="mauricio-perfil"></div><div><b>Mauricio Pardo</b><small>Forward Deployed Engineer</small></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 02 · PERFILES ESTILO LINKEDIN -->
+<section class="slide" data-title="Conectemos" data-sec="Inicio" data-steps="2">
+  <div class="kick r">Antes de empezar · conectemos</div>
+  <h2 class="r" style="--i:1">Dos perfiles. <em>Un método.</em></h2>
+  <div class="li-cards">
+    <div class="li g r" style="--i:2"><div class="cv"></div><div class="bd">
+      <div class="av" data-photo="gerardo"></div>
+      <h4>Gerardo Riarte <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0l2 2.6 3.3-.3.3 3.3L16 8l-2.4 2.4-.3 3.3-3.3-.3L8 16l-2-2.6-3.3.3-.3-3.3L0 8l2.4-2.4.3-3.3 3.3.3z"/></svg></h4>
+      <p id="headG">A:BRA LATAM · IA aplicada a procesos, agencias y creatividad</p>
+      <div class="meta">Bogotá, Colombia · <b>abralatam.com</b></div>
+      <div class="btns"><span class="pri" data-connect>+ Conectar</span><span>Mensaje</span></div>
+    </div></div>
+    <div class="li r" style="--i:3"><div class="cv"></div><div class="bd">
+      <div class="av" data-photo="mauricio"></div>
+      <h4>Mauricio Pardo <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0l2 2.6 3.3-.3.3 3.3L16 8l-2.4 2.4-.3 3.3-3.3-.3L8 16l-2-2.6-3.3.3-.3-3.3L0 8l2.4-2.4.3-3.3 3.3.3z"/></svg></h4>
+      <p>Forward Deployed Engineer · 20 años en nómina y gestión humana · 25+ herramientas con IA en producción</p>
+      <div class="meta">Bogotá, Colombia · <b>A:BRA LATAM</b></div>
+      <div class="btns"><span class="pri" data-connect>+ Conectar</span><span>Mensaje</span></div>
+    </div></div>
+  </div>
+  <p class="punch" data-step="2">Al final les dejamos el QR. <b>Conectemos de verdad.</b></p>
+</section>
+
+<!-- 03 · LEVANTEN LA MANO (EN VIVO) -->
+<section class="slide" data-title="Levanten la mano" data-sec="Inicio" data-tone="lime" data-live="manos" data-steps="3">
+  <div class="kick r">Antes de empezar · una pregunta · en vivo</div>
+  <div class="hands">
+    <div>
+      <div class="hq r" style="--i:1">
+        <span class="mono">01 · Levanten la mano</span>
+        <div class="q">¿Quién usó IA alguna vez para hacer algo?</div>
+        <div class="meter"><i id="m1"></i><b id="m1t">0%</b></div>
+      </div>
+      <div class="hq" data-step="1">
+        <span class="mono">02 · Déjenla arriba solo si…</span>
+        <div class="q">…la usan <em>todos los días</em> en un proceso real de su empresa.</div>
+        <div class="meter b"><i id="m2"></i><b id="m2t">0%</b></div>
+      </div>
+      <div class="gap" id="gapBox" data-step="2"><strong id="gapN">0</strong><span>puntos de hueco entre las dos manos.</span></div>
+      <p class="punch" data-step="3">Ese hueco es <b>de lo que venimos a hablar.</b></p>
+    </div>
+    <div class="r" style="--i:2">
+      <div class="qrbig"><div class="qr" data-qr="voto"></div><b>Levanten la mano desde aquí</b><small id="qrUrl">escanea con la cámara</small></div>
+      <div class="ppl"><span id="nPpl">0</span> personas conectadas · <span id="nVotes">0</span> votos</div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 · EL ALBAÑIL -->
+<section class="slide" data-title="El albañil y el plano" data-sec="El problema" data-tone="amber">
+  <div class="kick r">El problema</div>
+  <h2 class="r" style="--i:1">La IA es un albañil <em>rapidísimo.</em></h2>
+  <div class="vs">
+    <div class="card warn r" style="--i:2">
+      <div class="wall" id="wall"></div>
+      <span class="n amber">LO QUE YA TENEMOS</span><h3>El albañil: la IA</h3>
+      <p>Levanta una pared en minutos. Escribe código, contratos y reportes sin cansarse.</p>
+    </div>
+    <div class="card r" style="--i:3">
+      <svg class="plan empty" viewBox="0 0 230 150"><rect x="4" y="4" width="222" height="142"/><path d="M4 70h120v76M124 4v40M170 70h56"/></svg>
+      <div class="qm">?</div>
+      <span class="n">LO QUE FALTA</span><h3>El plano: ¿quién lo hizo?</h3>
+      <p>Qué se construye, en qué orden y con qué reglas. Eso no lo trae la IA.</p>
+    </div>
+  </div>
+  <p class="punch r" style="--i:4">Sin plano, construye rapidísimo <b>la casa equivocada.</b></p>
+</section>
+
+<!-- 05 · STATEMENT -->
+<section class="slide stmt" data-title="La idea de esta charla" data-sec="El problema">
+  <div class="kick r">La idea de esta charla</div>
+  <h2 class="r" style="--i:1">El problema no es que <span class="strike">falte albañil.</span></h2>
+  <h2 class="r" style="--i:3">Es que nadie hizo <em class="lime">el plano.</em></h2>
+  <p class="lead r" style="--i:5">En las empresas, la IA no falla por el modelo. Falla porque nadie ordenó antes cómo funciona el negocio.</p>
+</section>
+
+<!-- 06 · TRES PREGUNTAS -->
+<section class="slide" data-title="Tres preguntas" data-sec="01 · El mapa" data-tone="lime" data-steps="3">
+  <div class="kick r">01 · El mapa del negocio</div>
+  <h2 class="r" style="--i:1">Tres preguntas antes de construir <em>cualquier cosa.</em></h2>
+  <div class="cards c3">
+    <div class="card" data-step="1"><span class="n">01</span><h3>¿Qué cosas existen?</h3><p>Trabajador, cargo, contrato, afiliaciones.</p></div>
+    <div class="card" data-step="2"><span class="n">02</span><h3>¿Cómo se relacionan?</h3><p>Un contrato une a un trabajador con un cargo.</p></div>
+    <div class="card hot" data-step="3"><span class="n">03</span><h3>¿Qué reglas las gobiernan?</h3><p>Nadie empieza a trabajar sin estar afiliado.</p></div>
+  </div>
+  <p class="mono r" style="--i:3;margin-top:28px">Ejemplo hilo · contratar a una persona</p>
+</section>
+
+<!-- 07 · EL MAPA DIBUJADO (GRAFO) -->
+<section class="slide" data-title="El mapa, dibujado" data-sec="01 · El mapa" data-steps="3" data-graph>
+  <div class="kick r">El mapa, dibujado</div>
+  <h2 class="r" style="--i:1">Contratar a una persona, <em>en un mapa.</em></h2>
+  <div class="mapwrap">
+    <svg id="graph" viewBox="0 0 760 440"></svg>
+    <div class="rules">
+      <div class="rule" data-step="2" data-rule="afil"><small>Regla 1</small>Nadie empieza a trabajar sin estar afiliado.</div>
+      <div class="rule" data-step="3" data-rule="aviso"><small>Regla 2</small>Si un contrato fijo no se renueva, se avisa con 30 días.</div>
+      <div class="legend r" style="--i:4">Cajas = cosas · Líneas = relaciones · toca una caja</div>
+    </div>
+  </div>
+</section>
+
+<!-- 08 · ONTOLOGÍA -->
+<section class="slide" data-title="Ontología" data-sec="01 · El mapa" data-tone="lime">
+  <div class="kick r">Ahora sí, la palabra técnica</div>
+  <h2 class="r" style="--i:1">A esto le dicen <em class="lime">ontología.</em></h2>
+  <p class="lead r" style="--i:2">Suena difícil. Es esto: el mapa de qué existe en tu negocio, cómo se conecta y qué reglas sigue.</p>
+  <div class="r" style="--i:3">
+    <div class="toggle"><button data-onto="sin" class="on">IA sin mapa</button><button data-onto="con">IA con mapa</button></div>
+    <div class="term" id="term"></div>
+  </div>
+</section>
+
+<!-- 09 · DICE VS HACE -->
+<section class="slide" data-title="Lo que dice vs. lo que hace" data-sec="02 · Quién dibuja" data-tone="amber" data-steps="1">
+  <div class="kick r">02 · Quién dibuja el mapa</div>
+  <h2 class="r" style="--i:1">Lo que la empresa dice que hace <em>no es lo que hace.</em></h2>
+  <div class="flip r" style="--i:2" id="flip">
+    <div class="in">
+      <div class="fc fr"><span class="mono">Lo que dice · en la reunión</span><q>Los contratos se gestionan en el sistema.</q><span class="hint">toca para ver la operación →</span></div>
+      <div class="fc bk"><span class="mono amber">Lo que hace · en la operación</span><p>Un Excel que lleva <span class="amber">una sola persona</span>. Los vencimientos los recuerda ella.</p><span class="hint">ejemplo ilustrativo</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 10 · FDE -->
+<section class="slide" data-title="Se llama FDE" data-sec="02 · Quién dibuja" data-tone="lime" data-steps="3">
+  <div class="side-photo" data-photo="mauricio-terreno"></div>
+  <div class="kick r">La persona que se mete en la operación</div>
+  <div class="fde-h r" style="--i:1"><h2>Se llama <span class="lime">FDE.</span></h2><span class="serif muted" style="font-size:1.6rem">Forward Deployed Engineer · ingeniero desplegado en terreno</span></div>
+  <div class="steps">
+    <div class="st" data-step="1"><div class="dot">01</div><h3>Observa</h3><p>Se sienta donde pasa el trabajo de verdad.</p></div>
+    <div class="st" data-step="2"><div class="dot">02</div><h3>Documenta</h3><p>Cosas, relaciones y reglas, como son.</p></div>
+    <div class="st" data-step="3"><div class="dot">03</div><h3>Entrega el mapa</h3><p>Para que el equipo sepa qué construir.</p></div>
+  </div>
+  <p class="punch r" style="--i:4">No llega con la solución. <b>Su entregable es el mapa.</b></p>
+</section>
+
+<!-- 11 · CASO REAL -->
+<section class="slide" data-title="Caso real · estudio jurídico" data-sec="03 · Caso real" data-steps="3">
+  <div class="kick r">03 · Caso real · estudio jurídico</div>
+  <h2 class="r" style="--i:1">Lo mismo, <em>en una empresa real.</em></h2>
+  <div class="cards c3">
+    <div class="card warn" data-step="1"><span class="n amber">01 · ANTES</span><h3>El caos</h3><p>Auditorías laborales en Word y Excel paralelos, datos de cada empresa repetidos en varios archivos y pasos que dependían de la memoria de una persona.</p></div>
+    <div class="card" data-step="2"><span class="n">02 · EL MAPA</span><h3>Lo que encontramos</h3><p>Empresa → trabajador → contrato → afiliación → norma → hallazgo. Y una regla: cada hallazgo apunta a una norma y a un responsable.</p></div>
+    <div class="card hot" data-step="3"><span class="n">03 · DESPUÉS</span><h3>Lo que construyó el equipo</h3><div class="count" data-count="160" data-suffix="+">0</div><p>empresas auditadas en un ciclo con Sólido360 Auditorías, sobre ese mismo mapa.</p></div>
+  </div>
+  <p class="quote r" style="--i:3">“Es lo mismo que contratar a una persona, pero en una empresa de 50 personas.”</p>
+</section>
+
+<!-- 12 · DEMO -->
+<section class="slide" data-title="Demo" data-sec="03 · Caso real" data-tone="lime">
+  <div class="kick r">Demo · lo que construyó el equipo</div>
+  <h2 class="r" style="--i:1;max-width:22ch">Lo que van a ver no lo hizo <em>un genio programando.</em></h2>
+  <p class="big r" style="--i:2;margin-top:24px">Lo hizo un equipo que, por primera vez, <span class="lime">sabía exactamente qué construir.</span></p>
+  <div class="share r" style="--i:3">
+    <a class="btn" href="https://psicosocial360.vercel.app" target="_blank" rel="noopener">Psicosocial360 ↗</a>
+    <a class="btn ghost" href="https://compensa360.vercel.app" target="_blank" rel="noopener">Compensa360 ↗</a>
+    <a class="btn ghost" href="https://presupuesto-nomina.vercel.app" target="_blank" rel="noopener">Presupuesto360 ↗</a>
+    <a class="btn ghost" href="https://derecho-digital-percival.vercel.app" target="_blank" rel="noopener">Derecho Digital ↗</a>
+  </div>
+</section>
+
+<!-- 13 · PORTAFOLIO -->
+<section class="slide" data-title="Lo construido" data-sec="03 · Caso real" data-portfolio>
+  <div class="kick r">Lo construido · un método, tres mundos</div>
+  <h2 class="r" style="--i:1" id="pfTitle">Un mismo mapa laboral. <em>Nueve herramientas.</em></h2>
+  <div class="tabs r" style="--i:2" id="pfTabs"></div>
+  <div class="grid" id="pfGrid"></div>
+  <div class="tot r" style="--i:3"><div><b data-count="24">0</b>herramientas</div><div><b data-count="3">0</b>dominios</div><div><b>1</b>método</div><div class="muted">● destacadas · <span class="amber">●</span> productos propios A:BRA</div></div>
+</section>
+
+<!-- 14 · GESTIÓN CONTRACTUAL (DEMO EN VIVO) -->
+<section class="slide" data-title="En detalle · Gestión contractual" data-sec="03 · Caso real" data-contract>
+  <div class="kick r">En detalle · gestión contractual</div>
+  <h2 class="r" style="--i:1">Un generador de contratos <em>con IA.</em></h2>
+  <p class="lead r" style="--i:2;margin-top:10px">¿Se acuerdan del contrato del mapa? Esta es la herramienta que vive sobre él.</p>
+  <div class="demo">
+    <div class="mini3 r" style="--i:3">
+      <div class="card"><span class="n">01 · EL MAPA DETRÁS</span><h3>Trabajador · cargo · tipo de contrato · salario · afiliaciones</h3></div>
+      <div class="card"><span class="n">02 · LAS REGLAS QUE RESPETA</span><p>Antes de redactar valida: afiliaciones al día, salario ≥ mínimo 2026, duración y preaviso de 30 días si es fijo.</p></div>
+      <div class="card hot"><span class="n">03 · LO QUE CAMBIÓ</span><p>El borrador sale de la plantilla correcta y la IA se niega cuando una regla no se cumple.</p></div>
+      <div class="share" style="margin-top:6px"><button class="btn" id="ctOk">Generar · todo en regla</button><button class="btn ghost" id="ctNo">Generar · sin afiliación</button></div>
+    </div>
+    <div class="r" style="--i:4">
+      <div class="doc" id="doc"><h5>CONTRATO INDIVIDUAL DE TRABAJO A TÉRMINO FIJO</h5><p class="muted" style="color:#777">Elige una opción para ver cómo la herramienta aplica el mapa →</p></div>
+      <div class="chk" id="chk"><span>☐ Trabajador identificado</span><span>☐ Cargo definido</span><span>☐ Salario ≥ SMMLV 2026</span><span>☐ Afiliaciones (EPS · pensión · ARL · caja)</span><span>☐ Preaviso de 30 días programado</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 15 · EL CRITERIO (JUEGO EN VIVO) -->
+<section class="slide" data-title="El criterio · ¿IA o persona?" data-sec="04 · El criterio" data-tone="amber" data-live="juego" data-steps="2">
+  <div class="kick r">04 · El criterio · juego en vivo</div>
+  <h2 class="r" style="--i:1">El mapa también dice <em>qué no construir.</em></h2>
+  <p class="lead r" style="--i:2;margin-top:10px">Desde su celular: ¿esto lo hace la IA o lo decide una persona?</p>
+  <div class="split">
+    <div class="col ia r" style="--i:3"><h3>⚡ La IA ejecuta</h3>
+      <div class="task" data-task="t1"><div>Avisar cuándo vence un contrato<span class="pb"><i></i></span></div><span class="pct">— votos</span></div>
+      <div class="task" data-task="t2"><div>Armar el borrador del contrato<span class="pb"><i></i></span></div><span class="pct">— votos</span></div>
+      <div class="task" data-task="t3"><div>Revisar que no falte un documento<span class="pb"><i></i></span></div><span class="pct">— votos</span></div>
+    </div>
+    <div class="col hu r" style="--i:4"><h3>🧭 Una persona decide</h3>
+      <div class="task" data-task="t4"><div>Si ese contrato se renueva o no<span class="pb"><i></i></span></div><span class="pct">— votos</span></div>
+      <div class="task" data-task="t5"><div>Cómo se negocia una condición<span class="pb"><i></i></span></div><span class="pct">— votos</span></div>
+      <div class="task" data-task="t6"><div>Qué hacer con el caso que no encaja<span class="pb"><i></i></span></div><span class="pct">— votos</span></div>
+    </div>
+  </div>
+  <p class="mono" data-step="1" style="margin-top:18px">→ revelando la respuesta del mapa…</p>
+  <p class="punch" data-step="2">El % muestra cuántos acertaron. <b>La línea la pone el criterio, no la herramienta.</b></p>
+</section>
+
+<!-- 16 · FRASE -->
+<section class="slide final" data-title="Si se llevan una sola frase" data-sec="Cierre" data-tone="lime" data-live="reac">
+  <div class="kick r">Si se llevan una sola frase</div>
+  <h1><span><i>La IA ejecuta.</i></span><span><i>El criterio decide.</i></span></h1>
+  <p class="big r" style="--i:6;margin-top:30px">No venimos a construirles la herramienta. <em class="lime">Venimos a que sepan cuál construir.</em></p>
+  <div class="share r" style="--i:8">
+    <div class="post"><div class="hd"><div class="av" data-photo="mauricio-perfil"></div><div><b>Mauricio Pardo · Gerardo Riarte</b><small>Noches de IA · Coffee Ads · ahora</small></div></div>
+      <p>La IA ejecuta. El criterio decide. Antes de pedirle algo a la IA: ¿qué cosas existen, cómo se relacionan y qué reglas siguen? #NochesDeIA #FDE</p>
+      <div class="rx"><span>👍💡👏 <b id="rxCount">0</b></span><span>Compartir desde su celular</span></div></div>
+  </div>
+</section>
+
+<!-- 17 · PARA MAÑANA / CONTACTO -->
+<section class="slide" data-title="Para mañana · conectemos" data-sec="Cierre" data-live="reac" data-steps="3">
+  <div class="kick r">Para mañana</div>
+  <h2 class="r" style="--i:1;max-width:24ch">Antes de pedirle algo a la IA en su empresa, <em>respondan esto:</em></h2>
+  <div class="close3">
+    <div class="card" data-step="1"><span class="n">01</span><h3>¿Qué cosas existen?</h3></div>
+    <div class="card" data-step="2"><span class="n">02</span><h3>¿Cómo se relacionan?</h3></div>
+    <div class="card hot" data-step="3"><span class="n">03</span><h3>¿Qué reglas siguen?</h3></div>
+  </div>
+  <p class="punch r" style="--i:3;margin-top:24px">Si no las pueden responder, <b>el problema no es la IA.</b></p>
+  <div class="contact r" style="--i:4">
+    <a class="pc" id="pcG" target="_blank" rel="noopener"><div class="av" data-photo="gerardo"></div><div><b>Gerardo Riarte</b><small>A:BRA LATAM · LinkedIn</small></div><div class="q" data-qr="gerardo"></div></a>
+    <a class="pc" id="pcM" target="_blank" rel="noopener"><div class="av" data-photo="mauricio-bn"></div><div><b>Mauricio Pardo</b><small>Forward Deployed Engineer · LinkedIn</small></div><div class="q" data-qr="mauricio"></div></a>
+    <a class="pc" id="pcW" target="_blank" rel="noopener" style="flex-direction:column;justify-content:center"><img src="assets/abra.png" alt="A:BRA" style="height:22px"><small>abralatam.com</small></a>
+  </div>
+  <p class="thanks r" style="--i:5">Gracias · Noches de IA · Biz&amp;Beer · Hands Off · Coffee Ads Coworking</p>
+</section>
+
+</main>
+
+<div class="qrmini" id="qrMini"><div data-qr="voto"></div><small>RESPONDE AQUÍ</small></div>
+<div class="rxbar" id="rxbar"><button data-e="👍">👍</button><button data-e="💡">💡</button><button data-e="👏">👏</button><button data-e="🔥">🔥</button><button data-e="❤️">❤️</button><span>S secciones · Ctrl+K buscar · F pantalla</span></div>
+<div id="rx"></div>
+<div class="rail-tab" id="railTab" title="Secciones (S)"></div>
+<nav class="rail" id="rail"></nav>
+<div class="sk" id="sk"><div class="box"><input id="skIn" placeholder="Buscar diapositiva…" autocomplete="off"><ul id="skList"></ul></div></div>
+<div class="foot"><span class="mono">A:BRA · La IA ejecuta, el criterio decide</span><span class="mono" id="pg">01 / 17</span></div>
+<div class="bar" id="bar"></div>
+
+<script src="config.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="vivo.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

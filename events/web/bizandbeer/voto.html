@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+<meta name="theme-color" content="#030a14">
+<title>En vivo · La IA ejecuta. El criterio decide.</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#030a14;--tx:#eef3f8;--mu:#8a9bb0;--line:rgba(160,190,220,.16);--lime:#c6ff3d;--amber:#ff8a3d;--blue:#4da3ff;--ease:cubic-bezier(.22,1,.36,1)}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+body{background:radial-gradient(120% 60% at 80% 0%,#0c2342,var(--bg) 60%);color:var(--tx);font-family:'Inter Tight',system-ui,sans-serif;min-height:100dvh;padding:20px 18px 120px}
+button{font:inherit;color:inherit;border:0;background:none;cursor:pointer}
+em{font-family:'Instrument Serif',serif;font-style:italic;font-weight:400}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:26px}
+.top img{height:16px}
+.st{font:500 .7rem 'JetBrains Mono',monospace;letter-spacing:.1em;color:var(--mu);display:flex;gap:6px;align-items:center;text-transform:uppercase}
+.st i{width:7px;height:7px;border-radius:50%;background:#5d6e83}.st.on i{background:var(--lime)}
+.kick{font:500 .72rem 'JetBrains Mono',monospace;letter-spacing:.16em;color:var(--lime);text-transform:uppercase;margin-bottom:10px}
+h1{font-size:2rem;letter-spacing:-.03em;line-height:1.05;margin-bottom:8px}
+p.mu{color:var(--mu);line-height:1.45}
+.card{border:1px solid var(--line);border-radius:18px;padding:18px;margin-top:16px;background:rgba(255,255,255,.03);animation:in .5s var(--ease) both}
+@keyframes in{from{opacity:0;transform:translateY(12px)}}
+.card h2{font-size:1.2rem;font-weight:600;line-height:1.3;margin-bottom:14px}
+.yn{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.yn button,.ab button{padding:16px 10px;border-radius:14px;border:1.5px solid var(--line);font-weight:600;font-size:1.05rem;transition:transform .15s,background .3s,border-color .3s}
+.yn button:active,.ab button:active{transform:scale(.96)}
+.yn button.sel{background:var(--lime);color:#0b1400;border-color:var(--lime)}
+.ab{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.ab button{font-size:.95rem;padding:12px 6px}
+.ab button.sel.ia{background:var(--blue);border-color:var(--blue);color:#001}
+.ab button.sel.persona{background:var(--amber);border-color:var(--amber);color:#1a0800}
+.task{margin-top:14px}.task b{display:block;font-weight:500;margin-bottom:8px}
+.ok{font:500 .75rem 'JetBrains Mono',monospace;color:var(--lime);margin-top:10px;letter-spacing:.06em;min-height:1em}
+.rx{position:fixed;left:0;right:0;bottom:0;padding:12px 14px calc(12px + env(safe-area-inset-bottom));background:rgba(3,10,20,.92);backdrop-filter:blur(12px);border-top:1px solid var(--line);display:flex;justify-content:space-around}
+.rx button{font-size:30px;padding:6px 10px;border-radius:14px;transition:transform .15s}
+.rx button:active{transform:scale(1.35) translateY(-6px)}
+.links a{display:flex;justify-content:space-between;align-items:center;padding:14px 16px;border-radius:14px;border:1px solid var(--line);margin-top:10px;color:var(--tx);text-decoration:none;font-weight:500}
+.links a.li{background:#0a66c2;border-color:#0a66c2}
+.wait{text-align:center;padding:30px 10px}
+.wait .pulse{width:64px;height:64px;border-radius:50%;margin:0 auto 18px;border:2px solid var(--lime);animation:pl 1.8s infinite}
+@keyframes pl{0%{box-shadow:0 0 0 0 rgba(198,255,61,.5)}100%{box-shadow:0 0 0 22px rgba(198,255,61,0)}}
+.hide{display:none}
+</style>
+</head>
+<body>
+<div class="top"><img src="assets/abra.png" alt="A:BRA"><span class="st" id="st"><i></i><span id="stT">conectando</span></span></div>
+<div class="kick">Noches de IA · en vivo</div>
+<h1>La IA ejecuta. <em>El criterio decide.</em></h1>
+<p class="mu">Gerardo Riarte · Mauricio Pardo · A:BRA. Responde aquí y míralo en la pantalla.</p>
+
+<div id="vEspera" class="card wait"><div class="pulse"></div><p class="mu">Sigue la charla. Cuando haya algo para responder, aparece aquí solo.<br>Mientras tanto, reacciona abajo 👇</p></div>
+
+<div id="vManos" class="hide">
+  <div class="card"><div class="kick">01 · Levanten la mano</div><h2>¿Usaste IA alguna vez para hacer algo?</h2>
+    <div class="yn" data-q="mano1"><button data-v="1">🙋 Sí</button><button data-v="0">No</button></div></div>
+  <div class="card"><div class="kick">02 · Déjenla arriba solo si…</div><h2>¿La usas <em>todos los días</em> en un proceso real de tu empresa?</h2>
+    <div class="yn" data-q="mano2"><button data-v="1">🙋 Sí</button><button data-v="0">No</button></div></div>
+  <div class="ok" id="okManos"></div>
+</div>
+
+<div id="vJuego" class="hide">
+  <div class="card"><div class="kick">El criterio · juego</div><h2>¿Esto lo hace la IA o lo decide una persona?</h2><div id="tasks"></div><div class="ok" id="okJuego"></div></div>
+</div>
+
+<div id="vFin" class="hide">
+  <div class="card"><div class="kick">Llévatelo</div><h2>Antes de pedirle algo a la IA: ¿qué cosas existen, cómo se relacionan y qué reglas siguen?</h2>
+    <div class="links"><a class="li" id="lM" target="_blank" rel="noopener">Conectar con Mauricio <span>in →</span></a><a class="li" id="lG" target="_blank" rel="noopener">Conectar con Gerardo <span>in →</span></a><a id="lW" target="_blank" rel="noopener">abralatam.com <span>→</span></a>
+      <a id="lS" target="_blank" rel="noopener">Compartir en LinkedIn <span>↗</span></a></div></div>
+</div>
+
+<div class="rx" id="rx"><button>👍</button><button>💡</button><button>👏</button><button>🔥</button><button>❤️</button></div>
+
+<script src="config.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="vivo.js"></script>
+<script>
+(function () {
+  const C = window.TERTULIA, $ = (s) => document.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  const id = new URLSearchParams(location.search).get('id') || Vivo.myId();
+  const MEM = 'tertulia-mis-votos';
+  const mine = JSON.parse(localStorage.getItem(MEM) || '{}');
+  const keep = () => localStorage.setItem(MEM, JSON.stringify(mine));
+  const TASKS = [['t1', 'Avisar cuándo vence un contrato'], ['t5', 'Cómo se negocia una condición'], ['t2', 'Armar el borrador del contrato'], ['t4', 'Si ese contrato se renueva o no'], ['t3', 'Revisar que no falte un documento'], ['t6', 'Qué hacer con el caso que no encaja']];
+  const RX_GAP_MS = 700;
+
+  $('#tasks').innerHTML = TASKS.map(([k, t]) => `<div class="task"><b>${t}</b><div class="ab" data-k="${k}"><button data-v="ia" class="ia">⚡ La IA</button><button data-v="persona" class="persona">🧭 Persona</button></div></div>`).join('');
+  $('#lM').href = C.linkedinMauricio; $('#lG').href = C.linkedinGerardo; $('#lW').href = C.web;
+  $('#lS').href = 'https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(location.origin + '/');
+
+  function mark() {
+    $$('[data-q]').forEach(g => $$('button', g).forEach(b => b.classList.toggle('sel', mine[g.dataset.q] === b.dataset.v)));
+    $$('[data-k]').forEach(g => $$('button', g).forEach(b => b.classList.toggle('sel', mine[g.dataset.k] === b.dataset.v)));
+  }
+  function show(f) {
+    const map = { manos: 'vManos', juego: 'vJuego', reac: 'vFin' };
+    ['vEspera', 'vManos', 'vJuego', 'vFin'].forEach(v => $('#' + v).classList.toggle('hide', v !== (map[f] || 'vEspera')));
+  }
+  function resend() {
+    ['mano1', 'mano2'].forEach(q => { if (mine[q] !== undefined) Vivo.send('voto', { id, q, v: mine[q] === '1' }); });
+    TASKS.forEach(([k]) => { if (mine[k]) Vivo.send('juego', { id, k, v: mine[k] }); });
+  }
+
+  $$('[data-q] button').forEach(b => b.addEventListener('click', () => {
+    const q = b.parentElement.dataset.q; mine[q] = b.dataset.v; keep(); mark();
+    Vivo.send('voto', { id, q, v: b.dataset.v === '1' });
+    $('#okManos').textContent = '✓ Mira la pantalla';
+    if (navigator.vibrate) navigator.vibrate(20);
+  }));
+  $$('[data-k] button').forEach(b => b.addEventListener('click', () => {
+    const k = b.parentElement.dataset.k; mine[k] = b.dataset.v; keep(); mark();
+    Vivo.send('juego', { id, k, v: b.dataset.v });
+    const n = TASKS.filter(([t]) => mine[t]).length;
+    $('#okJuego').textContent = `✓ ${n} de ${TASKS.length} respondidas`;
+    if (navigator.vibrate) navigator.vibrate(20);
+  }));
+  let lastRx = 0;
+  $$('#rx button').forEach(b => b.addEventListener('click', () => {
+    const now = Date.now(); if (now - lastRx < RX_GAP_MS) return; lastRx = now;
+    Vivo.send('reac', { id, e: b.textContent }); if (navigator.vibrate) navigator.vibrate(12);
+  }));
+
+  Vivo.on('fase', (p) => show(p.f));
+  Vivo.connect((s) => {
+    $('#st').classList.toggle('on', s === 'on');
+    $('#stT').textContent = s === 'on' ? 'en vivo' : s === 'wait' ? 'conectando' : 'sin conexión';
+    if (s === 'on') { Vivo.send('hola', { id }); resend(); }
+  });
+  mark();
+})();
+</script>
+</body>
+</html>
