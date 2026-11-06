@@ -136,7 +136,7 @@
       const [x1, y1] = N[a], [x2, y2] = N[b];
       html += `<path class="edge" data-e="${a}-${b}" d="M${x1} ${y1}L${x2} ${y2}"/>`;
       const mx = (x1 + x2) / 2, my = (y1 + y2) / 2;
-      html += `<text class="lbl" data-e="${a}-${b}" x="${mx + (x1 === x2 ? 14 : 0)}" y="${my - (y1 === y2 ? 14 : 0)}" text-anchor="${x1 === x2 ? 'start' : 'middle'}">${l}</text>`;
+      html += `<text class="lbl" data-e="${a}-${b}" x="${mx + (x1 === x2 ? 14 : 0)}" y="${y1 === y2 ? 34 : my}" text-anchor="${x1 === x2 ? 'start' : 'middle'}">${l}</text>`;
     });
     Object.entries(N).forEach(([k, [x, y, t]]) => {
       html += `<g class="node" data-n="${k}"><rect x="${x - 95}" y="${y - 34}" width="190" height="68"/><text x="${x}" y="${y}">${t}</text></g>`;
