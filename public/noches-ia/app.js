@@ -23,7 +23,7 @@
       if (i >= exts.length) return;
       const src = `fotos/${name}.${exts[i]}`;
       const img = new Image();
-      const glow = name === 'gerardo' ? ', radial-gradient(circle at 50% 38%, rgba(255,138,61,0) 32%, rgba(255,138,61,.95) 78%)' : '';
+      const glow = '';
       img.onload = () => $$(`[data-photo="${name}"]`).forEach(el => { el.style.backgroundImage = `url("${src}")` + (el.classList.contains('ph') ? '' : glow); });
       img.onerror = () => tryExt(i + 1);
       img.src = src;
