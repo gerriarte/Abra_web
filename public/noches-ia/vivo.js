@@ -42,8 +42,8 @@ window.Vivo = (function () {
   }
 
   function myId() {
-    let id = localStorage.getItem('tertulia-id');
-    if (!id) { id = Math.random().toString(36).slice(2, 10); localStorage.setItem('tertulia-id', id); }
+    let id = sessionStorage.getItem('tertulia-id');
+    if (!id) { id = Math.random().toString(36).slice(2, 10); sessionStorage.setItem('tertulia-id', id); }
     return id;
   }
 

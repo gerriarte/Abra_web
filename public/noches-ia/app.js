@@ -8,9 +8,9 @@
   const AUTO_INTRO_MS = 3800;
   let cur = 0, step = 0;
 
-  /* ---------- estado en vivo (persistente por si se recarga la pantalla) ---------- */
-  const S = Object.assign({ mano1: {}, mano2: {}, juego: {}, ppl: {}, rx: 0 }, JSON.parse(localStorage.getItem(STORE) || '{}'));
-  const save = () => localStorage.setItem(STORE, JSON.stringify(S));
+  /* ---------- estado en vivo (sobrevive a recargas de la pestaña; se borra al cerrarla) ---------- */
+  const S = Object.assign({ mano1: {}, mano2: {}, juego: {}, ppl: {}, rx: 0 }, JSON.parse(sessionStorage.getItem(STORE) || '{}'));
+  const save = () => sessionStorage.setItem(STORE, JSON.stringify(S));
 
   /* ---------- URLs ---------- */
   const base = location.href.split('#')[0].split('?')[0].replace(/index\.html$/, '').replace(/\/$/, '');

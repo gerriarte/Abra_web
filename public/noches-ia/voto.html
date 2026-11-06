@@ -80,8 +80,8 @@ p.mu{color:var(--mu);line-height:1.45}
   const C = window.TERTULIA, $ = (s) => document.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
   const id = new URLSearchParams(location.search).get('id') || Vivo.myId();
   const MEM = 'tertulia-mis-votos';
-  const mine = JSON.parse(localStorage.getItem(MEM) || '{}');
-  const keep = () => localStorage.setItem(MEM, JSON.stringify(mine));
+  const mine = JSON.parse(sessionStorage.getItem(MEM) || '{}');
+  const keep = () => sessionStorage.setItem(MEM, JSON.stringify(mine));
   const TASKS = [['t1', 'Avisar cuándo vence un contrato'], ['t5', 'Cómo se negocia una condición'], ['t2', 'Armar el borrador del contrato'], ['t4', 'Si ese contrato se renueva o no'], ['t3', 'Revisar que no falte un documento'], ['t6', 'Qué hacer con el caso que no encaja']];
   const RX_GAP_MS = 700;
 
