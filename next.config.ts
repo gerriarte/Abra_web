@@ -21,6 +21,10 @@ const nextConfig: NextConfig = {
     return [
       { source: '/noches-ia', destination: '/noches-ia/index.html' },
       { source: '/noches-ia/', destination: '/noches-ia/index.html' },
+      // Landing de Pliego (estática en public/pliego-landing) → abralatam.com/pliego
+      { source: '/pliego', destination: '/pliego-landing/index.html' },
+      { source: '/pliego/', destination: '/pliego-landing/index.html' },
+      { source: '/pliego/:path*', destination: '/pliego-landing/:path*' },
     ];
   },
 
