@@ -27,22 +27,13 @@ export default function Footer() {
               Strategic Digital Engineering. Construimos sistemas de crecimiento y los productos que los hacen posibles.
             </p>
             <div className="flex gap-4 pt-4">
-              {/* TODO(ger): confirmar las URLs reales; linkedin.com/company/abra e instagram.com/abra parecen placeholders. */}
               <a
-                href="https://linkedin.com/company/abra"
+                href="https://www.linkedin.com/company/a-bra-latam"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="link-underline text-xs text-white/60 hover:text-primary transition-colors uppercase tracking-widest font-medium"
               >
                 LinkedIn
-              </a>
-              <a
-                href="https://instagram.com/abra"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="link-underline text-xs text-white/60 hover:text-primary transition-colors uppercase tracking-widest font-medium"
-              >
-                Instagram
               </a>
             </div>
           </div>
