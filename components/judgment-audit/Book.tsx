@@ -3,7 +3,7 @@ import { useTranslations } from 'next-intl';
 import { ButtonLink, Eyebrow } from './ui';
 
 const BOOK_COVER = '/libro/img/portada-la-ia-ejecuta.webp';
-const BOOK_COVER_SIZE = { width: 800, height: 1129 };
+const BOOK_COVER_SIZE = { width: 960, height: 1355 };
 const AMAZON_URL = 'https://www.amazon.com/dp/B0HQY3VHY8';
 
 /** Authority block closing the example section: the book behind the method. */
