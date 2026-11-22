@@ -58,7 +58,7 @@ export default async function JudgmentAuditPage({ params }: Props) {
   if (locale === 'es') {
     return (
       <div className="ja-root">
-        <Hero secondaryHref="#ejemplo" />
+        <Hero secondaryHref="/es/judgment-audit/autodiagnostico" />
         <Signals />
         <Example />
         <Thesis />
