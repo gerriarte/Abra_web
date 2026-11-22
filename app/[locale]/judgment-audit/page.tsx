@@ -9,6 +9,7 @@ import {
   Deliverables,
   Example,
   Faq,
+  FloatingDiagnosticCta,
   Fit,
   Hero,
   Method,
@@ -72,6 +73,7 @@ export default async function JudgmentAuditPage({ params }: Props) {
         <Recursos />
         <Faq />
         <Cta />
+        <FloatingDiagnosticCta />
         <RevealObserver />
       </div>
     );
