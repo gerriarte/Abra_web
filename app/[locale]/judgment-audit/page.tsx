@@ -16,6 +16,7 @@ import {
   Paths,
   Pricing,
   Projects,
+  Recursos,
   RevealObserver,
   Signals,
   Thesis,
@@ -68,6 +69,7 @@ export default async function JudgmentAuditPage({ params }: Props) {
         <Fit />
         <Pricing />
         <Paths />
+        <Recursos />
         <Faq />
         <Cta />
         <RevealObserver />

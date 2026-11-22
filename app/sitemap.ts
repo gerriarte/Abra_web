@@ -19,6 +19,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
+  // Recursos en español (estáticos, servidos vía rewrites en next.config.ts)
+  const spanishToolRoutes = ['/es/libro', '/es/judgment-audit/canvas', '/es/judgment-audit/autodiagnostico'].map((path) => ({
+    url: `${siteUrl}${path}`,
+    lastModified: DEPLOY_DATE,
+    changeFrequency: 'monthly' as const,
+    priority: 0.7,
+  }));
+
   const localeRoutes = locales.flatMap((locale) => [
     {
       url: `${siteUrl}/${locale}`,
@@ -67,6 +75,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }))
   );
 
-  return [...baseRoutes, ...localeRoutes, ...caseStudyRoutes];
+  return [...baseRoutes, ...localeRoutes, ...spanishToolRoutes, ...caseStudyRoutes];
 }
 
