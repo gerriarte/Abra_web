@@ -77,7 +77,7 @@
 .ja-note { margin: 24px 0 0; max-width: 720px; font-size: 15px; font-weight: 300; color: var(--abra-muted); }
 
 .ja-book { display: grid; grid-template-columns: minmax(150px, 220px) 1fr; gap: 48px; align-items: center; margin-top: 48px; padding: 40px; }
-.ja-book__cover { position: relative; aspect-ratio: 800 / 1129; border-radius: 6px; overflow: hidden; box-shadow: 0 24px 50px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.08); }
+.ja-book__cover { position: relative; aspect-ratio: 960 / 1355; border-radius: 6px; overflow: hidden; box-shadow: 0 24px 50px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.08); }
 .ja-book__img { object-fit: cover; }
 .ja-book__copy { max-width: 640px; }
 .ja-book__actions { display: flex; flex-wrap: wrap; gap: 12px; }
