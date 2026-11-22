@@ -188,8 +188,8 @@ footer a{color:var(--aquad);text-decoration:none}
    WEBHOOK_URL: endpoint que recibe el lead (n8n, Make, Zapier, Formspree...). Recibe JSON por POST.
    Si queda vacío y hay EVENT.link, se muestra un botón al link de inscripción en lugar del formulario. */
 const CONFIG = {
-  // TODO(n8n): pegar aquí el webhook que recibe el lead (POST JSON). Vacío = no se envía nada.
-  WEBHOOK_URL: "",
+  // Lead por correo: la ruta del sitio envía el resultado a CONTACT_RECIPIENT_EMAIL (SMTP ya configurado).
+  WEBHOOK_URL: "/api/autodiagnostico",
   EVENT: {
     meta: "Sesión en línea gratuita · Jueves 18 de febrero de 2027",
     title: "Antes de automatizar con IA, ordena cómo decide tu empresa",
@@ -321,8 +321,9 @@ document.getElementById("lead").addEventListener("submit", async e=>{
   const btn = e.target.querySelector("button"); btn.disabled = true;
   const params = new URLSearchParams(location.search);
   try{
-    await fetch(CONFIG.WEBHOOK_URL,{method:"POST",headers:{"Content-Type":"application/json"},
-      body:JSON.stringify({email, ...RESULT, source:"autodiagnostico", utm_source:params.get("utm_source")||"", utm_campaign:params.get("utm_campaign")||"", ts:new Date().toISOString()})});
+    const r = await fetch(CONFIG.WEBHOOK_URL,{method:"POST",headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({email, tot:RESULT.tot, level:RESULT.level, blocks:RESULT.blocks, weak:RESULT.weak, decision:RESULT.decision||"", utm_source:params.get("utm_source")||"", utm_campaign:params.get("utm_campaign")||"", ts:new Date().toISOString()})});
+    if(!r.ok) throw new Error("status "+r.status);
     e.target.style.display="none"; document.getElementById("ok").style.display="block";
   }catch(_){ btn.disabled=false; btn.textContent="Reintentar"; }
 });

@@ -4,7 +4,7 @@ import type { ContactFormData } from '../validation/contactSchema';
 
 const moduleName = 'lib/services/email';
 
-function getTransport() {
+export function getTransport() {
   const host = process.env.SMTP_HOST;
   const port = process.env.SMTP_PORT ? Number(process.env.SMTP_PORT) : undefined;
   const user = process.env.SMTP_USER;
