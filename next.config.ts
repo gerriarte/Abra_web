@@ -28,6 +28,10 @@ const nextConfig: NextConfig = {
       { source: '/es/judgment-audit/canvas/', destination: '/judgment-audit-tools/canvas/index.html' },
       { source: '/es/judgment-audit/autodiagnostico', destination: '/judgment-audit-tools/autodiagnostico/index.html' },
       { source: '/es/judgment-audit/autodiagnostico/', destination: '/judgment-audit-tools/autodiagnostico/index.html' },
+      // Landing de Pliego (estática en public/pliego-landing) → abralatam.com/pliego
+      { source: '/pliego', destination: '/pliego-landing/index.html' },
+      { source: '/pliego/', destination: '/pliego-landing/index.html' },
+      { source: '/pliego/:path*', destination: '/pliego-landing/:path*' },
     ];
   },
 
