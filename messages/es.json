@@ -199,6 +199,9 @@
       ],
       "imageAlt": "Portada del libro \"La IA ejecuta, el criterio decide\", de Gerardo Riarte: una ballena en líneas aguamarina descendiendo sobre fondo azul oscuro."
     },
+    "floatingCta": {
+      "label": "Haz el autodiagnóstico gratis"
+    },
     "resources": {
       "eyebrow": "Recursos del libro",
       "title": "Herramientas para llevar el método a tu equipo",
