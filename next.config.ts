@@ -21,6 +21,13 @@ const nextConfig: NextConfig = {
     return [
       { source: '/noches-ia', destination: '/noches-ia/index.html' },
       { source: '/noches-ia/', destination: '/noches-ia/index.html' },
+      // Recursos del libro (estáticos en public/) → /es/libro y /es/judgment-audit/*
+      { source: '/es/libro', destination: '/libro/index.html' },
+      { source: '/es/libro/', destination: '/libro/index.html' },
+      { source: '/es/judgment-audit/canvas', destination: '/judgment-audit-tools/canvas/index.html' },
+      { source: '/es/judgment-audit/canvas/', destination: '/judgment-audit-tools/canvas/index.html' },
+      { source: '/es/judgment-audit/autodiagnostico', destination: '/judgment-audit-tools/autodiagnostico/index.html' },
+      { source: '/es/judgment-audit/autodiagnostico/', destination: '/judgment-audit-tools/autodiagnostico/index.html' },
     ];
   },
 

@@ -12,4 +12,5 @@ export { Paths } from './Paths';
 export { Faq } from './Faq';
 export { Objective } from './Objective';
 export { Cta } from './Cta';
+export { Recursos } from './Recursos';
 export { RevealObserver } from '@/components/shared/motion';

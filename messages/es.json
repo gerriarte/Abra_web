@@ -188,7 +188,9 @@
     "book": {
       "eyebrow": "El método, documentado",
       "title": "La IA ejecuta, el criterio decide.",
-      "body": "Esta es la tesis detrás del Judgment Audit, y la desarrollamos en un libro: por qué la IA da respuestas genéricas cuando no conoce cómo decide tu empresa, y cómo poner ese criterio por escrito antes de invertir en herramientas.",
+      "body": "Un método para que tu empresa escriba cómo decide antes de automatizar con inteligencia artificial.",
+      "ctaAmazon": "Comprar en Amazon",
+      "ctaDigital": "Edición digital a color",
       "byline": [
         "Gerardo Riarte",
         "Fundador de A:BRA",
@@ -196,6 +198,32 @@
         "Disponible en Amazon"
       ],
       "imageAlt": "Portada del libro \"La IA ejecuta, el criterio decide\", de Gerardo Riarte: una ballena en líneas aguamarina descendiendo sobre fondo azul oscuro."
+    },
+    "resources": {
+      "eyebrow": "Recursos del libro",
+      "title": "Herramientas para llevar el método a tu equipo",
+      "lead": "Las mismas herramientas que usa el libro, listas para usar.",
+      "items": [
+        {
+          "title": "Autodiagnóstico",
+          "text": "Dieciséis preguntas para saber en qué nivel está una decisión de tu empresa y cuál es el siguiente paso. Ideal para responder con tu equipo por separado.",
+          "cta": "Hacer el autodiagnóstico",
+          "href": "/es/judgment-audit/autodiagnostico"
+        },
+        {
+          "title": "Canvas de criterio",
+          "text": "Escribe en una página, en línea, las ocho casillas de una decisión. Te guía paso a paso y descarga el resultado en PDF para revisarlo con tu equipo.",
+          "cta": "Abrir el canvas",
+          "href": "/es/judgment-audit/canvas"
+        },
+        {
+          "title": "Plantilla Golden Set",
+          "text": "Una hoja de cálculo para registrar decisiones reales, comprobar si tus reglas aciertan y comparar a la IA con y sin reglas. Viene con un ejemplo de ventas.",
+          "cta": "Descargar plantilla (.xlsx)",
+          "href": "/judgment-audit-tools/Golden-Set_plantilla.xlsx",
+          "download": true
+        }
+      ]
     },
     "thesis": {
       "eyebrow": "Nuestra tesis · The Judgment Layer",

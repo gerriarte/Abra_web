@@ -1,0 +1,383 @@
+<!doctype html>
+<html lang="es">
+<head>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-56J4SKMV');</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Canvas de criterio · Escribe en una página cómo decide tu equipo</title>
+<meta name="description" content="Completa en línea las 8 casillas del criterio de una decisión y descárgalo en PDF.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@300;500;600&family=JetBrains+Mono:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#04213B;--aqua:#00C6BA;--aquad:#00857E;--aqual:#D5F3F0;--ink:#0E2236;--soft:#4D6276;--mute:#8496A8;--rule:#D3DCE4;--tint:#E9F0F4;--paper:#F7F9FA;--amber:#FFB547;--amberd:#B8730C;--amberl:#FFF1DC}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Inter,system-ui,sans-serif;color:var(--ink);background:var(--paper);line-height:1.45;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+.k{font-family:"JetBrains Mono",monospace;font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--aquad)}
+header{background:var(--navy);color:#fff;padding:40px 0 34px;border-top:5px solid var(--aqua)}
+header .k{color:var(--aqua)}
+h1{font-family:"Inter Tight",Inter,sans-serif;font-weight:300;font-size:clamp(28px,4.4vw,40px);line-height:1.08;letter-spacing:-.03em;margin:10px 0 12px}
+header p{color:#C9D8E3;font-size:16px;max-width:760px}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:22px}
+.steps div{border:1px solid rgba(255,255,255,.16);border-radius:10px;padding:12px 14px;font-size:14px;color:#DCEBF0}
+.steps b{display:block;color:var(--aqua);font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.14em;margin-bottom:4px}
+/* toolbar */
+.tb{position:sticky;top:0;z-index:10;background:rgba(247,249,250,.97);backdrop-filter:blur(6px);border-bottom:1px solid var(--rule)}
+.tb .wrap{display:flex;gap:10px;align-items:center;flex-wrap:wrap;padding-top:12px;padding-bottom:12px}
+.prog{display:flex;align-items:center;gap:10px;margin-right:auto;font-size:14px;color:var(--soft)}
+.dots{display:flex;gap:4px}
+.dots i{width:22px;height:7px;border-radius:9px;background:var(--tint)}
+.dots i.on{background:var(--aqua)}
+.btn{font:inherit;font-weight:600;font-size:14px;cursor:pointer;border:1.5px solid var(--navy);border-radius:9px;padding:9px 15px;background:#fff;color:var(--navy)}
+.btn.pri{background:var(--aqua);border-color:var(--aqua);color:var(--navy)}
+.btn.lite{border-color:var(--rule);color:var(--soft)}
+.btn:disabled{opacity:.5;cursor:wait}
+/* meta */
+.meta{display:grid;grid-template-columns:2fr 1fr 1fr;gap:12px;margin:22px 0 14px}
+.meta label{font-size:12px;font-weight:600;color:var(--soft);display:grid;gap:5px}
+input,select,textarea{font:inherit;font-size:14px;color:var(--ink);border:1.5px solid var(--rule);border-radius:8px;padding:8px 10px;background:#fff;width:100%}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--aqua);box-shadow:0 0 0 3px rgba(0,198,186,.15)}
+input::placeholder,textarea::placeholder{color:#A9B6C3}
+/* grid */
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;padding-bottom:40px}
+.box{background:#fff;border:1.5px solid var(--rule);border-radius:14px;padding:18px;position:relative;display:flex;flex-direction:column}
+.box.span2{grid-column:span 2}
+.box.main{background:#F0FBFA;border-color:var(--aqua)}
+.box.red{background:#FFFBF4;border-color:var(--amber)}
+.box.done{border-color:var(--aquad)}
+.bt{display:flex;gap:10px;align-items:flex-start}
+.num{flex:none;width:28px;height:28px;border-radius:50%;background:var(--navy);color:#fff;font-family:"JetBrains Mono",monospace;font-size:12px;font-weight:700;display:grid;place-items:center}
+.box.done .num{background:var(--aquad)}
+.box.done .num::after{content:"✓";position:absolute;font-size:0}
+.bt h2{font-family:"Inter Tight",Inter,sans-serif;font-weight:600;font-size:18px;color:var(--navy);line-height:1.15}
+.bt h2 small{font-family:"JetBrains Mono",monospace;font-weight:600;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);margin-left:6px}
+.bq{font-size:14px;font-weight:600;color:var(--aquad);margin-top:2px}
+.red .bq{color:var(--amberd)}
+.bh{font-size:13px;color:var(--soft);margin:10px 0 12px;padding:9px 11px;background:var(--paper);border-radius:8px;border-left:3px solid var(--aqua)}
+.red .bh{border-left-color:var(--amber)}
+.fld{display:grid;gap:5px;margin-bottom:9px}
+.fld>span{font-size:12px;font-weight:600;color:var(--soft)}
+.rows{display:grid;gap:6px}
+.item{display:grid;gap:5px;padding:8px;border:1px solid var(--tint);border-radius:9px;background:#FCFDFD}
+.red .item{border-color:#F6E3C4;background:#fff}
+.ln{display:grid;grid-template-columns:46px 1fr;gap:6px;align-items:start}
+.ln .tag{padding-top:9px}
+.ln2{display:flex;gap:6px}
+.ln2 input:first-child{flex:1;font-weight:600}
+.pct{display:flex;align-items:center;gap:3px;width:86px;flex:none}
+.pct span{font-size:13px;color:var(--mute)}
+textarea{resize:none;overflow:hidden;line-height:1.4;min-height:38px}
+.tag{font-family:"JetBrains Mono",monospace;font-size:10.5px;font-weight:700;color:var(--aquad);letter-spacing:.06em;text-transform:uppercase}
+.red .tag{color:var(--amberd)}
+.colh{display:grid;gap:6px;font-size:11px;font-weight:600;color:var(--mute);text-transform:uppercase;letter-spacing:.05em}
+.sum{margin-top:8px;font-size:13px;font-weight:600;padding:6px 10px;border-radius:7px;background:var(--tint);color:var(--soft)}
+.sum.ok{background:var(--aqual);color:var(--aquad)}
+.sum.bad{background:var(--amberl);color:var(--amberd)}
+.add{font:inherit;font-size:13px;font-weight:600;color:var(--aquad);background:none;border:0;cursor:pointer;margin-top:6px;text-align:left}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.warn{font-size:12.5px;color:var(--amberd);margin-top:4px;display:none}
+.warn.on{display:block}
+footer{border-top:1px solid var(--rule);padding:22px 0 40px;font-size:13px;color:var(--mute)}
+footer a{color:var(--aquad);text-decoration:none}
+.toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);background:var(--navy);color:#fff;padding:12px 18px;border-radius:10px;font-size:14px;display:none;z-index:20}
+@media (max-width:900px){.grid{grid-template-columns:1fr}.box.span2{grid-column:auto}.steps{grid-template-columns:1fr}.meta{grid-template-columns:1fr}}
+
+/* ======= Hoja para PDF (A4 apaisado, 1123 x 794 px) ======= */
+#sheet{position:fixed;left:-99999px;top:0;width:1123px;height:794px;background:#fff;font-family:Inter,sans-serif;color:var(--ink);padding:30px 34px 22px}
+#sheet .sh{display:flex;justify-content:space-between;align-items:flex-end;border-top:4px solid var(--aqua);padding-top:10px;margin-bottom:12px}
+#sheet .sh h3{font-family:"Inter Tight",Inter,sans-serif;font-weight:500;font-size:25px;color:var(--navy);letter-spacing:-.02em}
+#sheet .sm{font-size:11px;color:var(--soft);text-align:right;line-height:1.5}
+#sheet .sm b{color:var(--navy)}
+#sheet .sg{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:138px 290px 188px;gap:9px}
+#sheet .c{border:1.2px solid var(--rule);border-radius:9px;padding:10px 12px;overflow:hidden;position:relative}
+#sheet .c.span2{grid-column:span 2}
+#sheet .c.main{background:#F0FBFA;border-color:var(--aqua)}
+#sheet .c.red{background:#FFFBF4;border-color:var(--amber)}
+#sheet .ct{display:flex;gap:7px;align-items:center;margin-bottom:5px}
+#sheet .cn{width:18px;height:18px;border-radius:50%;background:var(--navy);color:#fff;font-family:"JetBrains Mono",monospace;font-size:9px;font-weight:700;display:grid;place-items:center}
+#sheet .ct b{font-family:"Inter Tight",Inter,sans-serif;font-size:14px;font-weight:600;color:var(--navy)}
+#sheet .ct span{font-size:10px;font-weight:600;color:var(--aquad)}
+#sheet .red .ct span{color:var(--amberd)}
+#sheet .cb{font-size:10.6px;line-height:1.45}
+#sheet .cb td:nth-child(2){font-size:9.4px;color:var(--soft)}
+#sheet .cb .l{color:var(--mute);font-size:9px;font-weight:600;text-transform:uppercase;letter-spacing:.05em}
+#sheet table{width:100%;border-collapse:collapse;font-size:10.2px}
+#sheet td,#sheet th{text-align:left;padding:2.5px 4px;border-bottom:1px solid var(--tint);vertical-align:top}
+#sheet th{font-size:8.6px;color:var(--mute);text-transform:uppercase;letter-spacing:.05em;font-weight:600}
+#sheet td.r{text-align:right;white-space:nowrap;font-weight:600;color:var(--aquad)}
+#sheet .si{color:var(--aquad);font-weight:700;font-size:9px}
+#sheet .empty{color:#B9C4CF;font-style:italic}
+#sheet .sf{display:flex;justify-content:space-between;font-size:9.5px;color:var(--mute);margin-top:9px}
+@media print{
+  @page{size:A4 landscape;margin:0}
+  body>*:not(#sheet){display:none!important}
+  #sheet{position:static;left:0}
+}
+</style>
+<link rel="canonical" href="https://www.abralatam.com/es/judgment-audit/canvas">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.abralatam.com/es/judgment-audit/canvas">
+<meta property="og:image" content="https://www.abralatam.com/libro/img/portada-la-ia-ejecuta-og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-56J4SKMV" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<header><div class="wrap">
+  <div class="k">Herramienta gratuita · Canvas de criterio</div>
+  <h1>Escribe en una página cómo decide tu equipo</h1>
+  <p>Este canvas te ayuda a poner por escrito el criterio de <b>una decisión importante</b>: qué información se mira, qué reglas se aplican, qué nunca se puede hacer y cómo se comprueba que funciona. Es el paso previo para que la IA, o una persona nueva, decida igual que tu mejor experto.</p>
+  <div class="steps">
+    <div><b>PASO 1</b>Elige una decisión que se tome seguido y que tenga impacto. Si no sabes por dónde empezar, carga el ejemplo de ventas.</div>
+    <div><b>PASO 2</b>Completa las casillas en orden, del 1 al 8, junto a la persona que mejor toma esa decisión hoy.</div>
+    <div><b>PASO 3</b>Descarga el PDF y revísalo con tu equipo. Lo que no se pudo completar también es un hallazgo.</div>
+  </div>
+</div></header>
+
+<div class="tb"><div class="wrap">
+  <div class="prog"><div class="dots" id="dots"></div><span id="progt">0 de 8 casillas</span></div>
+  <button class="btn lite" id="bEx">Cargar ejemplo de ventas</button>
+  <button class="btn lite" id="bClr">Vaciar</button>
+  <button class="btn pri" id="bPdf">Descargar PDF</button>
+</div></div>
+
+<main class="wrap">
+  <div class="meta">
+    <label>Empresa y área<input data-k="area" placeholder="Ej.: Comercial · Ventas a empresas"></label>
+    <label>Versión<input data-k="version" placeholder="v1.0"></label>
+    <label>Completado por<input data-k="autor" placeholder="Nombre"></label>
+  </div>
+
+  <div class="grid">
+    <!-- 1 Decisión -->
+    <section class="box main span2" data-box="1">
+      <div class="bt"><div class="num">1</div><div><h2>Decisión</h2><div class="bq">¿Qué se decide y cada cuánto?</div></div></div>
+      <div class="bh">Una sola decisión, escrita como pregunta. Debe tomarse seguido y tener impacto en resultados.</div>
+      <label class="fld"><span>¿Qué se decide?</span><input data-k="dec" placeholder="Ej.: ¿Avanzamos esta oportunidad a la etapa de propuesta?"></label>
+      <div class="two">
+        <label class="fld"><span>¿Cada cuánto se decide?</span><select data-k="freq"><option value="">Elegir…</option><option>Varias veces al día</option><option>Todos los días</option><option>Varias veces por semana</option><option>Una vez por semana</option><option>Una vez al mes</option></select></label>
+        <label class="fld"><span>¿Qué pasa si se decide mal?</span><textarea data-k="costo" rows="1" placeholder="Ej.: forecast inflado y horas en negocios que no cierran"></textarea></label>
+      </div>
+    </section>
+    <!-- 2 Roles -->
+    <section class="box" data-box="2">
+      <div class="bt"><div class="num">2</div><div><h2>Roles</h2><div class="bq">¿Quién responde por esta decisión?</div></div></div>
+      <div class="bh">Nombre y cargo. Pueden ser la misma persona, pero cada rol tiene que tener dueño.</div>
+      <label class="fld"><span>Responsable de las reglas <small>(owner)</small></span><input data-k="owner" placeholder="Ej.: VP de Ventas"></label>
+      <label class="fld"><span>Las aplica en el día a día <small>(operator)</small></span><input data-k="operator" placeholder="Ej.: RevOps"></label>
+      <label class="fld"><span>Revisa desde afuera del área <small>(reviewer)</small></span><input data-k="reviewer" placeholder="Ej.: CEO o CFO"></label>
+    </section>
+    <!-- 3 Señales -->
+    <section class="box" data-box="3">
+      <div class="bt"><div class="num">3</div><div><h2>Señales<small>signals</small></h2><div class="bq">¿Qué información miramos?</div></div></div>
+      <div class="bh">Entre 3 y 7 datos. Para cada uno: cómo se mide y cuánto pesa. Los pesos deben sumar 100%.</div>
+      <div class="rows" id="r-sig"></div>
+      <button class="add" data-add="sig">+ Agregar señal</button>
+      <div class="sum" id="sumw">Pesos: 0%</div>
+    </section>
+    <!-- 4 Reglas -->
+    <section class="box" data-box="4">
+      <div class="bt"><div class="num">4</div><div><h2>Reglas<small>rules</small></h2><div class="bq">Si pasa esto, entonces…</div></div></div>
+      <div class="bh">Condiciones que cualquiera pueda comprobar con las señales. Evita «según el caso» o «si se ve bien».</div>
+      <div class="rows" id="r-rule"></div>
+      <button class="add" data-add="rule">+ Agregar regla</button>
+    </section>
+    <!-- 5 Límites -->
+    <section class="box" data-box="5">
+      <div class="bt"><div class="num">5</div><div><h2>Límites<small>thresholds</small></h2><div class="bq">¿A partir de qué número actuamos?</div></div></div>
+      <div class="bh">Los números de corte que usan las reglas. Anota de dónde salen: si es una hipótesis, se valida con los casos de la casilla 7.</div>
+      <div class="rows" id="r-lim"></div>
+      <button class="add" data-add="lim">+ Agregar límite</button>
+    </section>
+    <!-- 6 Líneas rojas -->
+    <section class="box red" data-box="6">
+      <div class="bt"><div class="num">6</div><div><h2>Líneas rojas<small>invariantes</small></h2><div class="bq">¿Qué nunca puede pasar?</div></div></div>
+      <div class="bh">Lo que no se hace aunque las señales digan otra cosa. La IA tampoco puede romperlo.</div>
+      <div class="rows" id="r-never"></div>
+      <button class="add" data-add="never">+ Agregar línea roja</button>
+    </section>
+    <!-- 7 Casos de referencia -->
+    <section class="box" data-box="7">
+      <div class="bt"><div class="num">7</div><div><h2>Casos de referencia<small>golden set</small></h2><div class="bq">¿Contra qué comprobamos las reglas?</div></div></div>
+      <div class="bh">Entre 20 y 40 decisiones pasadas, con la respuesta correcta marcada por quien más sabe. Se registran en la plantilla Golden Set.</div>
+      <div class="two">
+        <label class="fld"><span>¿Cuántos casos?</span><input data-k="gsn" type="number" min="0" placeholder="Ej.: 30"></label>
+        <label class="fld"><span>¿Quién marca la respuesta correcta?</span><input data-k="gsquien" placeholder="Ej.: VP de Ventas"></label>
+      </div>
+      <label class="fld"><span>¿De dónde salen los casos?</span><textarea data-k="gsde" rows="1" placeholder="Ej.: oportunidades cerradas, ganadas y perdidas, del último semestre"></textarea></label>
+      <div class="warn" id="gswarn">Con menos de 20 casos es difícil saber si las reglas funcionan.</div>
+    </section>
+    <!-- 8 Revisión -->
+    <section class="box" data-box="8">
+      <div class="bt"><div class="num">8</div><div><h2>Revisión<small>feedback loop</small></h2><div class="bq">¿Cómo sabemos si funciona?</div></div></div>
+      <div class="bh">Un número que muestre si las decisiones salen bien, y fechas fijas para revisar las reglas.</div>
+      <label class="fld"><span>¿Qué medimos?</span><textarea data-k="metrica" rows="1" placeholder="Ej.: % de oportunidades en propuesta que terminan en venta"></textarea></label>
+      <div class="two">
+        <label class="fld"><span>Revisión corta</span><select data-k="rev1"><option value="">Elegir…</option><option>Semanal · 30 min</option><option>Quincenal · 30 min</option><option>Mensual · 30 min</option></select></label>
+        <label class="fld"><span>Revisión a fondo</span><select data-k="rev2"><option value="">Elegir…</option><option>Mensual · 90 min</option><option>Trimestral · medio día</option></select></label>
+      </div>
+      <label class="fld"><span>¿Quién revisa?</span><textarea data-k="quienrev" rows="1" placeholder="Ej.: RevOps cada semana; VP de Ventas cada mes"></textarea></label>
+    </section>
+  </div>
+</main>
+
+<footer><div class="wrap">Basado en el Apéndice A del libro <i>La IA ejecuta, el criterio decide</i>, de Gerardo Riarte. Lo que escribes queda solo en este navegador. · <a href="https://www.abralatam.com/es/judgment-audit" target="_blank" rel="noopener">abralatam.com/judgment-audit</a></div></footer>
+
+<div id="sheet"></div>
+<div class="toast" id="toast"></div>
+
+<script>
+const LIBS = ["/vendor/html2canvas.min.js","/vendor/jspdf.umd.min.js"];
+const KEY = "abra-canvas-criterio";
+const ROWDEF = {
+  sig:  {n:3, max:7, html:()=>`<div class="ln2"><input data-f="s" placeholder="Nombre de la señal"><div class="pct"><input data-f="w" type="number" min="0" max="100" placeholder="Peso"><span>%</span></div></div><textarea data-f="m" rows="1" placeholder="¿Cómo se mide y de dónde sale el dato?"></textarea>`},
+  rule: {n:3, max:6, html:()=>`<div class="ln"><span class="tag">Si</span><textarea data-f="si" rows="1" placeholder="Condición que se pueda comprobar"></textarea></div><div class="ln"><span class="tag">Hacer</span><textarea data-f="ent" rows="1" placeholder="Acción"></textarea></div>`},
+  lim:  {n:3, max:5, html:()=>`<div class="ln2"><input data-f="l" placeholder="Qué se limita"><input data-f="v" placeholder="Valor" style="width:110px"></div><select data-f="o"><option value="">¿De dónde sale este número?</option><option>Datos históricos</option><option>Referencia de industria</option><option>Hipótesis</option></select>`},
+  never:{n:2, max:5, html:()=>`<div class="ln"><span class="tag">Nunca</span><textarea data-f="n" rows="1" placeholder="Algo que no se hace en ningún caso"></textarea></div>`}
+};
+const CLS = {sig:"sig", rule:"rule", lim:"lim", never:"never"};
+
+function addRow(t, vals){
+  const box = document.getElementById("r-"+t);
+  if (box.children.length >= ROWDEF[t].max) return;
+  const d = document.createElement("div"); d.className = "item "+CLS[t]; d.innerHTML = ROWDEF[t].html();
+  if (vals) d.querySelectorAll("[data-f]").forEach(e=>{ if(vals[e.dataset.f]!=null) e.value = vals[e.dataset.f]; });
+  box.appendChild(d);
+}
+function resetRows(state){
+  for (const t in ROWDEF){
+    const box = document.getElementById("r-"+t); box.innerHTML = "";
+    const list = (state && state[t]) || [];
+    const n = Math.max(ROWDEF[t].n, list.length);
+    for (let i=0;i<n;i++) addRow(t, list[i]);
+  }
+}
+document.querySelectorAll("[data-add]").forEach(b=>b.addEventListener("click",()=>{addRow(b.dataset.add); refresh();}));
+
+function read(){
+  const s = {};
+  document.querySelectorAll("[data-k]").forEach(e=>s[e.dataset.k]=e.value.trim());
+  for (const t in ROWDEF){
+    s[t] = [...document.getElementById("r-"+t).children].map(r=>{
+      const o={}; r.querySelectorAll("[data-f]").forEach(e=>o[e.dataset.f]=e.value.trim()); return o;
+    }).filter(o=>Object.values(o).some(v=>v));
+  }
+  return s;
+}
+function write(s){
+  document.querySelectorAll("[data-k]").forEach(e=>e.value = s[e.dataset.k] || "");
+  resetRows(s); refresh(); requestAnimationFrame(()=>document.querySelectorAll("textarea").forEach(grow));
+}
+function filled(s){
+  return {
+    1: !!(s.dec && s.freq),
+    2: !!(s.owner && s.operator),
+    3: s.sig.filter(x=>x.s).length >= 3,
+    4: s.rule.filter(x=>x.si && x.ent).length >= 1,
+    5: s.lim.filter(x=>x.l && x.v).length >= 1,
+    6: s.never.filter(x=>x.n).length >= 1,
+    7: !!(s.gsn && s.gsquien),
+    8: !!(s.metrica && (s.rev1 || s.rev2))
+  };
+}
+function refresh(){
+  const s = read(), f = filled(s);
+  let n = 0;
+  document.querySelectorAll("[data-box]").forEach(b=>{ const ok = f[b.dataset.box]; b.classList.toggle("done", ok); if(ok) n++; });
+  document.getElementById("dots").innerHTML = [1,2,3,4,5,6,7,8].map(i=>`<i class="${f[i]?"on":""}" title="Casilla ${i}"></i>`).join("");
+  document.getElementById("progt").textContent = `${n} de 8 casillas`;
+  const w = s.sig.reduce((a,x)=>a+(parseFloat(x.w)||0),0), sw = document.getElementById("sumw");
+  sw.textContent = w===100 ? "Pesos: 100% ✓" : `Pesos: ${w}% · deben sumar 100%`;
+  sw.className = "sum " + (w===100 ? "ok" : (w>0 ? "bad" : ""));
+  const g = parseInt(s.gsn); document.getElementById("gswarn").classList.toggle("on", !!g && g<20);
+  try{ localStorage.setItem(KEY, JSON.stringify(s)); }catch(_){}
+}
+function grow(t){ t.style.height="auto"; t.style.height=t.scrollHeight+3+"px"; }
+document.addEventListener("input", e=>{ if(e.target.tagName==="TEXTAREA") grow(e.target); refresh(); }); document.addEventListener("change", refresh);
+
+const EXAMPLE = {
+  area:"Comercial · Ventas a empresas (ejemplo del libro)", version:"v1.0", autor:"",
+  dec:"¿Avanzamos esta oportunidad a la etapa de propuesta?", freq:"Una vez por semana",
+  costo:"Pipeline inflado, forecast que no se cumple y horas en negocios que no iban a cerrar",
+  owner:"VP de Ventas", operator:"RevOps", reviewer:"CEO o CFO",
+  sig:[{s:"Acceso a quien decide",m:"¿Hay contacto directo y verificado con quien aprueba el presupuesto? (CRM)",w:"30"},
+       {s:"Dolor cuantificado",m:"¿El prospecto le puso un número al costo de su problema?",w:"25"},
+       {s:"Proceso confirmado",m:"¿Conocemos pasos, tiempos y personas de su proceso de compra?",w:"20"},
+       {s:"Competencia identificada",m:"¿Sabemos contra quién competimos y en qué posición estamos?",w:"15"},
+       {s:"Actividad reciente",m:"¿El prospecto inició una interacción en los últimos 14 días?",w:"10"}],
+  rule:[{si:"Hay acceso a quien decide y dolor cuantificado, y el resto suma 65% o más",ent:"Avanzar a propuesta"},
+        {si:"El puntaje está entre 40% y 65%",ent:"Mantener con plan de acción y revisar en 14 días"},
+        {si:"21 días sin actividad del prospecto, o sin llegar a quien decide tras 2 reuniones",ent:"Pausar la oportunidad"}],
+  lim:[{l:"Puntaje para avanzar",v:"65% o más",o:"Hipótesis"},{l:"Zona de seguimiento",v:"40% a 65%",o:"Hipótesis"},{l:"Inactividad máxima",v:"21 días",o:"Hipótesis"}],
+  never:[{n:"enviar una propuesta formal sin haber validado el dolor cuantificado"}],
+  gsn:"30", gsquien:"VP de Ventas", gsde:"Oportunidades cerradas, ganadas y perdidas, del último semestre",
+  metrica:"% de oportunidades en propuesta que terminan en venta", rev1:"Semanal · 30 min", rev2:"Mensual · 90 min",
+  quienrev:"RevOps cada semana; VP de Ventas cada mes; CEO o CFO cada trimestre"
+};
+document.getElementById("bEx").addEventListener("click",()=>{ write(EXAMPLE); toast("Ejemplo cargado: caso de ventas B2B del libro"); });
+document.getElementById("bClr").addEventListener("click",()=>{ if(confirm("¿Vaciar todas las casillas?")) write({}); });
+
+function toast(t){ const e=document.getElementById("toast"); e.textContent=t; e.style.display="block"; clearTimeout(e._t); e._t=setTimeout(()=>e.style.display="none",2600); }
+const esc = v => (v||"").replace(/[&<>"]/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const E = '<span class="empty">Sin completar</span>';
+
+function buildSheet(){
+  const s = read();
+  const tbl = (head, rows) => rows.length ? `<table><tr>${head.map(h=>`<th>${h}</th>`).join("")}</tr>${rows.join("")}</table>` : E;
+  const cell = (n,t,q,body,cls="") => `<div class="c ${cls}"><div class="ct"><div class="cn">${n}</div><b>${t}</b><span>${q}</span></div><div class="cb">${body}</div></div>`;
+  const w = s.sig.reduce((a,x)=>a+(parseFloat(x.w)||0),0);
+  const fecha = new Date().toLocaleDateString("es",{day:"numeric",month:"long",year:"numeric"});
+  document.getElementById("sheet").innerHTML = `
+  <div class="sh"><div><div class="k">The Judgment Layer · Apéndice A</div><h3>Canvas de criterio${s.area?` · <span style="color:var(--aquad)">${esc(s.area.split("(")[0].trim())}</span>`:""}</h3></div>
+    <div class="sm">${s.version?`Versión ${esc(s.version)} · `:""}${fecha}${s.autor?`<br>Completado por ${esc(s.autor)}`:""}</div></div>
+  <div class="sg">
+   ${cell(1,"Decisión","¿Qué se decide y cada cuánto?",
+     `${s.dec?`<div style="font-size:12.5px;font-weight:600;color:var(--navy)">${esc(s.dec)}</div>`:E}
+      <div style="display:grid;grid-template-columns:1fr 2fr;gap:12px;margin-top:8px"><div><div class="l">Frecuencia</div>${esc(s.freq)||E}</div><div><div class="l">Si se decide mal</div>${esc(s.costo)||E}</div></div>`,"main span2")}
+   ${cell(2,"Roles","¿Quién responde?",
+     `<div class="l">Responsable de las reglas</div>${esc(s.owner)||E}<div class="l" style="margin-top:3px">Las aplica</div>${esc(s.operator)||E}<div class="l" style="margin-top:3px">Revisa desde afuera</div>${esc(s.reviewer)||E}`)}
+   ${cell(3,"Señales","¿Qué información miramos?",
+     tbl(["Señal","Cómo se mide","Peso"], s.sig.map(x=>`<tr><td><b>${esc(x.s)}</b></td><td>${esc(x.m)}</td><td class="r">${x.w?esc(x.w)+"%":""}</td></tr>`)) + (s.sig.length?`<div style="text-align:right;font-size:9.5px;margin-top:3px;color:${w===100?"var(--aquad)":"var(--amberd)"}">Total: ${w}%</div>`:""))}
+   ${cell(4,"Reglas","Si pasa esto, entonces…",
+     s.rule.length ? s.rule.map(x=>`<div style="margin-bottom:6px"><span class="si">SI</span> ${esc(x.si)}<br><span class="si">→ HACER</span> <b>${esc(x.ent)}</b></div>`).join("") : E)}
+   ${cell(5,"Límites","¿A partir de qué número?",
+     tbl(["Límite","Valor","Origen"], s.lim.map(x=>`<tr><td>${esc(x.l)}</td><td class="r">${esc(x.v)}</td><td>${esc(x.o)}</td></tr>`)))}
+   ${cell(6,"Líneas rojas","¿Qué nunca puede pasar?",
+     s.never.length ? s.never.map(x=>`<div style="margin-bottom:5px"><span class="si" style="color:var(--amberd)">NUNCA</span> ${esc(x.n)}</div>`).join("") : E,"red")}
+   ${cell(7,"Casos de referencia","¿Contra qué comprobamos?",
+     `<div class="l">Cantidad de casos</div>${esc(s.gsn)||E}<div class="l" style="margin-top:5px">Marca la respuesta correcta</div>${esc(s.gsquien)||E}<div class="l" style="margin-top:5px">De dónde salen</div>${esc(s.gsde)||E}`)}
+   ${cell(8,"Revisión","¿Cómo sabemos si funciona?",
+     `<div class="l">Qué medimos</div>${esc(s.metrica)||E}<div class="l" style="margin-top:5px">Cadencia</div>${[s.rev1,s.rev2].filter(Boolean).map(esc).join(" · ")||E}<div class="l" style="margin-top:5px">Quién revisa</div>${esc(s.quienrev)||E}`)}
+  </div>
+  <div class="sf"><span>Del libro <b>La IA ejecuta, el criterio decide</b> · Gerardo Riarte · A:BRA</span><span>abralatam.com/judgment-audit</span></div>`;
+}
+
+function loadScript(src){ return new Promise((ok,ko)=>{ const s=document.createElement("script"); s.src=src; s.onload=ok; s.onerror=ko; document.head.appendChild(s); }); }
+document.getElementById("bPdf").addEventListener("click", async e=>{
+  const b = e.currentTarget; b.disabled = true; b.textContent = "Generando…";
+  buildSheet();
+  try{
+    if (!window.html2canvas || !window.jspdf) for (const u of LIBS) await loadScript(u);
+    if (document.fonts && document.fonts.ready) await document.fonts.ready;
+    const sh = document.getElementById("sheet");
+    const img = await html2canvas(sh, {scale:2, backgroundColor:"#ffffff", useCORS:true, x:0, y:0, windowWidth:1123, windowHeight:794,
+      onclone:(d)=>{ const c=d.getElementById("sheet"); c.style.left="0"; c.style.position="absolute"; }});
+    const pdf = new jspdf.jsPDF({orientation:"landscape", unit:"mm", format:"a4"});
+    pdf.addImage(img.toDataURL("image/jpeg",0.94), "JPEG", 0, 0, 297, 210);
+    pdf.setProperties({title:"Canvas de criterio", author:"A:BRA · The Judgment Layer"});
+    const s = read();
+    const slug = (s.dec||"canvas").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"").replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"").slice(0,50) || "canvas";
+    pdf.save(`canvas-criterio_${slug}.pdf`);
+    window.dataLayer=window.dataLayer||[]; window.dataLayer.push({event:"canvas_pdf_descargado"});
+  }catch(err){
+    toast("No se pudo generar el archivo. Se abre la impresión: elige «Guardar como PDF».");
+    setTimeout(()=>window.print(), 400);
+  }
+  b.disabled = false; b.textContent = "Descargar PDF";
+});
+
+// inicio
+let saved = null; try{ saved = JSON.parse(localStorage.getItem(KEY)||"null"); }catch(_){}
+write(saved || {});
+</script>
+</body>
+</html>
