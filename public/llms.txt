@@ -1,0 +1,28 @@
+# A:BRA
+
+> A:BRA es un studio híbrido de growth, IA y desarrollo de producto (LATAM: Bogotá y Buenos Aires). Construye sistemas de crecimiento y los productos que los hacen posibles. Su marco de trabajo es el A:BRA Loop.
+
+## Páginas principales
+
+- [Inicio (ES)](https://www.abralatam.com/es): studio híbrido de growth, IA y desarrollo de producto.
+- [Inicio (EN)](https://www.abralatam.com/en): hybrid growth, AI and product studio.
+- [Judgment Audit](https://www.abralatam.com/es/judgment-audit): diagnóstico de criterio antes de invertir en IA. En 5 días hábiles se revisa cómo decide un área, se pone por escrito el criterio y se entrega un plan con 3 a 5 iniciativas de IA priorizadas por impacto. Desde $4.500.000 COP.
+- [Autodiagnóstico gratuito](https://www.abralatam.com/es/judgment-audit/autodiagnostico): 16 preguntas para saber en qué nivel de madurez está el criterio de una decisión de la empresa. Resultado con puntaje, nivel y próximo paso.
+- [Canvas de criterio](https://www.abralatam.com/es/judgment-audit/canvas): canvas en línea de 8 casillas para escribir cómo decide un equipo y descargarlo en PDF.
+- [Libro: La IA ejecuta, el criterio decide](https://www.abralatam.com/es/libro): libro de Gerardo Riarte. Edición digital a color (54 páginas), 5 casos reales, plan de 8 semanas y kit de herramientas. Compra en Hotmart (USD 9.99) o en Amazon.
+- [Casos de estudio](https://www.abralatam.com/es/cases): proyectos de clientes.
+- [Gerardo Riarte](https://www.abralatam.com/es/gerardo-riarte): fundador de A:BRA.
+- [Contacto y demo](https://www.abralatam.com/es/demo): agendar una conversación.
+
+## Recursos descargables
+
+- Plantilla Golden Set (.xlsx): https://www.abralatam.com/judgment-audit-tools/Golden-Set_plantilla.xlsx
+
+## Legal
+
+- [Privacidad](https://www.abralatam.com/es/privacy)
+- [Términos](https://www.abralatam.com/es/terms)
+
+## Sitemap
+
+- https://www.abralatam.com/sitemap.xml

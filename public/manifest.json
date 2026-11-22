@@ -4,16 +4,31 @@
   "description": "Studio híbrido que combina growth, IA y desarrollo de producto. Construimos sistemas de crecimiento y los productos que los hacen posibles.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#0A0A0A",
-  "theme_color": "#0A0A0A",
+  "background_color": "#020C17",
+  "theme_color": "#020C17",
   "lang": "es",
   "icons": [
     {
-      "src": "/icon.png",
-      "sizes": "any",
+      "src": "/icon-192.png",
+      "sizes": "192x192",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
     }
   ],
-  "categories": ["business", "productivity"]
+  "categories": [
+    "business",
+    "productivity"
+  ]
 }

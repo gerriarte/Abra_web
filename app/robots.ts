@@ -23,6 +23,15 @@ export default function robots(): MetadataRoute.Robots {
           '/admin/',
         ],
       },
+      // Crawlers de buscadores con IA que citan fuentes: permitidos explícitamente (AEO)
+      {
+        userAgent: ['GPTBot', 'OAI-SearchBot', 'ClaudeBot', 'Claude-SearchBot', 'PerplexityBot', 'Google-Extended'],
+        allow: '/',
+        disallow: [
+          '/api/',
+          '/admin/',
+        ],
+      },
     ],
     sitemap: `${siteUrl}/sitemap.xml`,
   };
