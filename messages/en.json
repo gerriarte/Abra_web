@@ -446,27 +446,32 @@
         "resultLabel": "Result",
         "toolsLabel": "Tools",
         "aiLabel": "AI",
+        "flows": ["judgment", "system", "data", "improvement"],
         "phases": [
           {
             "name": "Insight",
+            "tag": "Decisions",
             "result": "A plan with 3 to 5 AI initiatives prioritized by impact.",
             "tools": "Decision map and Golden Set: 20 to 30 cases solved by your expert.",
             "ai": "Judgment document: AI is evaluated against your standard, not generic answers."
           },
           {
             "name": "Build",
+            "tag": "Systems",
             "result": "Growth systems ready to run: websites, landing pages and automations.",
             "tools": "Websites, landing pages, automations and integrations.",
             "ai": "AI agents and copilots, prototyped and built with technical rigor."
           },
           {
             "name": "Launch",
+            "tag": "Campaigns",
             "result": "Campaigns that segment, bid and attribute better from day one.",
             "tools": "Meta and Google ads, SEO and content.",
             "ai": "Predictive models to segment, bid and attribute."
           },
           {
             "name": "Learn",
+            "tag": "Learning",
             "result": "Decisions backed by data: dashboards and an executive report. Learning feeds back into Insight.",
             "tools": "Measurement, attribution and executive dashboards.",
             "ai": "AI applied to decisions: every loop cycle improves the system."

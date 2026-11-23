@@ -641,27 +641,32 @@
         "resultLabel": "Resultado",
         "toolsLabel": "Herramientas",
         "aiLabel": "IA",
+        "flows": ["criterio", "sistema", "datos", "mejora"],
         "phases": [
           {
             "name": "Insight",
+            "tag": "Decisiones",
             "result": "Un plan con 3 a 5 iniciativas de IA priorizadas por impacto.",
             "tools": "Mapa de decisiones y Golden Set: 20 a 30 casos resueltos por tu experto.",
             "ai": "Documento de criterio: la IA se evalúa contra tu estándar, no contra respuestas genéricas."
           },
           {
             "name": "Build",
+            "tag": "Sistemas",
             "result": "Sistemas de crecimiento listos para operar: web, landings y automatizaciones.",
             "tools": "Webs, landings, automatizaciones e integraciones.",
             "ai": "Agentes y copilotos de IA, prototipados y construidos con rigor técnico."
           },
           {
             "name": "Launch",
+            "tag": "Campañas",
             "result": "Campañas que segmentan, pujan y atribuyen mejor desde el día uno.",
             "tools": "Pauta en Meta y Google, SEO y contenido.",
             "ai": "Modelos predictivos para segmentar, pujar y atribuir."
           },
           {
             "name": "Learn",
+            "tag": "Aprendizaje",
             "result": "Decisiones con datos: dashboards y reporte ejecutivo. El aprendizaje vuelve al Insight.",
             "tools": "Medición, atribución y dashboards ejecutivos.",
             "ai": "IA aplicada a decisiones: cada vuelta del Loop mejora el sistema."
