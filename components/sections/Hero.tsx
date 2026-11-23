@@ -1,26 +1,25 @@
 import { useLocale, useTranslations } from 'next-intl';
 import { ButtonLink, Eyebrow, mutedTag } from '@/components/shared/motion';
 import { CAL_BOOKING_URL } from '@/lib/links';
-import HeroLayers, { type HeroLayer } from './HeroLayers';
+import HeroLoopAudit, { type LoopLabels, type LoopPhase } from './HeroLoopAudit';
 
 export default function Hero() {
   const t = useTranslations('home.hero');
-  const tServices = useTranslations('home.services');
   const locale = useLocale();
   const capabilities = t.raw('capabilities') as string[];
-  const layers = tServices.raw('items') as HeroLayer[];
+  const loop = t.raw('loop') as LoopLabels & { phases: LoopPhase[] };
 
   return (
     <section
       id="hero"
       className="relative flex min-h-[100svh] items-end overflow-hidden pt-28 pb-14 lg:items-center lg:pb-24"
     >
-      {/* Capas 3D on the right (desktop only: on mobile the copy fills the screen).
+      {/* A:BRA Loop en 3D (desktop only: on mobile the copy fills the screen).
           Absolutely positioned, so it can't shift layout. The wrapper ignores the pointer;
-          HeroLayers re-enables it so the layers are interactive. */}
+          HeroLoopAudit re-enables it so the phases are interactive. */}
       <div className="pointer-events-none absolute inset-0">
-        <div className="abra-float absolute right-[2%] top-1/2 hidden w-[min(46vw,640px)] -translate-y-1/2 lg:block">
-          <HeroLayers layers={layers} includesLabel={tServices('includesLabel')} />
+        <div className="absolute right-[2%] top-1/2 hidden w-[min(46vw,640px)] -translate-y-1/2 lg:block">
+          <HeroLoopAudit phases={loop.phases} labels={loop} />
         </div>
         {/* Mobile: dark from the bottom, where the copy sits. Desktop: dark from the left. */}
         <div className="absolute inset-0 bg-[linear-gradient(0deg,#020C17_42%,rgba(2,12,23,0.6)_64%,rgba(2,12,23,0)_85%)] lg:bg-[linear-gradient(90deg,#020C17_0%,rgba(2,12,23,0.7)_32%,rgba(2,12,23,0)_55%)]" />

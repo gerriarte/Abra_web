@@ -602,7 +602,41 @@
         "Data e IA",
         "Growth"
       ],
-      "capabilitiesLabel": "Capacidades"
+      "capabilitiesLabel": "Capacidades",
+      "loop": {
+        "ariaLabel": "A:BRA Loop: cuatro fases alrededor del criterio",
+        "coreLabel": "Judgment Audit",
+        "coreSub": "Criterio antes de herramientas",
+        "resultLabel": "Resultado",
+        "toolsLabel": "Herramientas",
+        "aiLabel": "IA",
+        "phases": [
+          {
+            "name": "Insight",
+            "result": "Un plan con 3 a 5 iniciativas de IA priorizadas por impacto.",
+            "tools": "Mapa de decisiones y Golden Set: 20 a 30 casos resueltos por tu experto.",
+            "ai": "Documento de criterio: la IA se evalúa contra tu estándar, no contra respuestas genéricas."
+          },
+          {
+            "name": "Build",
+            "result": "Sistemas de crecimiento listos para operar: web, landings y automatizaciones.",
+            "tools": "Webs, landings, automatizaciones e integraciones.",
+            "ai": "Agentes y copilotos de IA, prototipados y construidos con rigor técnico."
+          },
+          {
+            "name": "Launch",
+            "result": "Campañas que segmentan, pujan y atribuyen mejor desde el día uno.",
+            "tools": "Pauta en Meta y Google, SEO y contenido.",
+            "ai": "Modelos predictivos para segmentar, pujar y atribuir."
+          },
+          {
+            "name": "Learn",
+            "result": "Decisiones con datos: dashboards y reporte ejecutivo. El aprendizaje vuelve al Insight.",
+            "tools": "Medición, atribución y dashboards ejecutivos.",
+            "ai": "IA aplicada a decisiones: cada vuelta del Loop mejora el sistema."
+          }
+        ]
+      }
     },
     "problem": {
       "eyebrow": "El costo del marketing desconectado",
