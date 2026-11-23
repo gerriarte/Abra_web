@@ -77,13 +77,23 @@
 .ja-note { margin: 24px 0 0; max-width: 720px; font-size: 15px; font-weight: 300; color: var(--abra-muted); }
 
 .ja-book { display: grid; grid-template-columns: minmax(150px, 220px) 1fr; gap: 48px; align-items: center; margin-top: 48px; padding: 40px; }
-.ja-book__cover { position: relative; aspect-ratio: 6 / 9; border-radius: 6px; overflow: hidden; box-shadow: 0 24px 50px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.08); }
+.ja-book__cover { position: relative; aspect-ratio: 960 / 1355; border-radius: 6px; overflow: hidden; box-shadow: 0 24px 50px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.08); }
 .ja-book__img { object-fit: cover; }
-.ja-book__placeholder { display: flex; align-items: flex-start; height: 100%; padding: 20px 18px; background: radial-gradient(circle at 50% 70%, var(--abra-apertura) 0%, var(--abra-night) 75%); }
-.ja-book__placeholder span { font-family: var(--abra-display); font-size: 19px; font-weight: 600; line-height: 1.15; letter-spacing: -0.02em; color: var(--abra-fg); }
 .ja-book__copy { max-width: 640px; }
+.ja-book__actions { display: flex; flex-wrap: wrap; gap: 12px; }
 .ja-book__title { margin: 0; font-family: var(--abra-display); font-size: clamp(1.6rem, 3vw, 2.3rem); font-weight: 500; line-height: 1.1; letter-spacing: -0.035em; color: var(--abra-fg); }
 .ja-book__byline { line-height: 1.8; }
+
+/* CTA flotante: aparece al pasar el hero y se oculta al llegar a los recursos */
+.ja-float-cta { position: fixed; left: 16px; bottom: 80px; z-index: 50; opacity: 0; transform: translateY(12px); pointer-events: none; transition: opacity 0.3s ease, transform 0.3s ease; }
+.ja-float-cta--on { opacity: 1; transform: none; pointer-events: auto; }
+.ja-float-cta .abra-btn { box-shadow: 0 14px 32px rgba(0, 198, 186, 0.38); animation: ja-float-pulse 2.6s ease-in-out infinite; }
+@keyframes ja-float-pulse {
+  0%, 100% { box-shadow: 0 14px 32px rgba(0, 198, 186, 0.38), 0 0 0 0 rgba(0, 198, 186, 0.45); }
+  70% { box-shadow: 0 14px 32px rgba(0, 198, 186, 0.38), 0 0 0 14px rgba(0, 198, 186, 0); }
+}
+@media (min-width: 768px) { .ja-float-cta { left: 24px; bottom: 24px; } }
+@media (prefers-reduced-motion: reduce) { .ja-float-cta .abra-btn { animation: none; } .ja-float-cta { transition: none; } }
 @media (max-width: 640px) {
   .ja-book { grid-template-columns: 1fr; gap: 28px; padding: 28px 22px; }
   .ja-book__cover { width: min(200px, 60%); }

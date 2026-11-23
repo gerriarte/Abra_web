@@ -1,0 +1,385 @@
+<!doctype html>
+<html lang="es">
+<head>
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-56J4SKMV');</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>La IA ejecuta, el criterio decide · Libro de Gerardo Riarte</title>
+<meta name="description" content="Un método para que tu empresa escriba cómo decide antes de automatizar con inteligencia artificial. E-book + kit de herramientas.">
+<meta property="og:title" content="La IA ejecuta, el criterio decide">
+<meta property="og:description" content="Antes de automatizar con IA, ordena cómo decide tu empresa. E-book + kit de herramientas.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Inter+Tight:wght@300;400;500;600&family=JetBrains+Mono:wght@600;700&display=swap" rel="stylesheet">
+<style>
+:root{--night:#020C17;--navy:#04213B;--aper:#0A2D4D;--aqua:#00C6BA;--aquad:#00857E;--aqual:#D5F3F0;--ink:#0E2236;--soft:#4D6276;--mute:#8496A8;--rule:#D3DCE4;--tint:#E9F0F4;--paper:#F7F9FA;--amber:#FFB547;--amberd:#B8730C;--amberl:#FFF1DC}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,system-ui,sans-serif;color:var(--ink);background:#fff;line-height:1.55;-webkit-font-smoothing:antialiased;font-size:17px}
+img{max-width:100%;height:auto;display:block}
+.wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+.narrow{max-width:760px}
+.k{font-family:"JetBrains Mono",monospace;font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--aquad)}
+h1,h2,h3{font-family:"Inter Tight",Inter,sans-serif;letter-spacing:-.025em;color:var(--navy)}
+h2{font-weight:400;font-size:clamp(28px,4vw,40px);line-height:1.1;margin:10px 0 18px}
+h3{font-weight:600;font-size:20px;line-height:1.2}
+section{padding:84px 0}
+p+p{margin-top:14px}
+.lead{font-size:19px;color:var(--soft)}
+b,strong{font-weight:600;color:var(--navy)}
+/* botón */
+.cta{display:inline-flex;align-items:center;gap:10px;font:inherit;font-weight:700;font-size:17px;text-decoration:none;background:var(--aqua);color:var(--navy);padding:17px 30px;border-radius:12px;box-shadow:0 8px 24px rgba(0,198,186,.28);transition:transform .12s,box-shadow .12s}
+.cta:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(0,198,186,.36)}
+.cta small{font-weight:500;opacity:.75}
+.trust{display:flex;flex-wrap:wrap;gap:8px 18px;margin-top:16px;font-size:13.5px;color:var(--mute)}
+.trust span::before{content:"✓ ";color:var(--aqua);font-weight:700}
+/* top */
+.top{background:var(--navy);padding:14px 0}
+.top .wrap{display:flex;justify-content:space-between;align-items:center}
+.top img{height:22px;width:auto}
+.top a{color:#C9D8E3;font-size:14px;text-decoration:none;font-weight:600}
+/* hero */
+.hero{background:var(--navy);color:#fff;padding:56px 0 90px;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.07) 1px,transparent 1px);background-size:22px 22px;mask-image:linear-gradient(to bottom,#000,transparent 85%)}
+.hero .wrap{display:grid;grid-template-columns:1.25fr .9fr;gap:56px;align-items:center;position:relative}
+.hero .k{color:var(--aqua)}
+.hero h1{color:#fff;font-weight:300;font-size:clamp(38px,5.6vw,62px);line-height:1.02;margin:14px 0 20px}
+.hero h1 span{color:var(--aqua);font-weight:400}
+.hero .lead{color:#C9D8E3}
+.hero .trust{color:#8FA6B8}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:24px 0 28px}
+.chips span{font-size:13.5px;color:#DCEBF0;border:1px solid rgba(255,255,255,.18);border-radius:99px;padding:6px 13px}
+.book{position:relative}
+.book img{border-radius:6px 12px 12px 6px;box-shadow:-18px 28px 60px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,255,.06);transform:perspective(1400px) rotateY(-9deg);max-width:360px;margin:0 auto}
+/* problema */
+.pain{background:var(--paper)}
+.sym{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:30px}
+.sym div{background:#fff;border:1px solid var(--rule);border-radius:12px;padding:18px 20px;font-size:16px;color:var(--ink);display:flex;gap:12px}
+.sym div::before{content:"";flex:none;width:9px;height:9px;margin-top:8px;border-radius:2px;background:var(--amber)}
+.bridge{margin-top:34px;font-size:20px;color:var(--navy);font-family:"Inter Tight",Inter,sans-serif;max-width:760px}
+/* capas */
+.layers{display:grid;gap:10px;margin-top:30px}
+.layer{display:grid;grid-template-columns:150px 1fr auto;gap:20px;align-items:center;border:1px solid var(--rule);border-radius:12px;padding:18px 22px}
+.layer b{font-family:"Inter Tight",Inter,sans-serif;font-size:19px}
+.layer .st{font-size:13px;font-weight:600;padding:5px 11px;border-radius:99px;background:var(--tint);color:var(--soft);white-space:nowrap}
+.layer.j{background:var(--navy);border-color:var(--navy);color:#C9D8E3}
+.layer.j b{color:#fff}
+.layer.j .st{background:var(--amber);color:var(--navy)}
+blockquote{margin-top:34px;border-left:4px solid var(--aqua);padding:6px 0 6px 22px;font-family:"Inter Tight",Inter,sans-serif;font-size:24px;line-height:1.3;color:var(--navy);font-weight:400}
+/* método */
+.method{background:var(--navy);color:#C9D8E3}
+.method h2{color:#fff}
+.method .k{color:var(--aqua)}
+.comp{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:34px}
+.comp div{border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:22px;background:rgba(255,255,255,.03)}
+.comp i{font-style:normal;font-family:"JetBrains Mono",monospace;font-size:12px;color:var(--aqua);font-weight:700}
+.comp h3{color:#fff;margin:10px 0 8px}
+.comp p{font-size:15px}
+.loopnote{margin-top:26px;font-size:15px;color:#8FA6B8}
+/* aprendes */
+.learn{display:grid;grid-template-columns:1fr 1fr;gap:14px 40px;margin-top:28px}
+.learn div{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid var(--rule)}
+.learn div::before{content:"→";color:var(--aquad);font-weight:700}
+/* casos */
+.cases{background:var(--paper)}
+.cgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:30px}
+.cgrid div{background:#fff;border:1px solid var(--rule);border-radius:12px;padding:18px}
+.cgrid i{font-style:normal;font-family:"JetBrains Mono",monospace;font-size:11px;font-weight:700;color:var(--aquad);letter-spacing:.1em}
+.cgrid b{display:block;margin:6px 0 6px;font-family:"Inter Tight",Inter,sans-serif;font-size:17px}
+.cgrid p{font-size:14px;color:var(--soft)}
+/* índice */
+.toc{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:28px}
+.toc div{border-top:3px solid var(--navy);padding-top:12px}
+.toc i{font-style:normal;font-family:"JetBrains Mono",monospace;font-size:11px;font-weight:700;color:var(--aquad);letter-spacing:.12em}
+.toc b{display:block;font-family:"Inter Tight",Inter,sans-serif;font-size:17px;margin:4px 0 8px}
+.toc p{font-size:14px;color:var(--soft)}
+/* kit */
+.kit{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:30px}
+.kit div{border:1.5px solid var(--rule);border-radius:14px;padding:24px;position:relative}
+.kit .ico{width:44px;height:44px;border-radius:10px;background:var(--aqual);display:grid;place-items:center;margin-bottom:14px}
+.kit h3{margin-bottom:8px}
+.kit p{font-size:15px;color:var(--soft)}
+.kit .fmt{display:inline-block;margin-top:12px;font-family:"JetBrains Mono",monospace;font-size:11px;font-weight:700;color:var(--aquad);letter-spacing:.08em}
+/* para quién */
+.fit{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:28px}
+.fit>div{border-radius:14px;padding:26px}
+.fit .yes{background:var(--aqual)}
+.fit .no{background:var(--paper);border:1px solid var(--rule)}
+.fit h3{margin-bottom:14px}
+.fit li{list-style:none;padding:8px 0 8px 28px;position:relative;font-size:16px}
+.fit .yes li::before{content:"✓";position:absolute;left:0;color:var(--aquad);font-weight:700}
+.fit .no li::before{content:"✕";position:absolute;left:0;color:var(--mute);font-weight:700}
+/* autor */
+.author .wrap{display:grid;grid-template-columns:240px 1fr;gap:44px;align-items:center}
+.author img{border-radius:16px;filter:grayscale(.15)}
+/* oferta */
+.offer{background:var(--navy)}
+.offer .k{color:var(--aqua)}
+.offer h2{color:#fff;text-align:center}
+.card{background:#fff;border-radius:20px;max-width:620px;margin:32px auto 0;padding:36px;box-shadow:0 30px 80px rgba(0,0,0,.35)}
+.stack li{list-style:none;display:flex;justify-content:space-between;gap:16px;padding:13px 0;border-bottom:1px solid var(--tint);font-size:16px}
+.stack li span:last-child{color:var(--aquad);font-weight:600;font-size:14px;white-space:nowrap}
+.price{text-align:center;margin:26px 0 20px}
+.price .n{font-family:"Inter Tight",Inter,sans-serif;font-weight:300;font-size:64px;line-height:1;color:var(--navy);letter-spacing:-.04em}
+.price .n small{font-size:22px;color:var(--mute);margin-left:6px}
+.price p{font-size:14px;color:var(--mute);margin-top:6px}
+.card .cta{width:100%;justify-content:center}
+.card .trust{justify-content:center}
+.guar{display:flex;gap:16px;align-items:center;max-width:620px;margin:22px auto 0;color:#C9D8E3;font-size:15px}
+.guar .seal{flex:none;width:62px;height:62px;border-radius:50%;border:2px solid var(--aqua);display:grid;place-items:center;font-family:"JetBrains Mono",monospace;font-weight:700;color:var(--aqua);font-size:13px;text-align:center;line-height:1.1}
+/* diag */
+.diag{background:var(--amberl)}
+.diag .wrap{display:flex;gap:30px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.diag a{color:var(--navy);font-weight:700;border-bottom:2px solid var(--amber);text-decoration:none;padding-bottom:2px}
+/* faq */
+details{border-bottom:1px solid var(--rule);padding:20px 0}
+summary{cursor:pointer;font-weight:600;font-size:18px;color:var(--navy);list-style:none;display:flex;justify-content:space-between;gap:20px}
+summary::after{content:"+";color:var(--aquad);font-size:24px;line-height:1}
+details[open] summary::after{content:"−"}
+details p{margin-top:12px;color:var(--soft)}
+/* final */
+.final{text-align:center;background:var(--paper)}
+.final .trust{justify-content:center}
+footer{background:var(--night);color:#6F8596;font-size:13px;padding:28px 0}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer a{color:#8FA6B8}
+/* barra móvil */
+.mbar{position:fixed;left:0;right:0;bottom:0;z-index:30;background:#fff;border-top:1px solid var(--rule);padding:10px 16px;display:none;align-items:center;justify-content:space-between;gap:12px;transform:translateY(110%);transition:transform .25s}
+.mbar.on{transform:none}
+.mbar b{font-size:15px}
+.mbar small{display:block;font-size:12px;color:var(--mute)}
+.mbar .cta{padding:12px 18px;font-size:15px;box-shadow:none}
+@media (max-width:900px){
+  section{padding:60px 0}
+  .hero .wrap,.author .wrap{grid-template-columns:1fr}
+  .book{order:-1}.book img{max-width:160px;transform:none}.hero{padding:34px 0 60px}
+  .sym,.learn,.fit,.kit{grid-template-columns:1fr}
+  .comp{grid-template-columns:1fr 1fr}
+  .cgrid,.toc{grid-template-columns:1fr 1fr}
+  .layer{grid-template-columns:1fr;gap:6px}
+  .author img{max-width:200px}
+  .mbar{display:flex}
+  body{padding-bottom:70px}
+}
+@media (max-width:520px){.comp,.cgrid,.toc{grid-template-columns:1fr}.card{padding:24px}}
+</style>
+<link rel="canonical" href="https://www.abralatam.com/es/libro">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.abralatam.com/es/libro">
+<meta property="og:image" content="https://www.abralatam.com/libro/img/portada-la-ia-ejecuta-og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-56J4SKMV" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<div class="top"><div class="wrap"><img src="/libro/img/logo-abra.png" width="118" height="35" alt="A:BRA"><a href="#oferta">Comprar · USD 9.99</a></div></div>
+
+<!-- 1. HERO -->
+<header class="hero"><div class="wrap">
+  <div>
+    <div class="k">Libro · E-book</div>
+    <h1>La IA ejecuta,<br><span>el criterio decide.</span></h1>
+    <p class="lead">Un método para escribir cómo decide tu empresa antes de automatizar con inteligencia artificial. Para que la IA, o la persona nueva del equipo, decida como tu mejor experto.</p>
+    <div class="chips"><span>PDF a color · 54 páginas</span><span>5 casos reales</span><span>Plan de 8 semanas</span><span>Kit de herramientas</span></div>
+    <a class="cta" href="https://pay.hotmart.com/I108613062W">Quiero el libro <small>· USD 9.99</small></a>
+    <div class="trust"><span>Acceso inmediato</span><span>Pago seguro con Hotmart</span><span>Garantía de 7 días</span></div>
+  </div>
+  <div class="book"><img src="/libro/img/portada-la-ia-ejecuta.webp" width="960" height="1355" fetchpriority="high" alt="Portada del libro La IA ejecuta, el criterio decide"></div>
+</div></header>
+
+<!-- 2. PROBLEMA -->
+<section class="pain"><div class="wrap">
+  <div class="narrow">
+    <div class="k">El problema</div>
+    <h2>Tu equipo ya usa IA. Los resultados salen distintos cada vez.</h2>
+    <p class="lead">Si alguna de estas situaciones te suena, el problema no está en la herramienta.</p>
+  </div>
+  <div class="sym">
+    <div>Automatizaron un proceso y los resultados mejoraron en velocidad, pero no en calidad.</div>
+    <div>La misma decisión sale distinta según quién la tome o en qué turno.</div>
+    <div>Hay una persona que «sabe cómo se hace», y cuando se va de vacaciones todo empeora.</div>
+    <div>Una persona nueva tarda meses en aprender a decidir como el resto del equipo.</div>
+    <div>Le pides algo a la IA y tienes que corregirla una y otra vez, con explicaciones que nunca escribiste.</div>
+    <div>Nadie puede explicar con números por qué se tomó una decisión, ni si fue la correcta.</div>
+  </div>
+  <p class="bridge">La IA hace muy bien lo que le pides. Lo que casi ninguna empresa hizo es escribir cómo decide. Y lo que no está escrito, la IA no lo puede aprender.</p>
+</div></section>
+
+<!-- 3. IDEA -->
+<section><div class="wrap narrow">
+  <div class="k">La idea central</div>
+  <h2>Toda empresa funciona sobre tres capas. Una sola sigue sin ordenar.</h2>
+  <div class="layers">
+    <div class="layer"><b>Datos</b><span>Capturar y organizar la información.</span><span class="st">Resuelta en buena parte</span></div>
+    <div class="layer"><b>Ejecución</b><span>Convertir decisiones en acciones repetibles.</span><span class="st">Resuelta en buena parte</span></div>
+    <div class="layer j"><b>Criterio</b><span>Definir qué es correcto, cuándo y por qué.</span><span class="st">Sin estructura</span></div>
+  </div>
+  <p style="margin-top:26px">En los últimos años la inversión fue a datos y automatización. El cuello de botella quedó en el criterio: vive en la cabeza de pocas personas y nadie lo escribió. Este libro propone un orden simple: <b>antes de automatizar la ejecución, ordenar el criterio.</b></p>
+  <blockquote>Automatizar una mala decisión solo produce más malas decisiones, más rápido.</blockquote>
+</div></section>
+
+<!-- 4. MÉTODO -->
+<section class="method"><div class="wrap">
+  <div class="narrow">
+    <div class="k">El método · The Judgment Layer</div>
+    <h2>Cuatro piezas para escribir el criterio de cualquier decisión</h2>
+    <p>Una decisión está bien definida cuando tiene escritas estas cuatro cosas. El libro explica cada una con ejemplos y muestra cómo armarlas con tu equipo.</p>
+  </div>
+  <div class="comp">
+    <div><i>01</i><h3>Señales</h3><p>Qué información se mira para decidir y de dónde sale cada dato.</p></div>
+    <div><i>02</i><h3>Reglas</h3><p>Qué se hace en cada situación, incluidas las líneas rojas que nunca se cruzan.</p></div>
+    <div><i>03</i><h3>Límites</h3><p>A partir de qué número se actúa, y de dónde salió ese número.</p></div>
+    <div><i>04</i><h3>Revisión</h3><p>Cómo se comprueba que la decisión fue buena, con casos reales de referencia.</p></div>
+  </div>
+  <p class="loopnote">Con esas cuatro piezas, la decisión se puede enseñar, medir, mejorar y, recién entonces, delegar en la IA.</p>
+</div></section>
+
+<!-- 5. QUÉ VAS A PODER HACER -->
+<section><div class="wrap">
+  <div class="narrow"><div class="k">Al terminar el libro</div><h2>Qué vas a poder hacer con tu equipo</h2></div>
+  <div class="learn">
+    <div>Elegir la primera decisión que conviene ordenar: la que se toma seguido y más impacto tiene.</div>
+    <div>Escribir sus reglas junto a la persona que mejor decide hoy, en una semana de trabajo.</div>
+    <div>Saber en qué nivel de madurez está tu empresa, de 1 a 4, y qué falta para el siguiente.</div>
+    <div>Armar entre 20 y 40 casos reales para comprobar si las reglas funcionan antes de delegarlas.</div>
+    <div>Decidir qué partes pasarle a la IA y cuáles no, con cinco condiciones concretas.</div>
+    <div>Asignar quién es responsable del criterio, quién lo aplica y cada cuánto se revisa.</div>
+  </div>
+</div></section>
+
+<!-- 6. CASOS -->
+<section class="cases"><div class="wrap">
+  <div class="narrow"><div class="k">Aplicado a cinco áreas</div><h2>Cinco casos de proyectos reales. Busca el tuyo.</h2>
+  <p class="lead">Cada caso muestra la decisión, quién la toma, qué información se mira y qué reglas se escribieron. Sin nombres de clientes.</p></div>
+  <div class="cgrid">
+    <div><i>CASO 1</i><b>Marketing</b><p>Cuándo escalar, pausar o mover la inversión en pauta.</p></div>
+    <div><i>CASO 2</i><b>Ventas B2B</b><p>Cuándo una oportunidad está lista para recibir una propuesta.</p></div>
+    <div><i>CASO 3</i><b>Producto SaaS</b><p>Qué construir primero cuando todo parece urgente.</p></div>
+    <div><i>CASO 4</i><b>Producción gráfica</b><p>Cómo cotizar y producir cada pedido sin errores.</p></div>
+    <div><i>CASO 5</i><b>Estudios jurídicos</b><p>Cómo priorizar y seguir muchos procesos a la vez.</p></div>
+  </div>
+</div></section>
+
+<!-- 7. CONTENIDO -->
+<section><div class="wrap">
+  <div class="narrow"><div class="k">Contenido</div><h2>Cinco partes, quince capítulos</h2>
+  <p class="lead">Lo puedes leer completo en unas dos horas, o en 15 minutos con el recorrido ejecutivo que propone el libro.</p></div>
+  <div class="toc">
+    <div><i>PARTE I</i><b>El diagnóstico</b><p>Por qué fallan tantos proyectos de IA aunque la tecnología funcione.</p></div>
+    <div><i>PARTE II</i><b>El método</b><p>Las cuatro piezas del criterio, los tipos de decisión y los cuatro niveles de madurez.</p></div>
+    <div><i>PARTE III</i><b>La implementación</b><p>El plan de ocho semanas, los roles y cómo medir la calidad del criterio.</p></div>
+    <div><i>PARTE IV</i><b>Aplicaciones</b><p>Los cinco casos y empresas que ya trabajan así sin llamarlo así.</p></div>
+    <div><i>PARTE V</i><b>Lo que viene</b><p>El nuevo perfil que ordena el criterio y cómo aprenden a decidir mejor las empresas.</p></div>
+  </div>
+</div></section>
+
+<!-- 8. KIT -->
+<section class="cases"><div class="wrap">
+  <div class="narrow"><div class="k">Incluido con el libro</div><h2>Un kit de herramientas para aplicarlo esta semana</h2>
+  <p class="lead">El libro explica el método. Estas tres herramientas te ayudan a usarlo con tu equipo.</p></div>
+  <div class="kit">
+    <div><div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00857E" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 9v12M15 9v12"/></svg></div>
+      <h3>Canvas de criterio</h3><p>Escribe en una página, en línea, las ocho casillas de una decisión. Te guía paso a paso y descarga el resultado en PDF para revisarlo con tu equipo.</p><span class="fmt">HERRAMIENTA EN LÍNEA · PDF</span></div>
+    <div><div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00857E" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="M4 10h16M4 15h16M10 4v16"/></svg></div>
+      <h3>Plantilla de casos de referencia</h3><p>Una hoja de cálculo para registrar decisiones reales, comprobar si tus reglas aciertan y comparar a la IA con y sin reglas. Viene con un ejemplo de ventas.</p><span class="fmt">EXCEL · GOOGLE SHEETS</span></div>
+    <div><div class="ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#00857E" stroke-width="2"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg></div>
+      <h3>Autodiagnóstico</h3><p>Dieciséis preguntas para saber en qué nivel está una decisión de tu empresa y cuál es el siguiente paso. Ideal para responder con tu equipo por separado.</p><span class="fmt">HERRAMIENTA EN LÍNEA</span></div>
+  </div>
+</div></section>
+
+<!-- 9. PARA QUIÉN -->
+<section><div class="wrap">
+  <div class="narrow"><div class="k">Para quién es</div><h2>Escrito para quien decide, no para quien programa</h2></div>
+  <div class="fit">
+    <div class="yes"><h3>Es para ti si…</h3><ul>
+      <li>Diriges una empresa o un área y ya usas IA, o estás por empezar.</li>
+      <li>Sientes que los resultados dependen demasiado de dos o tres personas.</li>
+      <li>Quieres que la IA trabaje con el criterio de tu empresa y no con uno genérico.</li>
+      <li>Eres consultor o tienes una agencia y quieres ordenar el trabajo con tus clientes.</li>
+    </ul></div>
+    <div class="no"><h3>No es para ti si…</h3><ul>
+      <li>Buscas un tutorial de herramientas o prompts paso a paso.</li>
+      <li>Esperas una solución que funcione sin dedicar tiempo a pensar cómo decide tu equipo.</li>
+      <li>Necesitas un manual técnico de programación o de modelos de IA.</li>
+    </ul></div>
+  </div>
+</div></section>
+
+<!-- 10. AUTOR -->
+<section class="author cases"><div class="wrap">
+  <img src="/libro/img/gerardo-riarte.webp" width="432" height="577" loading="lazy" alt="Gerardo Riarte">
+  <div>
+    <div class="k">El autor</div>
+    <h2>Gerardo Riarte</h2>
+    <p>Fundador de A:BRA, un estudio de growth e ingeniería con base en Bogotá. Lleva más de ocho años en marketing de crecimiento y analítica, y hoy implementa sistemas de inteligencia artificial en empresas de Latinoamérica.</p>
+    <p>Escribió este libro desde la práctica: el método nació de aplicarlo con clientes para ordenar decisiones reales, y de ese trabajo salieron sus herramientas más concretas.</p>
+  </div>
+</div></section>
+
+<!-- 11. OFERTA -->
+<section class="offer" id="oferta"><div class="wrap">
+  <div class="k" style="text-align:center">Tu acceso</div>
+  <h2>Todo lo que recibes hoy</h2>
+  <div class="card">
+    <ul class="stack">
+      <li><span><b>Libro «La IA ejecuta, el criterio decide»</b><br><small style="color:var(--mute)">PDF a color de 54 páginas, con diagramas y tablas</small></span><span>Incluido</span></li>
+      <li><span>Canvas de criterio en línea, con descarga en PDF</span><span>Incluido</span></li>
+      <li><span>Plantilla de casos de referencia con ejemplo de ventas</span><span>Incluido</span></li>
+      <li><span>Autodiagnóstico de 16 preguntas</span><span>Incluido</span></li>
+    </ul>
+    <div class="price"><div class="n">9.99<small>USD</small></div><p>Pago único. Hotmart muestra el valor en tu moneda local.</p></div>
+    <a class="cta" href="https://pay.hotmart.com/I108613062W">Quiero el libro y el kit</a>
+    <div class="trust"><span>Acceso inmediato por correo</span><span>Tarjeta y medios de pago locales</span></div>
+  </div>
+  <div class="guar"><div class="seal">7<br>DÍAS</div><p><b style="color:#fff">Garantía de 7 días.</b> Si el libro no te sirve, pides el reembolso desde Hotmart dentro de los 7 días posteriores a la compra y te devuelven el 100%, sin preguntas.</p></div>
+</div></section>
+
+<!-- 12. DIAGNÓSTICO (objeción: ¿lo necesito?) -->
+<section class="diag" style="padding:44px 0"><div class="wrap">
+  <div><h3>¿No sabes si lo necesitas?</h3><p style="color:var(--soft);margin-top:4px">Haz el autodiagnóstico gratis. En cinco minutos sabrás en qué nivel está una decisión de tu empresa.</p></div>
+  <a href="/es/judgment-audit/autodiagnostico" target="_blank" rel="noopener">Hacer el autodiagnóstico →</a>
+</div></section>
+
+<!-- 13. FAQ -->
+<section><div class="wrap narrow">
+  <div class="k">Preguntas frecuentes</div><h2>Antes de comprar</h2>
+  <details><summary>¿Cómo recibo el libro?</summary><p>Apenas se confirma el pago, Hotmart te envía un correo con el acceso. Ahí descargas el PDF y encuentras los enlaces a las herramientas del kit.</p></details>
+  <details><summary>¿Necesito saber de tecnología o de IA?</summary><p>No. El libro está escrito para dueños, gerentes y líderes de área. Habla de cómo decide tu empresa, no de cómo se programa una IA. Los términos técnicos se explican con ejemplos.</p></details>
+  <details><summary>¿Sirve para una empresa pequeña?</summary><p>Sí. El método se aplica a una sola decisión por vez. Una empresa de diez personas también tiene decisiones que dependen de una sola cabeza, y ahí es donde más se nota.</p></details>
+  <details><summary>¿Qué diferencia hay con la versión de Amazon?</summary><p>El contenido del libro es el mismo. Aquí recibes el PDF a color con la maqueta original, para leer en computadora o tablet e imprimir las partes que necesites, y pagas con los medios de pago de tu país.</p></details>
+  <details><summary>¿En qué países puedo comprarlo?</summary><p>En cualquier país donde opere Hotmart. El precio se muestra en tu moneda y puedes pagar con tarjeta o con los medios de pago locales disponibles en tu país.</p></details>
+  <details><summary>¿Y si no me sirve?</summary><p>Tienes 7 días de garantía. Pides el reembolso desde tu cuenta de Hotmart y te devuelven el dinero completo.</p></details>
+  <details><summary>¿Puedo compartirlo con mi equipo?</summary><p>El libro es para uso personal. Si quieres llevar el método a tu equipo o hacer una compra para varias personas, escríbenos desde <a href="https://www.abralatam.com" style="color:var(--aquad)">abralatam.com</a>.</p></details>
+</div></section>
+
+<!-- 14. CIERRE -->
+<section class="final"><div class="wrap narrow">
+  <h2>Antes de automatizar con IA, ordena cómo decide tu empresa</h2>
+  <p class="lead">Empieza por una decisión. El libro te muestra cómo escribirla esta semana.</p>
+  <div style="margin-top:28px"><a class="cta" href="https://pay.hotmart.com/I108613062W">Quiero el libro <small>· USD 9.99</small></a></div>
+  <div class="trust"><span>Acceso inmediato</span><span>Pago seguro con Hotmart</span><span>Garantía de 7 días</span></div>
+</div></section>
+
+<footer><div class="wrap"><span>© 2026 Gerardo Riarte · A:BRA LATAM S.A.S.</span><span><a href="https://www.abralatam.com">abralatam.com</a></span></div></footer>
+
+<div class="mbar" id="mbar"><div><b>La IA ejecuta, el criterio decide</b><small>Libro + kit · USD 9.99</small></div><a class="cta" href="https://pay.hotmart.com/I108613062W">Comprar</a></div>
+
+<script>
+// Barra de compra en móvil: aparece después del hero y se oculta en la sección de oferta
+const hero=document.querySelector(".hero"), offer=document.getElementById("oferta"), bar=document.getElementById("mbar");
+const vis={hero:true,offer:false};
+const io=new IntersectionObserver(es=>{es.forEach(e=>{ if(e.target===hero) vis.hero=e.isIntersecting; else vis.offer=e.isIntersecting; }); bar.classList.toggle("on",!vis.hero&&!vis.offer);});
+io.observe(hero); io.observe(offer);
+// Mantener los parámetros UTM al ir al checkout de Hotmart
+const q=location.search.slice(1);
+if(q) document.querySelectorAll('a[href*="hotmart"]').forEach(a=>{a.href+=(a.href.includes("?")?"&":"?")+q;});
+</script>
+<script>
+window.dataLayer=window.dataLayer||[];
+document.querySelectorAll('a[href*="pay.hotmart.com"]').forEach(function(a){
+  a.addEventListener('click',function(){
+    window.dataLayer.push({event:'begin_checkout',ecommerce:{currency:'USD',value:9.99,items:[{item_name:'La IA ejecuta, el criterio decide',item_category:'libro',price:9.99,quantity:1}]},checkout_button:(a.textContent||'').trim().slice(0,60)});
+  });
+});
+</script>
+</body>
+</html>

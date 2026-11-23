@@ -9,6 +9,7 @@ import {
   Deliverables,
   Example,
   Faq,
+  FloatingDiagnosticCta,
   Fit,
   Hero,
   Method,
@@ -16,6 +17,7 @@ import {
   Paths,
   Pricing,
   Projects,
+  Recursos,
   RevealObserver,
   Signals,
   Thesis,
@@ -57,7 +59,7 @@ export default async function JudgmentAuditPage({ params }: Props) {
   if (locale === 'es') {
     return (
       <div className="ja-root">
-        <Hero secondaryHref="#ejemplo" />
+        <Hero secondaryHref="/es/judgment-audit/autodiagnostico" />
         <Signals />
         <Example />
         <Thesis />
@@ -68,8 +70,10 @@ export default async function JudgmentAuditPage({ params }: Props) {
         <Fit />
         <Pricing />
         <Paths />
+        <Recursos />
         <Faq />
         <Cta />
+        <FloatingDiagnosticCta />
         <RevealObserver />
       </div>
     );
