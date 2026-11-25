@@ -22,6 +22,7 @@ import {
   Signals,
   Thesis,
 } from '@/components/judgment-audit';
+import JsonLd from '@/components/seo/JsonLd';
 import '@/components/judgment-audit/judgment-audit.css';
 
 type Props = { params: Promise<{ locale: string }> };
@@ -57,8 +58,22 @@ export default async function JudgmentAuditPage({ params }: Props) {
   // The Spanish page follows the new brief (example first, fit, pricing, FAQ);
   // English keeps the original structure until its copy is rewritten.
   if (locale === 'es') {
+    // FAQPage: las mismas preguntas de la sección, para resultados enriquecidos y respuestas de IA.
+    const faqT = await getTranslations({ locale, namespace: 'JudgmentAudit.faq' });
+    const faqItems = faqT.raw('items') as { q: string; a: string }[];
+    const faqSchema = {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: faqItems.map((item) => ({
+        '@type': 'Question',
+        name: item.q,
+        acceptedAnswer: { '@type': 'Answer', text: item.a },
+      })),
+    };
+
     return (
       <div className="ja-root">
+        <JsonLd data={faqSchema} />
         <Hero secondaryHref="/es/judgment-audit/autodiagnostico" />
         <Signals />
         <Example />
