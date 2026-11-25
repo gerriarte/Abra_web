@@ -102,9 +102,6 @@ export function generateSEOMetadata(config: SEOConfig): Metadata {
       title: fullTitle,
       description: metaDescription,
       images: [imageUrl],
-      // TODO(ger): confirmar el handle real de X/Twitter; @abra_agency parece un placeholder.
-      creator: '@abra_agency',
-      site: '@abra_agency',
     },
     metadataBase: new URL(siteUrl),
     authors: [{ name: siteName }],
@@ -131,8 +128,7 @@ export function generateOrganizationSchema() {
     logo: `${siteUrl}/abra.png`,
     description: defaultDescription.en,
     sameAs: [
-      'https://linkedin.com/company/abra',
-      'https://instagram.com/abra',
+      'https://www.linkedin.com/company/a-bra-latam',
     ],
     contactPoint: {
       '@type': 'ContactPoint',

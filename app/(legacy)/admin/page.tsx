@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import '../globals.css';
+import '../../globals.css';
 
 interface Project {
   id: number;
